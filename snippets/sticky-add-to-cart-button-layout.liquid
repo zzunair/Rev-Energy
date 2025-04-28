@@ -1,0 +1,43 @@
+{% liquid
+  assign string = ''
+  for option in product.options_with_values
+    assign string = string | append: ' ' | append: option.selected_value
+  endfor
+  assign string = string | split: ' ' | join: ', '
+%}
+<div class="sticky-add-to-cart-button-layout ">
+  <button
+    type="button"
+    class="sticky-add-to-cart-button-layout__btn"
+    drawer-to-open="sticky-add-to-cart"
+    aria-label="Sticky Add to Cart"
+    is="open-drawer"
+  >
+    {% render 'icon' with 'icon-sticky-add-to-cart' %}
+  </button>
+  <sticky-add-to-cart-content layout-type="button">
+    <div class="sticky-add-to-cart__details-wrp tab-only">
+      <div class="sticky-add-to-cart__details">
+        <h3 class="h4 mb-0">{{ product.title | truncate: 30 }}</h3>
+        {% unless product.has_only_default_variant %}
+          <div class="sticky-add-to-cart__variant-info">
+            <p class="fnt-16 mb-0" sticky-add-to-cart-variants>
+              {{ string }}
+            </p>
+            <button type="button" scroll-to-section="product-info" class="link link--xs">
+              <span class="ml-2">{{ 'products.product.sticky_add_to_cart.edit' | t }}</span>
+            </button>
+          </div>
+        {% endunless %}
+        {% render 'sticky-add-to-cart-content', product: product, form_id: form_id %}
+        <span class="stikcy-price">
+          {% if settings.currency_code_enabled %}
+            {{ product.selected_or_first_available_variant.price | money_with_currency }}
+          {% else %}
+            {{ product.selected_or_first_available_variant.price | money }}
+          {% endif %}
+        </span>
+      </div>
+    </div>
+  </sticky-add-to-cart-content>
+</div>

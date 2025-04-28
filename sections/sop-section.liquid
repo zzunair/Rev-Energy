@@ -1,0 +1,167 @@
+<style>
+.shop-section {
+    padding: 0;
+}
+ .shop-section .heading {
+    color: #000;
+    text-align: center;
+    font-family: "Bebas Neue";
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 105%;
+    text-transform: capitalize;
+}
+ .shop-section .desc {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    max-width: 710px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+ .shop-section .wrapper {
+    background: var(--primary-1100, #F2FCFA);
+    padding: 40px 0;
+  }
+ .shop-section .icon_wrapper {
+    max-width: 718px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 30px;
+   flex-wrap: wrap;
+}
+ .shop-section .btn-new {
+    border-radius: 10px;
+    /* background: var(--primary-500, #38BCAB);
+    color: var(--primary-1200, #F9FEFD); */
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    display: flex;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: max-content;
+    margin: 0 auto;
+}
+
+  .inner_div {
+    max-width: calc(25% - 23px);
+    width: 100%;
+}
+
+  .inner_div img {
+    max-width: 100%;
+    width: 100%;
+  }
+  @media (max-width: 550px) {
+    .inner_div img {
+      height: 51.178px;
+      object-fit: contain;
+   }
+    .shop-section .icon_wrapper {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 8px;
+    }
+   .shop-section .inner_div {
+      width: 36%;
+      display: flex;
+      justify-content: center;
+    }
+   .shop-section .desc {
+      max-width: 376px;
+      font-size: 13px;
+   }
+    .shop-section .heading {
+        font-size: 48px;
+        max-width: 283px;
+        margin: 0 auto;
+    }
+    .shop-section {
+      padding: 0 0 0 0;
+    }
+    .shop-section .page-width {
+      padding: 0 0 0 0;
+    }
+  }
+</style>
+<section class="shop-section">
+  <div class="page-width">
+      <div class="wrapper">
+        <div class="heading">{{ section.settings.heading }}</div>
+        <div class="desc">{{ section.settings.desc }}</div>
+        <div class="icon_wrapper">
+          {% for block in section.blocks %}
+            <div class="inner_div">
+              <img src="{{ block.settings.icon | image_url }}">
+            </div>
+          {% endfor %}
+        </div>
+         <!-- <div class="page-btn">
+          <a class="btn-new" href="{{ section.settings.btn-url }}">
+            {{- section.settings['btn-txt'] }} 
+          </a>
+         </div> -->
+     </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Shop Section",
+     "settings": [
+    {
+      "type": "html",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "text",
+      "label": "Description",
+      "id": "desc"
+    },
+    {
+      "type": "text",
+      "label": "Button text",
+      "id": "btn-txt"
+    },
+    {
+      "type": "url",
+      "label": "Button Url",
+      "id": "btn-url"
+    }
+  ],
+  "blocks": [
+  {
+    "type": "block",
+    "name": "block",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Image"
+      }
+    ]
+  }
+],
+    "presets": [
+      {
+        "name": "Shop Section"
+      }
+    ]
+  }
+{% endschema %}

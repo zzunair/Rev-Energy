@@ -1,0 +1,87 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Footer",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu-1": {
+          "type": "menu",
+          "settings": {
+            "show_menu_title": false,
+            "heading": "ChewRev Gum",
+            "menu": "customer-account-main-menu"
+          }
+        },
+        "menu-2": {
+          "type": "menu",
+          "settings": {
+            "show_menu_title": false,
+            "heading": "RESOURCES",
+            "menu": "shop"
+          }
+        },
+        "menu_eJzCd6": {
+          "type": "menu",
+          "settings": {
+            "show_menu_title": false,
+            "heading": "LEGAL",
+            "menu": "learn"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_header": "SIGN UP FOR OUR NEWSLETTER",
+            "newsletter_subtext": "<p>Each month, we'll share 1-2 pieces of health & wellness related content that we think you'll enjoy, as well as keep you up-to-date on our latest promotional efforts.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "menu-1",
+        "menu-2",
+        "menu_eJzCd6",
+        "newsletter"
+      ],
+      "custom_css": [
+        ".footer__bottom {background: #ffd97c; text-transform: uppercase;}"
+      ],
+      "settings": {
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": false,
+        "show_country_name": false,
+        "payment_enable": false,
+        "enable_follow_on_shop": false,
+        "padding_top": 56,
+        "padding_bottom": 0,
+        "color_scheme": "scheme-3",
+        "pno_info_tag": "",
+        "email_info_tag": "",
+        "use_outline_button_styles": true,
+        "enable_sublinks": true,
+        "custom_link_1_heading": "",
+        "custom_link_1_url": "",
+        "custom_link_2_heading": "",
+        "custom_link_2_url": "",
+        "custom_link_3_heading": "",
+        "custom_link_3_url": "",
+        "bottom_image": "",
+        "bottom_image_width": 100,
+        "bottom_image_margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

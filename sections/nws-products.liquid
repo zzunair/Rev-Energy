@@ -1,0 +1,190 @@
+<section class="products">
+    <div class="container">
+        <div class="body">
+            <div class="header-part">
+                <h2>{{ section.settings.heading }}</h2>
+                <p>{{ section.settings.des }}</p>
+            </div>
+            <div class="product-wrapper">
+                <div class="content">
+                    {% for block in section.blocks %}
+                      {% if block.settings.prd-images != blank %}
+                        <div class="img-box">
+                            <a width="auto" height="auto" href="{{ block.settings.prd-url }}"><img src="{{ block.settings.prd-images | img_url: 'master' }}" alt="{{ block.settings.prd-images.alt }}"></a>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% if section.settings.btn-text != blank %}
+              <div class="btn-wrapper">
+                  <a href="{{ section.settings.btn-link }}" class="btn">{{ section.settings.btn-text }}</a>
+              </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+  "name": "NWS Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "Paragraph"
+    },
+    {
+      "type": "text",
+      "id": "btn-text",
+      "label": "Button title"
+    },
+    {
+      "type": "url",
+      "id": "btn-link",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "prd-images",
+          "label": "Select Image"
+        },
+        {
+          "type": "url",
+          "id": "prd-url",
+          "label": "Image URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NWS Products",
+      "category": "Section Category"
+    }
+  ]
+}
+{% endschema %}
+{% style %}
+section.products {
+    display: block;
+    padding-bottom: 80px;
+}
+section.products .container {
+    display: block;
+    width: 100%;
+    max-width: 885px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+section.products .container .body {
+    display: block;
+}
+section.products .body .header-part {
+    display: block;
+    margin-bottom: 32px;
+}
+section.products .header-part h2 {
+    display: block;
+    font-size: 42px;
+    font-family: PPObjectSans;
+    text-align: center;
+    color: #F77F26;
+    margin: 0;
+    margin-bottom: 25px;
+}
+section.products .header-part p {
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+}
+section.products .body .product-wrapper {
+    display: block;
+    margin-bottom: 30px;
+}
+section.products .product-wrapper .content {
+    display: flex;
+    flex-wrap: wrap;
+}
+section.products .product-wrapper .img-box {
+    display: block;
+    width: 100%;
+    max-width: 25%;
+    padding: 0 10px;
+}
+section.products .product-wrapper .img-box a {
+    display: block;
+}
+section.products .product-wrapper .img-box img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+}
+section.products .body .btn-wrapper {
+    display: block;
+}
+section.products .body .btn-wrapper a {
+	display: block;
+	width: 100%;
+	max-width: 105px;
+	padding: 12px 10px;
+	text-align: center;
+	font-size: 13px;
+	text-decoration: none;
+	font-family: PPObjectSans;
+	background-color: #F77F26;
+	border: 2px solid #F77F26;
+	border-radius: 4px;
+	margin: 0 auto;
+	color: white;
+	transition: all 0.2s ease;
+	line-height: normal;
+	font-weight: 600;
+}
+section.products .body .btn-wrapper a:hover{
+    background-color: white;
+    color: #F77F26;
+}
+
+@media screen and (max-width: 1024px){
+    section.products .header-part h2 {
+        font-size: 38px;
+    }
+    section.products .header-part p {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 768px) {
+    section.products {
+        padding-bottom: 60px;
+    }
+    section.products .header-part h2 {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+    section.products .body .header-part {
+        margin-bottom: 25px;
+    }
+}
+@media screen and (max-width: 520px) {
+    section.products .header-part h2 {
+        font-size: 28px;
+    }
+}
+@media screen and (max-width: 660px) {
+    section.products .product-wrapper .img-box {
+        max-width: 50%;
+        padding: 10px;
+    }
+}
+{% endstyle %}

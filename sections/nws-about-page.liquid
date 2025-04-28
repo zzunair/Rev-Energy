@@ -1,0 +1,88 @@
+<!-- nws-about-page -->
+  {% if section.blocks != blank %}
+    <div class="nws-about-page" style="{% if section.settings.section-color != blank %}background-color:{{ section.settings.section-color }};{% endif %} {% if section.settings.section-bg != blank %}background-image:url('{{ section.settings.section-bg | img_url: 'master' }}');{% endif %}" >
+      <div class="container-fluid" >
+        <div class="nws-about-page-content nws-same-section">
+          <div class="nws-about-page-body" >
+           {% for block in section.blocks %}
+             <div class="nws-about-page-box-inner nws-block-{{ block.settings.align-block }}" >
+               <div class="nws-about-page-box-iner" >
+                  {% if block.settings.b-heading != blank %}<h4 class="nws-box-h" style="{% if block.settings.heading-color != blank %}color:{{ block.settings.heading-color }};{% endif %} {% if block.settings.block-color != blank %}background-color:{{ block.settings.block-color }};{% endif %}" >{{ block.settings.b-heading }}</h3>{% endif %}
+               </div>
+               <div class="nws-about-page-box-iner" >
+                  {% if block.settings.b-image != blank %}<img src="{{ block.settings.b-image | img_url: '720x' }}" />{% endif %}
+               </div>
+               <div class="nws-about-page-box-iner" >
+                  {% if block.settings.b-txt != blank %}<div class="nws-box-p" >{{ block.settings.b-txt }}</div>{% endif %}
+               </div>
+             </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+<!-- end nws-about-page -->
+{% schema %}
+  {
+    "name": "NWS - About Page",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "section-bg",
+          "label": "Section BG Image"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "box",
+      "name": "Box Item",
+      "settings": [
+        {
+          "type": "select",
+          "label": "Section Alignment",
+          "options": [
+            {
+              "label": "Left",
+              "value": "left"
+            },
+            {
+              "label": "Right",
+              "value": "right"
+            }
+          ],
+          "id": "align-block"
+        },{
+          "type": "color",
+          "id": "block-color",
+          "label": "Heading BG Color"
+        },
+        {
+          "type": "color",
+          "id": "heading-color",
+          "label": "Heading Color"
+        },{
+          "type": "image_picker",
+          "id": "b-image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "b-heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "b-txt",
+          "label": "Content"
+        }
+      ]
+    }
+   ]
+  }
+{% endschema %}

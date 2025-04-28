@@ -1,0 +1,248 @@
+
+
+{% liquid
+  assign product_feature_media_id = product.selected_or_first_available_variant.featured_media.id | default: product.featured_media.id
+  assign product_media = variant.metafields.custom.variant_product_images.value
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+  assign enable_product_deep_link = true
+  assign media_autoplay = section.settings.media_autoplay
+  assign layout_type = section.settings.display_options_layout | strip
+  assign first_3d_model = product.media | where: 'media_type', 'model' | first
+  assign media_type_video = product_media | where: 'media_type', 'video' | size
+  assign media_type_external_video = product_media | where: 'media_type', 'external_video' | size
+  assign medias = product_media
+  unless template.name == 'product'
+    assign medias = product_media | where: 'media_type', 'image'
+  endunless
+
+  assign enable_media_zoom = section.settings.enable_media_zoom
+
+  assign intersection = ''
+  if section.index > 2
+    assign intersection = 'intersection-element'
+  endif
+
+  assign product_first_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+%}
+
+{% assign product_first_media = "" %}
+
+
+
+          {% liquid
+            if section.settings.image_aspect_ratio_desktop == 'adapt'
+              assign add_media_aspect_ratio = true
+            else
+              assign add_media_aspect_ratio = false
+            endif
+
+            if section.settings.image_aspect_ratio_mobile == 'adapt'
+              assign add_media_aspect_ratio_mobile = true
+            else
+              assign add_media_aspect_ratio_mobile = false
+            endif
+          %}
+
+
+
+
+
+              <div
+                class="swiper-container product-main-slide-container {% unless add_media_aspect_ratio %} aspect-ratio-{{ section.settings.image_aspect_ratio_desktop }} {% endunless %} {% unless add_media_aspect_ratio_mobile %} aspect-ratio-mobile-{{ section.settings.image_aspect_ratio_mobile }} {% endunless %}"
+                main-slider
+              >
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    {%- if enable_media_zoom and product_first_media.media_type == 'image' -%}
+                      <product-zoom class="icon-product-zoom" data-index="{% increment i %}">
+                        {%- render 'icon', icon: 'product-zoom' -%}
+                      </product-zoom>
+                    {%- endif -%}
+                    {% render 'media',
+                      media: product_first_media,
+                      show_preview_image: false,
+                      media_autoplay: media_autoplay,
+                      media_custom_identifier: 'carousel',
+                      add_media_aspect_ratio: add_media_aspect_ratio,
+                      add_media_aspect_ratio_mobile: add_media_aspect_ratio_mobile,
+                      section: section
+                    %}
+                  </div>
+                  {% for media in medias %}
+                    {% if media.id != product_feature_media_id %}
+                      <div class="swiper-slide">
+                        {%- if enable_media_zoom and media.media_type == 'image' -%}
+                          <product-zoom class="icon-product-zoom" data-index="{% increment i %}">
+                            {%- render 'icon', icon: 'product-zoom' -%}
+                          </product-zoom>
+                        {%- endif -%}
+                        {% render 'media',
+                          media: media,
+                          show_preview_image: false,
+                          media_autoplay: media_autoplay,
+                          forloop: forloop,
+                          media_custom_identifier: 'carousel',
+                          add_media_aspect_ratio: add_media_aspect_ratio,
+                          add_media_aspect_ratio_mobile: add_media_aspect_ratio_mobile,
+                          section: section
+                        %}
+                        {%- if media.media_type == 'model' -%}
+                          <button
+                            aria-label="{{ 'products.product.xr_button' | t }}"
+                            class="btn product__xr-button"
+                            data-first-model-id="{{ media.id }}"
+                            data-shopify-model3d-id="{{ media.id }}"
+                            data-shopify-title="{{ product.title | escape }}"
+                            data-shopify-xr
+                            data-shopify-xr-hidden
+                            shopify-xr-button
+                            type="button"
+                          >
+                            <span class="btn__icon">
+                              {% render 'icon' with '3d-model' %}
+                            </span>
+                            <span class="btn__text">
+                              {{ 'products.product.xr_button' | t }}
+                            </span>
+                          </button>
+                        {%- endif -%}
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                {% unless section.settings.slider_hide_arrows %}
+                  <div class="sliderControl d-flex ">
+                    <!-- next / prev arrows Starts -->
+                    <div class=" slider-arrow" slide-prev>
+                      <div class="sliderPagination__prev">
+                        {% render 'slider-arrow-icon', arrow_direction: 'left' %}
+                      </div>
+                    </div>
+                    <div class=" slider-arrow" slide-next>
+                      <div class="sliderPagination__next">
+                        {% render 'slider-arrow-icon', arrow_direction: 'right' %}
+                      </div>
+                    </div>
+
+                    <!-- !next / prev arrows Ends -->
+                  </div>
+                {% endunless %}
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="swiper-wrappe mobile-slider-wrapper">
+                  <div class="swiper-slide">
+                    {%- if enable_media_zoom and product_first_media.media_type == 'image' -%}
+                      <product-zoom class="icon-product-zoom" data-index="{% increment i %}">
+                        {%- render 'icon', icon: 'product-zoom' -%}
+                      </product-zoom>
+                    {%- endif -%}
+                    {% render 'media',
+                      media: product_first_media,
+                      show_preview_image: false,
+                      media_autoplay: media_autoplay,
+                      media_custom_identifier: 'carousel',
+                      add_media_aspect_ratio: add_media_aspect_ratio,
+                      add_media_aspect_ratio_mobile: add_media_aspect_ratio_mobile,
+                      section: section
+                    %}
+                  </div>
+                  {% for media in medias %}
+                    {% if media.id != product_feature_media_id %}
+                      <div class="swiper-slide">
+                        {%- if enable_media_zoom and media.media_type == 'image' -%}
+                          <product-zoom class="icon-product-zoom" data-index="{% increment i %}">
+                            {%- render 'icon', icon: 'product-zoom' -%}
+                          </product-zoom>
+                        {%- endif -%}
+                        {% render 'media',
+                          media: media,
+                          show_preview_image: false,
+                          media_autoplay: media_autoplay,
+                          forloop: forloop,
+                          media_custom_identifier: 'carousel',
+                          add_media_aspect_ratio: add_media_aspect_ratio,
+                          add_media_aspect_ratio_mobile: add_media_aspect_ratio_mobile,
+                          section: section
+                        %}
+                        {%- if media.media_type == 'model' -%}
+                          <button
+                            aria-label="{{ 'products.product.xr_button' | t }}"
+                            class="btn product__xr-button"
+                            data-first-model-id="{{ media.id }}"
+                            data-shopify-model3d-id="{{ media.id }}"
+                            data-shopify-title="{{ product.title | escape }}"
+                            data-shopify-xr
+                            data-shopify-xr-hidden
+                            shopify-xr-button
+                            type="button"
+                          >
+                            <span class="btn__icon">
+                              {% render 'icon' with '3d-model' %}
+                            </span>
+                            <span class="btn__text">
+                              {{ 'products.product.xr_button' | t }}
+                            </span>
+                          </button>
+                        {%- endif -%}
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+               
+            {% comment %}
+              {%- if first_3d_model -%}
+                <button
+                  aria-label="{{ 'products.product.xr_button' | t }}"
+                  class="btn product__xr-button"
+                  data-first-model-id="{{ first_3d_model.id }}"
+                  data-shopify-model3d-id="{{ first_3d_model.id }}"
+                  data-shopify-title="{{ product.title | escape }}"
+                  data-shopify-xr
+                  data-shopify-xr-hidden
+                  shopify-xr-button
+                  type="button"
+                >
+                  <span class="btn__icon">
+                    {% render 'icon' with '3d-model' %}
+                  </span>
+                  <span class="btn__text">
+                    {{ 'products.product.xr_button' | t }}
+                  </span>
+                </button>
+              {%- endif -%}
+            {% endcomment %}
+            {% if product_media.size > 1 %}
+              <div class="sliderControl has-thumbnail-slider">
+                {% comment %} <div class="sliderProgressBar" slide-progress></div> {% endcomment %}
+                <div class="swiper-thumbnails{% if section.settings.slider_hide_arrows %} no-arrows {% endif %}">
+                  <div class="swiper">
+                    <div class="swiper-container" thumbnail-slider>
+                      <div class="swiper-wrapper">
+                        {% render 'product-media',
+                          product_media: product_media,
+                          render_preview_image: true,
+                          product_first_media: product_first_media,
+                          product_feature_media_id: product_feature_media_id
+                        %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}

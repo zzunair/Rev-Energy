@@ -1,0 +1,78 @@
+{% comment %} dropdown menu  {% endcomment %}
+<div details-dropdown class="dropdown-menu__wrapper" menu-list>
+  <ul class="dropdown-menu__list color-{{ colorScheme }}" role="list">
+    {%- for childlink in link.links -%}
+      <li class="dropdown-menu__item dropdown-menu__item--first-child" animate-dropdown-item>
+        {{ text }}
+
+        {%- if childlink.links == blank -%}
+          <div>
+            <a
+              menu-item
+              href="{{ childlink.url }}"
+              class="{% if childlink.current %} active{% endif %} menu-main-link fnt-14"
+              {% if childlink.current %}
+                aria-current="page"
+              {% endif %}
+            >
+              {{ childlink.title | escape }}
+            </a>
+          </div>
+        {% else %}
+          {% comment %}
+            <a class="menu-main-link link-head" href="{{ childlink.url }}">{{ childlink.title | escape }}
+              <span class="arrow-icon">
+                {% render 'slider-arrow-icon' %}
+              </span>
+            </a>
+            <ul class="dropdown-menu__list dropdown-menu__list--child-list">
+              {%- for grandchildlink in childlink.links -%}
+                <li class="dropdown-menu__item" role="menuitem">
+                  <a
+                    href="{{ grandchildlink.url }}"
+                    class="{% if grandchildlink.current %} active{% endif %} menu-main-link"
+                    {% if grandchildlink.current %}aria-current="page"{% endif %}>
+                    {{ grandchildlink.title | escape }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {% endcomment %}
+          <header-menu-trigger data-identefier="child-element" data-trigger="click">
+            <details role="menuitem" aria-haspopup="true" aria-expanded="false">
+              <summary menu-item role="button">
+                <span class="menu-main-link link-head fnt-14">
+                  {{ childlink.title | escape }}
+                </span>
+                <span class="arrow-icon">
+                  {% render 'slider-arrow-icon' %}
+                </span>
+              </summary>
+              <ul
+                details-dropdown
+                role="list"
+                aria-label="{{ childlink.title }}"
+                class="dropdown-menu__list dropdown-menu__list--child-list"
+              >
+                {%- for grandchildlink in childlink.links -%}
+                  <li class="dropdown-menu__item">
+                    <a
+                      role="menuitem"
+                      href="{{ grandchildlink.url }}"
+                      class="{% if grandchildlink.current %} active{% endif %} menu-main-link fnt-14"
+                      {% if grandchildlink.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{ grandchildlink.title | escape }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </details>
+          </header-menu-trigger>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>

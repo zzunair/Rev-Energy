@@ -1,0 +1,381 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": 600,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "color_scheme": ""
+      }
+    },
+    "featured_product_DjLNHz": {
+      "type": "featured-product",
+      "blocks": {
+        "title_7R8hBM": {
+          "type": "title",
+          "settings": {
+            "block_bottom_spacing": 16
+          }
+        },
+        "rating_LgWfqW": {
+          "type": "rating",
+          "settings": {
+            "show_if_no_reviews": false,
+            "block_bottom_spacing": 16
+          }
+        },
+        "price_gLi4jW": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "block_bottom_spacing": 16
+          }
+        },
+        "description_HfeH4a": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false,
+            "block_bottom_spacing": 16
+          }
+        },
+        "quantity_selector_VgxywA": {
+          "type": "quantity_selector",
+          "settings": {
+            "block_bottom_spacing": 16
+          }
+        },
+        "variant_picker_imJqQk": {
+          "type": "variant_picker",
+          "settings": {
+            "varaint_selector_type": "dropdown",
+            "show_swatches": true,
+            "block_bottom_spacing": 16,
+            "guide_heading": "",
+            "guide_option": "",
+            "guide_content": ""
+          }
+        },
+        "buy_buttons_7H7jBU": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true,
+            "block_bottom_spacing": 16
+          }
+        }
+      },
+      "block_order": [
+        "title_7R8hBM",
+        "rating_LgWfqW",
+        "price_gLi4jW",
+        "description_HfeH4a",
+        "quantity_selector_VgxywA",
+        "variant_picker_imJqQk",
+        "buy_buttons_7H7jBU"
+      ],
+      "settings": {
+        "subheading": "",
+        "heading": "Featured product",
+        "product": "",
+        "view_product_more_info": false,
+        "desktop_media_position": "left",
+        "desktop_media_size": "small",
+        "image_aspect_ratio_desktop": "adapt",
+        "image_aspect_ratio_mobile": "adapt",
+        "enable_media_zoom": true,
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "icon_list_WVnpGK": {
+      "type": "icon-list",
+      "blocks": {
+        "logo_hJiM4V": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_zTbUpN": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_cVph7D": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_i8pp6L": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_7R6QDj": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_hJiM4V",
+        "logo_zTbUpN",
+        "logo_cVph7D",
+        "logo_i8pp6L",
+        "logo_7R6QDj"
+      ],
+      "settings": {
+        "heading_content_alignment": "center",
+        "subheading": "",
+        "heading": "Logo List",
+        "content": "",
+        "stack_in_mobile": false,
+        "show_frame_container": false,
+        "icon_label_size": "h6",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "",
+        "background_color": "#ffd97c"
+      }
+    },
+    "1728403608461e8b77": {
+      "type": "apps",
+      "settings": {
+        "section_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "color_scheme": ""
+      }
+    },
+    "media_and_text_VNxEMi": {
+      "type": "media-and-text",
+      "blocks": {
+        "text_content_jDG7ek": {
+          "type": "text-content",
+          "settings": {
+            "heading": "FORMULATED TO BUILD LEAN MUSCLE",
+            "subheading": "SPEED UP RECOVERY, INCREASE ENERGY, AND BOOST COGNITION",
+            "content": "<p><strong>That was feedback from one of our customers who wanted to bring Creatine into their routine without it feeling like an inconvenience.</strong></p><p>Creatine monohydrate is the most researched fitness supplement on the market. Creatine supplementation increases your body's stores of phosphocreatine, which is used to produce new ATP during high-intensity exercise. ATP is the energy-carrying molecule found in the cells of all living things.</p><p>In the past, Creatine has had a stigma. We're here to provide the science-backed facts:</p><p></p><p>✓ Creatine IS safe</p><p>✓ Creatine does NOT cause bloating</p><p>✓ Creatine is for EVERYONE - not just men</p><p></p><p>Experience all of Creatine's benefits in a healthy, delicious gummy today - <strong>while getting up to 50% off.</strong></p>",
+            "content_alignment": "left",
+            "button_label": "SECURE YOUR OFFER",
+            "button_link": "",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        },
+        "image_pixRTG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/unnamed_4_750x_bb9d8275-b70f-44e5-acfd-2a1a206fd710.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "text_content_jDG7ek",
+        "image_pixRTG"
+      ],
+      "settings": {
+        "full_width": true,
+        "media_width": 50,
+        "media_size": "lg",
+        "padding_top": 36,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "",
+        "background_color": "#ffffff"
+      }
+    },
+    "rich_text_kxdjEn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KrYXJU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Supercharge your wellness with up to 50% off your order",
+            "style": "h2"
+          }
+        },
+        "text_36gQxH": {
+          "type": "text",
+          "settings": {
+            "content": "<h5><strong>Gummies now contain 1.5 grams of creatine monohydrate each! Power your best self in and out of the gym!</strong></h5>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KrYXJU",
+        "text_36gQxH"
+      ],
+      "settings": {
+        "container_size": true,
+        "content_width": 500,
+        "content_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 24,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "scrolling_content_K9nYfy": {
+      "type": "scrolling-content",
+      "blocks": {
+        "image_ny9eeE": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/noun-stretching-3947749-FFFFFF.webp",
+            "icon_width": 80,
+            "icon_width_mobile": 50
+          }
+        },
+        "content_43kcHY": {
+          "type": "content",
+          "settings": {
+            "text": "Body Composition"
+          }
+        },
+        "image_im9CfF": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/noun-muscle-1500429-FFFFFF.webp",
+            "icon_width": 80,
+            "icon_width_mobile": 50
+          }
+        },
+        "content_VybWGF": {
+          "type": "content",
+          "settings": {
+            "text": "Strength"
+          }
+        },
+        "image_pfELHB": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/noun-energy-2478934-FFFFFF.webp",
+            "icon_width": 80,
+            "icon_width_mobile": 50
+          }
+        },
+        "content_nPBbc6": {
+          "type": "content",
+          "settings": {
+            "text": "Increased Energy"
+          }
+        }
+      },
+      "block_order": [
+        "image_ny9eeE",
+        "content_43kcHY",
+        "image_im9CfF",
+        "content_VybWGF",
+        "image_pfELHB",
+        "content_nPBbc6"
+      ],
+      "settings": {
+        "full_width": true,
+        "marquee_text_size": 24,
+        "mob_marquee_text_size": 24,
+        "marquee_speed": 18,
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "feature_list_MaUEXM": {
+      "type": "feature-list",
+      "blocks": {
+        "feature_xyhbzC": {
+          "type": "feature",
+          "settings": {
+            "heading": "HOW TO USE",
+            "content": "<p>2-3 Gummies Per Day</p>"
+          }
+        },
+        "feature_rLHe9a": {
+          "type": "feature",
+          "settings": {
+            "heading": "THE TIMING",
+            "content": "<p>Pre/Post Workout</p>"
+          }
+        },
+        "feature_R7k7cg": {
+          "type": "feature",
+          "settings": {
+            "heading": "RESULTS",
+            "content": "<p>Improvement in 2-3 Weeks</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_xyhbzC",
+        "feature_rLHe9a",
+        "feature_R7k7cg"
+      ],
+      "settings": {
+        "layout": "Standard",
+        "icon_style": "tick",
+        "icon_bg_color": "#ffffff",
+        "icon_line_color": "#000000",
+        "slider_autoplay": true,
+        "autoplay_delay": 3,
+        "change_slide_on": "click",
+        "heading": "Feature list",
+        "text_aligment": "left",
+        "content_desktop_style": "collapsable",
+        "content_mobile_style": "collapsable",
+        "button_text": "Button label",
+        "link": "",
+        "link_target": "_blank",
+        "button_aligment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_product_DjLNHz",
+    "icon_list_WVnpGK",
+    "1728403608461e8b77",
+    "media_and_text_VNxEMi",
+    "rich_text_kxdjEn",
+    "scrolling_content_K9nYfy",
+    "feature_list_MaUEXM"
+  ]
+}

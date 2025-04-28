@@ -1,0 +1,117 @@
+{% style %}
+  .nws-video-img {
+  	display: block;
+  	padding: 60px 0 10px;
+  }
+  .nws-video-img-content {
+  	display: flex;
+  	column-gap: 30px;
+  	align-items: center;
+  	justify-content: center;
+  	flex-wrap: wrap;
+  }
+  .nws-video-img-content .nws-video-img-slide {
+  	display: block;
+  	width: calc(33.33% - 20px);
+  	border-radius: 8px;
+  	overflow: hidden;
+  	padding-top: calc(100%/2.5);
+  	position: relative;
+  }
+  .nws-video-img-content .nws-video-img-slide .img-icon {
+  	width: 100%;
+  	height: 100%;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+  	bottom: 0;
+  	object-fit: cover;
+  	display: block;
+    border: 0;
+  	background: #fddb77;
+  }
+  .nws-video-img-slide.nws-popup-video-up iframe {
+  	position: absolute;
+  	top: 0;
+  	display: block;
+  	left: 0;
+  	right: 0;
+  	bottom: 0;
+  	height: 100%;
+  	width: 100%;
+    border: 0;
+  	background: #fddb77;
+  }
+  @media screen and (max-width:600px){
+    .nws-video-img-content .nws-video-img-slide {
+    	width: 100%;
+    	padding-top: calc(100%/0.8);
+    }
+    .nws-video-img-content {
+    	column-gap: 0px;
+    	row-gap: 30px;
+    }
+  }
+{% endstyle %}
+<!-- nws-video-img -->
+  {% if section.blocks != blank %}
+    <div class="nws-video-img" >
+      <div class="container" >
+        <div class="nws-video-img-content">
+          {% for block in section.blocks %}
+            {% if block.settings.img-icon != blank %}
+                <div class="nws-video-img-slide">
+                  <img width="auto" height="auto" src="{{ block.settings.img-icon | img_url: '600x' }}" class="img-icon" />
+                </div>
+             {% else %}
+                <div class="nws-video-img-slide nws-popup-video-up">
+                  {% if block.settings.video_url.type == "youtube" %}
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  {% elsif block.settings.video_url.type == "vimeo" %}
+                    <iframe class="iframe" src="//player.vimeo.com/video/{{ block.settings.video_url.id }}?title=0&byline=0&portrait=0&sidedock=0" width="100%" height="430" frameborder="0" webkitallowfullscreen   mozallowfullscreen allowfullscreen></iframe>
+                  {% endif %}
+                </div>
+             {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+<!-- end nws-video-img -->
+{% schema %}
+  {
+    "name": "NWS - Video / Img",
+    "max_blocks": 3,
+    "settings": [
+    ],
+    "blocks": [
+    {
+      "type": "Slide",
+      "name": "Slide Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img-icon",
+          "label": "Image"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        }
+      ]
+    }
+  ],
+    "presets": [
+        {
+          "name": "NWS - Video / Img",
+          "category": "NWS Sections"
+        }
+    ]
+  }
+{% endschema %}

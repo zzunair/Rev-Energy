@@ -1,0 +1,1205 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_slider_3ztEEq": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_nPKjX6": {
+          "type": "Slide",
+          "settings": {
+            "desk-slide": "shopify://shop_images/Single_Serve_Creatine_Launch___desktop-min.png",
+            "mob-slide": "shopify://shop_images/Single_Serve_Creatine_Launch___mobile-min.png",
+            "link-slide": "shopify://products/single-serve-creatine-powder"
+          }
+        },
+        "slide_KaCHUf": {
+          "type": "Slide",
+          "disabled": true,
+          "settings": {
+            "desk-slide": "shopify://shop_images/FreeShippingBanner_DT-min_18df6ef1-c4c9-4f7e-8f84-84f6e25f52c7.png",
+            "mob-slide": "shopify://shop_images/FreeShippingBanner_MO-min_d3bbe9a2-327a-43e1-8389-91f76e8bc9e1.png",
+            "link-slide": "shopify://products/creatine-monohydrate-gummies-1"
+          }
+        },
+        "slide_HnEEeE": {
+          "type": "Slide",
+          "disabled": true,
+          "settings": {
+            "desk-slide": "shopify://shop_images/CWFH___Desktop_v3.2.png",
+            "mob-slide": "shopify://shop_images/CWFH___Mobile_v3.2.png",
+            "link-slide": "https://trycreate.co/discount/BF30?redirect=/products/creatine-monohydrate-gummies-1"
+          }
+        }
+      },
+      "block_order": [
+        "slide_nPKjX6",
+        "slide_KaCHUf",
+        "slide_HnEEeE"
+      ],
+      "settings": {
+        "section-color": ""
+      }
+    },
+    "scrolling_content_HrHNYM": {
+      "type": "scrolling-content",
+      "blocks": {
+        "image_bLRjhd": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/MensHealth1x1.svg",
+            "icon_width": 50,
+            "icon_width_mobile": 50
+          }
+        },
+        "image_qNd9Gh": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/BarBend1x1.svg",
+            "icon_width": 50,
+            "icon_width_mobile": 50
+          }
+        },
+        "image_XpdkVk": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/GarageGymReviews1x1.svg",
+            "icon_width": 50,
+            "icon_width_mobile": 50
+          }
+        },
+        "image_RNQnMd": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/WomensHealth1x1.svg",
+            "icon_width": 50,
+            "icon_width_mobile": 50
+          }
+        }
+      },
+      "block_order": [
+        "image_bLRjhd",
+        "image_qNd9Gh",
+        "image_XpdkVk",
+        "image_RNQnMd"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "marquee_text_size": 20,
+        "mob_marquee_text_size": 200,
+        "marquee_speed": 27,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "image_slide_2": {
+          "type": "image_slide",
+          "settings": {
+            "image_video_width": "full",
+            "image_video_positin": "left",
+            "slide_image": "shopify://shop_images/cmg-hero-90-d.webp",
+            "subheading": "",
+            "slide_header": "",
+            "slide_sub_text": "",
+            "content_width": 420,
+            "button_label": "",
+            "button_link": "shopify://products/creatine-monohydrate-gummies-1",
+            "link_target": "_blank",
+            "use_outline_button": false,
+            "desktop_content_alignment": "left",
+            "desktop_content_position": "center",
+            "mobile_content_alignment": "left",
+            "mobile_content_position": "center",
+            "hide_on_desktop": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 80,
+            "color_scheme": "scheme-3"
+          }
+        }
+      },
+      "block_order": [
+        "image_slide_2"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_width": true,
+        "media_size": "lg",
+        "slider_autoplay": true,
+        "autoplay_delay": 3,
+        "desktop_navigation": "dash_arrows",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "border_color": "#000000",
+        "section_background_color": "#ffffff"
+      }
+    },
+    "multicolumn_QwMfhm": {
+      "type": "multicolumn",
+      "blocks": {
+        "card_yNEwyA": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/MensHealth1x1.svg",
+            "title": "",
+            "heading": "",
+            "card_content": ""
+          }
+        },
+        "card_G8bcdG": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/GarageGymReviews1x1.svg",
+            "title": "",
+            "heading": "",
+            "card_content": ""
+          }
+        },
+        "card_HHa6RR": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/WomensHealth1x1.svg",
+            "title": "",
+            "heading": "",
+            "card_content": ""
+          }
+        },
+        "card_aWKNX6": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/BarBend1x1.svg",
+            "title": "",
+            "heading": "",
+            "card_content": ""
+          }
+        },
+        "card_7pqWUP": {
+          "type": "card",
+          "disabled": true,
+          "settings": {
+            "card_image": "shopify://shop_images/Vice1x1.svg",
+            "title": "",
+            "heading": "",
+            "card_content": ""
+          }
+        },
+        "card_HyCpdr": {
+          "type": "card",
+          "disabled": true,
+          "settings": {
+            "card_image": "shopify://shop_images/Well_Good1x1.svg",
+            "title": "",
+            "heading": "",
+            "card_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_yNEwyA",
+        "card_G8bcdG",
+        "card_HHa6RR",
+        "card_aWKNX6",
+        "card_7pqWUP",
+        "card_HyCpdr"
+      ],
+      "settings": {
+        "layout_style": "grid",
+        "columns_desktop": "4",
+        "columns_mobile": "2",
+        "heading_content_alignment": "center",
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "content_alignment": "center",
+        "caption_align": "center",
+        "image_aspect_ratio": "landscape",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "icon_list_Tkikkj": {
+      "type": "icon-list",
+      "blocks": {
+        "logo_bmTHP8": {
+          "type": "logo",
+          "settings": {
+            "icon": "shopify://shop_images/wh1.png",
+            "icon_width": 150,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_FFMKgX": {
+          "type": "logo",
+          "settings": {
+            "icon": "shopify://shop_images/barbend_Logo.svg",
+            "icon_width": 150,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_E43xfN": {
+          "type": "logo",
+          "settings": {
+            "icon": "shopify://shop_images/Remove_Background_Preview_2.png",
+            "icon_width": 150,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_r8fjFr": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "icon": "shopify://shop_images/kenosha_Logo.svg",
+            "icon_width": 150,
+            "title": "Kenosha News",
+            "icon_link": ""
+          }
+        },
+        "logo_MNfThb": {
+          "type": "logo",
+          "settings": {
+            "icon": "shopify://shop_images/Remove_Background_Preview_3.png",
+            "icon_width": 150,
+            "title": "",
+            "icon_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_bmTHP8",
+        "logo_FFMKgX",
+        "logo_E43xfN",
+        "logo_r8fjFr",
+        "logo_MNfThb"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".swiper-wrapper {display: flex; align-items: flex-end;}",
+        ".grid-layout {align-items: flex-end;}"
+      ],
+      "settings": {
+        "heading_content_alignment": "center",
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "stack_in_mobile": true,
+        "show_frame_container": false,
+        "icon_label_size": "h4",
+        "padding_top": 24,
+        "padding_bottom": 4,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-3",
+        "background_color": "#dad9d9"
+      }
+    },
+    "scrolling_content_NeqpqG": {
+      "type": "scrolling-content",
+      "blocks": {
+        "content_khJKJk": {
+          "type": "content",
+          "settings": {
+            "text": "CYBER WEEK: Save 30% with BF30"
+          }
+        }
+      },
+      "block_order": [
+        "content_khJKJk"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "marquee_text_size": 24,
+        "mob_marquee_text_size": 24,
+        "marquee_speed": 14,
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "image_gallery_JPAbDW": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_tXenKb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/web-5f-Margaret_Fortner_r1_01I_0011.png",
+            "subheading": "",
+            "heading": "NEW: Single Serve Creatine Powder",
+            "description": "5g of Creatine Monohydrate per Serving",
+            "button_label": "Learn More",
+            "button_link": "shopify://products/single-serve-creatine-powder",
+            "button_target": "_blank",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_zWGNcG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/WebStaticCinnCider.png",
+            "subheading": "",
+            "heading": "Cinnamon Cider",
+            "description": "Core - Creatine Monohydrate Gummies",
+            "button_label": "Learn More",
+            "button_link": "shopify://products/core-cinnamon-cider",
+            "button_target": "_blank",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_KpLKwz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SHOT-2_copy_1.jpg",
+            "subheading": "",
+            "heading": "Daily Performance Gummy",
+            "description": "Creatine - Mushrooms - Vitamins - Greens",
+            "button_label": "Learn More",
+            "button_link": "shopify://products/daily-performance-gummies",
+            "button_target": "_top",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_he7aXD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SHOT1-create-october-20246125-v2.jpg",
+            "subheading": "",
+            "heading": "Orange",
+            "description": "Core - Creatine Monohydrate Gummies",
+            "button_label": "Learn More",
+            "button_link": "https://trycreate.co/products/core-latest-product?selling_plan=691704529268",
+            "button_target": "_top",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_YbaTze": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SHOT4-create-october-20246188-v2.jpg",
+            "subheading": "",
+            "heading": "Sour Green Apple",
+            "description": "Core - Creatine Monohydrate Gummies",
+            "button_label": "Learn More",
+            "button_link": "https://trycreate.co/products/core-latest-product?variant=51620900962676&selling_plan=691704529268",
+            "button_target": "_top",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_TdXfWF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SHOT10-create-october-20246370-v2.jpg",
+            "subheading": "",
+            "heading": "Blue Raspberry",
+            "description": "Core - Creatine Monohydrate Gummies",
+            "button_label": "Learn More",
+            "button_link": "https://trycreate.co/products/core-latest-product?variant=51620900766068&selling_plan=691704529268",
+            "button_target": "_top",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_caHfGz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SHOT3-create-october-20246159-v2.jpg",
+            "subheading": "",
+            "heading": "Watermelon",
+            "description": "Core - Creatine Monohydrate Gummies",
+            "button_label": "Learn More",
+            "button_link": "https://trycreate.co/products/core-latest-product?variant=51620900864372&selling_plan=691704529268",
+            "button_target": "_top",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        }
+      },
+      "block_order": [
+        "image_tXenKb",
+        "image_zWGNcG",
+        "image_KpLKwz",
+        "image_he7aXD",
+        "image_YbaTze",
+        "image_TdXfWF",
+        "image_caHfGz"
+      ],
+      "settings": {
+        "layout_style": "carousel",
+        "number_of_columns": "3",
+        "heading_content_alignment": "left",
+        "subheading": "",
+        "heading": "Shop All Products",
+        "content": "",
+        "image_aspect_ratio": "square",
+        "content_alignment": "left",
+        "content_position": "bottom",
+        "column_spacing": "16",
+        "use_outline_button": false,
+        "padding_top": 32,
+        "padding_bottom": 48,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "original_testimonial_9XMX9f": {
+      "type": "original-testimonial",
+      "blocks": {
+        "testimonial_qxteDF": {
+          "type": "testimonial",
+          "settings": {
+            "show_rating": true,
+            "rating": 5,
+            "author": "Ramsey N. (S&C Coach)",
+            "title": "Amazing - all my players take it",
+            "content": "These gummies taste great and are so easy to take daily. No more powder! The fact they are NSF is even better as I know the product can be trusted.",
+            "product": "",
+            "show_product_image": false
+          }
+        },
+        "testimonial_gcWFQc": {
+          "type": "testimonial",
+          "settings": {
+            "show_rating": true,
+            "rating": 5,
+            "author": "Jessica H. (Full-Time Mom)",
+            "title": "First time taking creatine - wow",
+            "content": "I was skeptical about creatine. I honestly thought it was just for bodybuilders and jacked dudes. My husband convinced me to try it out, and love the results. Leaner, lighter, and more energized...plus, YUM!",
+            "product": "",
+            "show_product_image": false
+          }
+        },
+        "testimonial_x3L4YP": {
+          "type": "testimonial",
+          "settings": {
+            "show_rating": true,
+            "rating": 5,
+            "author": "Tommy W. (Media Exec)",
+            "title": "Switched from powders",
+            "content": "Been taking creatine powder for a couple of decades now. I believe in the stuff. But was looking for a change from powders. Tried these gummies -- tasted good and convenient. Same results as before.",
+            "product": "",
+            "show_product_image": false
+          }
+        },
+        "testimonial_jVDdtD": {
+          "type": "testimonial",
+          "settings": {
+            "show_rating": true,
+            "rating": 5,
+            "author": "Celia H. (First Time Lifter)",
+            "title": "Added Creatine to New Routine",
+            "content": "I just started lifting after years of being afraid lol. My bf told me to add creatine to get better results and recovery. Seems to be working. Blue Raspberry is my fav flavor.",
+            "product": "",
+            "show_product_image": false
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_qxteDF",
+        "testimonial_gcWFQc",
+        "testimonial_x3L4YP",
+        "testimonial_jVDdtD"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_aspect_ratio": "square",
+        "subheading": "",
+        "heading": "10,000+ 5-Star Reviews",
+        "content": "<p>The #1 Selling and Rated Creatine Gummy on the Internet:</p>",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2ec4f7ea-5bba-4594-8562-7cfdc77b9da8"
+      }
+    },
+    "1728915179f0b0ee77": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "section_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "color_scheme": ""
+      }
+    },
+    "scrolling-content-1": {
+      "type": "scrolling-content",
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/Vector.webp",
+            "icon_width": 50,
+            "icon_width_mobile": 30
+          }
+        },
+        "content-2": {
+          "type": "content",
+          "settings": {
+            "text": "Free Shipping on All Orders!"
+          }
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/icon-vegan.webp",
+            "icon_width": 50,
+            "icon_width_mobile": 30
+          }
+        },
+        "content_3": {
+          "type": "content",
+          "settings": {
+            "text": "Vegan"
+          }
+        },
+        "image_3": {
+          "type": "image",
+          "settings": {
+            "marquee_image": "shopify://shop_images/icon-gmo.webp",
+            "icon_width": 50,
+            "icon_width_mobile": 30
+          }
+        },
+        "content-1": {
+          "type": "content",
+          "settings": {
+            "text": "Non-GMO"
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "content-2",
+        "image_2",
+        "content_3",
+        "image_3",
+        "content-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "marquee_text_size": 20,
+        "mob_marquee_text_size": 18,
+        "marquee_speed": 18,
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "feature_list_8UAVTA": {
+      "type": "feature-list",
+      "blocks": {
+        "feature_zNJYyM": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Infographic_PercGainsvsPlacebo_BeigeBG.png",
+            "heading": "Support muscle development and recovery",
+            "content": "",
+            "custom_image": "shopify://shop_images/icon-muscle.png"
+          }
+        },
+        "feature_rgBmwP": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Infographic_HowDoesCreatineWork_WhiteBG-min_1.png",
+            "heading": "Boost energy",
+            "content": "",
+            "custom_image": "shopify://shop_images/icon-energy_2ecc730a-f6f9-4dfd-b451-0c007421323c.webp"
+          }
+        },
+        "feature_tBVRAg": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Infographic_KeyBrainBenefits_BeigeBG-min.png",
+            "heading": "Increase focus and mental acuity",
+            "content": "",
+            "custom_image": "shopify://shop_images/icon-cognitive-boost_931aedf8-dc80-421c-9416-510377d95830.webp"
+          }
+        },
+        "feature_79E9Gc": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Infographic_CreatineBenefitsMap_WhiteBG.png",
+            "heading": "Support bone health & more",
+            "content": "",
+            "custom_image": "shopify://shop_images/Icon_Bone_JointHealth.png"
+          }
+        }
+      },
+      "block_order": [
+        "feature_zNJYyM",
+        "feature_rgBmwP",
+        "feature_tBVRAg",
+        "feature_79E9Gc"
+      ],
+      "settings": {
+        "layout": "Reverse",
+        "icon_style": "tick",
+        "icon_bg_color": "#ffffff",
+        "icon_line_color": "#000000",
+        "slider_autoplay": true,
+        "autoplay_delay": 3,
+        "change_slide_on": "click",
+        "heading": "Scientifically Proven Creatine Benefits",
+        "text_aligment": "left",
+        "content_desktop_style": "collapsable",
+        "content_mobile_style": "collapsable",
+        "button_text": "",
+        "link": "shopify://products/daily-performance-gummies",
+        "link_target": "_top",
+        "button_aligment": "left",
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "featured_collection_aYpLCT": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_collection_MyCrw3": {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Creatine Gummies",
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_MyCrw3"
+      ],
+      "disabled": true,
+      "settings": {
+        "max_product_show": 4,
+        "layout_style": "grid",
+        "columns_desktop": "4",
+        "columns_mobile": "1",
+        "subheading": "",
+        "heading": "Shop Gummies",
+        "content": "",
+        "use_outline_button": false,
+        "show_view_all_button": true,
+        "view_all_link_style": "text",
+        "view_all_link_position": "start",
+        "view_all_link_text": "View all",
+        "link_url": "https://trycreate-808.myshopify.com/products/creatine-monohydrate-gummies-1",
+        "link_target": "_top",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "icon_list_if88Mp": {
+      "type": "icon-list",
+      "blocks": {
+        "logo_TTYyft": {
+          "type": "logo",
+          "settings": {
+            "icon": "shopify://shop_images/Group_8.webp",
+            "icon_width": 50,
+            "title": "Consistent, automatic shipping so you never miss a day. Cancel or pause anytime.",
+            "icon_link": ""
+          }
+        },
+        "logo_K8Qn6t": {
+          "type": "logo",
+          "settings": {
+            "icon": "shopify://shop_images/Vector.webp",
+            "icon_width": 50,
+            "title": "Subscribe once and relax. All your shipping expenses are covered by Create when you subscribe!",
+            "icon_link": ""
+          }
+        },
+        "logo_A4PnTd": {
+          "type": "logo",
+          "settings": {
+            "icon": "shopify://shop_images/Group_12.webp",
+            "icon_width": 50,
+            "title": "Gain exclusive, subscriber-only benefits. Enjoy early access to new products, special promotions, and surprise perks.",
+            "icon_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_TTYyft",
+        "logo_K8Qn6t",
+        "logo_A4PnTd"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".swiper-wrapper {display: flex; align-items: flex-start;}",
+        ".grid-layout {align-items: flex-start;}"
+      ],
+      "settings": {
+        "heading_content_alignment": "center",
+        "subheading": "",
+        "heading": "Subscribe & Save",
+        "content": "",
+        "stack_in_mobile": true,
+        "show_frame_container": false,
+        "icon_label_size": "h6",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "",
+        "background_color": "#f3f8ff"
+      }
+    },
+    "rich_text_RNdqaU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kXEFTA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Take Our Quiz",
+            "style": "h1"
+          }
+        },
+        "text_pE744t": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Not sure if creatine is right for you? Take our 2 minute quiz to get matched up.</p>"
+          }
+        },
+        "button_KLaX7V": {
+          "type": "button",
+          "settings": {
+            "button_text": "Take The Quiz",
+            "link": "shopify://pages/take-our-quiz",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_kXEFTA",
+        "text_pE744t",
+        "button_KLaX7V"
+      ],
+      "disabled": true,
+      "settings": {
+        "container_size": true,
+        "content_width": 500,
+        "content_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "feature_list": {
+      "type": "feature-list",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/DSC2010_1.heic",
+            "heading": "Myth: Creatine causes bloating",
+            "content": "<p><strong>THE TRUTH: </strong>Creatine \"bloating\" is the result of increased muscle hydration. The \"bloating\" is most common during a loading phase. Our gummies are designed to be taken without loading.</p>"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Infographic_HowDoesCreatineWork_OrangeBG-min_1.png",
+            "heading": "Myth: Creatine is not safe",
+            "content": "<p><strong>THE TRUTH: </strong>In 2020, the FDA gave creatine monohydrate a GRAS Rating (Generally Regarded as Safe), putting it in the same safety category as Vitamin C and Whey Protein. It's also the most researched fitness supplement on the market with over 700 peer reviewed studies. Creatine is essential for the body!</p>"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8230_1.heic",
+            "heading": "Myth: Creatine is only for men",
+            "content": "<p><strong>THE TRUTH: </strong>Creatine is a beneficial for both men and women. Creatine's benefits are broadly desirable for anyone that lives an active lifestyle -- male or female. Did you know that over half of Create's customers are women?</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3"
+      ],
+      "settings": {
+        "layout": "Standard",
+        "icon_style": "counter",
+        "icon_bg_color": "#ffffff",
+        "icon_line_color": "#f57e25",
+        "slider_autoplay": true,
+        "autoplay_delay": 3,
+        "change_slide_on": "hover",
+        "heading": "Science vs Myth",
+        "text_aligment": "left",
+        "content_desktop_style": "collapsable",
+        "content_mobile_style": "collapsable",
+        "button_text": "Learn More",
+        "link": "shopify://pages/the-science",
+        "link_target": "_top",
+        "button_aligment": "left",
+        "padding_top": 36,
+        "padding_bottom": 12,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "multicolumn_iGHBLP": {
+      "type": "multicolumn",
+      "blocks": {
+        "card_wqBQyY": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/Group_8.webp",
+            "title": "",
+            "heading": "Ships Every Month",
+            "card_content": "<p>Consistent, automatic shipping so you never miss a day. Cancel or pause anytime.</p>"
+          }
+        },
+        "card_xiQMbf": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/Vector.webp",
+            "title": "",
+            "heading": "Free Delivery",
+            "card_content": "<p>Subscribe once and relax. All your shipping expenses are covered by Create when you subscribe!</p>"
+          }
+        },
+        "card_gPcxAL": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/Group_12.png",
+            "title": "",
+            "heading": "Exclusive Benefits",
+            "card_content": "<p>Gain exclusive, subscriber-only benefits. Enjoy early access to new products, special promotions, and exclusive perks.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_wqBQyY",
+        "card_xiQMbf",
+        "card_gPcxAL"
+      ],
+      "custom_css": [
+        "img {max-width: 50px; height: auto;}",
+        ".how-to-use__card__imgWrap {aspect-ratio: auto;}",
+        "@media only screen and (max-width: 768px) {.how-to-use__card {display: flex; flex-direction: column; align-items: center; justify-content: center; } .how-to-use__card__body h3, .how-to-use__card__body p {text-align: center; }}"
+      ],
+      "settings": {
+        "layout_style": "grid",
+        "columns_desktop": "3",
+        "columns_mobile": "1",
+        "heading_content_alignment": "center",
+        "subheading": "",
+        "heading": "Subscribe & Save",
+        "content": "",
+        "content_alignment": "left",
+        "caption_align": "center",
+        "image_aspect_ratio": "square",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "feature_list_My6DwL": {
+      "type": "feature-list",
+      "blocks": {
+        "feature_kAzKe6": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/SingleServe_AllFlavors_CaddiesStacked_Transp.png",
+            "heading": "5g® Creapure Creatine per serving",
+            "content": ""
+          }
+        },
+        "feature_PeFcBm": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/web-44-Margaret-Fortner_r1_glass-lean.gif",
+            "heading": "Sugar-Free & Delicious",
+            "content": ""
+          }
+        },
+        "feature_YzCn93": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/web-5e-Margaret_Fortner_r1_01I_0023.jpg",
+            "heading": "Travel-Friendly",
+            "content": ""
+          }
+        },
+        "feature_pQc69K": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/web-47-Margaret_Fortner_r1_01I_9950.png",
+            "heading": "Easy to Stack with Current Supplementation",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_kAzKe6",
+        "feature_PeFcBm",
+        "feature_YzCn93",
+        "feature_pQc69K"
+      ],
+      "settings": {
+        "layout": "Standard",
+        "icon_style": "tick",
+        "icon_bg_color": "#ffffff",
+        "icon_line_color": "#000000",
+        "slider_autoplay": true,
+        "autoplay_delay": 3,
+        "change_slide_on": "click",
+        "heading": "NEW: Single Serve Creatine Powder",
+        "text_aligment": "left",
+        "content_desktop_style": "two_column",
+        "content_mobile_style": "collapsable",
+        "button_text": "Shop Now",
+        "link": "shopify://products/single-serve-creatine-powder",
+        "link_target": "_top",
+        "button_aligment": "left",
+        "padding_top": 36,
+        "padding_bottom": 12,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "17317031228d8d82ea": {
+      "type": "apps",
+      "custom_css": [],
+      "settings": {
+        "section_width": false,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "color_scheme": ""
+      }
+    },
+    "faq_XXzhdH": {
+      "type": "faq",
+      "blocks": {
+        "item_XgtDAC": {
+          "type": "item",
+          "settings": {
+            "heading": "What is creatine?",
+            "content": "<p>Creatine is an amino acid most commonly found in your muscles and brain. Creatine is naturally produced in your body and is also consumed when eating meat. It is the most studied fitness supplement on the market, and research shows it can increase strength, improve recovery, and boost mental acuity.</p>"
+          }
+        },
+        "item_6yzURw": {
+          "type": "item",
+          "settings": {
+            "heading": "What are the main benefits of creatine?",
+            "content": "<p>The main benefits of creatine are increasing strength, building muscle, muscle recovery, and improved mental acuity.</p>"
+          }
+        },
+        "item_kU6N7i": {
+          "type": "item",
+          "settings": {
+            "heading": "Who should take creatine?",
+            "content": "<p>Creatine supplementation can be beneficial for almost anyone. It is most beneficial if you live an active lifestyle, but it can increase mental acuity and improve body composition even if you do not.</p>"
+          }
+        },
+        "item_pL6CKU": {
+          "type": "item",
+          "settings": {
+            "heading": "Is creatine safe?",
+            "content": "<p>Yes, creatine is safe! The FDA issued a GRAS (Generally Recognized as Safe) rating on Creatine Monohydrate in 2020, putting it in the same category as other common supplements like vitamin C and whey protein.</p>"
+          }
+        },
+        "item_PaRhKF": {
+          "type": "item",
+          "settings": {
+            "heading": "When will I see results?",
+            "content": "<p>You may experience the benefits of creatine supplementation within 2-3 weeks.</p>"
+          }
+        },
+        "item_w3Urtg": {
+          "type": "item",
+          "settings": {
+            "heading": "How should I take my creatine?",
+            "content": "<p>For gummies: To experience the full benefits of proper creatine supplementation, we recommend taking 3-5 gummies once per day, every day. If you are using our gummies as a dietary replacement supplement, 1-2 gummies once per day matches the average daily meat-based diet.</p><p>For single serve creatine powder: The standard 5g of Creatine per stick pack should be sufficient for most. Feel free to combine with other supplementation - through more Sticks or Gummies - to further accelerate your benefits!</p>"
+          }
+        },
+        "item_AYKkJE": {
+          "type": "item",
+          "settings": {
+            "heading": "What are the main benefits of the Daily Performance Gummy?",
+            "content": "<p>You can expect all of the core creatine benefits (strength, recovery, muscle mass, mental acuity, etc) plus the benefits of a daily multivitamin and functional mushrooms. The Daily Performance Gummy fills your nutrient gaps, helps heal your gut, and increases your energy levels.</p>"
+          }
+        },
+        "item_ABckeY": {
+          "type": "item",
+          "settings": {
+            "heading": "Are the Daily Performance Gummies sugar free?",
+            "content": "<p>Yes, the Daily Performance Gummy is sugar free. It is sweetened with a monk fruit and inulin blend!</p>"
+          }
+        },
+        "item_tXTEJV": {
+          "type": "item",
+          "settings": {
+            "heading": "Are the Daily Performance Gummies vegan?",
+            "content": "<p>Yes, all of our gummies, including the Daily Performance Gummy, are made using a pectin vegan base.</p>"
+          }
+        },
+        "item_LXkKcx": {
+          "type": "item",
+          "settings": {
+            "heading": "Is the Single Serve Creatine Powder sugar free?",
+            "content": "<p>Yes! All flavors of our Single Serve Creatine Powder are sugar-free and sweetened with monk fruit extract.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_XgtDAC",
+        "item_6yzURw",
+        "item_kU6N7i",
+        "item_pL6CKU",
+        "item_PaRhKF",
+        "item_w3Urtg",
+        "item_AYKkJE",
+        "item_ABckeY",
+        "item_tXTEJV",
+        "item_LXkKcx"
+      ],
+      "settings": {
+        "full_width": false,
+        "subheading": "",
+        "heading": "Frequently asked questions",
+        "content": "",
+        "show_view_all_button": false,
+        "view_all_link_style": "text",
+        "view_all_link_position": "start",
+        "view_all_link_text": "",
+        "link_url": "shopify://pages/faq",
+        "link_target": "_blank",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "rich_text_EpyUcn": {
+      "type": "rich-text",
+      "blocks": {
+        "button_3NcE4i": {
+          "type": "button",
+          "settings": {
+            "button_text": "SEE ALL FAQS",
+            "link": "shopify://pages/faq",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        }
+      },
+      "block_order": [
+        "button_3NcE4i"
+      ],
+      "settings": {
+        "container_size": true,
+        "content_width": 500,
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "featured_blog_Lnf39t": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "blog": "news",
+        "post_limit": 3,
+        "image_aspect_ratio": "square",
+        "show_image": true,
+        "show_author": false,
+        "show_date": true,
+        "show_title": true,
+        "show_excerpt": false,
+        "show_tags": false,
+        "show_comments": false,
+        "subheading": "",
+        "heading": "Featured Blogs",
+        "content": "",
+        "show_view_all_button": true,
+        "view_all_link_style": "text",
+        "view_all_link_position": "end",
+        "view_all_link_text": "View all",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "hero_slider_3ztEEq",
+    "scrolling_content_HrHNYM",
+    "slideshow",
+    "multicolumn_QwMfhm",
+    "icon_list_Tkikkj",
+    "scrolling_content_NeqpqG",
+    "image_gallery_JPAbDW",
+    "original_testimonial_9XMX9f",
+    "1728915179f0b0ee77",
+    "scrolling-content-1",
+    "feature_list_8UAVTA",
+    "featured_collection_aYpLCT",
+    "icon_list_if88Mp",
+    "rich_text_RNdqaU",
+    "feature_list",
+    "multicolumn_iGHBLP",
+    "feature_list_My6DwL",
+    "17317031228d8d82ea",
+    "faq_XXzhdH",
+    "rich_text_EpyUcn",
+    "featured_blog_Lnf39t"
+  ]
+}

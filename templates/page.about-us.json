@@ -1,0 +1,353 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": 600,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_overlay": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Heading",
+            "style": "h2"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "content": "<p>Briefly describe what this heading is about</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph"
+      ],
+      "settings": {
+        "full_width": true,
+        "image_aspect_ratio": "md",
+        "content_width": 680,
+        "text_aligment": "left",
+        "desktop_content_position": "center",
+        "mobile_text_aligment": "left",
+        "mobile_content_position": "top",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "color_scheme": ""
+      }
+    },
+    "scrolling_content": {
+      "type": "scrolling-content",
+      "blocks": {
+        "content_1": {
+          "type": "content",
+          "settings": {
+            "text": "Promotion Text"
+          }
+        },
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "icon_width": 60,
+            "icon_width_mobile": 50
+          }
+        },
+        "content_2": {
+          "type": "content",
+          "settings": {
+            "text": "Promotion Text"
+          }
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {
+            "icon_width": 60,
+            "icon_width_mobile": 50
+          }
+        },
+        "content_3": {
+          "type": "content",
+          "settings": {
+            "text": "Promotion Text"
+          }
+        },
+        "image_3": {
+          "type": "image",
+          "settings": {
+            "icon_width": 60,
+            "icon_width_mobile": 50
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "image_1",
+        "content_2",
+        "image_2",
+        "content_3",
+        "image_3"
+      ],
+      "settings": {
+        "full_width": true,
+        "marquee_speed": 18,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "color_scheme": ""
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Rich Text Heading",
+            "style": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Briefly describe what this heading is about.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "container_size": true,
+        "content_width": 420,
+        "content_alignment": "center",
+        "padding_top": 52,
+        "padding_bottom": 8,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "icon_list": {
+      "type": "icon-list",
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {
+            "icon_width": 100,
+            "title": "",
+            "icon_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4"
+      ],
+      "settings": {
+        "heading_content_alignment": "left",
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "stack_in_mobile": false,
+        "show_frame_container": false,
+        "icon_label_size": "h6",
+        "padding_top": 12,
+        "padding_bottom": 32,
+        "color_scheme": "",
+        "background_color": "#ffffff"
+      }
+    },
+    "media_with_text_1": {
+      "type": "media-and-text",
+      "blocks": {
+        "text_content": {
+          "type": "text-content",
+          "settings": {
+            "heading": "Heading",
+            "subheading": "",
+            "content": "<p>Briefly describe what this heading is about</p>",
+            "content_alignment": "left",
+            "button_label": "",
+            "button_link": "",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        },
+        "image": {
+          "type": "image",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "text_content",
+        "image"
+      ],
+      "settings": {
+        "full_width": false,
+        "media_width": 50,
+        "media_size": "lg",
+        "padding_top": 56,
+        "padding_bottom": 36,
+        "color_scheme": "",
+        "background_color": "#ffffff"
+      }
+    },
+    "media_with_text_2": {
+      "type": "media-and-text",
+      "blocks": {
+        "image": {
+          "type": "image",
+          "settings": {}
+        },
+        "text_content": {
+          "type": "text-content",
+          "settings": {
+            "heading": "Heading",
+            "subheading": "",
+            "content": "<p>Briefly describe what this heading is about</p>",
+            "content_alignment": "left",
+            "button_label": "",
+            "button_link": "",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        }
+      },
+      "block_order": [
+        "image",
+        "text_content"
+      ],
+      "settings": {
+        "full_width": false,
+        "media_width": 50,
+        "media_size": "md",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "color_scheme": "scheme-3",
+        "background_color": "#ffffff"
+      }
+    },
+    "collection_list": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_list_item_1": {
+          "type": "collection_list_item",
+          "settings": {
+            "collection": "",
+            "text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "collection_list_item_2": {
+          "type": "collection_list_item",
+          "settings": {
+            "collection": "",
+            "text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "collection_list_item_3": {
+          "type": "collection_list_item",
+          "settings": {
+            "collection": "",
+            "text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "collection_list_item_4": {
+          "type": "collection_list_item",
+          "settings": {
+            "collection": "",
+            "text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "collection_list_item_1",
+        "collection_list_item_2",
+        "collection_list_item_3",
+        "collection_list_item_4"
+      ],
+      "settings": {
+        "columns_desktop": "4",
+        "columns_mobile": "1",
+        "subheading": "",
+        "heading": "Shop By Collection",
+        "content": "",
+        "show_view_all_button": false,
+        "view_all_link_style": "icon",
+        "view_all_link_position": "start",
+        "view_all_link_text": "View all",
+        "link_url": "",
+        "link_target": "_top",
+        "image_aspect_ratio_collection": "adapt",
+        "content_setting": "over_image",
+        "hide_stack_content_bg": false,
+        "content_alignment": "center",
+        "content_position": "center",
+        "heading_style": "h5",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "color_scheme": "scheme-4"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay",
+    "scrolling_content",
+    "rich_text",
+    "icon_list",
+    "media_with_text_1",
+    "media_with_text_2",
+    "collection_list"
+  ]
+}

@@ -1,0 +1,83 @@
+{{ 'sec-img-text.css' | asset_url | stylesheet_tag }}
+
+<section class="img-text">
+  <div class="img-text__container container">
+    <div class="img-text__grid">
+      {% if section.settings.image != blank %}
+        <div class="img-text__grid-item img-text__grid-item--left">
+          <img src="{{ section.settings.image | image_url }}" class="img-text__grid-img" />
+        </div>
+      {% endif %}
+      <div class="img-text__grid-item img-text__grid-item--right">
+        {% if section.settings.caption != blank %}
+          <h3 class="img-text__grid-caption">{{ section.settings.caption }}</h3>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <h2 class="img-text__grid-title">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+          <div class="img-text__grid-blocks">
+            {% for block in section.blocks %}
+              {% if block.type == 'process' %}
+                <div class="img-text__grid-block img-text__grid-block--{{ forloop.index }}">
+                  {% if block.settings.title != blank %}
+                    <h4 class="img-text__block-title">{{ block.settings.title }}</h4>
+                  {% endif %}
+                  {% if block.settings.desc != blank %}
+                    <p class="img-text__block-desc">{{ block.settings.desc }}</p>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Img Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "process",
+      "name": "Process",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Title",
+          "id": "title"
+        },
+        {
+          "type": "textarea",
+          "label": "Description",
+          "id": "desc"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Img Text"
+    }
+  ]
+}
+{% endschema %}

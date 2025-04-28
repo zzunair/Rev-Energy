@@ -1,0 +1,70 @@
+{% comment %}
+  x: Horizontal position of the hotspot in percentage
+  y: Vertical position of the hotspot in percentage
+  product: Product to link to
+  hotspot_target: Where to open the product link. Can be 'quick_view' or 'product_page'
+  show_hotspots_in_first_hotspot: If true, the hotspots will be shown in the first hotspot
+{% endcomment %}
+
+<details-dropdown>
+  <details
+    detailsDropdown
+    class="hotspots__hotspot {% if show_hotspots_in_first_hotspot %} active{% endif %}"
+    {% if show_hotspots_in_first_hotspot %}
+      open="{{ show_hotspots_in_first_hotspot }}" aria-expanded="true"
+    {% endif %}
+    style="--hotspot-x: {{ x }}%; --hotspot-y: {{ y }}%;--hotspot-x-mobile: {{ x_mobile }}%; --hotspot-y-mobile: {{ y_mobile }}%;"
+  >
+    <summary
+      class="hotspots__hotspot-icon"
+      aria-label="{{ product.title | append: 'hotspot ' }}"
+      {{ block.shopify_attributes }}
+    ></summary>
+    <div
+      detailsBody
+      class="{% if show_hotspots_in_first_hotspot %} active {% endif %} hotspots__dropdown {% if x > 80 %} hotspot-right {% endif %} {% if x < 20 %} hotspot-left {% endif %}  {% if y > 70 %} hotspot-bottom {% endif %}   {% if x_mobile > 60 %} hotspot-right-mobile {% endif %} {% if x_mobile < 40 %} hotspot-left-mobile {% endif %}  {% if y_mobile > 60 %} hotspot-bottom-mobile {% endif %}"
+      animation-type="{%- if y > 80 -%} fade-up {%- else -%} fade-down {%- endif -%}"
+      {% if show_hotspots_in_first_hotspot %}
+        class="active"
+      {% endif %}
+    >
+      <div class="hotspots__hotspot-dropdown " animation-item>
+        {% if product != blank %}
+          {% if hotspot_target == 'quick_view' %}
+            <product-card
+              product-handle="{{ product.handle }}"
+              product-id="{{ product.selected_or_first_available_variant.id }}"
+            >
+              <button
+                aria-label="{{ 'products.product.button_quick_view' | t }}"
+                class="btn btn--no-style js-element"
+                quick-view-button
+              >
+                <p class="text-size-xs">
+                  {{ product.title }}
+                </p>
+                <p class="hotspots__price">
+                  {{ product.price | money }}
+                </p>
+              </button>
+              <noscript>
+                <a href="{{ product.url }}" class="btn btn--no-style text-size-xs">
+                  <p class="">{{ product.title }}</p>
+                  <p class="hotspots__price">{{ product.price | money }}</p>
+                </a>
+              </noscript>
+            </product-card>
+          {% else %}
+            <a href="{{ product.url }}" class="btn btn--no-style text-size-xs">
+              <p class="text-size-xs">{{ product.title }}</p>
+              <p class="hotspots__price">{{ product.price | money }}</p>
+            </a>
+          {% endif %}
+        {% else %}
+          <p class="text-size-xs">Product title</p>
+          <p class="hotspots__price">{{ 3000 | money_with_currency }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </details>
+</details-dropdown>

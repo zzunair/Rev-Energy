@@ -1,0 +1,1401 @@
+{{ 'autoship.css' | asset_url | stylesheet_tag }}
+
+
+<div class="hero-top bg-cream">
+  <div class="show-tablet">
+    <div>
+      <div class="product-heading smaller">
+        <div class="spacer-xxsmall"></div>
+        <h1 id="dynamic-headline" class="pdp-news red">Save Up To 58% + 4 FREE Gifts <br>
+        </h1>
+        <div class="sub-head-small">With Today's Autoship &amp; Save Offer*</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="section-autoship" class="offer-hero_wrapper">
+    <div class="product-hero_photo-container is-sticky is-85 co43-sp1">
+      <div class="product-slider_holder">
+        <div class="component">
+        <img loading="eager" sizes="(max-width: 479px) 90vw, (max-width: 991px) 100vw, 50vw" srcset="https://trycreate.co/cdn/shop/files/IMG_9243.jpg" src="https://trycreate.co/cdn/shop/files/IMG_9243.jpg" alt="" class="bundle-img is-first co43-sp1">
+        </div>
+     </div>
+    </div>
+    
+    <div class="product-hero_content">
+      <div class="padding-global dl0">
+            <div class="product-hero_content-wrapper content-wrapper1">
+                    <div class="product-hero_description-head">
+                      <a href="#customer-reviews" class="testimonial-anchor show-tablet w-inline-block">
+                        <div class="testimonial1_component">
+                          <img src="https://assets-global.website-files.com/65de5f112dbd7f7bdfc2f7b0/65de5f112dbd7f7bdfc2faf1_star-reviews.svg" loading="eager" alt="" class="star-reviews-2">
+                          <div class="text-size-tiny">Excellent</div>
+                          <div class="text-size-tiny text-weight-bold">4.8</div>
+                          <div class="testimonial1_text">
+                            <div class="text-size-tiny">19,579+ trusted reviews</div>
+                          </div>
+                        </div>
+                      </a>
+                      <div class="spacer-xsmall"></div>
+                      <div class="hide-tablet">
+                        <a href="#customer-reviews" class="testimonial-anchor w-inline-block">
+                          <div class="testimonial1_component">
+                            <img src="https://assets-global.website-files.com/65de5f112dbd7f7bdfc2f7b0/65de5f112dbd7f7bdfc2faf1_star-reviews.svg" loading="eager" alt="" class="star-reviews-3">
+                            <div class="text-size-tiny">Excellent</div>
+                            <div class="text-size-tiny text-weight-bold">4.6</div>
+                            <div class="testimonial1_text">
+                              <div class="text-size-tiny">1,435+ reviews</div>
+                            </div>
+                          </div>
+                        </a>
+                          <div class="spacer-xxsmall"></div>
+                          <h1 id="dynamic-headline" class="pdp-news red">Save Up To 58% Today <br>+ 4 FREE Gifts <br>
+                          </h1>
+                          <div class="sub-head-small">With Today's Autoship &amp; Save Offer*</div>
+                          <div class="spacer-xsmall"></div>
+                        </div>
+                      </div>
+
+                      <div class="shipsby-container-2">
+                        <div id="lowStock" class="shipsby-xmas-2">
+                          <div class="ring-container w-embed">
+                            <div class="ringring"></div>
+                            <div class="circle"></div>
+                            <style>
+                              .ring-container {
+                                position: relative;
+                                height: 1rem;
+                                width: 1rem;
+                              }
+                      
+                              .circle {
+                                width: 6px;
+                                /* Adjusted from 15px to 10px */
+                                height: 6px;
+                                /* Adjusted from 15px to 10px */
+                                background-color: #004f4f;
+                                border-radius: 50%;
+                                position: absolute;
+                              }
+                      
+                              .ringring {
+                                border: 1px solid #004f4f;
+                                border-radius: 20px;
+                                /* Adjusted from 30px to 20px */
+                                height: 18px;
+                                /* Adjusted from 25px to 15px */
+                                width: 18px;
+                                /* Adjusted from 25px to 15px */
+                                position: absolute;
+                                animation: pulsate 1s ease-out infinite;
+                                opacity: 0;
+                              }
+                      
+                              @keyframes pulsate {
+                                0% {
+                                  transform: scale(0.5);
+                                  opacity: 0;
+                                }
+                      
+                                50% {
+                                  opacity: 1;
+                                }
+                      
+                                100% {
+                                  transform: scale(1.0);
+                                  opacity: 0;
+                                }
+                              }
+                            </style>
+                          </div>
+                          <div id="order-message" class="order-by-chsristmas">Order by <span data-order-by=""></span> for guaranteed FREE Gifts </div>
+                          <div class="hide w-embed w-script">
+                            <script>
+                              function formatDate(date) {
+                                const suffixes = ["th", "st", "nd", "rd"];
+                                const day = date.getDate();
+                                const month = date.toLocaleString('default', {
+                                  month: 'short'
+                                });
+                                let suffix = suffixes[0]; // Default to "th"
+                                if (day % 10 >= 1 && day % 10 <= 3 && day != 11 && day != 12 && day != 13) {
+                                  suffix = suffixes[day % 10];
+                                }
+                                return `${month}. ${day}${suffix}`;
+                              }
+                              // Setting the text of elements with the data-order-by attribute
+                              document.querySelectorAll('[data-order-by]').forEach(element => {
+                                element.textContent = formatDate(new Date());
+                              });
+                            </script>
+                          </div>
+                        </div>
+                        <div class="spacer-xsmall"></div>
+                      </div>
+
+                      <div class="selector-step last-child">
+                        <div class="quantity-selector">
+                          <div data-qty-component="card" data-qty="4" role="button" class="quantity-selector_card current-qty">
+                            <div class="most-pouplar is-holiday">BEST&nbsp;DEAL</div>
+                            <div class="quantity-selector_content">
+                              <div data-qty-component="radio" class="quantity-selector_radio"></div>
+                              <div class="qty_selector-title">4 bags <span class="text-span"></span>
+                              </div>
+                              <div class="quantity-selector_price">
+                                <span data-price="each">$29.00</span>/each
+                              </div>
+                            </div>
+                          </div>
+                          <div data-qty-component="card" data-qty="3" role="button" class="quantity-selector_card">
+                            <div class="quantity-selector_content">
+                              <div data-qty-component="radio" class="quantity-selector_radio"></div>
+                              <div class="qty_selector-title">3 Bags <span class="text-span"></span>
+                              </div>
+                              <div class="quantity-selector_price">
+                                <span data-price="each">$33.00</span>/each
+                              </div>
+                            </div>
+                          </div>
+                          <div data-qty-component="card" data-qty="2" role="button" class="quantity-selector_card">
+                            <div class="quantity-selector_content">
+                              <div data-qty-component="radio" class="quantity-selector_radio"></div>
+                              <div class="qty_selector-title">2 Bags</div>
+                              <div class="quantity-selector_price">
+                                <span data-price="each">$39.00</span>/each
+                              </div>
+                            </div>
+                          </div>
+                          <div data-qty-component="card" data-qty="1" role="button" class="quantity-selector_card">
+                            <div class="quantity-selector_content">
+                              <div data-qty-component="radio" class="quantity-selector_radio"></div>
+                              <div class="qty_selector-title">1 Bag</div>
+                              <div class="quantity-selector_price">
+                                <span data-price="each">$44.00</span>/each
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="w-embed">
+                          <style>
+                            .flavor_add-btn {
+                              pointer-events: none;
+                            }
+                      
+                            .flavor_add-btn.is-active {
+                              pointer-events: all;
+                            }
+                          </style>
+                        </div>
+                        <div>
+                          <div class="product-selector_variant-container"></div>
+                        </div>
+                      </div>
+                      <div class="spacer-xsmall"></div>
+
+                      <div>
+                        <div>
+                          <p class="text-size-xtiny text-align-center">
+                            <span class="sale-name">EXCLUSIVE SALE!</span> FREE Gifts With Your First Order
+                          </p>
+                        </div>
+                        <div class="spacer-xsmall"></div>
+                        <div>
+                          <div data-gift="container" class="gift-blocks">
+                            <div class="gift_card is-active" data-gift="1">
+                              <img src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/freegift1.png" class="gift_image">
+                              <div class="gift-overlay is-active" data-gift="1"></div>
+                              <div class="gift-locker">
+                                <div class="gift-lockings w-embed">
+                                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.6 18.6" style="enable-background:new 0 0 18.6 18.6;" xml:space="preserve" width="100%" height="100%">
+                                    <path fill="CurrentColor" d="M14.6,11c0,0.8,0,1.6,0,2.4c0,0.8-0.3,1.4-0.8,2c-0.8,0.9-1.9,1.4-3.1,1.6c-1.1,0.2-2.3,0.2-3.4-0.1
+                          c-0.9-0.3-1.8-0.7-2.5-1.4c-0.6-0.6-1-1.4-0.9-2.3c0-1.5,0-3,0-4.4c0-0.9,0.4-1.5,1.2-1.9c0.1,0,0.1-0.1,0.1-0.2c0-1,0.2-2,0.7-2.9
+                          c0.5-0.9,1.1-1.6,2-2c1.2-0.6,2.4-0.4,3.5,0.5c0.8,0.6,1.2,1.4,1.6,2.3c0.3,0.7,0.4,1.4,0.4,2.2c0,0.1,0,0.1,0.1,0.2
+                          c0.8,0.4,1.2,1,1.2,1.8C14.6,9.5,14.6,10.3,14.6,11C14.6,11,14.6,11,14.6,11z M9.3,6.7C9.3,6.7,9.3,6.7,9.3,6.7c0.7,0,1.4,0,2,0
+                          c0.4,0,0.4,0,0.3-0.4c-0.1-0.8-0.3-1.6-0.8-2.2c-0.5-0.7-1.2-0.9-2-0.8c-0.6,0.1-1,0.5-1.3,1C7.1,5,6.9,5.8,6.9,6.6
+                          c0,0.1,0,0.2,0.1,0.2C7.8,6.7,8.5,6.7,9.3,6.7z M9.3,13.8C9.3,13.8,9.3,13.8,9.3,13.8c0.2,0,0.4,0,0.7,0c0.1,0,0.2,0,0.2-0.2
+                          c0-0.3,0-0.7,0-1c0-0.1,0-0.2,0.1-0.3c0.9-0.7,0.7-2.2-0.4-2.6c-0.7-0.3-1.5,0-1.9,0.6c-0.4,0.6-0.2,1.5,0.4,1.9
+                          c0.1,0.1,0.1,0.1,0.1,0.2c0,0.4,0,0.7,0,1.1c0,0.1,0,0.2,0.1,0.1C8.8,13.8,9,13.8,9.3,13.8z"></path>
+                                  </svg>
+                                </div>
+                                <div class="gift-unlockers" data-gift-unlock="undefined">1 Bag</div>
+                              </div>
+                              <div class="gift-price-badge">
+                                <div class="text-block-188">FREE <span class="strikethroughs">$18.00</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="gift_card is-active" data-gift="2">
+                              <img src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/StarterPack2.png" class="gift_image">
+                              <div class="gift-overlay is-active" data-gift="2"></div>
+                              <div class="gift-locker">
+                                <div class="gift-lockings w-embed">
+                                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.6 18.6" style="enable-background:new 0 0 18.6 18.6;" xml:space="preserve" width="100%" height="100%">
+                                    <path fill="CurrentColor" d="M14.6,11c0,0.8,0,1.6,0,2.4c0,0.8-0.3,1.4-0.8,2c-0.8,0.9-1.9,1.4-3.1,1.6c-1.1,0.2-2.3,0.2-3.4-0.1
+                          c-0.9-0.3-1.8-0.7-2.5-1.4c-0.6-0.6-1-1.4-0.9-2.3c0-1.5,0-3,0-4.4c0-0.9,0.4-1.5,1.2-1.9c0.1,0,0.1-0.1,0.1-0.2c0-1,0.2-2,0.7-2.9
+                          c0.5-0.9,1.1-1.6,2-2c1.2-0.6,2.4-0.4,3.5,0.5c0.8,0.6,1.2,1.4,1.6,2.3c0.3,0.7,0.4,1.4,0.4,2.2c0,0.1,0,0.1,0.1,0.2
+                          c0.8,0.4,1.2,1,1.2,1.8C14.6,9.5,14.6,10.3,14.6,11C14.6,11,14.6,11,14.6,11z M9.3,6.7C9.3,6.7,9.3,6.7,9.3,6.7c0.7,0,1.4,0,2,0
+                          c0.4,0,0.4,0,0.3-0.4c-0.1-0.8-0.3-1.6-0.8-2.2c-0.5-0.7-1.2-0.9-2-0.8c-0.6,0.1-1,0.5-1.3,1C7.1,5,6.9,5.8,6.9,6.6
+                          c0,0.1,0,0.2,0.1,0.2C7.8,6.7,8.5,6.7,9.3,6.7z M9.3,13.8C9.3,13.8,9.3,13.8,9.3,13.8c0.2,0,0.4,0,0.7,0c0.1,0,0.2,0,0.2-0.2
+                          c0-0.3,0-0.7,0-1c0-0.1,0-0.2,0.1-0.3c0.9-0.7,0.7-2.2-0.4-2.6c-0.7-0.3-1.5,0-1.9,0.6c-0.4,0.6-0.2,1.5,0.4,1.9
+                          c0.1,0.1,0.1,0.1,0.1,0.2c0,0.4,0,0.7,0,1.1c0,0.1,0,0.2,0.1,0.1C8.8,13.8,9,13.8,9.3,13.8z"></path>
+                                  </svg>
+                                </div>
+                                <div class="gift-unlockers" data-gift-unlock="undefined">2 Bags</div>
+                              </div>
+                              <div class="gift-price-badge">
+                                <div class="text-block-188">FREE <span class="strikethroughs">$15.96</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="gift_card is-active" data-gift="3">
+                              <img src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/freegift4.png" class="gift_image">
+                              <div class="gift-overlay is-active" data-gift="3"></div>
+                              <div class="gift-locker">
+                                <div class="gift-lockings w-embed">
+                                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.6 18.6" style="enable-background:new 0 0 18.6 18.6;" xml:space="preserve" width="100%" height="100%">
+                                    <path fill="CurrentColor" d="M14.6,11c0,0.8,0,1.6,0,2.4c0,0.8-0.3,1.4-0.8,2c-0.8,0.9-1.9,1.4-3.1,1.6c-1.1,0.2-2.3,0.2-3.4-0.1
+                          c-0.9-0.3-1.8-0.7-2.5-1.4c-0.6-0.6-1-1.4-0.9-2.3c0-1.5,0-3,0-4.4c0-0.9,0.4-1.5,1.2-1.9c0.1,0,0.1-0.1,0.1-0.2c0-1,0.2-2,0.7-2.9
+                          c0.5-0.9,1.1-1.6,2-2c1.2-0.6,2.4-0.4,3.5,0.5c0.8,0.6,1.2,1.4,1.6,2.3c0.3,0.7,0.4,1.4,0.4,2.2c0,0.1,0,0.1,0.1,0.2
+                          c0.8,0.4,1.2,1,1.2,1.8C14.6,9.5,14.6,10.3,14.6,11C14.6,11,14.6,11,14.6,11z M9.3,6.7C9.3,6.7,9.3,6.7,9.3,6.7c0.7,0,1.4,0,2,0
+                          c0.4,0,0.4,0,0.3-0.4c-0.1-0.8-0.3-1.6-0.8-2.2c-0.5-0.7-1.2-0.9-2-0.8c-0.6,0.1-1,0.5-1.3,1C7.1,5,6.9,5.8,6.9,6.6
+                          c0,0.1,0,0.2,0.1,0.2C7.8,6.7,8.5,6.7,9.3,6.7z M9.3,13.8C9.3,13.8,9.3,13.8,9.3,13.8c0.2,0,0.4,0,0.7,0c0.1,0,0.2,0,0.2-0.2
+                          c0-0.3,0-0.7,0-1c0-0.1,0-0.2,0.1-0.3c0.9-0.7,0.7-2.2-0.4-2.6c-0.7-0.3-1.5,0-1.9,0.6c-0.4,0.6-0.2,1.5,0.4,1.9
+                          c0.1,0.1,0.1,0.1,0.1,0.2c0,0.4,0,0.7,0,1.1c0,0.1,0,0.2,0.1,0.1C8.8,13.8,9,13.8,9.3,13.8z"></path>
+                                  </svg>
+                                </div>
+                                <div class="gift-unlockers" data-gift-unlock="undefined">3 Bags</div>
+                              </div>
+                              <div class="gift-price-badge">
+                                <div class="text-block-188">FREE <span class="strikethroughs">$35.00</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="gift_card is-active" data-gift="4">
+                              <img src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/freegift3.png" class="gift_image">
+                              <div class="gift-overlay is-active" data-gift="4"></div>
+                              <div class="gift-locker">
+                                <div class="gift-lockings w-embed">
+                                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.6 18.6" style="enable-background:new 0 0 18.6 18.6;" xml:space="preserve" width="100%" height="100%">
+                                    <path fill="CurrentColor" d="M14.6,11c0,0.8,0,1.6,0,2.4c0,0.8-0.3,1.4-0.8,2c-0.8,0.9-1.9,1.4-3.1,1.6c-1.1,0.2-2.3,0.2-3.4-0.1
+                          c-0.9-0.3-1.8-0.7-2.5-1.4c-0.6-0.6-1-1.4-0.9-2.3c0-1.5,0-3,0-4.4c0-0.9,0.4-1.5,1.2-1.9c0.1,0,0.1-0.1,0.1-0.2c0-1,0.2-2,0.7-2.9
+                          c0.5-0.9,1.1-1.6,2-2c1.2-0.6,2.4-0.4,3.5,0.5c0.8,0.6,1.2,1.4,1.6,2.3c0.3,0.7,0.4,1.4,0.4,2.2c0,0.1,0,0.1,0.1,0.2
+                          c0.8,0.4,1.2,1,1.2,1.8C14.6,9.5,14.6,10.3,14.6,11C14.6,11,14.6,11,14.6,11z M9.3,6.7C9.3,6.7,9.3,6.7,9.3,6.7c0.7,0,1.4,0,2,0
+                          c0.4,0,0.4,0,0.3-0.4c-0.1-0.8-0.3-1.6-0.8-2.2c-0.5-0.7-1.2-0.9-2-0.8c-0.6,0.1-1,0.5-1.3,1C7.1,5,6.9,5.8,6.9,6.6
+                          c0,0.1,0,0.2,0.1,0.2C7.8,6.7,8.5,6.7,9.3,6.7z M9.3,13.8C9.3,13.8,9.3,13.8,9.3,13.8c0.2,0,0.4,0,0.7,0c0.1,0,0.2,0,0.2-0.2
+                          c0-0.3,0-0.7,0-1c0-0.1,0-0.2,0.1-0.3c0.9-0.7,0.7-2.2-0.4-2.6c-0.7-0.3-1.5,0-1.9,0.6c-0.4,0.6-0.2,1.5,0.4,1.9
+                          c0.1,0.1,0.1,0.1,0.1,0.2c0,0.4,0,0.7,0,1.1c0,0.1,0,0.2,0.1,0.1C8.8,13.8,9,13.8,9.3,13.8z"></path>
+                                  </svg>
+                                </div>
+                                <div class="gift-unlockers" data-gift-unlock="undefined">4 Bags</div>
+                              </div>
+                              <div class="gift-price-badge">
+                                <div class="text-block-188">FREE <span class="strikethroughs">$35.00</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div data-gift="titles" class="gift-titles">
+                            <div class="gift_title is-active" data-gift="1">
+                              <div class="gift-title_text">Jump Rope</div>
+                            </div>
+                            <div class="gift_title is-active" data-gift="2">
+                              <div class="gift-title_text">Travel Packs</div>
+                            </div>
+                            <div class="gift_title is-active" data-gift="3">
+                              <div class="gift-title_text">Gym Towel</div>
+                            </div>
+                            <div class="gift_title is-active" data-gift="4">
+                              <div class="gift-title_text">Trucker Hat</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div> 
+
+                      <div>
+                        <div>
+                          <div class="spacer-xsmall"></div>
+                          <div class="include-kit is-bottom">
+                            <div class="div-block-984">
+                              <div data-bundle="savings-container" class="kit-head is-active">Autoship & Save - Save<span data-bundle="saving-pct" class="text-span-75">58</span>% First Order* </div>
+                            </div>
+                            <div class="kit-price hide">
+                              <div class="savings">
+                                <div class="icon-embed-xxsmall w-embed">
+                                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--iconoir" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2v4m0 12v4m10-10h-4M6 12H2m2.929-7.071l2.828 2.828m8.486 8.486l2.828 2.828m0-14.142l-2.828 2.828m-8.486 8.486L4.93 19.07"></path>
+                                  </svg>
+                                </div>
+                                <div>GIFTS UNLOCKED: <span data-bundle="gifts-unlocked">3</span>/4 </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="spacer-xxsmall"></div>
+                        <a href="javascript:void(0)" data-direction="next" role="button" data-action="redirect" class="button is-full is-squared w-inline-block">
+                          <div class="loading-spinner w-embed">
+                            <svg viewBox="0 0 50 50" class="spinner">
+                              <circle class="ring" cx="25" cy="25" r="22.5"></circle>
+                              <circle class="line" cx="25" cy="25" r="22.5"></circle>
+                            </svg>
+                            <style>
+                              .spinner {
+                                --spinner-size: 2;
+                                --line-color: #ffffff;
+                                --line-alpha: 1;
+                                --ring-color: #ffffff;
+                                --ring-alpha: 0.05;
+                                --ring-size: 6;
+                                font-size: calc(var(--spinner-size) * 1em);
+                                width: 1em;
+                                height: 1em;
+                                border-radius: 50%;
+                              }
+                      
+                              .spinner .line {
+                                fill: none;
+                                stroke: var(--line-color);
+                                stroke-width: var(--ring-size);
+                                opacity: var(--line-alpha);
+                                stroke-linecap: round;
+                                transform-origin: 50% 50%;
+                                transform: rotate3d(0, 0, 1, 0deg);
+                                animation:
+                                  2156ms spinner-arc ease-in-out infinite,
+                                  1829ms spinner-rotate linear infinite;
+                              }
+                      
+                              .spinner .ring {
+                                fill: none;
+                                stroke: var(--ring-color);
+                                stroke-width: var(--ring-size);
+                                opacity: var(--ring-alpha);
+                              }
+                      
+                              @keyframes spinner-rotate {
+                                to {
+                                  transform: rotate3d(0, 0, 1, 360deg);
+                                }
+                              }
+                      
+                              @keyframes spinner-arc {
+                                from {
+                                  stroke-dasharray: 0 150;
+                                  stroke-dashoffset: 0;
+                                }
+                      
+                                to {
+                                  stroke-dasharray: 100 150;
+                                  stroke-dashoffset: -140;
+                                }
+                              }
+                      
+                              --spinner-size: 2em --ring-size: 6 --line-color: #ffffff --line-alpha: 1 --ring-color: #ffffff --ring-alpha: 0.05
+                            </style>
+                          </div>
+                          <div class="super-contents">
+                            <div id="cta_text" class="button-text-5">Select Flavors</div>
+                          </div>
+                          <div class="icon-embed-xsmall w-embed">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--heroicons" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20">
+                              <path fill="currentColor" fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" width="100%" height="100%"></path>
+                            </svg>
+                          </div>
+                        </a>
+                        <link rel="prefetch" href="/co/coffee-flavors">
+                        <div class="spacer-xsmall"></div>
+                        <div class="div-block-553-copy-cta">
+                          <div class="subscription-benefits">
+                            <div data-bundle="savings-container">Monthly subscription benefits</div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="spacer-xxsmall"></div>
+                          <ul role="list" class="list_row w-list-unstyled">
+                            <li class="list1_item">
+                              <div class="cta-checkmark w-embed">
+                                <svg width="13" height="10" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="CurrentColor" class="tw-mr-2">
+                                  <path d="M12.265 0.182296C12.0219 -0.0607654 11.6279 -0.0607654 11.3848 0.182296L3.92853 7.63866L1.06245 4.77258C0.819416 4.52952 0.425382 4.52955 0.182296 4.77258C-0.0607654 5.01562 -0.0607654 5.40966 0.182296 5.65272L3.48845 8.95882C3.73142 9.20186 4.12574 9.20169 4.36861 8.95882L12.265 1.06245C12.508 0.819416 12.508 0.425358 12.265 0.182296Z" fill="inherit"></path>
+                                </svg>
+                              </div>
+                              <div data-bundle="refill-text" class="first-time">Refill ships in <span class="days-sub">120</span> days <strong>
+                                  <br>
+                                </strong>
+                              </div>
+                            </li>
+                            <li class="list1_item">
+                              <div class="cta-checkmark w-embed">
+                                <svg width="13" height="10" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="CurrentColor" class="tw-mr-2">
+                                  <path d="M12.265 0.182296C12.0219 -0.0607654 11.6279 -0.0607654 11.3848 0.182296L3.92853 7.63866L1.06245 4.77258C0.819416 4.52952 0.425382 4.52955 0.182296 4.77258C-0.0607654 5.01562 -0.0607654 5.40966 0.182296 5.65272L3.48845 8.95882C3.73142 9.20186 4.12574 9.20169 4.36861 8.95882L12.265 1.06245C12.508 0.819416 12.508 0.425358 12.265 0.182296Z" fill="inherit"></path>
+                                </svg>
+                              </div>
+                              <div class="first-time">Adjust flavors, shipments, or cancel anytime <strong>
+                                  <br>
+                                </strong>
+                              </div>
+                            </li>
+                            <li class="list1_item">
+                              <div class="cta-checkmark w-embed">
+                                <svg width="13" height="10" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="CurrentColor" class="tw-mr-2">
+                                  <path d="M12.265 0.182296C12.0219 -0.0607654 11.6279 -0.0607654 11.3848 0.182296L3.92853 7.63866L1.06245 4.77258C0.819416 4.52952 0.425382 4.52955 0.182296 4.77258C-0.0607654 5.01562 -0.0607654 5.40966 0.182296 5.65272L3.48845 8.95882C3.73142 9.20186 4.12574 9.20169 4.36861 8.95882L12.265 1.06245C12.508 0.819416 12.508 0.425358 12.265 0.182296Z" fill="inherit"></path>
+                                </svg>
+                              </div>
+                              <div class="first-time">Free US shipping, gifts & savings on your first shipment <strong>
+                                  <br>
+                                </strong>
+                              </div>
+                            </li>
+                          </ul>
+                          <div class="hide">
+                            <div class="div-block-982">
+                              <div class="include-kit is-head">
+                                <div>
+                                  <div data-bundle="frequency-title" class="kit-head">4-Month Delivery</div>
+                                  <div data-bundle="frequency-description" class="qty-selector-desc">A 4-month supply delivered every 4 months</div>
+                                </div>
+                                <div class="kit-price">
+                                  <div class="kit-head">$ <span data-bundle="sale-price">75.80</span>/mo </div>
+                                </div>
+                              </div>
+                              <div class="includes-box">
+                                <div class="first-time">FIRST TIME PURCHASE INCLUDES: <br>
+                                </div>
+                                <div class="include-kit">
+                                  <div class="kit-description">
+                                    <div class="kit-head">Welcome Kit</div>
+                                    <div data-bundle="gift-contents" class="qty-selector-desc">Recipe Book, Magic Spoon, Magic Tumbler, Milk Frother</div>
+                                  </div>
+                                  <div class="kit-price">
+                                    <div data-bundle="gift-price" class="kit-head is-compare">$57.80</div>
+                                    <div class="kit-head">Free</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="include-kit is-bottom">
+                                <div class="div-block-984">
+                                  <div class="kit-head">Total</div>
+                                </div>
+                                <div class="kit-price">
+                                  <div class="savings">SAVE <span data-bundle="saving-pct">42</span>% </div>
+                                  <div class="kit-head is-compare">$ <span data-bundle="compare-price">137.60</span>
+                                  </div>
+                                  <div class="kit-head total-savings">$ <span data-bundle="sale-price">79.80</span>/mo </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="spacer-xsmall"></div>
+                            <ul role="list" class="list_belowcta w-list-unstyled">
+                              <li class="list1_item">
+                                <div class="cta-checkmark w-embed">
+                                  <svg width="13" height="10" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="CurrentColor" class="tw-mr-2">
+                                    <path d="M12.265 0.182296C12.0219 -0.0607654 11.6279 -0.0607654 11.3848 0.182296L3.92853 7.63866L1.06245 4.77258C0.819416 4.52952 0.425382 4.52955 0.182296 4.77258C-0.0607654 5.01562 -0.0607654 5.40966 0.182296 5.65272L3.48845 8.95882C3.73142 9.20186 4.12574 9.20169 4.36861 8.95882L12.265 1.06245C12.508 0.819416 12.508 0.425358 12.265 0.182296Z" fill="inherit"></path>
+                                  </svg>
+                                </div>
+                                <div class="first-time">30-day money back guarantee <strong>
+                                    <br>
+                                  </strong>
+                                </div>
+                              </li>
+                              <li class="list1_item">
+                                <div class="cta-checkmark w-embed">
+                                  <svg width="13" height="10" viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="CurrentColor" class="tw-mr-2">
+                                    <path d="M12.265 0.182296C12.0219 -0.0607654 11.6279 -0.0607654 11.3848 0.182296L3.92853 7.63866L1.06245 4.77258C0.819416 4.52952 0.425382 4.52955 0.182296 4.77258C-0.0607654 5.01562 -0.0607654 5.40966 0.182296 5.65272L3.48845 8.95882C3.73142 9.20186 4.12574 9.20169 4.36861 8.95882L12.265 1.06245C12.508 0.819416 12.508 0.425358 12.265 0.182296Z" fill="inherit"></path>
+                                  </svg>
+                                </div>
+                                <div class="first-time">Free Shipping <strong>
+                                    <br>
+                                  </strong>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="spacer-xsmall"></div>
+                          <div class="div-block-985">
+                            <div class="one-button-click">
+                              <a data-link="buy-once" href="https://www.amazon.com/Create-Monohydrate-Endurance-Anti-Melting-Gluten-Free/dp/B0CJH5RWPD?maas=maas_adg_F199B54D43B6873BDF668BC8D694B7B1_afap_abs&ref_=aa_maas&tag=maas&th=1" class="link-once w-inline-block">BUY ONCE - $50.00/BAG ON AMAZON</a>
+                              <link rel="prefetch" href="/co/trial-starter-kit">
+                            </div>
+                            <div class="qty-selector-desc darker">We recommend choosing autoship so that you can experience a variety of Create’s delicious flavors and free gifts <br>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+              
+              
+            </div>
+            <div class="product-hero_content-wrapper content-wrapper2 hide">
+                      <p id="bundle_subdescription" class="text-size-small">You've unlocked big savings and FREE gifts on your first autoship order.</p>
+                      <div class="spacer-xsmall"></div>
+                      <div class="shipsby-container-2">
+                        <div id="lowStock" class="shipsby-xmas-2">
+                          <div class="ring-container w-embed">
+                            <div class="ringring"></div>
+                            <div class="circle"></div>
+                            <style>
+                              .ring-container {
+                                position: relative;
+                                height: 1rem;
+                                width: 1rem;
+                              }
+                      
+                              .circle {
+                                width: 6px;
+                                /* Adjusted from 15px to 10px */
+                                height: 6px;
+                                /* Adjusted from 15px to 10px */
+                                background-color: #004f4f;
+                                border-radius: 50%;
+                                position: absolute;
+                              }
+                      
+                              .ringring {
+                                border: 1px solid #004f4f;
+                                border-radius: 20px;
+                                /* Adjusted from 30px to 20px */
+                                height: 18px;
+                                /* Adjusted from 25px to 15px */
+                                width: 18px;
+                                /* Adjusted from 25px to 15px */
+                                position: absolute;
+                                animation: pulsate 1s ease-out infinite;
+                                opacity: 0;
+                              }
+                      
+                              @keyframes pulsate {
+                                0% {
+                                  transform: scale(0.5);
+                                  opacity: 0;
+                                }
+                      
+                                50% {
+                                  opacity: 1;
+                                }
+                      
+                                100% {
+                                  transform: scale(1.0);
+                                  opacity: 0;
+                                }
+                              }
+                            </style>
+                          </div>
+                          <div id="order-message" class="order-by-chsristmas">Order by <span data-order-by=""></span> for guaranteed FREE Gifts </div>
+                          <div class="hide w-embed w-script">
+                            <script>
+                              function formatDate(date) {
+                                const suffixes = ["th", "st", "nd", "rd"];
+                                const day = date.getDate();
+                                const month = date.toLocaleString('default', {
+                                  month: 'short'
+                                });
+                                let suffix = suffixes[0]; // Default to "th"
+                                if (day % 10 >= 1 && day % 10 <= 3 && day != 11 && day != 12 && day != 13) {
+                                  suffix = suffixes[day % 10];
+                                }
+                                return `${month}. ${day}${suffix}`;
+                              }
+                              // Setting the text of elements with the data-order-by attribute
+                              document.querySelectorAll('[data-order-by]').forEach(element => {
+                                element.textContent = formatDate(new Date());
+                              });
+                            </script>
+                          </div>
+                        </div>
+                        <div class="spacer-xsmall"></div>
+                      </div>
+            <div>
+              <div data-container="bundle" class="flavor_container">
+                <div data-action="flavor-card" data-product="blue" id="w-node-_0d459823-570d-736d-1a58-4748e235ce1a-e235ce18" class="flavor_card-item">
+                  <div class="flavor_card-item-wrapper">
+                    <div data-action="open-product-facts" class="flavor_card2-image_container color-original-light">
+                      <img width="280" loading="eager" alt="" src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/flavor1-img.png" class="flavor_card2-image">
+                      <div class="div-block-986 is-best-seller">
+                        <div class="text-block-223">BEST SELLER</div>
+                      </div>
+                    </div>
+                    <div class="flavor2_content flavor2_content-vertical">
+                      <div class="flavor2_description">
+                        <div class="div-block-994">
+                          <div class="flavor2_name">Blue Raspberry</div>
+                        </div>
+                      </div>
+                      <div class="flavor2_quantity-2">
+                        <div class="flavor3_label best-seller">BEST SELLER</div>
+                        <div data-quantity="quick-add" data-product="blue" class="flavor_add-btn">
+                          <div class="button-text">Add +</div>
+                        </div>
+                        <div id="blue_flavor" class="flavor flavor2_quantity-container">
+                          <div data-quantity="decrease" data-product="blue" role="button" class="flavor_qty-button">-</div>
+                          <input data-quantity="display" data-product="blue" class="flavor_qty-display" value="1">
+                          <div data-quantity="increase" data-product="blue" role="button" class="flavor_qty-button is-active">+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flavor2_label best-seller hide">BEST SELLER</div>
+                </div>
+                
+                <div data-action="flavor-card" data-product="watermelon" id="w-node-_0d459823-570d-736d-1a58-4748e235ce1a-e235ce18" class="flavor_card-item">
+                  <div class="flavor_card-item-wrapper">
+                    <div data-action="open-product-facts" class="flavor_card2-image_container color-original-light">
+                      <img width="280" loading="eager" alt="" src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/flavor2-img.png" class="flavor_card2-image">
+                    </div>
+                    <div class="flavor2_content flavor2_content-vertical">
+                      <div class="flavor2_description">
+                        <div class="div-block-994">
+                          <div class="flavor2_name">Watermelon</div>
+                        </div>
+                      </div>
+                      <div class="flavor2_quantity-2">
+                        <div data-quantity="quick-add" data-product="watermelon" class="flavor_add-btn is-active">
+                          <div class="button-text">Add +</div>
+                        </div>
+                        <div id="watermelon_flavor" class="flavors flavor2_quantity-container">
+                          <div data-quantity="decrease" data-product="watermelon" role="button" class="flavor_qty-button">-</div>
+                          <input data-quantity="display" data-product="watermelon" class="flavor_qty-display" value="0">
+                          <div data-quantity="increase" data-product="watermelon" role="button" class="flavor_qty-button is-active">+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              <div data-action="flavor-card" data-product="sour" id="w-node-_0d459823-570d-736d-1a58-4748e235ce1a-e235ce18" class="flavor_card-item">
+                  <div class="flavor_card-item-wrapper">
+                    <div data-action="open-product-facts" class="flavor_card2-image_container color-original-light">
+                      <img width="280" loading="eager" alt="" src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/flavor3-img.png" class="flavor_card2-image">
+                      <div class="div-block-986 is-best-seller">
+                        <div class="text-block-223">SEASONAL</div>
+                      </div>
+                    </div>
+                    <div class="flavor2_content flavor2_content-vertical">
+                      <div class="flavor2_description">
+                        <div class="div-block-994">
+                          <div class="flavor2_name">Sour Green Apple</div>
+                        </div>
+                        <div data-stock-flavor="sour" class="low-stock-reminder-2">
+                          <span class="stock-text-4">Low Stock</span> - <span data-stock-number="" class="stock-number-2">120</span> left
+                        </div>
+                      </div>
+                      <div class="flavor2_quantity-2">
+                        <div class="flavor3_label limited-release">LIMITED RELEASE</div>
+                        <div data-quantity="quick-add" data-product="sour" class="flavor_add-btn is-active">
+                          <div class="button-text">Add +</div>
+                        </div>
+                        <div id="sour_flavor" class="flavors flavor2_quantity-container">
+                          <div data-quantity="decrease" data-product="sour" role="button" class="flavor_qty-button">-</div>
+                          <input onblur="findTotal()" data-quantity="display" data-product="sour" class="flavor_qty-display" value="0">
+                          <div data-quantity="increase" data-product="sour" role="button" class="flavor_qty-button is-active">+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flavor2_label best-seller hide">BEST SELLER</div>
+                </div>
+
+                <div data-action="flavor-card" data-product="orange" id="w-node-_0d459823-570d-736d-1a58-4748e235ce1a-e235ce18" class="flavor_card-item">
+                  <div class="flavor_card-item-wrapper">
+                    <div data-action="open-product-facts" class="flavor_card2-image_container color-original-light">
+                      <img width="280" loading="eager" alt="" src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/flavor4-img_1.png" class="flavor_card2-image">
+                    </div>
+                    <div class="flavor2_content flavor2_content-vertical">
+                      <div class="flavor2_description">
+                        <div class="div-block-994">
+                          <div class="flavor2_name">Orange</div>
+                        </div>
+                      </div>
+                      <div class="flavor2_quantity-2">
+                        <div data-quantity="quick-add" data-product="orange" class="flavor_add-btn is-active">
+                          <div class="button-text">Add +</div>
+                        </div>
+                        <div id="orange_flavor" class="flavors flavor2_quantity-container">
+                          <div data-quantity="decrease" data-product="orange" role="button" class="flavor_qty-button">-</div>
+                          <input onblur="findTotal()" data-quantity="display" data-product="orange" class="flavor_qty-display" value="0">
+                          <div data-quantity="increase" data-product="orange" role="button" class="flavor_qty-button is-active">+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                  <div class="spacer-xsmall"></div>
+            </div>
+
+            <div>
+              <div>
+                <p class="text-size-xtiny text-align-center">
+                  <span class="sale-name">EXCLUSIVE SALE!</span> FREE Gifts With Your First Order
+                </p>
+              </div>
+              <div class="spacer-xsmall"></div>
+              <div>
+                <div data-gift="container" class="gift-blocks">
+                  <div class="gift_card is-active" data-gift="1">
+                    <img src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/freegift1.png" class="gift_image">
+                    <div class="gift-overlay is-active" data-gift="1"></div>
+                    <div class="gift-locker">
+                      <div class="gift-lockings w-embed">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.6 18.6" style="enable-background:new 0 0 18.6 18.6;" xml:space="preserve" width="100%" height="100%">
+                          <path fill="CurrentColor" d="M14.6,11c0,0.8,0,1.6,0,2.4c0,0.8-0.3,1.4-0.8,2c-0.8,0.9-1.9,1.4-3.1,1.6c-1.1,0.2-2.3,0.2-3.4-0.1
+                                      c-0.9-0.3-1.8-0.7-2.5-1.4c-0.6-0.6-1-1.4-0.9-2.3c0-1.5,0-3,0-4.4c0-0.9,0.4-1.5,1.2-1.9c0.1,0,0.1-0.1,0.1-0.2c0-1,0.2-2,0.7-2.9
+                                      c0.5-0.9,1.1-1.6,2-2c1.2-0.6,2.4-0.4,3.5,0.5c0.8,0.6,1.2,1.4,1.6,2.3c0.3,0.7,0.4,1.4,0.4,2.2c0,0.1,0,0.1,0.1,0.2
+                                      c0.8,0.4,1.2,1,1.2,1.8C14.6,9.5,14.6,10.3,14.6,11C14.6,11,14.6,11,14.6,11z M9.3,6.7C9.3,6.7,9.3,6.7,9.3,6.7c0.7,0,1.4,0,2,0
+                                      c0.4,0,0.4,0,0.3-0.4c-0.1-0.8-0.3-1.6-0.8-2.2c-0.5-0.7-1.2-0.9-2-0.8c-0.6,0.1-1,0.5-1.3,1C7.1,5,6.9,5.8,6.9,6.6
+                                      c0,0.1,0,0.2,0.1,0.2C7.8,6.7,8.5,6.7,9.3,6.7z M9.3,13.8C9.3,13.8,9.3,13.8,9.3,13.8c0.2,0,0.4,0,0.7,0c0.1,0,0.2,0,0.2-0.2
+                                      c0-0.3,0-0.7,0-1c0-0.1,0-0.2,0.1-0.3c0.9-0.7,0.7-2.2-0.4-2.6c-0.7-0.3-1.5,0-1.9,0.6c-0.4,0.6-0.2,1.5,0.4,1.9
+                                      c0.1,0.1,0.1,0.1,0.1,0.2c0,0.4,0,0.7,0,1.1c0,0.1,0,0.2,0.1,0.1C8.8,13.8,9,13.8,9.3,13.8z"></path>
+                        </svg>
+                      </div>
+                      <div class="gift-unlockers" data-gift-unlock="undefined">1 Bag</div>
+                    </div>
+                    <div class="gift-price-badge">
+                      <div class="text-block-188">FREE <span class="strikethroughs">$18.00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gift_card is-active" data-gift="2">
+                    <img src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/StarterPack2.png?v=1716552731" class="gift_image">
+                    <div class="gift-overlay is-active" data-gift="2"></div>
+                    <div class="gift-locker">
+                      <div class="gift-lockings w-embed">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.6 18.6" style="enable-background:new 0 0 18.6 18.6;" xml:space="preserve" width="100%" height="100%">
+                          <path fill="CurrentColor" d="M14.6,11c0,0.8,0,1.6,0,2.4c0,0.8-0.3,1.4-0.8,2c-0.8,0.9-1.9,1.4-3.1,1.6c-1.1,0.2-2.3,0.2-3.4-0.1
+                                      c-0.9-0.3-1.8-0.7-2.5-1.4c-0.6-0.6-1-1.4-0.9-2.3c0-1.5,0-3,0-4.4c0-0.9,0.4-1.5,1.2-1.9c0.1,0,0.1-0.1,0.1-0.2c0-1,0.2-2,0.7-2.9
+                                      c0.5-0.9,1.1-1.6,2-2c1.2-0.6,2.4-0.4,3.5,0.5c0.8,0.6,1.2,1.4,1.6,2.3c0.3,0.7,0.4,1.4,0.4,2.2c0,0.1,0,0.1,0.1,0.2
+                                      c0.8,0.4,1.2,1,1.2,1.8C14.6,9.5,14.6,10.3,14.6,11C14.6,11,14.6,11,14.6,11z M9.3,6.7C9.3,6.7,9.3,6.7,9.3,6.7c0.7,0,1.4,0,2,0
+                                      c0.4,0,0.4,0,0.3-0.4c-0.1-0.8-0.3-1.6-0.8-2.2c-0.5-0.7-1.2-0.9-2-0.8c-0.6,0.1-1,0.5-1.3,1C7.1,5,6.9,5.8,6.9,6.6
+                                      c0,0.1,0,0.2,0.1,0.2C7.8,6.7,8.5,6.7,9.3,6.7z M9.3,13.8C9.3,13.8,9.3,13.8,9.3,13.8c0.2,0,0.4,0,0.7,0c0.1,0,0.2,0,0.2-0.2
+                                      c0-0.3,0-0.7,0-1c0-0.1,0-0.2,0.1-0.3c0.9-0.7,0.7-2.2-0.4-2.6c-0.7-0.3-1.5,0-1.9,0.6c-0.4,0.6-0.2,1.5,0.4,1.9
+                                      c0.1,0.1,0.1,0.1,0.1,0.2c0,0.4,0,0.7,0,1.1c0,0.1,0,0.2,0.1,0.1C8.8,13.8,9,13.8,9.3,13.8z"></path>
+                        </svg>
+                      </div>
+                      <div class="gift-unlockers" data-gift-unlock="undefined">2 Bags</div>
+                    </div>
+                    <div class="gift-price-badge">
+                      <div class="text-block-188">FREE <span class="strikethroughs">$15.96</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gift_card is-active" data-gift="3">
+                    <img src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/freegift4.png" class="gift_image">
+                    <div class="gift-overlay is-active" data-gift="3"></div>
+                    <div class="gift-locker">
+                      <div class="gift-lockings w-embed">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.6 18.6" style="enable-background:new 0 0 18.6 18.6;" xml:space="preserve" width="100%" height="100%">
+                          <path fill="CurrentColor" d="M14.6,11c0,0.8,0,1.6,0,2.4c0,0.8-0.3,1.4-0.8,2c-0.8,0.9-1.9,1.4-3.1,1.6c-1.1,0.2-2.3,0.2-3.4-0.1
+                                      c-0.9-0.3-1.8-0.7-2.5-1.4c-0.6-0.6-1-1.4-0.9-2.3c0-1.5,0-3,0-4.4c0-0.9,0.4-1.5,1.2-1.9c0.1,0,0.1-0.1,0.1-0.2c0-1,0.2-2,0.7-2.9
+                                      c0.5-0.9,1.1-1.6,2-2c1.2-0.6,2.4-0.4,3.5,0.5c0.8,0.6,1.2,1.4,1.6,2.3c0.3,0.7,0.4,1.4,0.4,2.2c0,0.1,0,0.1,0.1,0.2
+                                      c0.8,0.4,1.2,1,1.2,1.8C14.6,9.5,14.6,10.3,14.6,11C14.6,11,14.6,11,14.6,11z M9.3,6.7C9.3,6.7,9.3,6.7,9.3,6.7c0.7,0,1.4,0,2,0
+                                      c0.4,0,0.4,0,0.3-0.4c-0.1-0.8-0.3-1.6-0.8-2.2c-0.5-0.7-1.2-0.9-2-0.8c-0.6,0.1-1,0.5-1.3,1C7.1,5,6.9,5.8,6.9,6.6
+                                      c0,0.1,0,0.2,0.1,0.2C7.8,6.7,8.5,6.7,9.3,6.7z M9.3,13.8C9.3,13.8,9.3,13.8,9.3,13.8c0.2,0,0.4,0,0.7,0c0.1,0,0.2,0,0.2-0.2
+                                      c0-0.3,0-0.7,0-1c0-0.1,0-0.2,0.1-0.3c0.9-0.7,0.7-2.2-0.4-2.6c-0.7-0.3-1.5,0-1.9,0.6c-0.4,0.6-0.2,1.5,0.4,1.9
+                                      c0.1,0.1,0.1,0.1,0.1,0.2c0,0.4,0,0.7,0,1.1c0,0.1,0,0.2,0.1,0.1C8.8,13.8,9,13.8,9.3,13.8z"></path>
+                        </svg>
+                      </div>
+                      <div class="gift-unlockers" data-gift-unlock="undefined">3 Bags</div>
+                    </div>
+                    <div class="gift-price-badge">
+                      <div class="text-block-188">FREE <span class="strikethroughs">$35.00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gift_card is-active" data-gift="4">
+                    <img src="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/freegift3.png" class="gift_image">
+                    <div class="gift-overlay is-active" data-gift="4"></div>
+                    <div class="gift-locker">
+                      <div class="gift-lockings w-embed">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18.6 18.6" style="enable-background:new 0 0 18.6 18.6;" xml:space="preserve" width="100%" height="100%">
+                          <path fill="CurrentColor" d="M14.6,11c0,0.8,0,1.6,0,2.4c0,0.8-0.3,1.4-0.8,2c-0.8,0.9-1.9,1.4-3.1,1.6c-1.1,0.2-2.3,0.2-3.4-0.1
+                                      c-0.9-0.3-1.8-0.7-2.5-1.4c-0.6-0.6-1-1.4-0.9-2.3c0-1.5,0-3,0-4.4c0-0.9,0.4-1.5,1.2-1.9c0.1,0,0.1-0.1,0.1-0.2c0-1,0.2-2,0.7-2.9
+                                      c0.5-0.9,1.1-1.6,2-2c1.2-0.6,2.4-0.4,3.5,0.5c0.8,0.6,1.2,1.4,1.6,2.3c0.3,0.7,0.4,1.4,0.4,2.2c0,0.1,0,0.1,0.1,0.2
+                                      c0.8,0.4,1.2,1,1.2,1.8C14.6,9.5,14.6,10.3,14.6,11C14.6,11,14.6,11,14.6,11z M9.3,6.7C9.3,6.7,9.3,6.7,9.3,6.7c0.7,0,1.4,0,2,0
+                                      c0.4,0,0.4,0,0.3-0.4c-0.1-0.8-0.3-1.6-0.8-2.2c-0.5-0.7-1.2-0.9-2-0.8c-0.6,0.1-1,0.5-1.3,1C7.1,5,6.9,5.8,6.9,6.6
+                                      c0,0.1,0,0.2,0.1,0.2C7.8,6.7,8.5,6.7,9.3,6.7z M9.3,13.8C9.3,13.8,9.3,13.8,9.3,13.8c0.2,0,0.4,0,0.7,0c0.1,0,0.2,0,0.2-0.2
+                                      c0-0.3,0-0.7,0-1c0-0.1,0-0.2,0.1-0.3c0.9-0.7,0.7-2.2-0.4-2.6c-0.7-0.3-1.5,0-1.9,0.6c-0.4,0.6-0.2,1.5,0.4,1.9
+                                      c0.1,0.1,0.1,0.1,0.1,0.2c0,0.4,0,0.7,0,1.1c0,0.1,0,0.2,0.1,0.1C8.8,13.8,9,13.8,9.3,13.8z"></path>
+                        </svg>
+                      </div>
+                      <div class="gift-unlockers" data-gift-unlock="undefined">4 Bags</div>
+                    </div>
+                    <div class="gift-price-badge">
+                      <div class="text-block-188">FREE <span class="strikethroughs">$35.00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-gift="titles" class="gift-titles">
+                  <div class="gift_title is-active" data-gift="1">
+                    <div class="gift-title_text">Jump Rope</div>
+                  </div>
+                  <div class="gift_title is-active" data-gift="2">
+                    <div class="gift-title_text">Travel Packs</div>
+                  </div>
+                  <div class="gift_title is-active" data-gift="3">
+                    <div class="gift-title_text">Gym Towel</div>
+                  </div>
+                  <div class="gift_title is-active" data-gift="4">
+                    <div class="gift-title_text">Trucker Hat</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div data-element="button-holder" class="button-holder is-sticky is-active">
+          <div class="spacer-xsmall"></div>
+          <div>
+            <div class="include-kit">
+              <div class="div-block-984">
+                <div data-bundle="savings-container" class="kit-head is-active">You're saving <span data-bundle="saving-pct" class="text-span-75">37</span>% </div>
+              </div>
+              <div class="kit-price">
+                <div class="savings">
+                  <div class="icon-embed-xxsmall w-embed">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--iconoir" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2v4m0 12v4m10-10h-4M6 12H2m2.929-7.071l2.828 2.828m8.486 8.486l2.828 2.828m0-14.142l-2.828 2.828m-8.486 8.486L4.93 19.07"></path>
+                    </svg>
+                  </div>
+                  <div>GIFTS UNLOCKED: <span data-bundle="gifts-unlocked">1</span>/4 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="spacer-xxsmall"></div>
+          <a data-checkout-button="submit" role="button" data-checkout="submit" class="button is-full is-squared w-inline-block is-inactive">
+            <div data-checkout="loading" class="loading-spinner w-embed">
+              <svg viewBox="0 0 50 50" class="spinner">
+                <circle class="ring" cx="25" cy="25" r="22.5"></circle>
+                <circle class="line" cx="25" cy="25" r="22.5"></circle>
+              </svg>
+              <style>
+                .spinner {
+                  --spinner-size: 2;
+                  --line-color: #ffffff;
+                  --line-alpha: 1;
+                  --ring-color: #ffffff;
+                  --ring-alpha: 0.05;
+                  --ring-size: 6;
+                  font-size: calc(var(--spinner-size) * 1em);
+                  width: 1em;
+                  height: 1em;
+                  border-radius: 50%;
+                }
+        
+                .spinner .line {
+                  fill: none;
+                  stroke: var(--line-color);
+                  stroke-width: var(--ring-size);
+                  opacity: var(--line-alpha);
+                  stroke-linecap: round;
+                  transform-origin: 50% 50%;
+                  transform: rotate3d(0, 0, 1, 0deg);
+                  animation:
+                    2156ms spinner-arc ease-in-out infinite,
+                    1829ms spinner-rotate linear infinite;
+                }
+        
+                .spinner .ring {
+                  fill: none;
+                  stroke: var(--ring-color);
+                  stroke-width: var(--ring-size);
+                  opacity: var(--ring-alpha);
+                }
+        
+                @keyframes spinner-rotate {
+                  to {
+                    transform: rotate3d(0, 0, 1, 360deg);
+                  }
+                }
+        
+                @keyframes spinner-arc {
+                  from {
+                    stroke-dasharray: 0 150;
+                    stroke-dashoffset: 0;
+                  }
+        
+                  to {
+                    stroke-dasharray: 100 150;
+                    stroke-dashoffset: -140;
+                  }
+                }
+        
+                --spinner-size: 2em --ring-size: 6 --line-color: #ffffff --line-alpha: 1 --ring-color: #ffffff --ring-alpha: 0.05
+              </style>
+            </div>
+            <div data-checkout-button="content" class="cta1_button-content">
+              <div id="cta_text1" data-checkout="cta-text" class="button-text-5">Select at least <span class="bags-select" data-bags="4">4 bags</span></div>
+              <div id="cta_text2" data-checkout="cta-text2" class="button-text-5 hidden">Proceed to Checkout</div>
+            </div>
+            <div data-checkout-button="arrow" class="icon-embed-xsmall w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--heroicons" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20">
+                <path fill="currentColor" fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" width="100%" height="100%"></path>
+              </svg>
+            </div>
+          </a>
+          <div class="spacer-xsmall"></div>
+        </div>
+
+        <div class="div-block-919">
+          <img src="https://assets-global.website-files.com/65de5f112dbd7f7bdfc2f7b0/65de5f112dbd7f7bdfc2fb03_guarantee.svg" loading="eager" alt="" class="icon-large">
+          <p class="text-size-tiny">Try it risk-free for 30 days. If you're not totally in love with the product, we will refund you 100%. <strong>
+              <br>
+            </strong>
+          </p>
+        </div>
+ 
+
+            
+              
+            </div>
+
+        
+     </div>
+    </div>
+</div>
+
+
+<script>
+    $('#shopify-section-{{ section.id }} .quantity-selector_card').click(function() {
+      $('#shopify-section-{{ section.id }} .quantity-selector_card').removeClass("current-qty");
+
+       $(this).each(function() {
+            $(this).addClass("current-qty");
+
+            // Gifts Functions
+            var data_qty = $(this).data("qty");
+
+            if(data_qty == "4"){
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='1']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='2']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='3']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='4']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} span[data-bundle='saving-pct']").text("58");
+              $("#shopify-section-{{ section.id }} span.days-sub").text("120");
+              $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("4 bags").attr("data-bags","4");
+              $(".navbar-container span.bags-select").text("4 bags").attr("data-bag","4");;
+              
+            }
+           else if(data_qty == "3"){
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='1']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='2']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='3']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='4']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} span[data-bundle='saving-pct']").text("53");
+              $("#shopify-section-{{ section.id }} span.days-sub").text("90");
+              $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("3 bags").attr("data-bags","3");
+              $(".navbar-container span.bags-select").text("3 bags").attr("data-bag","3");;
+            }
+           else if(data_qty == "2"){
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='1']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='2']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='3']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='4']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} span[data-bundle='saving-pct']").text("44");
+              $("#shopify-section-{{ section.id }} span.days-sub").text("60");
+              $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("2 bags").attr("data-bags","2");
+              $(".navbar-container span.bags-select").text("2 bags").attr("data-bag","2");;
+            }
+          else{
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='1']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='2']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='3']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='4']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} span[data-bundle='saving-pct']").text("37");
+              $("#shopify-section-{{ section.id }} span.days-sub").text("30");
+              $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("1 bag").attr("data-bags","1");
+              $(".navbar-container span.bags-select").text("1 bag").attr("data-bag","1");
+            }
+
+         
+        });
+    
+    });
+
+   // Flavor Functions
+    $('#shopify-section-{{ section.id }} .flavor_add-btn').click(function() {
+       $(this).each(function() {
+            $(this).removeClass("is-active");
+            $(this).parents(".flavor2_quantity-2").find(".flavor_qty-display").addClass("is-active").val(1);
+            findTotal();
+        });
+    });
+
+  $('#shopify-section-{{ section.id }} .flavor div[data-quantity="increase"]').click(function () {
+       $(this).each(function() {
+		if ($(this).prev().val() < 4) {
+    	$(this).prev().val(+$(this).prev().val() + 1);
+		}
+        findTotal();
+      });
+  });
+
+  $('#shopify-section-{{ section.id }} .flavor div[data-quantity="decrease"]').click(function () {
+		if ($(this).next().val() > 0) {
+    	if ($(this).next().val() > 0) $(this).next().val(+$(this).next().val() - 1);
+		}
+
+		if ($(this).next().val() == 0) {
+        $(this).parents(".flavor2_quantity-container").prev(".flavor_add-btn").addClass("is-active");
+		}
+        findTotal();
+  });
+
+
+  $('#shopify-section-{{ section.id }} .flavors div[data-quantity="increase"]').click(function () {
+       $(this).each(function() {
+		if ($(this).prev().val() < 4) {
+    	$(this).prev().val(+$(this).prev().val() + 1);
+		}
+        findTotal();
+      });
+  });
+
+  $('#shopify-section-{{ section.id }} .flavors div[data-quantity="decrease"]').click(function () {
+		if ($(this).next().val() > 0) {
+    	if ($(this).next().val() > 0) $(this).next().val(+$(this).next().val() - 1);
+		}
+
+		if ($(this).next().val() == 0) {
+        $(this).parents(".flavor2_quantity-container").prev(".flavor_add-btn").addClass("is-active");
+		}
+        findTotal();
+  });
+
+
+ 
+
+
+function findTotal(){
+    var arr = $('.autoship-section .flavor_qty-display');
+    var tot=0;
+    for(var i=0;i<arr.length;i++){
+        if(parseFloat(arr[i].value))
+            tot += parseFloat(arr[i].value);
+    }
+  
+   if(tot == 4){
+         $("#shopify-section-{{ section.id }} div[data-quantity='increase']").addClass("is-inactive");
+         $("#shopify-section-{{ section.id }} div[data-quantity='quick-add']").addClass("is-inactive");      
+  
+             $('#shopify-section-{{ section.id }} input.flavor_qty-display').each(function() {
+                    if ($(this).val() >= 1) {
+                        console.log('all inputs filled');
+                        $(this).parents('.flavor_card-item').removeClass("is-inactive");
+                    }
+                    else{
+                        $(this).parents('.flavor_card-item').addClass("is-inactive");
+                        console.log('theres an empty input');
+                    }
+             });
+  
+  
+      }
+   else{
+       $("#shopify-section-{{ section.id }} div[data-quantity='increase']").removeClass("is-inactive");
+       $("#shopify-section-{{ section.id }} div[data-quantity='quick-add']").removeClass("is-inactive"); 
+
+           $('#shopify-section-{{ section.id }} input.flavor_qty-display').each(function() {
+                      $(this).parents('.flavor_card-item').removeClass("is-inactive");
+           });
+
+    }
+
+
+          if(tot == "4"){
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='1']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='2']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='3']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='4']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} span[data-bundle='saving-pct']").text("58");
+              $("#shopify-section-{{ section.id }} span[data-bundle='gifts-unlocked']").text("4");
+
+            }
+           else if(tot == "3"){
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='1']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='2']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='3']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='4']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} span[data-bundle='saving-pct']").text("53");
+              $("#shopify-section-{{ section.id }} span[data-bundle='gifts-unlocked']").text("3");
+            }
+           else if(tot == "2"){
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='1']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='2']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='3']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='4']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} span[data-bundle='saving-pct']").text("44");
+              $("#shopify-section-{{ section.id }} span[data-bundle='gifts-unlocked']").text("2");
+            }
+          else{
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='1']").addClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='2']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='3']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} .gift_card[data-gift='4']").removeClass("is-active");
+              $("#shopify-section-{{ section.id }} span[data-bundle='saving-pct']").text("37");
+              $("#shopify-section-{{ section.id }} span[data-bundle='gifts-unlocked']").text("1");
+            }
+
+    var bot_text = $("#navigation span.bags-select").data("bag");
+
+
+    if(tot >= bot_text){
+      $("#shopify-section-{{ section.id }} a[data-checkout='submit']").removeClass("is-inactive");
+      $("#shopify-section-{{ section.id }} .cta1_button-content div#cta_text1").addClass("hidden");
+      $("#shopify-section-{{ section.id }} .cta1_button-content div#cta_text2").removeClass("hidden");
+    }
+    else{
+      $("#shopify-section-{{ section.id }} a[data-checkout='submit']").addClass("is-inactive");
+      $("#shopify-section-{{ section.id }} .cta1_button-content div#cta_text1").removeClass("hidden");
+      $("#shopify-section-{{ section.id }} .cta1_button-content div#cta_text2").addClass("hidden");
+
+      if (bot_text == "1"){
+        $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("1 bag");
+      }
+      else if (bot_text == "2"){
+        $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("2 bags");
+      }
+      else if (bot_text == "3"){
+        $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("3 bags");
+      }
+      else{
+        $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("4 bags");
+      }
+
+      
+    }
+
+     
+
+  
+}
+
+
+      $('#shopify-section-{{ section.id }} a[data-checkout="submit"]').click(function() {
+             var blue = $('#shopify-section-{{ section.id }} div#blue_flavor .flavor_qty-display').val();
+             var watermelon = $('#shopify-section-{{ section.id }} div#watermelon_flavor .flavor_qty-display').val();
+             var sour = $('#shopify-section-{{ section.id }} div#sour_flavor .flavor_qty-display').val();
+             var orange = $('#shopify-section-{{ section.id }} div#orange_flavor .flavor_qty-display').val();
+             let checkout_url = 'https://trycreate.co/cart/clear?return_to=/cart/add?';
+             let cart_items = [];
+
+              let n = [43171279863996,43278643396796,43460657152188,43171279634620];
+              let n1 = [5147984060,5179015356,5268308156,5148016828];
+              let n2 = [5340070076,5340266684,5340168380,5339971772];
+              let n3 = [5340102844,5340299452,5340201148,5340004540];
+              let n4 = [5340135612,5340332220,5340233916,5340037308];
+              let m = [blue,watermelon,sour,orange];
+        
+
+               var sum;
+               sum = parseInt(orange) + parseInt(blue) + parseInt(sour) + parseInt(watermelon);
+
+               if(sum == 1){
+                  n.forEach((num1, index) => {
+                  const num2 = m[index];
+                  const num3 = n1[index];
+
+                  let item = {
+                          id: num1,
+                          quantity: num2,
+                          selling_plan: num3
+                      };
+                      cart_items.push(item);
+                  });
+
+              }
+             else if(sum == 2){
+                 n.forEach((nums1, index) => {
+                  const nums2 = m[index];
+                  const nums3 = n2[index];
+
+                  let item = {
+                          id: nums1,
+                          quantity: nums2,
+                          selling_plan: nums3
+                      };
+                      cart_items.push(item);
+                  });
+
+              }
+              else if(sum == 3){
+                 n.forEach((numss1, index) => {
+                  const numss2 = m[index];
+                  const numss3 = n3[index];
+
+                  let item = {
+                          id: numss1,
+                          quantity: numss2,
+                          selling_plan: numss3
+                      };
+                      cart_items.push(item);
+                  });
+
+              }
+             else if(sum == 4){
+                 n.forEach((numsss1, index) => {
+                  const numsss2 = m[index];
+                  const numsss3 = n4[index];
+
+                  let item = {
+                          id: numsss1,
+                          quantity: numsss2,
+                          selling_plan: numsss3
+                      };
+                      cart_items.push(item);
+                  });
+
+              }
+
+ 
+
+
+
+
+                  if(sum == 1){
+
+                    let item = {
+                        id: 42987377688764,
+                        quantity: 1
+                    };
+                    cart_items.push(item);
+
+                    
+                  }
+                  else if(sum == 2){
+
+                     let bundle_items = [42987377688764,43894500884668];
+                      bundle_items.forEach(bundle_item => {
+                        let item = {
+                          id: bundle_item,
+                          quantity: 1
+                        };
+                        cart_items.push(item);
+                      });
+                          
+                  }
+
+                  else if(sum == 3){
+
+                     let bundle_items = [42987377688764,43894500884668,43018716610748];
+                      bundle_items.forEach(bundle_item => {
+                        let item = {
+                          id: bundle_item,
+                          quantity: 1
+                        };
+                        cart_items.push(item);
+                      });
+                          
+                  }
+
+                 else if(sum == 4){
+
+                     let bundle_items = [42987377688764,43894500884668,43018716610748,43097202557116];
+                      bundle_items.forEach(bundle_item => {
+                        let item = {
+                          id: bundle_item,
+                          quantity: 1
+                        };
+                        cart_items.push(item);
+                      });
+                          
+                  }
+            
+        if(cart_items){
+          cart_items.forEach(item => {
+            if(item.quantity != '0') {
+              checkout_url = checkout_url + '%26items[][id]=' + item.id + '%26items[][quantity]=' + item.quantity;
+              if(item.selling_plan != null) {
+                checkout_url = checkout_url + '%26items[][selling_plan]=' + item.selling_plan;
+              }
+              if(item.properties != null) {
+                for (const key in item.properties) {
+                  checkout_url = checkout_url + '%26items[][properties]['+ key +']=' + item.properties[key];
+                }
+              }
+            }
+          });
+          checkout_url = checkout_url + '%26return_to=/checkout';
+          if(sum == 1){
+            checkout_url = checkout_url + '?discount=ASATTN1';
+          }
+          else if(sum == 2){
+            checkout_url = checkout_url + '?discount=ASATTN2';
+          }
+          else if(sum == 3){
+            checkout_url = checkout_url + '?discount=ASATTN3';
+          }
+          else{
+            checkout_url = checkout_url + '?discount=ASATTN4';
+          }
+         
+         }
+          window.location = checkout_url;
+        
+        
+      });
+
+
+
+
+
+  
+
+     $("#shopify-section-{{ section.id }} a[data-direction='next']").click(function() {
+       $("#shopify-section-{{ section.id }} .content-wrapper2").removeClass("hide");
+       $(".autoship-fb .shopify-section").css("display","none");
+       $(".navbar-component2 ").removeClass("hidden");
+       $('html, body').animate({scrollTop: '0px'}, 300);
+       
+       $("#shopify-section-{{ section.id }} .content-wrapper1").addClass("hide");
+       var qty = $('#shopify-section-{{ section.id }} .quantity-selector_card.current-qty').data('qty');
+
+        if(qty == 1 ){
+          $("#shopify-section-{{ section.id }} a[data-checkout='submit']").removeClass("is-inactive");
+          $("#shopify-section-{{ section.id }} div#cta_text1").addClass("hidden");
+          $("#shopify-section-{{ section.id }} div#cta_text2").removeClass("hidden");
+        }
+        else{
+          $("#shopify-section-{{ section.id }} a[data-checkout='submit']").addClass("is-inactive");
+          $("#shopify-section-{{ section.id }} div#cta_text1").removeClass("hidden");
+          $("#shopify-section-{{ section.id }} div#cta_text2").addClass("hidden");
+    
+          if (qty == "1"){
+            $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("1 bag");
+          }
+          else if (qty == "2"){
+            $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("2 bags");
+          }
+          else if (qty == "3"){
+            $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("3 bags");
+          }
+          else{
+            $("#shopify-section-{{ section.id }} .cta1_button-content span.bags-select").text("4 bags");
+          }
+    
+          
+        }
+       
+       
+     });
+
+     $(".button-backss").click(function() {
+       $("#shopify-section-{{ section.id }} .content-wrapper2").addClass("hide");
+        $(".autoship-fb .shopify-section").css("display","block");
+       $("div#shopify-section-header-01").css("display","none");
+       $(".navbar-component2 ").addClass("hidden");
+       $('html, body').animate({scrollTop: '0px'}, 300);
+       
+       $("#shopify-section-{{ section.id }} .content-wrapper1").removeClass("hide");
+     });
+
+</script>
+
+{% schema %}
+  {
+    "name": "Autoship Section",
+    "class": "autoship-section",   
+    "settings": [],
+     "presets":[{
+            "name": "Autoship Section"
+     }]
+  }
+{% endschema %}

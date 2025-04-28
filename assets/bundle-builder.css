@@ -1,0 +1,117 @@
+.bundle-builder {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.bundle-builder__container {
+  max-width: 1312px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.bundle-builder__box {
+  background: #39BDAC;
+  padding: 29px 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.bundle-builder__box-icon {
+  max-width: 40px;
+  width: 100%;
+}
+
+.bundle-builder__box-icon img {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}
+
+.bundle-builder__heading {
+  color: #fff;
+  font-family: Bebas Neue,sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.bundle-builder__desc {
+  font-family: Inter,sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #fff;
+  margin: 0;
+}
+
+.bundle-builder__desc strong, 
+.bundle-builder__desc b {
+  font-weight: 600;
+}
+
+.bundle-builder__btn {
+  font-weight: 500;
+  color: #10443C;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue';
+  line-height: 100%;
+  font-size: 30px;
+  letter-spacing: 0;
+  transition: all 0.4s ease;
+  position: absolute;
+  right: 36px;
+  bottom: 50px;
+}
+
+
+.bundle-builder__btn:hover {
+  color: #fff;
+}
+
+.bundle-builder__content {
+  max-width: calc(100% - 65px);
+  width: 100%;
+}
+
+@media (max-width: 990px) {
+  .bundle-builder__heading {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+
+  .bundle-builder__desc {
+    font-size: 14px;
+  }
+
+  .bundle-builder__btn {
+    position: static;
+    font-size: 18px;
+  }
+
+  .bundle-builder__box { 
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .bundle-builder__box-icon { 
+    max-width: 20px;
+  }
+
+  .bundle-builder__content {
+    max-width: calc(100% - 28px);
+  }
+
+  .bundle-builder__desc {
+    margin: 0 0 16px;
+  }
+
+}

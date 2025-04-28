@@ -1,0 +1,33 @@
+{% comment %}
+  Renders order price
+
+  Accepts Parameters:
+  - line_item : {Object} Line item liquid object
+{% endcomment %}
+
+<div class="product-price__wrapper {{ container_class | default: '' }}">
+  <div class="product-price_top order-product__price fnt-14 text-color {% if line_item.unit_price -%} add-bottom-spacing {%- endif -%}">
+     {%- if line_item.original_price != line_item.final_price -%}       
+        {% comment %} New one {% endcomment %}
+        <span class="final-price">
+            {{ line_item.final_price | money }}
+        </span>
+        <del class="original-price">
+            {{ line_item.original_price | money }}
+        </del>
+    {%- else -%}
+        <span class="final-price">
+            {{ line_item.final_price | money }}
+        </span>
+    {%- endif -%}
+  </div>
+  <div class="product-price_bottom" {% unless line_item.unit_price -%} hidden {%- endunless -%}>
+    <p class="fnt-14 text-color product-unit-price__measurment" >
+      <span>{{ line_item.unit_price | money }}</span><span> / </span>
+      {%- if line_item.unit_price_measurement.reference_value != 1 -%}
+        <span>{{ line_item.unit_price_measurement.reference_value }}</span>
+      {%- endif -%}
+      {{ line_item.unit_price_measurement.reference_unit }}
+    </p>
+  </div>
+</div>

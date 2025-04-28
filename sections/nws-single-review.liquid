@@ -1,0 +1,50 @@
+<!-- nws-single-review -->
+  {% if section.settings.t-txt != blank %}
+    <div class="nws-single-review" {% if section.settings.section-color != blank %}style="background-color:{{ section.settings.section-color }};"{% endif %} >
+      <div class="container" >
+        <div class="nws-single-review-content">
+          <div class="nws-single-review-img" >
+            {% if section.settings.img-icon != blank %}<img src="{{ section.settings.img-icon | img_url: '150x' }}" />{% endif %}
+          </div>
+          <div class="nws-single-review-txt" >
+            {% if section.settings.t-txt != blank %}<h3>{{ section.settings.t-txt }}</h3>{% endif %}
+            {% if section.settings.q-txt != blank %}<div>{{ section.settings.q-txt }}</div>{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+<!-- end nws-single-review -->
+{% schema %}
+  {
+    "name": "NWS - Single Review",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "img-icon",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "t-txt",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "q-txt",
+          "label": "Quote"
+        }
+    ],
+    "presets": [
+        {
+          "name": "NWS - Single Review",
+          "category": "NWS Sections"
+        }
+    ]
+  }
+{% endschema %}

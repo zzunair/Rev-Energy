@@ -1,0 +1,75 @@
+{{ 'radicaly.css' | asset_url | stylesheet_tag }}
+
+<section class="radically">
+  <div class="radically__container container">
+    {% if section.settings.heading != blank %}
+      <h2 class="radically__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    <div class="radically__blocks">
+      {% for block in section.blocks %}
+        <div class="radically__block" {{ block.shopify_attributes }}>
+          {% if block.settings.title != blank %}
+            <h3 class="radically__block-title">{{ block.settings.title }}</h3>
+          {% endif %}
+          {% if block.settings.description != blank %}
+            <p class="radically__block-description">{{ block.settings.description }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "radically",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Our Radically Awesome Features"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "radically",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "content",
+          "settings": {
+            "title": "Fast Performance",
+            "description": "Our solutions are built for speed and scalability."
+          }
+        },
+        {
+          "type": "content",
+          "settings": {
+            "title": "Reliable Support",
+            "description": "We're here for you when you need us most."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

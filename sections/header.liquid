@@ -1,0 +1,1202 @@
+{% liquid
+  assign style_transparent_Header = false
+  if section.settings.show_on_only_homepage and request.page_type != 'index'
+    assign style_transparent_Header = false
+
+  elsif section.settings.enable_transparent_header
+    assign style_transparent_Header = true
+  endif
+%}
+{% style %}
+  :root  {
+    --sticky-header-enabled: {%- if section.settings.enable_sticky -%}
+      1{% else %}
+      0{% endif %};
+  }
+
+  #shopify-section-{{ section.id }} {
+    position:
+
+    {%- if section.settings.enable_sticky  -%}
+        sticky
+    {% else %}
+        relative
+    {% endif %};
+    z-index: 6;
+    top: 0;
+    left:0;
+    right:0;
+  }
+
+  {%- if section.settings.enable_sticky  -%}
+    .section-annoucement-bar ~ #shopify-section-{{ section.id }} {
+      top: calc(var(--sticky-announcement-enabled, 0) * var(--announcement-height, 0px));
+      z-index: 6;
+    }
+  {%- endif -%}
+
+  .logo {
+    height: auto;
+    width: {{ section.settings.logo_width | append: "px" }}
+    ;
+    object-fit: contain;
+  }
+
+  @media(max-width:767px) {
+    .logo {
+      width: {{ section.settings.logo_mobile_width | append: "px" }}
+    }
+  }
+{% endstyle %}
+
+{%- if section.settings.menu != blank -%}
+  <height-calc class="d-block" variable="header">
+    <header-component
+      {% if style_transparent_Header %}
+        transparent-header
+        style="--header-text-color: {{ section.settings.transparent_header_text_color }}"
+      {% endif %}
+      data-index="{{ section.index }}"
+    >
+      <nav
+        class="navbar  color-{{ section.settings.color_scheme }} {% if section.settings.bottom_box_shadow %} bottom_box_shadow{% endif %}"
+        {% if section.settings.enable_sticky and section.settings.sticky_header_style == 'on_scroll_up' %}
+          hide-on-scroll
+        {% endif %}
+
+        aria-label="Main Navigation"
+      >
+        <div class="container">
+          <div class="header-container {% if section.settings.logo_position != 'drawer' %} {{ section.settings.logo_position }} {% endif %}">
+            {% comment %} Header drawer Desktop  {% endcomment %}
+            <div class="header-drawer {% if section.settings.logo_position == 'drawer' %} header-drawer--desktop {% endif %}">
+              <div>
+                <button
+                  aria-label="Open Hamburger Drawer"
+                  class="d-flex p-0 header__hamberger"
+                  drawer-to-open="header"
+                  is="open-drawer"
+                  type="button"
+                  target-portal-element="#portal"
+                  section-id="{{ section.id | prepend: 'shopify-section-' }}"
+                >
+                  {% render 'icon' with 'hamburger' %}
+                </button>
+              </div>
+            </div>
+
+            {% unless section.settings.logo_position == 'logo-left-menu-left'
+              or section.settings.logo_position == 'logo-center-menu-bottom'
+            %}
+              <div
+                class="header__menu-wrp {% if section.settings.logo_position == 'drawer' %} hide-nav {% endif %}"
+              >
+                <ul
+                  class="navbar-nav header__nav-list mega-menu dropdown-menu__list-item d-flex"
+                  aria-label="Main Navigation"
+                >
+                  {% for link in section.settings.menu.links %}
+                    <li class="nav-item fnt-14">
+                      {% if link.links != blank %}
+                        {% liquid
+                          unless section.blocks == blank
+                            assign linkItem = link.title | capitalize
+                            assign megamenu = false
+                            for block in section.blocks
+                              assign menuItem = block.settings.mega_menu_trigger | capitalize
+                              if menuItem contains linkItem
+                                assign megamenu = true
+                              endif
+                            endfor
+                          endunless
+                        %}
+                        <header-menu-trigger
+                          data-identefier="parent-element"
+                          data-trigger="click"
+                        >
+                          <details
+                            {% unless megamenu %}
+                              class="dropdown-nav-item"
+                            {% endunless %}
+                            aria-label="{{ link.title }}"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <summary menu-item class="parent-menu__link" role="button">
+                              <span class="menu-main-link fnt-14">{{ link.title | escape }}</span>
+                              {% render 'icon' with 'caret' %}
+                            </summary>
+                            {% unless section.blocks == blank %}
+                              {% assign showDropdown = true %}
+                              {% for block in section.blocks %}
+                                {% liquid
+                                  assign blockTrigger = block.settings.mega_menu_trigger | capitalize
+                                  assign linkText = link.title | capitalize
+                                %}
+
+                                {% if blockTrigger contains linkText %}
+                                  {% case block.type %}
+                                    {% when 'mega_menu_promotion' %}
+                                      {% render 'mega-menu-promotion',
+                                        link: link,
+                                        block: block,
+                                        colorScheme: section.settings['color_scheme-menu']
+                                      %}
+                                    {% when 'mega_menu_products' %}
+                                      {% render 'mega-menu-products',
+                                        link: link,
+                                        block: block,
+                                        colorScheme: section.settings['color_scheme-menu']
+                                      %}
+
+                                    {% when 'mega_menu_collections' %}
+                                      {% render 'mega-menu-collections',
+                                        link: link,
+                                        block: block,
+                                        colorScheme: section.settings['color_scheme-menu']
+                                      %}
+                                  {% endcase %}
+                                  {% assign showDropdown = false %}
+                                  {% break %}
+                                {% endif %}
+                              {% endfor %}
+
+                              {% if showDropdown %}
+                                {% render 'dropdown-nav',
+                                  link: link,
+                                  colorScheme: section.settings['color_scheme-menu']
+                                %}
+                              {% endif %}
+                            {% else %}
+                              {% render 'dropdown-nav',
+                                link: link,
+                                colorScheme: section.settings['color_scheme-menu']
+                              %}
+                            {% endunless %}
+                          </details>
+                        </header-menu-trigger>
+                      {%- else -%}
+                        <a
+                          href="{{ link.url }}"
+                          class="{% if link.current %} active{% endif %} menu-main-link"
+                          {% if link.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ link.title | escape }}
+                        </a>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endunless %}
+
+            {% comment %} Header Logo {% endcomment %}
+            <div
+              class="
+                logo-container {% if section.settings.logo_position != 'drawer' and section.settings.logo_position != "logo-center-menu-bottom" and section.settings.logo_position != "logo-center-menu-left" %}  align-logo-{{ section.settings.logo_position }}{% endif %}
+                {% if section.settings.logo_position != 'drawer' and section.settings.logo_position == "logo-center-menu-bottom" %}
+                  align-logo-cente-grid-item
+                {% endif %}
+              "
+            >
+              {%- if request.page_type == 'index' -%}
+                <h1 class="heading-brand-logo-text h3 m-0">
+              {%- endif -%}
+              <a class="navbar-brand" href="{{ routes.root_url }}">
+                {%- capture size -%}
+                  {{ '(min-width: 780px) ' | append: section.settings.logo_width | append: 'px' }},{{ section.settings.logo_mobile_width | append: 'px' }}
+                  {%- endcapture -%}
+                {%- capture widths -%}
+                  {{ section.settings.logo_mobile_width | times: 2 | at_most: section.settings.header_logo.width }},{{ section.settings.logo_width | times: 2 | at_most: section.settings.header_logo.width }}
+                  {%- endcapture -%}
+                {% assign logo_alt = section.settings.logo.alt | default: shop.name | escape %}
+                {% if section.settings.header_logo != blank %}
+                  <span class="visually-hidden">{{ shop.name | escape }} </span>
+                  {% if section.settings.enable_transparent_header
+                    and section.settings.transparent_header_logo != blank
+                    and style_transparent_Header
+                  %}
+                    {{
+                      section.settings.transparent_header_logo
+                      | image_url: width: section.settings.transparent_header_logo.width
+                      | image_tag:
+                        alt: logo_alt,
+                        widths: widths,
+                        sizes: size,
+                        loading: 'eager',
+                        class: 'transparent-logo logo'
+                    }}
+                  {% endif %}
+                  {{
+                    section.settings.header_logo
+                    | image_url: width: section.settings.header_logo.width
+                    | image_tag: alt: logo_alt, widths: widths, sizes: size, loading: 'eager', class: 'main-logo logo'
+                  }}
+                {% else %}
+                  <span class="logo-text h3">{{ shop.name | escape }}</span>
+                {% endif %}
+              </a>
+              {%- if request.page_type == 'index' -%}
+                </h1>
+              {%- endif -%}
+              {% if section.settings.logo_position != 'drawer'
+                and section.settings.logo_position == 'logo-left-menu-left'
+              %}
+                <div
+                  aria-label="Menu"
+                  class="header__menu-wrp menu-left "
+                >
+                  <ul class="navbar-nav header__nav-list mega-menu dropdown-menu__list-item d-flex ">
+                    {% for link in section.settings.menu.links %}
+                      <li class="nav-item ">
+                        {% if link.links != blank %}
+                          {% liquid
+                            unless section.blocks == blank
+                              assign linkItem = link.title | capitalize
+                              assign megamenu = false
+                              for block in section.blocks
+                                assign menuItem = block.settings.mega_menu_trigger | capitalize
+                                if menuItem contains linkItem
+                                  assign megamenu = true
+                                endif
+                              endfor
+                            endunless
+                          %}
+                          <header-menu-trigger
+                            data-identefier="parent-element"
+                            data-trigger="click"
+                          >
+                            <details
+                              {% unless megamenu %}
+                                class="dropdown-nav-item"
+                              {% endunless %}
+                              aria-label="{{ link.title }}"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              <summary menu-item class="parent-menu__link" role="button">
+                                <span class="menu-main-link fnt-14">{{ link.title | escape }}</span>
+                                {% render 'icon' with 'caret' %}
+                              </summary>
+                              {% unless section.blocks == blank %}
+                                {% assign showDropdown = true %}
+                                {% for block in section.blocks %}
+                                  {% liquid
+                                    assign blockTrigger = block.settings.mega_menu_trigger | capitalize
+                                    assign linkText = link.title | capitalize
+                                  %}
+
+                                  {% if blockTrigger contains linkText %}
+                                    {% case block.type %}
+                                      {% when 'mega_menu_promotion' %}
+                                        {% render 'mega-menu-promotion',
+                                          link: link,
+                                          block: block,
+                                          colorScheme: section.settings['color_scheme-menu']
+                                        %}
+                                      {% when 'mega_menu_products' %}
+                                        {% render 'mega-menu-products',
+                                          link: link,
+                                          block: block,
+                                          colorScheme: section.settings['color_scheme-menu']
+                                        %}
+
+                                      {% when 'mega_menu_collections' %}
+                                        {% render 'mega-menu-collections',
+                                          link: link,
+                                          block: block,
+                                          colorScheme: section.settings['color_scheme-menu']
+                                        %}
+                                    {% endcase %}
+                                    {% assign showDropdown = false %}
+                                    {% break %}
+                                  {% endif %}
+                                {% endfor %}
+                                {% if showDropdown %}
+                                  {% render 'dropdown-nav',
+                                    link: link,
+                                    colorScheme: section.settings['color_scheme-menu']
+                                  %}
+                                {% endif %}
+                              {% else %}
+                                {% render 'dropdown-nav',
+                                  link: link,
+                                  colorScheme: section.settings['color_scheme-menu']
+                                %}
+                              {% endunless %}
+                            </details>
+                          </header-menu-trigger>
+                        {%- else -%}
+                          <a
+                            href="{{ link.url }}"
+                            class="{% if link.current %} active{% endif %} menu-main-link"
+                            {% if link.current %}
+                              aria-current="page"
+                            {% endif %}
+                            aria-label="{{ link.title }}"
+                            menu-item
+                          >
+                            {{ link.title | escape }}
+                          </a>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </div>
+
+            {% comment %} Header right icons {% endcomment %}
+            <div class="d-flex order-3 header__iconGroup">
+              <ul class="d-flex">
+                {% liquid
+                  assign show_highlight_button = false
+                  if section.settings.highlight_heading != blank
+                    assign show_highlight_button = true
+                  endif
+                  if section.settings.use_outline_button_style
+                    assign button_style = 'border'
+                  else
+                    assign button_style = 'fill'
+                  endif
+                %}
+                {% if show_highlight_button %}
+                  <li class="desktop-only">
+                    <a
+                      class="btn btn--{{ button_style }} btn--small"
+                      href="{{ section.settings.highlight_link }}"
+                    >
+                      {{ section.settings.highlight_heading }}
+                    </a>
+                  </li>
+                {% endif %}
+                <li class="search-icon mb-0">
+                  <a
+                    search_page_link
+                    aria-label="Search"
+                    class="btn--transparent header__icon"
+                    href="{{ routes.search_url }}"
+                  >
+                    {% render 'icon' with 'search' %}
+                  </a>
+                  <button
+                    aria-label="Search"
+                    class="btn--transparent js-element header__icon d-none"
+                    drawer-to-open="search-drawer"
+                    is="open-drawer"
+                  >
+                    {% render 'icon' with 'search' %}
+                  </button>
+                </li>
+                {% if shop.customer_accounts_enabled %}
+                  <li class="mb-0">
+                    <a
+                      aria-label="Account"
+                      class="d-v-center icon-label header__icon"
+                      href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                    >
+                      {% render 'icon' with 'account' %}
+                    </a>
+                  </li>
+                {% endif %}
+                <li class="mb-0">
+                 
+                    <a
+                      aria-label="Cart"
+                      class="header__icon js-element"
+                      href="{{ routes.cart_url }}"
+                    >
+                      {% render 'icon' with 'cart' %}
+                      <div header-cart-bubble>
+                        {%- if cart.item_count > 0 -%}
+                          <span class="header__cart__icon-count">{{ cart.item_count }}</span>
+                          <span class="visually-hidden">{{ cart.item_count }} items</span>
+                        {%- endif -%}
+                      </div>
+                    </a>
+                 
+                  <noscript>
+                    <a
+                      aria-label="Cart"
+                      class="header__icon"
+                      href="{{ routes.cart_url }}"
+                    >
+                      {% render 'icon' with 'cart' %}
+                      <div>
+                        {%- if cart.item_count > 0 -%}
+                          <span class="header__cart__icon-count">{{ cart.item_count }}</span>
+                          <span class="visually-hidden">{{ cart.item_count }} items</span>
+                        {%- endif -%}
+                      </div>
+                    </a>
+                  </noscript>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {% comment %} Menu at the bottom  {% endcomment %}
+          {% if section.settings.logo_position == 'logo-center-menu-bottom'
+            and section.settings.logo_position != 'drawer'
+          %}
+            <div class="menu-bottom">
+              <div
+                aria-label="Menu"
+                class="header__menu-wrp "
+                role="navigation"
+              >
+                <ul class="navbar-nav header__nav-list mega-menu dropdown-menu__list-item d-flex justify-content-center">
+                  {% for link in section.settings.menu.links %}
+                    <li class="nav-item ">
+                      {% if link.links != blank %}
+                        {% liquid
+                          unless section.blocks == blank
+                            assign linkItem = link.title | capitalize
+                            assign megamenu = false
+                            for block in section.blocks
+                              assign menuItem = block.settings.mega_menu_trigger | capitalize
+                              if menuItem contains linkItem
+                                assign megamenu = true
+                              endif
+                            endfor
+                          endunless
+                        %}
+                        <header-menu-trigger
+                          data-identefier="parent-element"
+                          data-trigger="click"
+                        >
+                          <details
+                            {% unless megamenu %}
+                              class="dropdown-nav-item"
+                            {% endunless %}
+                            aria-label="{{ link.title }}"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <summary menu-item class="parent-menu__link" role="button">
+                              <span class="menu-main-link fnt-14">{{ link.title | escape }}</span>
+                              {% render 'icon' with 'caret' %}
+                            </summary>
+                            {% unless section.blocks == blank %}
+                              {% assign showDropdown = true %}
+                              {% for block in section.blocks %}
+                                {% liquid
+                                  assign blockTrigger = block.settings.mega_menu_trigger | capitalize
+                                  assign linkText = link.title | capitalize
+                                %}
+
+                                {% if blockTrigger contains linkText %}
+                                  {% case block.type %}
+                                    {% when 'mega_menu_promotion' %}
+                                      {% render 'mega-menu-promotion',
+                                        link: link,
+                                        block: block,
+                                        colorScheme: section.settings['color_scheme-menu']
+                                      %}
+                                    {% when 'mega_menu_products' %}
+                                      {% render 'mega-menu-products',
+                                        link: link,
+                                        block: block,
+                                        colorScheme: section.settings['color_scheme-menu']
+                                      %}
+
+                                    {% when 'mega_menu_collections' %}
+                                      {% render 'mega-menu-collections',
+                                        link: link,
+                                        block: block,
+                                        colorScheme: section.settings['color_scheme-menu']
+                                      %}
+                                  {% endcase %}
+                                  {% assign showDropdown = false %}
+                                  {% break %}
+                                {% endif %}
+                              {% endfor %}
+                              {% if showDropdown %}
+                                {% render 'dropdown-nav',
+                                  link: link,
+                                  colorScheme: section.settings['color_scheme-menu']
+                                %}
+                              {% endif %}
+                            {% else %}
+                              {% render 'dropdown-nav',
+                                link: link,
+                                colorScheme: section.settings['color_scheme-menu']
+                              %}
+                            {% endunless %}
+                          </details>
+                        </header-menu-trigger>
+                      {%- else -%}
+                        <a
+                          role="menuitem"
+                          href="{{ link.url }}"
+                          class="{% if link.current %} active{% endif %} menu-main-link"
+                          {% if link.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ link.title | escape }}
+                        </a>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </nav>
+    </header-component>
+  </height-calc>
+{% endif %}
+
+{%- if section.settings.hamberger_menu != blank or section.settings.menu != blank -%}
+  {% comment %} Hamberger Drawer  {% endcomment %}
+  {% render 'hamberger-drawer', section: section %}
+{% endif %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_linkedin | json }},
+      {{ settings.social_twitter | json }},
+      {{ settings.social_facebook | json }},
+      {{ settings.social_pinterest | json }},
+      {{ settings.social_instagram | json }},
+      {{ settings.social_tiktok | json }},
+      {{ settings.social_tumblr | json }},
+      {{ settings.social_snapchat | json }},
+      {{ settings.social_youtube | json }},
+      {{ settings.social_vimeo | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "header",
+  "class": "header position-relative section-header-header-group",
+  "settings": [
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "logo-center-menu-left",
+          "label": "Logo center, menu left"
+        },
+        {
+          "value": "logo-left-menu-center",
+          "label": "Logo left, menu center"
+        },
+        {
+          "value": "logo-center-menu-bottom",
+          "label": "Logo center, menu bottom"
+        },
+        {
+          "value": "logo-left-menu-left",
+          "label": "Logo left, menu left"
+        },
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        }
+      ],
+      "default": "logo-center-menu-left"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Enable sticky header",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "sticky_header_style",
+      "label": "Sticky header style",
+      "options": [
+        {
+          "value": "always",
+          "label": "Always"
+        },
+        {
+          "value": "on_scroll_up",
+          "label": "On scroll up"
+        }
+      ],
+      "default": "always"
+    },
+    {
+      "type": "checkbox",
+      "id": "bottom_box_shadow",
+      "label": "show bottom shadow",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "header_logo",
+      "label": "Image",
+      "info": "270 x 80px .png recommended"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Image width",
+      "max": 300,
+      "min": 30,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "logo_mobile_width",
+      "label": "Image mobile width",
+      "max": 180,
+      "min": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 134
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    },
+
+    {
+      "type": "header",
+      "content": "Highlight button"
+    },
+    {
+      "type": "text",
+      "id": "highlight_heading",
+      "label": "Label",
+      "default": "SHOP ALL"
+    },
+    {
+      "type": "url",
+      "id": "highlight_link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_outline_button_style",
+      "label": "Use outline button style",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Transparent header",
+      "info": "Enable this option to make the header transparent."
+    },
+    {
+      "type": "paragraph",
+      "content": "Transparent header will not work if there are any sections added below the header section in the header group."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_transparent_header",
+      "label": "Enable transparent header",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_only_homepage",
+      "label": "Show on only homepage",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "transparent_header_text_color",
+      "label": "Content color",
+      "default": "#000000",
+      "info": "This color will change the color of the links, icon  and  button"
+    },
+    {
+      "type": "image_picker",
+      "id": "transparent_header_logo",
+      "label": "Logo image",
+      "info": "Use the same dimensions as the main logo"
+    },
+    {
+      "type": "header",
+      "content": "Drawer"
+    },
+    {
+      "type": "link_list",
+      "id": "hamberger_menu",
+      "default": "main-menu",
+      "label": "Drawer menu"
+    },
+    {
+      "type": "header",
+      "content": "Language selector",
+      "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "Show language selector",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Country/region selector",
+      "info": "To add a country/region, go to your [markets settings.](/admin/settings/markets)."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_selector",
+      "label": "Enable country/region selector",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_flag",
+      "label": "Show country flag",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_name",
+      "label": "Show country name",
+      "default": false
+    },
+
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Header"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme-menu",
+      "default": "scheme-1",
+      "label": "Menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu_promotion",
+      "name": "Mega menu - promotion",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Menu item",
+          "id": "mega_menu_trigger",
+          "info": "Enter menu item to apply a mega menu dropdown."
+        },
+        {
+          "type": "header",
+          "content": "Promotion"
+        },
+        {
+          "type": "select",
+          "id": "promotion_stack",
+          "label": "Stack style",
+          "options": [
+            {
+              "value": "row",
+              "label": "Horizontal"
+            },
+            {
+              "value": "column",
+              "label": "Vertical"
+            }
+          ],
+          "default": "row"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "options": [
+            {
+              "label": "Portrait (3:4)",
+              "value": "portrait"
+            },
+            {
+              "label": "Square (1:1)",
+              "value": "square"
+            },
+            {
+              "label": "Adapt to image",
+              "value": "adapt"
+            },
+            {
+              "label": "Landspace (4:3)",
+              "value": "landscape"
+            }
+          ],
+          "default": "adapt"
+        },
+        {
+          "type": "text_alignment",
+          "id": "content_alignment",
+          "label": "Heading alignment",
+          "default": "left"
+        },
+        {
+          "type": "header",
+          "content": "Promotion 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "promotion-1_image",
+          "label": "Image",
+          "info": "1200 x 1200px (square 1:1) recommended"
+        },
+        {
+          "type": "text",
+          "id": "promotion-1_button_text",
+          "label": "Heading",
+          "default": "View all"
+        },
+        {
+          "type": "url",
+          "id": "promotion-1_link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Promotion 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "promotion-2_image",
+          "label": "Image",
+          "info": "1200 x 1200px (square 1:1) recommended"
+        },
+        {
+          "type": "text",
+          "id": "promotion-2_button_text",
+          "label": "Heading",
+          "default": "View all"
+        },
+        {
+          "type": "url",
+          "id": "promotion-2_link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Promotion 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "promotion-3_image",
+          "label": "Image",
+          "info": "1200 x 1200px (square 1:1) recommended"
+        },
+        {
+          "type": "text",
+          "id": "promotion-3_button_text",
+          "label": "Heading",
+          "default": "View all"
+        },
+        {
+          "type": "url",
+          "id": "promotion-3_link",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "link_target",
+          "label": "Open links in",
+          "options": [
+            {
+              "label": "New tab",
+              "value": "_blank"
+            },
+            {
+              "label": "Same tab",
+              "value": "_top"
+            }
+          ],
+          "default": "_blank"
+        }
+      ]
+    },
+    {
+      "type": "mega_menu_collections",
+      "name": "Mega menu - collections",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Menu item",
+          "id": "mega_menu_trigger",
+          "info": "Enter menu item to apply a mega menu dropdown."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "info": "Replaces the default menu item heading",
+          "default": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "submenu_level",
+          "label": "Submenu level",
+          "info": "Controls which level of submenu you would like to show, mega menu will function correctly only if the collection images are updated.",
+          "options": [
+            {
+              "value": "level-2",
+              "label": "Show level 2"
+            },
+            {
+              "value": "level-2-3",
+              "label": "Show level 2 & 3"
+            }
+          ],
+          "default": "level-2"
+        },
+
+        {
+          "type": "select",
+          "id": "column_count",
+          "label": "No. of columns",
+          "options": [
+            {
+              "value": "4",
+              "label": "4"
+            },
+            {
+              "value": "5",
+              "label": "5"
+            }
+          ],
+          "default": "4"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "options": [
+            {
+              "label": "Portrait (3:4)",
+              "value": "portrait"
+            },
+            {
+              "label": "Square (1:1)",
+              "value": "square"
+            },
+            {
+              "label": "Adapt to image",
+              "value": "adapt"
+            },
+            {
+              "label": "Landspace (4:3)",
+              "value": "landscape"
+            }
+          ],
+          "default": "adapt"
+        },
+        {
+          "type": "text_alignment",
+          "id": "content_alignment",
+          "label": "Heading alignment",
+          "default": "left"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_link",
+          "label": "Show link",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "View all"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        },
+        {
+          "type": "select",
+          "id": "link_target",
+          "label": "Open link in",
+          "options": [
+            {
+              "label": "New tab",
+              "value": "_blank"
+            },
+            {
+              "label": "Same tab",
+              "value": "_top"
+            }
+          ],
+          "default": "_blank"
+        },
+        {
+          "type": "paragraph",
+          "content": "For replacing the default collection image with custom image use metafields. [Learn more](https://support.shoptrade.co/article/55-mega-menu#Collections--Mega-Menu-P-UFD) on how to use this."
+        }
+      ]
+    },
+    {
+      "type": "mega_menu_products",
+      "name": "Mega menu - products",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Menu item",
+          "id": "mega_menu_trigger",
+          "info": "Enter menu item to apply a mega menu dropdown."
+        },
+        {
+          "type": "header",
+          "content": "Navigation"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_heading",
+          "label": "Show heading",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "product_heading",
+          "label": "Heading",
+          "default": "Heading",
+          "info": "Replaces the default collection heading"
+        },
+        {
+          "type": "header",
+          "content": "Featured products"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "product_list",
+          "limit": 4,
+          "id": "products",
+          "label": "Products",
+          "info": "Select products here will override the collection products"
+        },
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "heading",
+          "default": "heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_view_all_button",
+          "label": "Show link",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "view_all_link_style",
+          "label": "Link style",
+          "options": [
+            {
+              "value": "icon",
+              "label": "Arrow"
+            },
+            {
+              "value": "text",
+              "label": "Text"
+            }
+          ],
+          "default": "icon"
+        },
+        {
+          "type": "select",
+          "id": "view_all_link_position",
+          "label": "Desktop link position",
+          "options": [
+            {
+              "value": "start",
+              "label": "Start"
+            },
+            {
+              "value": "end",
+              "label": "End"
+            }
+          ],
+          "default": "start"
+        },
+        {
+          "type": "text",
+          "id": "view_all_link_text",
+          "label": "Link text",
+          "default": "View all",
+          "info": "Will only work when link style is set to 'text' ",
+          "placeholder": "Link text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "select",
+          "id": "link_target",
+          "label": "Open link in",
+          "options": [
+            {
+              "label": "New tab",
+              "value": "_blank"
+            },
+            {
+              "label": "Same tab",
+              "value": "_top"
+            }
+          ],
+          "default": "_blank"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,182 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "content_width": 1200,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "color_scheme": ""
+      }
+    },
+    "hero_slider_q76tYf": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_KQDyGE": {
+          "type": "Slide",
+          "settings": {
+            "desk-slide": "shopify://shop_images/Spend75PageHeader_DT.png",
+            "mob-slide": "shopify://shop_images/Spend75PageHeader_Mo.png",
+            "link-slide": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_KQDyGE"
+      ],
+      "settings": {
+        "section-color": ""
+      }
+    },
+    "rich_text_wFKjPr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_nU7QdG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get a FREE Limited Ornament of Your Choice",
+            "style": "h1"
+          }
+        },
+        "text_3W7qCU": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Build your bundle of two or more of our creatine gummies and take home a free limited edition holiday ornament!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nU7QdG",
+        "text_3W7qCU"
+      ],
+      "disabled": true,
+      "settings": {
+        "container_size": true,
+        "content_width": 500,
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "17333340085e335d66": {
+      "type": "apps",
+      "settings": {
+        "section_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "color_scheme": ""
+      }
+    },
+    "image_gallery_zPPQD4": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_Ahp79t": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Static_AutumnOrange.png",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "",
+            "button_target": "_blank",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_yckPk7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Seasonal_Gummy_Banner___Mobile_v2.png",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "",
+            "button_target": "_blank",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_9n4eby": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BRWinterStatic.png",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "",
+            "button_target": "_blank",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        },
+        "image_wKkxgB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DPGFallStatic.png",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "",
+            "button_target": "_blank",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 49
+          }
+        }
+      },
+      "block_order": [
+        "image_Ahp79t",
+        "image_yckPk7",
+        "image_9n4eby",
+        "image_wKkxgB"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout_style": "carousel",
+        "number_of_columns": "2",
+        "heading_content_alignment": "center",
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "image_aspect_ratio": "square",
+        "content_alignment": "center",
+        "content_position": "top",
+        "column_spacing": "16",
+        "use_outline_button": false,
+        "padding_top": 32,
+        "padding_bottom": 48,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_slider_q76tYf",
+    "rich_text_wFKjPr",
+    "17333340085e335d66",
+    "image_gallery_zPPQD4"
+  ]
+}

@@ -1,0 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": 600,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "color_scheme": ""
+      }
+    },
+    "171770573721b9eeb5": {
+      "type": "apps",
+      "settings": {
+        "section_width": true,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "color_scheme": ""
+      }
+    },
+    "replo_gummy_fb_section_5_thomas_cUT7FT": {
+      "type": "replo-gummy-fb-section-5-thomas",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "171770573721b9eeb5",
+    "replo_gummy_fb_section_5_thomas_cUT7FT"
+  ]
+}

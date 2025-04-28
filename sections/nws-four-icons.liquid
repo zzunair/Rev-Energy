@@ -1,0 +1,55 @@
+<!-- nws-four-icons -->
+  {% if section.blocks != blank %}
+    <div class="nws-four-icons" {% if section.settings.section-color != blank %}style="background-color:{{ section.settings.section-color }};"{% endif %} >
+      <div class="container" >
+        <div class="nws-four-icons-content">
+          {% for block in section.blocks %}
+            {% if block.settings.img-icon != blank %}
+              <div class="nws-four-icons-slide">
+                <img src="{{ block.settings.img-icon | img_url: '75x' }}" class="img-icon" />
+                {% if block.settings.img-txt != blank %}<span>{{ block.settings.img-txt }}</span>{% endif %}
+              </div>
+             {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+<!-- end nws-four-icons -->
+{% schema %}
+  {
+    "name": "NWS - Four Icons",
+    "max_blocks": 4,
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "Slide",
+      "name": "Slide Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img-icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "img-txt",
+          "label": "Icon Text"
+        }
+      ]
+    }
+  ],
+    "presets": [
+        {
+          "name": "NWS - Four Icons",
+          "category": "NWS Sections"
+        }
+    ]
+  }
+{% endschema %}

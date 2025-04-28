@@ -1,0 +1,753 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "video_Aa4AC7": {
+      "type": "video",
+      "blocks": {
+        "heading_fmcRNe": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sugar-Free <span class=\"color-green\">Energy Gum</span> for Active Lifestyles",
+            "heading_style": "h1"
+          }
+        },
+        "image_cU7aDQ": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/image-Photoroom_4.png"
+          }
+        },
+        "sub_heading_CdG74h": {
+          "type": "sub_heading",
+          "settings": {
+            "sub_heading": "Plant-powered gum that hits different."
+          }
+        },
+        "paragraph_mGcDJy": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>Zero sugar. Full flavor. Made to move you.</p>"
+          }
+        },
+        "button_MxWPJ3": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop now",
+            "link": "shopify://collections/all",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_fmcRNe",
+        "image_cU7aDQ",
+        "sub_heading_CdG74h",
+        "paragraph_mGcDJy",
+        "button_MxWPJ3"
+      ],
+      "settings": {
+        "bg_img": "shopify://shop_images/Frame_1000001370.png",
+        "bg_img_mobile": "shopify://shop_images/Frame_1000001649_1.png",
+        "full_width": true,
+        "media_autoplay": true,
+        "show_only_img": false,
+        "media_size": "lg",
+        "video_url": "",
+        "content_alignment": "center",
+        "content_position": "top",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "bundle_builder_bh9fLq": {
+      "type": "bundle-builder",
+      "name": "Bundle Builder",
+      "settings": {
+        "bundle_icon": "shopify://shop_images/Vector_3.svg",
+        "heading": "Bundle builder",
+        "desc": "<p>Make your own bundle and get up to <strong>35% OFF</strong> on your order now!</p>",
+        "btn_label": "Shop now",
+        "btn_url": "#"
+      }
+    },
+    "collection_list_aJDGJj": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_list_item_Q93wbB": {
+          "type": "collection_list_item",
+          "settings": {
+            "collection": "energy",
+            "collection_image": "shopify://shop_images/Frame_37_3.png",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "collection_list_item_cYh3y6": {
+          "type": "collection_list_item",
+          "settings": {
+            "collection": "electrolyte",
+            "collection_image": "shopify://shop_images/Frame_36_3.png",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "collection_list_item_CcLeCe": {
+          "type": "collection_list_item",
+          "settings": {
+            "collection": "merchandise",
+            "collection_image": "shopify://shop_images/Frame_35_3.png",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "collection_list_item_Q93wbB",
+        "collection_list_item_cYh3y6",
+        "collection_list_item_CcLeCe"
+      ],
+      "settings": {
+        "layout_style": "grid",
+        "columns_desktop": "3",
+        "columns_mobile": "2",
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "show_view_all_button": true,
+        "view_all_link_style": "text",
+        "view_all_link_position": "start",
+        "view_all_link_text": "View all",
+        "link_url": "",
+        "link_target": "_top",
+        "image_aspect_ratio_collection": "adapt",
+        "content_setting": "over_image",
+        "hide_stack_content_bg": true,
+        "content_alignment": "center",
+        "content_position": "end",
+        "heading_style": "h6",
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "featured_collection_aYpLCT": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_collection_MyCrw3": {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Energy",
+            "collection": "energy"
+          }
+        },
+        "featured_collection_ibA8Qi": {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Electrolyte",
+            "collection": "electrolyte"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_MyCrw3",
+        "featured_collection_ibA8Qi"
+      ],
+      "settings": {
+        "max_product_show": 4,
+        "layout_style": "carousel",
+        "columns_desktop": "4",
+        "columns_mobile": "1",
+        "subheading": "",
+        "heading": "Best Sellers",
+        "content": "",
+        "use_outline_button": false,
+        "show_view_all_button": true,
+        "view_all_link_style": "text",
+        "view_all_link_position": "start",
+        "view_all_link_text": "Shop now",
+        "link_url": "shopify://collections/shop",
+        "link_target": "_top",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "border_size": "fixed_width",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_overlay_ccE3eC": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_Vr3TMq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Gum that Fuels <br>Your Grind",
+            "style": "h2"
+          }
+        },
+        "button_aL9jqB": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop now",
+            "link": "shopify://collections/all",
+            "link_target": "_top"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Vr3TMq",
+        "button_aL9jqB"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "image_aspect_ratio": "auto",
+        "image": "shopify://shop_images/Frame_1000001371_2.png",
+        "mobile_image": "shopify://shop_images/Frame_1000001371_3.png",
+        "content_width": 560,
+        "text_aligment": "left",
+        "desktop_content_position": "bottom",
+        "mobile_text_aligment": "left",
+        "mobile_content_position": "bottom",
+        "padding_top": 0,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "rich_text_D9rwFg": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_xFag7q": {
+          "type": "heading",
+          "settings": {
+            "heading": "There’s REV GUM for Every Moment",
+            "style": "h2"
+          }
+        },
+        "text_G8NDyQ": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Need energy or hydration? REV GUM has your back. Whether you’re looking for a quick boost of energy to power through your day or essential electrolytes to amplify hydration, REV GUM keeps you moving and performing at your best. Perfect for busy mornings, afternoon slumps, or post-workout recovery.</p>"
+          }
+        },
+        "image_rEgXkN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_95_1.png",
+            "image_width": 500
+          }
+        }
+      },
+      "block_order": [
+        "heading_xFag7q",
+        "text_G8NDyQ",
+        "image_rEgXkN"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container_size": true,
+        "content_width": 500,
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "img_text_xMqBTa": {
+      "type": "img-text",
+      "blocks": {
+        "process_Dd9WxP": {
+          "type": "process",
+          "settings": {
+            "title": "Chew It",
+            "desc": "Feel energized within minutes, no bulky drinks needed."
+          }
+        },
+        "process_bRXUhi": {
+          "type": "process",
+          "settings": {
+            "title": "Feel It",
+            "desc": "Boosts your body for better performance when you need it most."
+          }
+        },
+        "process_EcJTAb": {
+          "type": "process",
+          "settings": {
+            "title": "Repeat as Needed",
+            "desc": "Improve mental clarity and stay sharp throughout your day."
+          }
+        }
+      },
+      "block_order": [
+        "process_Dd9WxP",
+        "process_bRXUhi",
+        "process_EcJTAb"
+      ],
+      "name": "Img Text",
+      "settings": {
+        "caption": "how revgum works",
+        "heading": "Boost Energy Fast <br>\nAmplify hydration <br>\nFocus Anytime",
+        "image": "shopify://shop_images/image_48_1.png"
+      }
+    },
+    "multicolumn_6nmXcE": {
+      "type": "multicolumn",
+      "blocks": {
+        "card_GPLFha": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image_38_9a97fb72-cb10-45c9-9bab-f289fb9beaaf.png",
+            "title": "",
+            "heading": "Works Fast",
+            "card_content": ""
+          }
+        },
+        "card_YWUXET": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image_39.png",
+            "title": "",
+            "heading": "Convenient & Portable",
+            "card_content": ""
+          }
+        },
+        "card_Gkf34G": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image_40_b8c01b60-bcc3-4ec8-8a52-87d83c54892d.png",
+            "title": "",
+            "heading": "no gluten",
+            "card_content": ""
+          }
+        },
+        "card_RJRedz": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image_41_fdcdc82e-b6d1-43a6-9e02-a05f57d104c0.png",
+            "title": "",
+            "heading": "backed by Science",
+            "card_content": ""
+          }
+        },
+        "card_GgMwJU": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image_43_d1db89d4-3918-4312-8fc7-1fc181443433.png",
+            "title": "",
+            "heading": "No Sugar",
+            "card_content": ""
+          }
+        },
+        "card_bmBriT": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image_42.png",
+            "title": "",
+            "heading": "Supports Oral Health",
+            "card_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_GPLFha",
+        "card_YWUXET",
+        "card_Gkf34G",
+        "card_RJRedz",
+        "card_GgMwJU",
+        "card_bmBriT"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "layout_style": "grid",
+        "columns_desktop": "5",
+        "columns_mobile": "1",
+        "heading_content_alignment": "left",
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "content_alignment": "left",
+        "caption_align": "center",
+        "image_aspect_ratio": "adapt",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "radicaly_BeBTLj": {
+      "type": "radicaly",
+      "blocks": {
+        "content_WcFihC": {
+          "type": "content",
+          "settings": {
+            "title": "94%",
+            "description": "Report feeling more focused during demanding tasks after chewing REV GUM."
+          }
+        },
+        "content_J6YEPw": {
+          "type": "content",
+          "settings": {
+            "title": "97%",
+            "description": "of users notice improved energy and focus after use."
+          }
+        },
+        "content_pYR3ei": {
+          "type": "content",
+          "settings": {
+            "title": "93%",
+            "description": "Experience sustained energy throughout the day without any crash."
+          }
+        },
+        "content_F3tcnx": {
+          "type": "content",
+          "settings": {
+            "title": "89%",
+            "description": "Feel more energized and productive during long workdays or workouts."
+          }
+        }
+      },
+      "block_order": [
+        "content_WcFihC",
+        "content_J6YEPw",
+        "content_pYR3ei",
+        "content_F3tcnx"
+      ],
+      "name": "radically",
+      "settings": {
+        "heading": "Radically Fast. Radically Effective. Radically You."
+      }
+    },
+    "happy_customer_XJBeFa": {
+      "type": "happy-customer",
+      "blocks": {
+        "review_rtl_8fCzqE": {
+          "type": "review_rtl",
+          "settings": {
+            "title": "Game Changer For My Workouts.",
+            "description": "I pop a piece before every lift. No crash, just clean energy that kicks in fast. Chew Rev's the real deal.",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Marcus T.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_rtl_bjfgQL": {
+          "type": "review_rtl",
+          "settings": {
+            "title": "“Electrolytes in gum? Genius.”",
+            "description": "I never thought gum could hydrate and energize. Perfect for runs, hikes, or just surviving long days.",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Taylor S.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_rtl_RYMpT9": {
+          "type": "review_rtl",
+          "settings": {
+            "title": "“Tastes great and actually works.”",
+            "description": "Flavor lasts longer than I expected, and I feel the boost within minutes. Would love more flavors though!",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Ravi M.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_rtl_mdxmGj": {
+          "type": "review_rtl",
+          "settings": {
+            "title": "Game Changer For My Workouts.",
+            "description": "I pop a piece before every lift. No crash, just clean energy that kicks in fast. Chew Rev's the real deal.",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Marcus T.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_rtl_CNcXUE": {
+          "type": "review_rtl",
+          "settings": {
+            "title": "“Electrolytes in gum? Genius.”",
+            "description": "I never thought gum could hydrate and energize. Perfect for runs, hikes, or just surviving long days.",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Taylor S.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_rtl_9KE6BG": {
+          "type": "review_rtl",
+          "settings": {
+            "title": "“Tastes great and actually works.”",
+            "description": "Flavor lasts longer than I expected, and I feel the boost within minutes. Would love more flavors though!",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Ravi M.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_ltr_AxYmkg": {
+          "type": "review_ltr",
+          "settings": {
+            "title": "“Electrolytes in gum? Genius.”",
+            "description": "I never thought gum could hydrate and energize. Perfect for runs, hikes, or just surviving long days.",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Taylor S.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_ltr_yDaxGb": {
+          "type": "review_ltr",
+          "settings": {
+            "title": "“Tastes great and actually works.”",
+            "description": "Flavor lasts longer than I expected, and I feel the boost within minutes. Would love more flavors though!",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Ravi M.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_ltr_LWjn9K": {
+          "type": "review_ltr",
+          "settings": {
+            "title": "“Game changer for my workouts.”",
+            "description": "I pop a piece before every lift. No crash, just clean energy that kicks in fast. Chew Rev's the real deal.",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Marcus T.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_ltr_GVX6P3": {
+          "type": "review_ltr",
+          "settings": {
+            "title": "“Electrolytes in gum? Genius.”",
+            "description": "I never thought gum could hydrate and energize. Perfect for runs, hikes, or just surviving long days.",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Taylor S.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_ltr_EHq3nT": {
+          "type": "review_ltr",
+          "settings": {
+            "title": "“Tastes great and actually works.”",
+            "description": "Flavor lasts longer than I expected, and I feel the boost within minutes. Would love more flavors though!",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Ravi M.",
+            "user_location": "Log Angeles, CA"
+          }
+        },
+        "review_ltr_pa8pD9": {
+          "type": "review_ltr",
+          "settings": {
+            "title": "“Game changer for my workouts.”",
+            "description": "I pop a piece before every lift. No crash, just clean energy that kicks in fast. Chew Rev's the real deal.",
+            "user_image": "shopify://shop_images/Ellipse_2_1.png",
+            "user_name": "Marcus T.",
+            "user_location": "Log Angeles, CA"
+          }
+        }
+      },
+      "block_order": [
+        "review_rtl_8fCzqE",
+        "review_rtl_bjfgQL",
+        "review_rtl_RYMpT9",
+        "review_rtl_mdxmGj",
+        "review_rtl_CNcXUE",
+        "review_rtl_9KE6BG",
+        "review_ltr_AxYmkg",
+        "review_ltr_yDaxGb",
+        "review_ltr_LWjn9K",
+        "review_ltr_GVX6P3",
+        "review_ltr_EHq3nT",
+        "review_ltr_pa8pD9"
+      ],
+      "name": "Happy Customers",
+      "settings": {
+        "heading": "20,000+ Happy Customers",
+        "button_label": "Read All Reviews",
+        "button_url": "#"
+      }
+    },
+    "our_value_hmzWNA": {
+      "type": "our-value",
+      "name": "Our Value",
+      "settings": {
+        "section_image": "shopify://shop_images/image_49_39a0bb4c-579a-4093-9cef-0f84fe687f2a.png",
+        "heading": "BORN TO REDEFINE ON-THE-GO PERFORMANCE",
+        "description": "<p>Using his chemistry background, he was inspired to revolutionize sugar-free gum by offering convenient performance solutions for people on the move.</p><p>After a Type-1 diabetes diagnosis, founder Blake cut out all the unnecessary sugar and cr*p from his diet.</p>",
+        "subheading": "our values",
+        "text": "<ul><li>Studied & Effective Ingredients</li><li>Made with strict quality standards</li><li>Tested for safety and purity</li><li>Zero Sugar, Zero Downsides</li><li>vegan-friendly and gluten-free</li><li>proudly based in Austin, Texas</li></ul>"
+      }
+    },
+    "faq_pP4iGQ": {
+      "type": "faq",
+      "blocks": {
+        "item_pyfcwh": {
+          "type": "item",
+          "settings": {
+            "heading": "1.  What makes Chew Rev different from regular gum?",
+            "content": "<p>Chew Rev isn’t just gum—it’s fuel. Each piece is packed with caffeine, electrolytes, and functional ingredients to help boost energy, focus, and hydration. No sugar. No crash.</p>"
+          }
+        },
+        "item_FigBRt": {
+          "type": "item",
+          "settings": {
+            "heading": "2. How much caffeine is in each piece?",
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+          }
+        },
+        "item_g93AL6": {
+          "type": "item",
+          "settings": {
+            "heading": "3.  When should I chew it?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+          }
+        },
+        "item_wQN8ix": {
+          "type": "item",
+          "settings": {
+            "heading": "4.  s it safe to chew multiple pieces a day?",
+            "content": "<p>Write a clear and concise answer to guide your customers.</p>"
+          }
+        },
+        "item_pikPb4": {
+          "type": "item",
+          "settings": {
+            "heading": "5.  Is Chew Rev vegan and sugar-free?",
+            "content": "<p>Write a clear and concise answer to guide your customers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_pyfcwh",
+        "item_FigBRt",
+        "item_g93AL6",
+        "item_wQN8ix",
+        "item_pikPb4"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "full_width": false,
+        "subheading": "",
+        "heading": "Got a question?",
+        "content": "",
+        "show_view_all_button": true,
+        "view_all_link_style": "icon",
+        "view_all_link_position": "start",
+        "view_all_link_text": "",
+        "link_url": "",
+        "link_target": "_blank",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "featured_blog_jQNDPB": {
+      "type": "featured-blog",
+      "name": "Blog posts",
+      "settings": {
+        "blog": "news",
+        "post_limit": 4,
+        "image_aspect_ratio": "landscape",
+        "show_image": true,
+        "show_author": true,
+        "show_date": true,
+        "show_title": true,
+        "show_excerpt": false,
+        "show_tags": false,
+        "show_comments": false,
+        "subheading": "",
+        "heading": "Latest Posts",
+        "content": "",
+        "show_view_all_button": true,
+        "view_all_link_style": "text",
+        "view_all_link_position": "end",
+        "view_all_link_text": "View all",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "sop_section_Yxz6gB": {
+      "type": "sop-section",
+      "blocks": {
+        "block_ymMKfc": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify://shop_images/walmart_logo_png_transparentpng_scaled_1715966509_1.png"
+          }
+        },
+        "block_3htWqc": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify://shop_images/Circle_K_Logo_Hero_120417.jpg"
+          }
+        },
+        "block_tXKqQP": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify://shop_images/7_eleven_logo_hero_112118_1715966293_1-removebg-preview.png"
+          }
+        },
+        "block_E6dXqw": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify://shop_images/amazon_logo_2000_present_1024x576_1715966673_1-removebg-preview.png"
+          }
+        }
+      },
+      "block_order": [
+        "block_ymMKfc",
+        "block_3htWqc",
+        "block_tXKqQP",
+        "block_E6dXqw"
+      ],
+      "name": "Shop Section",
+      "settings": {
+        "heading": "Get REV GUM Where You Shop",
+        "desc": "No need to wait for shipping! You can now find REV GUM at your favorite stores. Look for us in the energy or gum section and stock up on the fast, convenient energy you love.",
+        "btn-txt": "",
+        "btn-url": ""
+      }
+    }
+  },
+  "order": [
+    "video_Aa4AC7",
+    "bundle_builder_bh9fLq",
+    "collection_list_aJDGJj",
+    "featured_collection_aYpLCT",
+    "image_with_text_overlay_ccE3eC",
+    "rich_text_D9rwFg",
+    "img_text_xMqBTa",
+    "multicolumn_6nmXcE",
+    "radicaly_BeBTLj",
+    "happy_customer_XJBeFa",
+    "our_value_hmzWNA",
+    "faq_pP4iGQ",
+    "featured_blog_jQNDPB",
+    "sop_section_Yxz6gB"
+  ]
+}

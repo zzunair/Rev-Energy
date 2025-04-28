@@ -1,0 +1,66 @@
+<style>
+  /* Common styles */
+  #stickyDiv {
+    width: 100%;
+    z-index: 1000;
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+    div#stickyDiv .sticky-main .sticky-wrapper div button:hover {
+      background-color:#eb8e49;
+      border:2px solid #eb8e49;
+      cursor:pointer;
+    }
+  
+  /* Hidden by default */
+  .sticky-hidden {
+    display: none;
+  }
+  
+  div#stickyDiv.sticky-hidden {
+    display: none !important;
+  }
+</style>
+
+<div id="stickyDiv" class="sticky-hidden" sticky-div>
+  <div class="sticky-main">
+    <div class="sticky-wrapper">
+      <div class="sticky-prod-details">
+        <div class="sticky-product-media">
+          {% assign product_image = product.selected_or_first_available_variant.featured_image | default: product.images[0]  %}
+          <img src="{{ product_image | image_url: width: 200 }}" height="100" width="100">
+        </div>
+        <div class="Sticky-product-details">
+          <div class="product-title">{{ product.title }}</div>
+          <div class="product-Variant-title" product-Variant-title>
+            {% unless product.selected_or_first_available_variant.title == "Default Title" %}
+              {{ product.selected_or_first_available_variant.title }}
+            {% endunless %}
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="sticky-prod-button" sticky-buy-now>
+          <span class="btn-text">Buy Now</span>
+          <span class="sticky-product-price" sticky-product-price>
+            <span>{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+          </span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Sticky Add To Cart",
+    "settings": [
+    ],
+      "presets": [
+    {
+      "name": "Sticky Add To Cart",
+    }
+  ]
+  }
+{% endschema %}

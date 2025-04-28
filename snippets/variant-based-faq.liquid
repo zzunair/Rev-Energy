@@ -1,0 +1,18 @@
+{{ 'variant-faq.css' | asset_url | stylesheet_tag }}
+<variant-based-faq>
+  {% assign faq_length = current_variant.metafields.custom.variant_faq_questions.value | size | minus: 1 %}
+  {% if faq_length > -1 %}
+    <div class="variant-faq-main section-{{ section.id }}-padding">
+      <div class="variant-faq-wrapper">
+        {% for i in (0..faq_length) %}
+          <div class="variant-faqs">
+            <div class="faq-question">{{ current_variant.metafields.custom.variant_faq_questions.value[i] }}</div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">  {{ current_variant.metafields.custom.variant_faq_answers.value[i] }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</variant-based-faq>

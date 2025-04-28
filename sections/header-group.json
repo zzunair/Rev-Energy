@@ -1,0 +1,86 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Header group",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_Ab8HJD": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping on Subscriptions + Orders $100+",
+            "announcement_link": ""
+          }
+        },
+        "announcement_rGb7gm": {
+          "type": "announcement",
+          "settings": {
+            "text": "Sugar-Free Energy & Electrolyte Gum for Active Lifestyles",
+            "announcement_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_Ab8HJD",
+        "announcement_rGb7gm"
+      ],
+      "settings": {
+        "enable_sticky": false,
+        "navigation": "auto-scroll",
+        "scroll_speed": 30,
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": false,
+        "show_country_name": false,
+        "enable_sublinks": false,
+        "sublink": "custom_links",
+        "custom_link_heading_1": "Link 1",
+        "custom_link_url_1": "#",
+        "custom_link_heading_2": "Link 2",
+        "custom_link_url_2": "#",
+        "custom_link_heading_3": "Link 3",
+        "custom_link_url_3": "#",
+        "color_scheme": "scheme-474b22a1-9896-4033-a8f2-d3c3611c64ef"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "logo-left-menu-center",
+        "enable_sticky": true,
+        "sticky_header_style": "always",
+        "bottom_box_shadow": true,
+        "header_logo": "shopify://shop_images/image_7.png",
+        "logo_width": 140,
+        "logo_mobile_width": 134,
+        "menu": "menu",
+        "highlight_heading": "Shop Now",
+        "highlight_link": "shopify://collections",
+        "use_outline_button_style": false,
+        "enable_transparent_header": false,
+        "show_on_only_homepage": false,
+        "transparent_header_text_color": "#000000",
+        "hamberger_menu": "main-menu-1",
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": false,
+        "show_country_name": false,
+        "color_scheme": "scheme-1",
+        "color_scheme-menu": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

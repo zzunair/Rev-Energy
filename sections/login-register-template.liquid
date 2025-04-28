@@ -1,0 +1,398 @@
+<!-- login-register-template.liquid -->
+{%- liquid
+  assign width_section = section.settings.width_section
+  assign width_content = section.settings.width_content
+  capture width_section_
+    if width_section == 'container-fluid wide' and width_content == false
+      echo 'w-100'
+    else
+      echo width_section
+    endif
+  endcapture
+  capture width_content_
+    if width_content and width_section == 'w-100'
+      echo 'container'
+    elsif width_section == 'container-fluid wide' and width_content == false
+      echo 'container-fluid wide'
+    else
+      echo 'w-100'
+    endif
+  endcapture
+  assign dir_body = settings.dir_body
+  assign cssAlign = 'left'
+  assign cssAlign_rev = 'right'
+  if dir_body == 'rtl'
+    assign cssAlign = 'right'
+    assign cssAlign_rev = 'left'
+  endif
+-%}
+{%- render 'kt_breadcrumb' -%}
+<div class="container nws-account-container">
+{%- if template.name == 'register' -%}
+    <h1 class="heading-nws">Create an Account</h1>
+    <p class="sub-heading-nws">Creating an account allows for faster checkout, order tracking, special offers and much more!</p>
+    <div class="nws-form-register" id="register">
+  {% form 'create_customer', class: 'needs-validation' %}
+  {{ form.errors | default_errors }}
+  
+  <div class="form-group nws-form-input-warp">
+    <label class="nws-form-label" for="register-first_name">First Name</label>
+    <input type="text" class="form-control nws-form-input" id="register-first_name" name="customer[first_name]" {% if form.first_name %} value="{{ form.first_name }}"{% endif %} required="">
+  </div>
+  
+  <div class="form-group nws-form-input-warp">
+    <label class="nws-form-label" for="register-last_name">Last Name</label>
+    <input type="text" class="form-control nws-form-input" id="register-last_name" name="customer[last_name]" {% if form.last_name %} value="{{ form.last_name }}"{% endif %} required="">
+  </div>
+  
+  <div class="form-group nws-form-input-warp">
+    <label class="nws-form-label" for="register-email">{{ 'customer.register.email' | t }}</label>
+    <input type="email" class="form-control nws-form-input" id="register-email" name="customer[email]" {% if form.email %} value="{{ form.email }}"{% endif %} required="">
+  </div>
+
+      
+  <div class="form-group nws-form-input-warp">
+    <label class="nws-form-label" for="phone">Phone Number</label>
+    <input class="nws-form-input" type="tel" name="contact[phone]" id="phone" placeholder="Phone Number"/>
+  </div>
+   
+      
+  <div class="form-group nws-form-input-warp">
+    <label class="nws-form-label" for="register-password">{{ 'customer.register.password' | t }}</label>
+    <input type="password" class="form-control nws-form-input" id="register-password" name="customer[password]" required="">
+  </div>
+
+  <div class="form-group nws-form-input-warp custom-control custom-checkbox nws-form-none">
+    <input type="hidden" name="customer[accepts_marketing]" value="" />
+    <input class="custom-control-input nws-form-input" id="register-subcrible" type="checkbox" name="customer[accepts_marketing]" checked="checked" />
+  </div>
+      
+  <div class="form-group nws-form-checkbox">
+    <label>
+      <input type="checkbox" name="customer[accepts_marketing]" value="" />
+      <span class="tik-box"></span>
+      Sign me up for the newsletter to get special deals and promotions
+    </label>
+  </div>
+
+  <div class="form-footer d-flex flex-wrap flex-md-nowrap agree_checkbox">
+    <button type="submit" class="nws-form-round-btn btn-nws" data-layout="account">Sign Me Up</button>
+    {%- if settings.terms_conditions_register -%}
+    <div class="mt-1 mb-1">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input kt_agree" data-layout="account" id="register-policy" required="">
+        <label class="custom-control-label" for="register-policy" style="font-size: 1.3rem;">
+          {{settings.terms_and_privacy_conditions_register|replace: '<p>','<p class="m-0" style="display: inline">'|html}}
+        </label>
+      </div>
+    </div>
+    {%- endif -%}
+  </div>
+  {% endform %}
+  
+  <span class="nws-form-create-account nws-form-mrt-15">
+    Already have an account?
+    <a class="nws-form-underline" href="/account/login">Sign in here</a>
+  </span>
+  
+</div>
+
+
+{% endif %}
+{%- if template.name == 'login' -%}
+  
+  {% if page.title != blank %}
+    <h1 class="heading-nws">{{ page.title }}</h1>
+  {% else %}
+    <h1 class="heading-nws">Welcome Back!</h1>
+  {% endif %}
+  <p class="sub-heading-nws">{{section.settings.para}}</p>
+  
+  {% form 'customer_login', id: 'CustomerLoginForm', class: 'needs-validation' %}
+  {{ form.errors | default_errors }}
+  <div class="form-group nws-form-input-warp">
+    <label class="nws-form-label" for="singin-email">{{ 'customer.login.email' | t }}</label>
+    <input type="email" id="singin-email" class="form-control nws-form-input" name="customer[email]" required="">
+  </div>
+  {%- if form.password_needed -%}
+  <div class="form-group nws-form-input-warp">
+    <label class="nws-form-label" for="singin-password">{{ 'customer.login.password' | t }}</label>
+    <input type="password" id="singin-password" class="form-control nws-form-input" name="customer[password]" required="">
+  </div>
+  {%- endif -%}
+  {%- if form.password_needed -%}
+    <a href="#recover" id="RecoverPassword" class="forgot-link mt-1 mb-1 nws-form-underline">{{ 'customer.login.forgot_password' | t }}</a>
+  {%- endif -%}
+  
+  <div class="form-footer d-flex flex-wrap flex-md-nowrap">
+    <button type="submit" class="nws-form-round-btn btn-nws">Sign In</button>
+  </div>
+  <span class="nws-form-create-account nws-form-mrt-15">Don’t have an account? <a class="nws-form-underline" href="/account/register">Create one here</a></span>
+  {% endform %}
+  
+  {% form 'recover_customer_password', id: 'RecoverPasswordForm', class: 'd-none needs-validation' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+    <span class="d-none reset-password-success">{{ 'customer.recover_password.success' | t }}</span>
+    {% endif %}
+    <div class="form-group nws-form-input-warp">
+      <label class="nws-form-label" for="RecoverEmail">{{ 'customer.login.email' | t }}</label>
+      <input type="email" id="RecoverEmail" class="form-control nws-form-input" name="email" required="">
+    </div>
+
+    <div class="form-footer d-flex flex-wrap flex-md-nowrap">
+      <button type="submit" class="nws-form-round-btn btn-nws">{{ 'customer.recover_password.submit' | t }}</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="#recover" id="HideRecoverPasswordLink" class="forgot-link mt-1 mb-1">{{ 'customer.recover_password.cancel' | t }}</a>
+    </div>
+    {% endform %}
+ 
+   {%- endif -%}
+  
+    {%- if template.name == 'reset_password' -%}
+        <h1 class="heading-nws">RESET PASSWORD</h1>
+        {% form 'reset_customer_password', id: 'CustomerResetForm', class: 'needs-validation' %}
+        <p class="text-center">{{ 'customer.reset_password.subtext' | t: email: email }}</p>
+        {{ form.errors | default_errors }}
+        <div class="form-group nws-form-input-warp">
+          <label class="nws-form-label" for="singin-password">{{ 'customer.reset_password.password' | t }}</label>
+          <input type="password" id="singin-password" class="form-control nws-form-input" name="customer[password]" required="">
+        </div>
+
+        <div class="form-group nws-form-input-warp">
+          <label class="nws-form-label" for="singin-password_confirmation">{{ 'customer.reset_password.password_confirm' | t }}</label>
+          <input type="password" id="singin-password_confirmation" class="form-control nws-form-input" name="customer[password_confirmation]" required="">
+        </div>
+
+        <div class="form-footer d-flex flex-wrap flex-md-nowrap">
+          <button type="submit" class="nws-form-round-btn btn-nws">{{ 'customer.reset_password.submit' | t }}</button>
+        </div>
+        {% endform %}
+        {%- elsif template.name == 'activate_account' -%}
+        <h1 class="heading-nws">ACTIVATE ACCOUNT</h1>
+        {% form 'activate_customer_password', id: 'CustomerActivateForm', class: 'needs-validation' %}
+        {{ form.errors | default_errors }}
+        <div class="form-group nws-form-input-warp">
+          <label class="nws-form-label" for="singin-password">{{ 'customer.activate_account.password' | t }}</label>
+          <input type="password" id="singin-password" class="form-control nws-form-input" name="customer[password]" required="">
+        </div>
+        <div class="form-group nws-form-input-warp">
+          <label class="nws-form-label" for="singin-password_confirmation">{{ 'customer.activate_account.password_confirm' | t }}</label>
+          <input type="password" id="singin-password_confirmation" class="form-control nws-form-input" name="customer[password_confirmation]" required="">
+        </div>
+        <div class="form-footer d-flex flex-wrap flex-md-nowrap">
+          <button type="submit" class="nws-form-round-btn">
+            <span>{{ 'customer.activate_account.password_confirm' | t }}</span>
+            <i class="fkt-long-arrow-right"></i>
+          </button>
+          <button type="submit" class="nws-form-round-btn btn-nws">{{ 'customer.activate_account.cancel' | t }}</button>
+        </div>
+        {% endform %}
+     {%- endif -%}
+</div>
+{% schema %}
+  {
+    "name": "Login & Register page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "NWS ACCOUNT LINK"
+      },
+      {
+        "type":"textarea",
+        "id": "para",
+        "label": "Sub heading"
+      },
+      {
+        "type": "header",
+        "content": "Space settings"
+      },
+      {
+        "type": "select",
+        "id": "width_section",
+        "label": "Max width section",
+        "options": [
+          { "value": "container", "label": "1200px" },
+          { "value": "container-fluid wide", "label": "Wide" },
+          { "value": "w-100", "label": "Full width" }
+        ],
+        "default": "w-100"
+      },
+      {
+        "type":"checkbox",
+        "id": "width_content",
+        "label": "Max width content?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "section_margin_top",
+        "label": "Margin top",
+        "info": "2.5rem|3rem|3.5rem|4rem|4.5rem|5rem"
+      },
+      {
+        "type": "text",
+        "id": "section_margin_bottom",
+        "label": "Margin bottom",
+        "info": "2.5rem|3rem|3.5rem|4rem|4.5rem|5rem"
+      },
+      {
+        "type": "text",
+        "id": "section_padding",
+        "label": "Paddings (top right bottom left)",
+        "info": "6rem 6rem 0 6rem",
+        "default": "17.5rem 0 17.5rem"
+      },
+      {
+        "type": "header",
+        "content": "Background settings"
+      },
+      {
+        "type": "color",
+        "id": "section_bg",
+        "label": "Background color"
+      },
+      {
+        "type": "range",
+        "id": "section_bg_op",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "label": "Opacity background color",
+        "default": 1
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background image",
+        "info": "Size suggestion: 1920 x 497 pixels"
+      }
+    ]
+  }
+{% endschema %}
+
+{%-style-%}
+/* Login */
+.form-box {
+  max-width: 575px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  padding: 3.7rem 2rem;
+  box-shadow: 0 3px 16px rgba(51, 51, 51, 0.1);
+}
+@media (min-width: 767px) {
+  .form-box {
+    padding: 3.7rem 6rem 6.4rem;
+  }
+}
+.form-box .btn {
+  min-width: 115px;
+}
+
+.form-tab .nav.nav-pills {
+  border-bottom: thin solid #ebebeb;
+}
+.form-tab .nav.nav-pills .nav-item {
+  margin-bottom: -0.1rem;
+}
+[dir="ltr"] .form-tab .nav.nav-pills .nav-item + .nav-item {
+  margin-left: 0;
+}
+[dir="rtl"] .form-tab .nav.nav-pills .nav-item + .nav-item {
+  margin-right: 0;
+}
+.form-tab .nav.nav-pills .nav-link {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 2.4rem;
+  letter-spacing: -0.025em;
+  color: inherit;
+  border-bottom-width: 0.2rem;
+  padding: 0.9rem 1rem;
+}
+.form-tab .nav.nav-pills .nav-link.active {
+  color: inherit;
+}
+.form-tab .nav-fill .nav-item {
+  flex: 1 1 0;
+}
+.form-tab .tab-content .tab-pane {
+  padding: 2rem 0 0;
+}
+.form-tab .form-group {
+  margin-bottom: 1.3rem;
+}
+.form-tab .form-footer {
+  padding-top: 0.6rem;
+  padding-bottom: 3rem;
+  border-bottom: thin solid #ebebeb;
+  margin-bottom: 2.3rem;
+}
+[dir="ltr"] .form-tab .form-footer .btn {
+  margin-right: 1.6rem;
+}
+[dir="rtl"] .form-tab .form-footer .btn {
+  margin-left: 1.6rem;
+}
+.form-tab .form-footer a {
+  color: inherit;
+}
+.form-tab .form-footer a:hover, .form-tab .form-footer a:focus {
+  color: var(--primary);
+}
+.form-tab .form-footer a:not(.forgot-link) {
+  text-decoration: underline;
+}
+.form-tab .form-footer .custom-control {
+  margin: 0;
+}
+@media (min-width: 768px) {
+  [dir="ltr"] .form-tab .form-footer .forgot-link {
+    margin-left: auto;
+  }
+  [dir="rtl"] .form-tab .form-footer .forgot-link {
+    margin-right: auto;
+  }
+}
+.form-choice {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+.form-choice p {
+  margin-bottom: 2.7rem;
+}
+.btn.btn-login {
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  display: flex;
+  display: -ms-flexbox;
+  align-items: center;
+  -ms-flex-align: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0.85rem 1rem;
+  border: thin solid #ebebeb;
+  min-width: 0;
+}
+.btn.btn-login i {
+  text-align: initial;
+  display: inline-block;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  min-width: 2rem;
+}
+.btn.btn-login.btn-g i {
+  color: #cc3333;
+  min-width: 2.6rem;
+}
+.btn.btn-login.btn-f i {
+  color: #3366cc;
+}
+.btn.btn-login:hover, .btn.btn-login:focus {
+  background-color: #f5f6f9;
+}
+{%-endstyle-%}

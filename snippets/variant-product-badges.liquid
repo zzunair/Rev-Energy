@@ -1,0 +1,11 @@
+<product-badges>
+  <div class="badges-main">
+    <div class="badges-wrapper">
+      <ul>
+        {% for badge in current_variant.metafields.custom.variant_badges.value %}
+          <li>{{ badge }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</product-badges>

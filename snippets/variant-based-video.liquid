@@ -1,0 +1,27 @@
+<custom-variant-video>
+  {% if current_variant.metafields.custom.variant_video_metaobject.value.title %}
+    <video-section-popup-video>
+      <div class="Script_Tag_outer">
+        <div id="lyvecom_story_event--page">
+          {% if from_js %}
+            {{ current_variant.metafields.custom.variant_video_metaobject.value.video_script }}
+          {% endif %}
+        </div>
+      </div>
+    </video-section-popup-video>
+    
+    <variant-based-video>
+      <div class="Video_container_outer custom-video-play">
+        <div class="Video_container_left custom-video-play">
+          <img class="custom-video-play" src="{{ current_variant.metafields.custom.variant_video_metaobject.value.image | img_url: '200x' }}" alt="">
+        </div>
+        <div class="Video_container_right custom-video-play">
+          <div class="Video_content-title custom-video-play">
+            {{ current_variant.metafields.custom.variant_video_metaobject.value.title }}
+          </div>
+          <p>{{ current_variant.metafields.custom.variant_video_metaobject.value.content }}</p>
+        </div>
+      </div>
+    </variant-based-video>
+  {% endif %}
+</custom-variant-video>

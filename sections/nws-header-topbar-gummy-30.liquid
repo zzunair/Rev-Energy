@@ -1,0 +1,74 @@
+<!-- nws-custom-topbar -->
+  {% if section.settings.topbar-text != blank %}
+    <div class="nws-custom-topbar" {% if section.settings.topbar-color != blank %}style="background-color:{{ section.settings.topbar-color }};"{% endif %} >
+     <div class="container-fluid wide" >
+      <div class="nws-topbar-ul" >
+        <div class="nws-topbar-li nws-topbar-li-left" ></div>
+        <div class="nws-topbar-li nws-topbar-li-center" >
+          {% if page.metafields.custom.topbar_override %}
+            {{ page.metafields.custom.topbar_override | metafield_tag}}
+          {% else %}
+              {%  if template == "page.gummy30-fb" %}
+                  {{ section.settings.topbar-text }}
+              {%  elsif template == "page.gummy30-fb2" %}
+                   <p>OVER 50% OFF ENDING SOON (<a href="#subs-product" title="https://trycreate.co/pages/wisdom#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+              {%  elsif template == "page.gummy30-fb3" or template == "page.gummy30-fb4"  %}
+                   <p>UP TO 50% OFF ENDING SOON (<a href="#subs-product" title="https://trycreate.co/pages/wisdom#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p> 
+                {%  elsif template == "page.gummy30-pd" %}
+                   <p>CODE <strong>PRIME</strong> FOR UP TO 50% OFF (<a href="#subs-product" title="https://trycreate.co/pages/wisdom#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+               {%  elsif template == "page.gummy30-fb5" %}
+                   <p>UP TO 50% OFF ENDING SOON (<a href="#subs-product" title="https://trycreate.co/pages/wisdom#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>            
+                {%  else %}
+                   <p>UP TO 50% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/wisdom#subs-product" title="https://trycreate.co/pages/wisdom#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+               {% endif %}
+          {% endif %}
+        </div>
+        <div class="nws-topbar-li nws-topbar-li-right" >
+          {% if customer.has_account %}
+            <a class="topbar-link topbar-link-account" href="/account" >My Account</a>
+          {% else %}
+            {% if section.settings.topbar-login != blank %}<a class="topbar-link" href="{{ section.settings.topbar-login-link }}" >{{ section.settings.topbar-login }}</a>{% endif %}{% if section.settings.topbar-signup != blank %}<a class="topbar-link" href="{{ section.settings.topbar-signup-link }}" >{{ section.settings.topbar-signup }}</a>{% endif %}
+          {% endif %}
+        </div>
+      </div>
+     </div>
+    </div>
+  {% endif %}
+<!-- end nws-custom-topbar -->
+{% schema %}
+  {
+    "name": "NWS - Topbar",
+    "settings": [
+        {
+          "type": "color",
+          "id": "topbar-color",
+          "label": "Tobar Color"
+        },
+        {
+          "type": "richtext",
+          "id": "topbar-text",
+          "label": "Topbar Text"
+        },
+        {
+          "type": "text",
+          "id": "topbar-login",
+          "label": "Topbar Login"
+        },
+        {
+          "type": "url",
+          "id": "topbar-login-link",
+          "label": "Topbar Login Link"
+        },
+        {
+          "type": "text",
+          "id": "topbar-signup",
+          "label": "Topbar Sign Up"
+        },
+        {
+          "type": "url",
+          "id": "topbar-signup-link",
+          "label": "Topbar Sign Up Link"
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,568 @@
+{{ 'section-feature-product-collection.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign max_product_show = section.settings.max_product_show
+  assign get_collection = section.blocks.first.settings.collection
+  assign products_in_products_list = section.blocks.first.settings.products
+  assign products_in_collection = get_collection.products
+  assign loading = 'eager'
+  assign fetchpriority = 'auto'
+  assign intersection = ''
+  if section.index == 1
+    assign fetchpriority = 'high'
+  elsif section.index > 2
+    assign loading = 'lazy'
+    assign intersection = 'intersection-element'
+  endif
+-%}
+
+<style>
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 | append: 'px' }};
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 | append: 'px' }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | append: 'px' }};
+      padding-bottom: {{ section.settings.padding_bottom | append: 'px' }};
+    }
+  }
+</style>
+{% unless section.settings.border_size == 'hide' %}
+  {% if section.settings.border_position == 'both' or section.settings.border_position == 'top' %}
+    {% unless section.settings.border_size == 'full_width' %}
+      <div class="container">
+    {% endunless %}
+    <div class="spacer-wrapper color-{{ section.settings.color_scheme }}">
+      <div
+        class="spacer border-top"
+      ></div>
+    </div>
+    {% unless section.settings.border_size == 'full_width' %}
+      </div>
+    {% endunless %}
+  {% endif %}
+{% endunless %}
+<div
+  aria-label="{{ section.settings.heading }}"
+  class="product_collection section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} {% unless section.settings.image_aspect_ratio == 'adapt' %} card-content-bottom {% endunless %}"
+  role="region"
+>
+  <div class="container">
+    <div class="heading_container">
+      {% capture accessible_label %}
+          {{- 'accessibility.product_view_all' | t -}}
+        {% endcapture %}
+      {% render 'section-heading',
+        section: section,
+        viewall_url: section.settings.link_url,
+        accessibiity_label: accessible_label
+      %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      {% unless section.settings.layout_style == 'grid' %}
+        {%- comment -%} Display type is "carousel" {%- endcomment -%}
+        <carousel-with-tabs
+          {{ intersection }}
+          class="swiper js-element "
+          slide-layout-type="carousel"
+          slide-no-center
+          slide-pagination-type="progressbar"
+          slide-per-view="1.3"
+          slide-responsive-breakpoints='{"480":{"slidesPerView": "1.5"},"640":{"slidesPerView":"2.3"},"1024":{"slidesPerView":"4"}}'
+          slide-speed="{{ settings.slide_duration }}"
+        >
+          {%- if section.blocks.size > 1 -%}
+            {%- assign slidesContainer = '' -%}
+            <div class="swiper-tabs-wrapper">
+              {%- for block in section.blocks -%}
+                <button
+                  carousel-tab
+                  class="swiper-tab h4 fnt-18{% if forloop.first %} active{% endif %}"
+                  data-tab="{{ block.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.tab_heading | default: block.settings.collection.title }}
+                </button>
+                {%- capture slides -%}
+                    <div data-content="{{ block.id }}">
+                      {%- assign products_list = block.settings.products | default: block.settings.collection.products -%}
+                      {%- unless products_list == blank -%}
+                        {%- for product in products_list limit: max_product_show -%}
+                          <div class="swiper-slide h-auto">
+                            {%- render 'card-product' 
+                              , product: product
+                              , product_image_loading: loading
+                              , product_image_fetchpriority: fetchpriority
+                              , section: section,
+                              , index: forloop.index0
+                            -%}
+                          </div>
+                        {%- endfor -%}
+                      {%- else -%}
+                        {%- for i in (1..max_product_show ) -%}
+                          <div class="swiper-slide">
+                            {%- render 'card-product', onboarding: true , index: forloop.index0 -%}
+                          </div>
+                        {%- endfor -%}
+                      {%- endunless -%}
+                    </div>
+                  {%- endcapture -%}
+                {%- assign slidesContainer = slidesContainer | append: slides -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          <div class="swiper-container" main-slider>
+            <animation-reveal aoi-type="fade-up" aoi-amount="0.2" class="swiper-wrapper">
+              {% if products_in_products_list == blank %}
+                {% unless products_in_collection == blank %}
+                  {%- for product in products_in_collection limit: max_product_show -%}
+                    <div class="swiper-slide h-auto">
+                      {%-
+                        render 'card-product'
+                        , product: product
+                        , product_image_loading: loading
+                        , product_image_fetchpriority: fetchpriority
+                        , section: section,
+                        , index: forloop.index0
+                      -%}
+                    </div>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- for i in (1..max_product_show) -%}
+                    <div class="swiper-slide">
+                      {%- render 'card-product', onboarding: true, index: forloop.index0 -%}
+                    </div>
+                  {%- endfor -%}
+                {% endunless %}
+              {% else %}
+                {%- for product in products_in_products_list limit: max_product_show -%}
+                  <div class="swiper-slide h-auto">
+                    {%- render 'card-product',
+                      product: product,
+                      product_image_loading: loading,
+                      product_image_fetchpriority: fetchpriority,
+                      section: section,
+                      index: forloop.index0
+                    -%}
+                  </div>
+                {%- endfor -%}
+              {% endif %}
+            </animation-reveal>
+          </div>
+          <div class="sliderControl">
+            <div
+              aria-hidden="true"
+              class="sliderProgressBar"
+              slide-progress
+            ></div>
+            <div class="d-flex sliderPagination">
+              <!-- next / prev arrows -->
+              <div
+                aria-label="{{ 'accessibility.prev_slide_label' | t }}"
+                class=""
+                role="button"
+                slide-prev
+                tabindex="0"
+              >
+                <div class="sliderPagination__prev productSlider__prev">
+                  {% render 'slider-arrow-icon', arrow_direction: 'left' %}
+                </div>
+              </div>
+              <div
+                aria-label="{{ 'accessibility.next_slide_label' | t }}"
+                class=""
+                role="button"
+                slide-next
+                tabindex="0"
+              >
+                <div class="sliderPagination__next productSlider__next">
+                  {% render 'slider-arrow-icon', arrow_direction: 'right' %}
+                </div>
+              </div>
+
+              <!-- !next / prev arrows -->
+            </div>
+          </div>
+          <template>
+            {{ slidesContainer }}
+          </template>
+        </carousel-with-tabs>
+
+      {% else %}
+        <tabs-toggle>
+          {%- comment -%} Display type is "grid" {%- endcomment -%}
+          <div class="swiper-tabs-wrapper d-flex">
+            {% assign gridlayoutContent = '' %}
+            {%- for block in section.blocks -%}
+              {%- if section.blocks.size > 1 -%}
+                <button
+                  tab-head
+                  class="swiper-tab h4 fnt-18{% if forloop.first %} active{% endif %}"
+                  data-id="{{ block.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.tab_heading | default: block.settings.collection.title }}
+                </button>
+              {%- endif -%}
+              {% capture gridContent %}
+          {%- assign products_list = block.settings.products | default: block.settings.collection.products -%}
+          <div tab-body id="{{ block.id }}" class="{% if forloop.first %} active {% endif %} featured-collection-grid">
+          <animation-reveal
+            
+            aoi-type="fade-up"
+            aoi-amount="0"
+            class="grid-layout grid-layout--{{ section.settings.columns_desktop }}-desktop  grid-layout--{{ section.settings.columns_mobile }}-mobile"
+            fade-up-wrapper
+          >
+          {%- unless products_list == blank -%}
+              {%- for product in products_list limit: max_product_show -%}
+                {%- render 'card-product',
+                  product: product,
+                  product_image_loading: loading,
+                  product_image_fetchpriority: fetchpriority,
+                  section: section,
+                  index: forloop.index0
+                -%}
+              {%- endfor -%}
+ 
+          {% else %}
+          
+              {%- for i in (1..max_product_show) -%}
+                {%- render 'card-product', onboarding: true, index: forloop.index0 -%}
+              {%- endfor -%}
+            {%- endunless -%}
+          </animation-reveal>
+        </div>
+          {% endcapture %}
+              {% assign gridlayoutContent = gridlayoutContent | append: gridContent %}
+            {%- endfor -%}
+          </div>
+          {{ gridlayoutContent }}
+        </tabs-toggle>
+      {% endunless %}
+    {% endif %}
+  </div>
+</div>
+{% unless section.settings.border_size == 'hide' %}
+  {% if section.settings.border_position == 'both' or section.settings.border_position == 'bottom' %}
+    {% unless section.settings.border_size == 'full_width' %}
+      <div class="container">
+    {% endunless %}
+    <div class="spacer-wrapper color-{{ section.settings.color_scheme }}">
+      <div
+        class="spacer border-bottom"
+      ></div>
+    </div>
+    {% unless section.settings.border_size == 'full_width' %}
+      </div>
+    {% endunless %}
+  {% endif %}
+{% endunless %}
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "tag": "section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "label": "Maximum products to show",
+      "id": "max_product_show",
+      "type": "range",
+      "min": 1,
+      "max": 25,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout",
+      "options": [
+        {
+          "label": "Carousel",
+          "value": "carousel"
+        },
+        {
+          "label": "Grid",
+          "value": "grid"
+        }
+      ],
+      "default": "carousel"
+    },
+    {
+      "type": "header",
+      "content": "Grid settings"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Number of columns on desktop",
+      "options": [
+        {
+          "label": "3",
+          "value": "3"
+        },
+        {
+          "label": "4",
+          "value": "4"
+        },
+        {
+          "label": "5",
+          "value": "5"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "label": "1",
+          "value": "1"
+        },
+        {
+          "label": "2",
+          "value": "2"
+        }
+      ],
+      "default": "1",
+      "label": "Number of columns on mobile"
+    },
+    {
+      "type": "header",
+      "content": "Section content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_outline_button",
+      "label": "Use outline button style",
+      "info": "This will work when product card buttton is stacked",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all_button",
+      "label": "Show link",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "view_all_link_style",
+      "label": "Link style",
+      "options": [
+        {
+          "value": "icon",
+          "label": "Arrow"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "icon"
+    },
+    {
+      "type": "select",
+      "id": "view_all_link_position",
+      "label": "Desktop link position",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "text",
+      "id": "view_all_link_text",
+      "label": "Link text",
+      "default": "View all",
+      "info": "Will only work when link style is set to 'text' ",
+      "placeholder": "Link text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "select",
+      "id": "link_target",
+      "label": "Open link in",
+      "options": [
+        {
+          "label": "New tab",
+          "value": "_blank"
+        },
+        {
+          "label": "Same tab",
+          "value": "_top"
+        }
+      ],
+      "default": "_top"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:settings_schema.global.section.padding.settings.padding_top.label",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:settings_schema.global.section.padding.settings.padding_bottom.label",
+      "default": 52
+    },
+    {
+      "type": "select",
+      "id": "border_size",
+      "label": "Border",
+      "options": [
+        {
+          "label": "Hide",
+          "value": "hide"
+        },
+        {
+          "label": "Full width",
+          "value": "full_width"
+        },
+        {
+          "label": "Fixed width",
+          "value": "fixed_width"
+        }
+      ],
+      "default": "hide"
+    },
+    {
+      "type": "select",
+      "id": "border_position",
+      "label": "Border position",
+      "options": [
+        {
+          "label": "Both",
+          "value": "both"
+        },
+        {
+          "label": "Top",
+          "value": "top"
+        },
+        {
+          "label": "Bottom",
+          "value": "bottom"
+        }
+      ],
+      "default": "both"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Collection",
+      "type": "featured_collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_heading",
+          "label": "Heading",
+          "default": "Collection",
+          "info": "This will replace the collection heading if there are multiple blocks"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "type": "product_collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_heading",
+          "label": "Heading",
+          "default": "Collection",
+          "info": "This will shown as the tab heading if there are multiple blocks"
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "Products"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection",
+      "blocks": [
+        {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Collection 1"
+          }
+        },
+        {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Collection 2"
+          }
+        },
+        {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Collection 3"
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["*"]
+  }
+}
+{% endschema %}

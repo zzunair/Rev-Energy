@@ -1,0 +1,69 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_Rhyqby": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_wjtHB7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Create Wellness Reviews",
+            "style": "h1"
+          }
+        },
+        "text_CRq4ia": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Find out how real Create customers feel about their favorite products.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wjtHB7",
+        "text_CRq4ia"
+      ],
+      "settings": {
+        "container_size": true,
+        "content_width": 500,
+        "content_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2ec4f7ea-5bba-4594-8562-7cfdc77b9da8"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": 600,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "color_scheme": ""
+      }
+    },
+    "1741891832cac62b0a": {
+      "type": "apps",
+      "settings": {
+        "section_width": true,
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "rich_text_Rhyqby",
+    "main",
+    "1741891832cac62b0a"
+  ]
+}

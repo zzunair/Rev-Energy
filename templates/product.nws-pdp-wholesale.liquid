@@ -1,0 +1,26 @@
+{% include 'product-content.zipifypages', contentprt: 'header' %}{%- liquid
+    render 'kt_breadcrumb'
+    section 'nws-product-template-all'
+    section 'nws-app-pdp-review'
+-%}
+{% comment %}
+{%- liquid
+	if settings.use_ask
+	echo '<div class="lazyload lazypreload" data-include="'
+	echo product.url
+	echo '?view=ask"></div>'
+	endif
+	if settings.use_wide
+	  render 'photoswipe'
+	endif
+	section 'product-template'
+	section 'kt_recentlyViewedProducts'
+	section 'kt_related-products'
+-%}
+
+<!-- Stamped - Begin main-widget -->
+<div id="stamped-main-widget" class="stamped-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: " ? ", " % 3F" | replace: "& "," % 26"}}" data-description="{{ product.description | escape }}" data-product-sku="{{product.handle}}" data-product-type="{{product.type}}">  </div>
+<!-- Stamped - End main-widget -->
+{% endcomment %}
+<div data-rebuy-id="130914" data-rebuy-shopify-product-ids="{{ product.id }}"></div>
+{% include 'product-content.zipifypages', contentprt: 'footer' %}

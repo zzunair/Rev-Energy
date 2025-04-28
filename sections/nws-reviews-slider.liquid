@@ -1,0 +1,73 @@
+<!-- nws-reviews-slider -->
+  {% if section.blocks != blank %}
+    <div class="nws-reviews-slider" {% if section.settings.section-color != blank %}style="background-color:{{ section.settings.section-color }};"{% endif %} >
+      {% comment %}
+        <div class="nws-reviews-slider-content">
+          {% for block in section.blocks %}
+            {% if block.settings.img-icon != blank %}
+              <div class="nws-reviews-slider-slide">
+                <div class="nws-reviews-slider-top" >
+                  <div class="nws-img-icon" >
+                    <img src="{{ block.settings.img-icon | img_url: '120x' }}" class="img-icon" />
+                  </div>
+                  <div class="nws-img-right" >
+                    <div class="nws-img-right-inner" >
+                      <h4>{{ block.settings.img-title }}</h4>
+                      {% render 'nws-trust-icon' %}
+                    </div>
+                    <div class="nws-block-stars" >★★★★★</div>
+                  </div>
+                </div>
+                {% if block.settings.img-txt != blank %}<div class="nws-txt" >{{ block.settings.img-txt }}</div>{% endif %}
+              </div>
+             {% endif %}
+          {% endfor %}
+      </div>
+      {% endcomment %}
+      <div class="nws-reviews-slider-stamped">
+         <div id="stamped-reviews-widget" data-widget-type="carousel" data-product-ids="7702607724732, 7798465790140,7702607036604, 7739676229820" data-auto-play="true" data-auto-play-speed="5000" data-style-color-title="#333333" data-style-color-star="#ffd97c" data-style-color-text="#333333" data-style-color-link="#333333" data-limit-words="20" data-with-photos="false"></div> 
+      </div>
+    </div>
+  {% endif %}
+<!-- end nws-reviews-slider -->
+{% schema %}
+  {
+    "name": "NWS - Reviews Slider",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "Slide",
+      "name": "Slide Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img-icon",
+          "label": "Review Image"
+        },
+        {
+          "type": "text",
+          "id": "img-title",
+          "label": "Review Title"
+        },
+        {
+          "type": "textarea",
+          "id": "img-txt",
+          "label": "Review Text"
+        }
+      ]
+    }
+  ],
+    "presets": [
+        {
+          "name": "NWS - Reviews Slider",
+          "category": "NWS Sections"
+        }
+    ]
+  }
+{% endschema %}

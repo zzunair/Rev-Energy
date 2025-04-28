@@ -1,0 +1,8 @@
+{% assign api = shop.metafields.zipifyoneclickupsell | size %}{%- unless api == 0 -%}
+<script>((o,c,u)=>{o[c]=o[c]||{},o[u]=o[u]||{},o[c].OCU=o[c].OCU||{api:o[u]}})(window,'Zipify','OCUApi');</script>
+{%- if template.name == 'product' -%}
+<script>
+  Zipify.OCU.api.isWindowLocationForClickListener=!0,Zipify.OCU.api.callbackBeforeRedirect=(e,t)=>new Promise(i=>{try{if("checkout"===e.destination)return i({});let{response:a,type:c}=t.detail;if(!("Upgrade"===c&&a.accepted))return i({});e._upsellAppInstance().hide(),setTimeout(()=>Zipify.OCU.api.store.set("submitted",!1))}catch(r){i({})}});
+</script>
+{%- endif -%}
+{%- endunless -%}

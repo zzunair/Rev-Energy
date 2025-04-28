@@ -1,0 +1,155 @@
+{% comment %}
+  Renders product price
+
+  Accepts Parameters:
+  - product : {Object} Prduct liquid object
+  - is_product_outofstock : {Boolean} If product is outofstock or avaiable
+  - True : If avaialble
+  - False : If outofstock
+{% endcomment %}
+
+{% liquid
+  if use_variant
+    assign current_product = product.selected_or_first_available_variant
+  else
+    assign current_product = product
+  endif
+  assign compare_at_price = current_product.compare_at_price
+%}
+
+<div class="product-price__wrapper {{ container_class | default: '' }}">
+  <div class="product-price_top {% if product.selected_or_first_available_variant.unit_price -%} add-bottom-spacing {%- endif -%}">
+    {%- if use_variant -%}
+      {% comment %} Logic for prices to render on single product when known Variant {% endcomment %}
+
+      {% comment %} For Price to be render on products page /Featured product {% endcomment %}
+      <span class="price">
+        {% if settings.currency_code_enabled %}
+          {{ current_product.price | money }}
+        {% else %}
+          {{ current_product.price | money }}
+        {% endif %}
+      </span>
+      {%- if on_sale %}
+        {% if compare_at_price %}
+          <del class="original-price">
+            {% if settings.currency_code_enabled %}
+              {{ current_product.compare_at_price | money_with_currency }}
+            {% else %}
+              {{ current_product.compare_at_price | money }}
+            {% endif %}
+          </del>
+          {% unless hide_percentage_off %}
+            <span class="offer">{% render 'discount-formate', product: current_product %}</span>
+          {% endunless %}
+        {% endif %}
+      {% endif %}
+
+    {%- else -%}
+      {% comment %} For price to be render on product card considering rendering prices of variant which are different {% endcomment %}
+
+      {% comment %} 1) if price varies between varaints and has compare price {% endcomment %}
+      {% if current_product.price_varies and compare_at_price %}
+        {%- assign cheapest_variant = product.variants | sort: 'price' | first -%}
+        <span class="price">
+          {%- capture price_min -%}
+            {%- if settings.currency_code_enabled -%}
+              {{- cheapest_variant.price | money_with_currency -}}
+            {%- else -%}
+              {{- cheapest_variant.price | money -}}
+            {%- endif -%}
+          {%- endcapture -%}
+          {{- 'products.product.price.from_price_html' | t: price: price_min -}}
+        </span>
+        {%- if on_sale %}
+          <del class="original-price">
+            {% if settings.currency_code_enabled %}
+              {{ cheapest_variant.compare_at_price | money_with_currency }}
+            {% else %}
+              {{ cheapest_variant.compare_at_price | money }}
+            {% endif %}
+          </del>
+          {% unless hide_percentage_off %}
+            <span class="offer">{% render 'discount-formate', product: cheapest_variant %}</span>
+          {% endunless %}
+        {% endif %}
+
+      {%- elsif current_product.price < current_product.compare_at_price -%}
+        {% unless has_no_varaint %}
+          <span class="price">
+            {% if settings.currency_code_enabled %}
+              {{ current_product.price | money_with_currency }}
+            {% else %}
+              {{ current_product.price | money }}
+            {% endif %}
+          </span>
+        {% else %}
+          <span class="price">
+            {% if settings.currency_code_enabled %}
+              {{ product.selected_or_first_available_variant.price | money_with_currency }}
+            {% else %}
+              {{ product.selected_or_first_available_variant.price | money }}
+            {% endif %}
+          </span>
+        {% endunless %}
+        {%- if on_sale %}
+          <del class="original-price">
+            {% if settings.currency_code_enabled %}
+              {{ current_product.compare_at_price | money_with_currency }}
+            {% else %}
+              {{ current_product.compare_at_price | money }}
+            {% endif %}
+          </del>
+          {% unless hide_percentage_off %}
+            <span class="offer">{% render 'discount-formate', product: current_product %}</span>
+          {% endunless %}
+        {% endif %}
+
+      {%- elsif current_product.price_varies -%}
+        {%- capture price_min -%}
+          {% if settings.currency_code_enabled %}
+            {{ current_product.price_min | money_with_currency }}
+          {% else %}
+            {{ current_product.price_min | money }}
+          {% endif %}
+        {%- endcapture -%}
+
+        <span class="price">
+          {{- 'products.product.price.from_price_html' | t: price: price_min -}}
+        </span>
+      {%- else -%}
+        {%- unless has_no_varaint -%}
+          <span class="price">
+            {% if settings.currency_code_enabled %}
+              {{ current_product.price | money_with_currency }}
+            {% else %}
+              {{ current_product.price | money }}
+            {% endif %}
+          </span>
+        {%- else -%}
+          <span class="price">
+            {% if settings.currency_code_enabled %}
+              {{ product.selected_or_first_available_variant.price | money_with_currency }}
+            {% else %}
+              {{ product.selected_or_first_available_variant.price | money }}
+            {% endif %}
+          </span>
+        {%- endunless -%}
+      {% endif %}
+    {%- endif -%}
+  </div>
+  <div
+    class="product-price_bottom"
+    {% unless product.selected_or_first_available_variant.unit_price -%}
+      hidden
+    {%- endunless -%}
+  >
+    <p class="fnt-14 text-color product-unit-price__measurment">
+      <span>{{ product.selected_or_first_available_variant.unit_price | money }}</span><span> / </span>
+      {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+        <span>{{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}</span>
+      {%- endif -%}
+      {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+    </p>
+  </div>
+</div>

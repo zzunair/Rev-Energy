@@ -1,0 +1,316 @@
+<div class="creatine">
+  <div class="body">
+    <div class="header-part">
+      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="slider-part">
+      <div class="creatine-slider">
+        {% for block in section.blocks %}
+          <div class="slide-box">
+            <div class="slide">
+              <div class="slide-img-box">
+                <img
+                  src="{{ block.settings.s-img | img_url: 'master' }}"
+                  alt="{{ block.settings.s-img.alt }}"
+                  width="auto"
+                  height="auto"
+                >
+              </div>
+              <div class="slide-content-box">
+                <span>{{ block.settings.title }}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "NWS Creatine",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "sub-heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "para",
+      "label": "Paragraph"
+    },
+    {
+      "type": "image_picker",
+      "id": "side-img",
+      "label": "Select Image"
+    },
+    {
+      "type": "select",
+      "options": [
+        {
+          "value": "Row",
+          "label": "Row"
+        },
+        {
+          "value": "Row-Reverse",
+          "label": "Row Reverse"
+        }
+      ],
+      "id": "direction",
+      "label": "Content Direction",
+      "default": "Row"
+    },
+    {
+      "type": "range",
+      "id": "spacing-b-c",
+      "min": 0,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "default": 25,
+      "label": "Spacing Between Image And Content"
+    },
+    {
+      "type": "range",
+      "id": "p-t",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "label": "Section Top Spacing"
+    },
+    {
+      "type": "range",
+      "id": "p-b",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80,
+      "label": "Section Bottom Spacing"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Screen"
+    },
+    {
+      "type": "range",
+      "id": "p-t-m",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "label": "Section Top Spacing"
+    },
+    {
+      "type": "range",
+      "id": "p-b-m",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60,
+      "label": "Section Bottom Spacing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "s-img",
+          "label": "Select Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NWS Creatine",
+      "category": "Section Category"
+    }
+  ]
+}
+{% endschema %}
+<style>
+  .creatine {
+  	display: block;
+  	overflow: hidden;
+  	padding: 120px 0 80px;
+  }
+  .creatine .body {
+      display: block;
+      position: relative;
+  }
+  .creatine .body .header-part {
+      display: block;
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 0 18px;
+      margin-bottom: 35px;
+  }
+  .creatine .body .header-part h2.section-heading {
+      display: block;
+      font-size: 30px;
+      font-family: PPObjectSans;
+      margin: 0;
+  }
+  .creatine .body .slider-part {
+      display: block;
+  }
+  .creatine .slider-part .creatine-slider {
+      display: block;
+      position: unset;
+  }
+  .creatine .creatine-slider .slide-box {
+      display: block;
+      width: 100%;
+      padding: 0 12px;
+  }
+  .creatine .slide-box .slide {
+      display: block;
+      border: 2px solid #333333;
+      border-radius: 12px;
+      height: 100%;
+      overflow: hidden;
+  }
+  .creatine .slide-box .slide .slide-img-box {
+      display: block;
+      padding-bottom: 67%;
+      position: relative;
+  }
+  .creatine .slide-img-box img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  .creatine .slide .slide-content-box {
+      display: block;
+  }
+  .creatine .slide-content-box span {
+      display: block;
+      font-size: 16px;
+      padding: 20px;
+      line-height: normal;
+      font-family: PPObjectSans;
+      text-transform:uppercase;
+      font-weight: 600;
+  }
+  .creatine .slider-part .creatine-slider .slick-track {
+      display: flex;
+  }
+  .creatine .body .slider-part button:hover{
+      background: transparent !important;      
+  }
+  .creatine .body .slider-part button:hover svg path{
+      fill: #F77F26;      
+  }
+  .creatine .body .slider-part button.slick-next {
+      display: block;
+      position: absolute;
+      top: -4px;
+      right: 18%;
+      left: auto;
+      background: #F77F26;
+      border: 2px solid #F77F26;
+      transform: translateX(-18%);
+      width: 40px;
+      height: 40px;
+      border-radius: 100px;
+  }
+  .creatine .body .slider-part button.slick-prev {
+      display: block;
+      position: absolute;
+      top: -4px;
+      right: calc(18% + 45px);
+      left: auto;
+      background: #F77F26;
+      border: 2px solid #F77F26;
+      transform: translateX(-18%);
+      width: 40px;
+      height: 40px;
+      border-radius: 100px;
+  }
+  .creatine .slick-prev:before, .slick-next:before{
+    display: none;
+  }
+  .creatine .body .slider-part button svg {
+      background: none !important;
+  }
+
+@media screen and (max-width: 1280px){
+  .creatine .slide-content-box span {
+      font-size: 12px;
+      padding: 15px 20px;
+  }
+  .creatine .body .slider-part button.slick-prev {
+      transform: translateX(-55%);
+  }
+}
+@media screen and (max-width: 991px){
+  .creatine .body .header-part h2.section-heading {
+      font-size: 26px;
+  }
+  .creatine .creatine-slider .slide-box {
+      padding: 0 10px;
+  }
+  .creatine .body .slider-part button.slick-prev {
+      transform: translateX(-65%);
+  }
+}
+@media screen and (max-width: 768px){
+  .creatine {
+      padding: 60px 0;
+  }
+  .creatine .body .slider-part button {
+      width: 35px !important;
+      height: 35px !important;
+  }
+  .creatine .body .slider-part button.slick-prev {
+      transform: translate(-82%, -9px);
+  }
+  .creatine .body .header-part h2.section-heading {
+      font-size: 22px;
+  }
+  .creatine button.slick-next.slick-arrow {
+      transform: translate(-20%, -9px) !important;
+  }
+  .creatine .body .slider-part button svg {
+      width: 14px;
+  }
+  .creatine .body .slider-part button.slick-next {
+      right: 5%;
+  }
+  .creatine .body .slider-part button.slick-prev {
+      right: 8%;
+  }
+}
+@media screen and (max-width: 521px){
+  .creatine .body .slider-part button.slick-prev {
+      right: 10%;
+  }
+  .creatine .body .header-part h2.section-heading {
+      font-size: 18px;
+  }
+}
+</style>

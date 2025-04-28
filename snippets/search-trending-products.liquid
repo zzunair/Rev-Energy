@@ -1,0 +1,72 @@
+{% liquid
+  assign get_collection = section.settings.collections
+  assign products_in_collection = get_collection.products
+  
+%}
+
+<div class="search-trending-product">
+  {% if section.settings.heading != blank and get_collection != blank %}
+    <div class="search-trending-product__heading">
+      <h3 class="h3">{{ section.settings.heading }}</h3>
+    </div>
+  {% endif %}
+
+  <div class="search-trending-product__body">    
+    <script data-products-collections type="application/json">
+      {{ products_in_collection.all_products_count }}
+    </script>
+    {% if get_collection != blank %}
+      <ul class="search-trending-product__wrapper">
+        {% for product in products_in_collection %}
+          <li
+            aria-selected="false"
+            class="fnt-14"
+            id="search-trending-option-{{ forloop.index }}"
+            role="option">
+            <a
+              class="search-trending-product__item search-trending-product__item--link "
+              href="{{ product.url }}"
+              tabindex="-1">
+
+              {%- if product.featured_media != blank -%}
+                <div class="search-trending-product__imageWrp">
+                  <div class="image--aspectSize search-trending-product__image">
+                    {{ product.featured_media 
+                     | image_url: width: 235
+                     | image_tag:
+                     widths: '235,60'
+                     , sizes: '(max-width: 991px) 60px'
+                     , alt: product.featured_media.alt
+                     , loading: 'lazy'
+                     , class: 'image-responsive' }}
+                  </div>
+                </div>
+              {% else %}
+                <div class="search-trending-product__imageWrp">
+
+                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+                  <div class="image--aspectSize search-trending-product__image">
+                    {{ placeholder_image | placeholder_svg_tag: 'image-responsive' }}
+                  </div>
+                </div>
+              {%- endif -%}
+              <div class="search-trending-product__item__content">
+                {%- if settings.predictive_search_show_vendor -%}
+                  <div class="search-trending-product__item-vendor caption-with-letter-spacing">{{ product.vendor }}</div>
+                {%- endif -%}
+                <h3 class="search-trending-product__item__heading">{{ product.title }}</h3>
+                {%- if settings.predictive_search_show_price -%}
+                  <div class="search-trending-product__item__price">
+                    {% render 'price', product: product, on_sale: on_sale %}
+
+                  </div>
+                {%- endif -%}
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>

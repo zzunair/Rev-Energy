@@ -1,0 +1,136 @@
+<style>
+.nws-page-wholesale {
+	display: flex;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 160px 0;
+	height: calc(100vh - 195px);
+	align-items: center;
+}
+.nws-page-wholesale .nws-page-wholesale-text {
+	display: block;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 40px 60px;
+	max-width: 700px;
+	width: 100%;
+	margin-left: auto;
+}
+.nws-page-wholesale .nws-page-wholesale-text .heading-nws {
+	display: block;
+	color: #F57E25;
+	font-weight: 600;
+	font-size: 50px;
+	line-height: 1.1;
+	letter-spacing: -0.03em;
+}
+.nws-page-wholesale .nws-page-wholesale-text .nws-page-col-2-p {
+	color: #4A4A4A;
+	font-size: 18px;
+	line-height: normal;
+	display: block;
+	margin-top: 15px;
+}
+.nws-page-wholesale .nws-page-wholesale-text .btn-nws {
+	margin-top: 15px;
+}
+.nws-page-wholesale .col-lg-6.col-sm-12 {
+	padding: 0;
+}
+.nws-page-wholesale .container-fluid {
+	display: block;
+	max-width: 100%;
+}
+
+@media screen and (max-width:991px){
+  .nws-page-wholesale .nws-page-wholesale-text .heading-nws {
+  	font-size: 36px;
+  }
+  .nws-page-wholesale .nws-page-wholesale-text .nws-page-col-2-p {
+  	font-size: 16px;
+  }
+  .nws-page-wholesale .nws-page-wholesale-text {
+  	max-width: 550px;
+  }
+  .nws-page-wholesale {
+  	height: calc(100vh - 175px);
+  }
+}
+@media screen and (max-width:767px){
+  .nws-page-wholesale {
+  	padding: 0;
+  	height: auto;
+  }
+  .nws-page-wholesale img {
+  	display: block;
+  	width: 100%;
+  }
+  .nws-page-wholesale .nws-page-wholesale-text {
+  	max-width: 100%;
+  	background: #fff;
+  	text-align: center;
+  	padding: 35px 20px;
+  }
+  .nws-page-wholesale .nws-page-wholesale-text .heading-nws {
+  	font-size: 32px;
+  }
+}
+</style>
+<!-- nws-wholesale -->
+  {% if section.settings.t-txt != blank %}
+    <div class="nws-page-wholesale" style="{% if section.settings.img-icon != blank %}background-image:url('{{ section.settings.img-icon | img_url: 'master' }}');{% endif %} {% if section.settings.section-color != blank %}background-color:{{ section.settings.section-color }};{% endif %}" >
+      <div class="container-fluid" > 
+      <div class="nws-page-wholesale-content row">
+          <div class="col-lg-6 col-sm-12" ></div>
+          <div class="col-lg-6 col-sm-12" >
+            <div class="nws-desk-none" >
+              {% if section.settings.img-icon-mob != blank %}<img src="{{ section.settings.img-icon-mob | img_url: '700x' }}" />{% endif %}
+            </div>
+            <div class="nws-page-wholesale-text" >
+              {% if section.settings.t-txt != blank %}<h2 class="heading-nws" >{{ section.settings.t-txt }}</h2>{% endif %}
+              {% if section.settings.q-txt != blank %}<div class="nws-page-col-2-p" >{{ section.settings.q-txt }}</div>{% endif %}
+              {% if section.settings.t-btn != blank %}<a href="#klaviyo-form" class="btn-nws" >{{ section.settings.t-btn }}</a>{% endif %}
+            </div>
+          </div>
+      </div>
+     </div>
+    </div>
+  {% endif %}
+<!-- end nws-wholesale -->
+{% schema %}
+  {
+    "name": "NWS - Wholesale",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "img-icon",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "img-icon-mob",
+          "label": "Image Mobile"
+        },
+        {
+          "type": "text",
+          "id": "t-txt",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "q-txt",
+          "label": "Content"
+        },
+        {
+          "type": "text",
+          "id": "t-btn",
+          "label": "Button Text"
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,1008 @@
+
+
+<style>
+
+
+ #shopify-section-{{ section.id }}.spaced-section .grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    margin-left: -.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+ #shopify-section-{{ section.id }}.spaced-section .grid__item {
+    padding-left: .5rem;
+    padding-bottom: .5rem;
+    width: calc(25% - .375rem);
+    max-width: 50%;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+ #shopify-section-{{ section.id }}.spaced-section  .product__info-wrapper.grid__item .metafield-rich_text_field em {
+    font-style: normal;
+    color: #de0000 !important;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0pc;
+    margin: 0pc;
+    text-transform: uppercase;
+}
+
+ #shopify-section-{{ section.id }}.spaced-section  .custom-heading {
+    color: #00943b;
+   padding: 30px 0px 10px;
+}
+
+ #shopify-section-{{ section.id }} .slider-galeria {
+    float: unset;
+    width: 100%;
+    border: 1px solid;
+    border-radius: 11px;
+    margin-bottom: 20px;
+}
+
+ #shopify-section-{{ section.id }} .slider-galeria img {
+    border-radius: 11px;
+}
+
+ #shopify-section-{{ section.id }}  .slider-galeria-thumbs img {
+    border: 1px solid;
+    border-radius: 11px;
+}
+
+ #shopify-section-{{ section.id }} .slider-galeria-thumbs {
+    float: unset; 
+    width: 100%;
+    margin-right: 0%; 
+}
+
+ #shopify-section-{{ section.id }} .slider-galeria-thumbs .slick-slide {
+      margin: 0 5px;
+  }
+
+ #shopify-section-{{ section.id }} .slider-galeria-thumbs .slick-list {
+      margin: 0 -5px;
+}
+
+ #shopify-section-{{ section.id }} .product:after {
+    display:none;
+}
+
+ #shopify-section-{{ section.id }} h3.h1.custom-subheading {
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+ #shopify-section-{{ section.id }} .product__text.top-text {
+    text-align: center;
+    display: block;
+    max-width: 450px;
+    width: 450px;
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+ #shopify-section-{{ section.id }} .slider-galeria .slick-list.draggable {
+    margin-bottom: 20px;
+    border-radius: 11px;
+}
+
+ #shopify-section-{{ section.id }} .product {
+    column-gap: 30px;
+}
+
+#shopify-section-{{ section.id }} .subdiv {
+    display: flex;
+    row-gap: 10px;
+    position: relative;
+    max-width: 100%;
+    min-width: auto;
+    column-gap: 10px;
+    flex-basis: auto;
+    min-height: auto;
+    align-items: flex-start;
+    flex-shrink: 0;
+    margin-left: 5px;
+    padding-bottom: 40px;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+#shopify-section-{{ section.id }} .subdiv span {
+    font-size: 16px;
+}
+
+#shopify-section-{{ section.id }} .subdiv b {
+    font-size: 16px;
+    font-weight:800;
+    color:#00943b;
+}
+
+@media(max-width:768px){
+   #shopify-section-{{ section.id }}.spaced-section .grid__item {
+      width: 100%;
+      max-width: 100%;
+  }
+
+  .subdiv svg {
+    width: 13px !important;
+  }
+
+  #shopify-section-{{ section.id }} .subdiv {
+      column-gap: 5px;
+  }
+
+
+   #shopify-section-{{ section.id }} .product__text.top-text {
+      max-width: 100%;
+      width: 100%;
+  }
+
+   #shopify-section-{{ section.id }} .slider-galeria {
+      margin-bottom: 0px;
+  }
+
+  
+}
+</style>
+
+
+
+
+{%- liquid 
+    assign identifier = section.settings.section_identifier | handleize
+    for object in shop.metaobjects.paid_subscription_featured_product.values 
+        assign metaobject = object.identifier.value | handleize
+        if metaobject == identifier
+            assign metaobj = object
+        endif
+    endfor 
+     assign product_images = metaobj.image_gallery.value
+  %}
+  {{ 'custom-subscription-product.css' | asset_url | stylesheet_tag }}
+  {{ 'new-subscription.css.css' | asset_url | stylesheet_tag }}
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'metaobject_block' -%}
+        {% assign product = block.settings.product %}
+        {% if section.settings.section_identifier == block.settings.metaobjectidentifier %}
+          {% assign variantsToHide = shop.metafields.global.variantsToHide %}
+          {% assign optionToHide = '' %}
+          {% for variant in product.variants %}
+            {% for variantToHide in variantsToHide %}
+              {% if variantToHide.variantid contains variant.id %}
+                {% assign optionToHide = optionToHide | append: '|' %}
+                {% assign optionToHide = optionToHide | append: variant.option1 %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+          {% assign optionToHide = optionToHide | split: '|' %}
+          {% for tag in product.tags %}
+            {% if tag == 'free' %}
+              <script type="text/javascript">
+                window.location.replace("{{ shop.url }}");
+              </script>
+            {% endif %}
+          {% endfor %}
+  
+          
+  
+          <link
+            rel="stylesheet"
+            href="{{ 'component-deferred-media.css' | asset_url }}"
+            media="print"
+            onload="this.media='all'"
+          >
+          {% comment %} D2C edit {% endcomment %}
+          {% comment %} <script src="{{ 'paid-subscription-product-form-flavors.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+          <script>
+            var dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                  'event': 'productDetailView',
+                  'ecommerce': {
+                    'currencyCode': 'USD',
+                    'detail': {
+                      'products': [{
+                        'name': '{{product.title}}',
+                        'id': {{product.id}},
+                        'price': JSON.stringify({{product.price}}/100),
+                        'brand': '{{product.vendor}}',
+                        'category': '{{product.type}}',
+                        'variant': '{{product.selected_or_first_available_variant.id}}',
+                        'quantity': 1
+                        }]
+                    }
+                  }
+                });
+          </script>
+  
+          {%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
+          {%- if first_3d_model -%}
+            {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
+            <link
+              id="ModelViewerStyle"
+              rel="stylesheet"
+              href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+              media="print"
+              onload="this.media='all'"
+            >
+            <link
+              id="ModelViewerOverride"
+              rel="stylesheet"
+              href="{{ 'component-model-viewer-ui.css' | asset_url }}"
+              media="print"
+              onload="this.media='all'"
+            >
+          {%- endif -%}
+          {% if product.selected_or_first_available_variant.compare_at_price != blank %}
+            {% assign compare_price = product.selected_or_first_available_variant.compare_at_price
+              | money_without_currency
+              | strip_html
+            %}
+            {% assign cp = product.selected_or_first_available_variant.compare_at_price %}
+          {% else %}
+            {% assign compare_price = 0 %}
+            {% assign cp = 0 %}
+          {% endif %}
+  
+          <section id="subs-product" class="page-width section-{{ section.id }}-padding">
+            {% if block.settings.heading != blank %}
+              <h3 class="h1 custom-heading">{{ block.settings.heading }}</h3>
+            {% endif %}
+            <h3 class="h1 custom-subheading">NSF Certified | 3rd Party Tested | 1.5 Grams of Creatine per Gummy</h3>
+
+            <div class="subdiv">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="#2CB67DFF" class="r-ob8mvj" viewBox="0 0 16 16" data-gtm-vis-has-fired136015658_208="1"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" data-gtm-vis-has-fired136015658_208="1"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="#2CB67DFF" class="r-ob8mvj" viewBox="0 0 16 16" data-gtm-vis-has-fired136015658_208="1"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" data-gtm-vis-has-fired136015658_208="1"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="#2CB67DFF" class="r-ob8mvj" viewBox="0 0 16 16" data-gtm-vis-has-fired136015658_208="1"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" data-gtm-vis-has-fired136015658_208="1"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="#2CB67DFF" class="r-ob8mvj" viewBox="0 0 16 16" data-gtm-vis-has-fired136015658_208="1"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" data-gtm-vis-has-fired136015658_208="1"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="#2CB67DFF" class="r-ob8mvj" viewBox="0 0 16 16" data-gtm-vis-has-fired136015658_208="1"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" data-gtm-vis-has-fired136015658_208="1"></path></svg>
+              </div>
+              <span>4.5 stars</span>
+              <b>100,000+</b>
+              <span>Members</span>
+            </div>
+             
+            <div
+              data-url="/products/{{ block.settings.product }}"
+              class="product grid  pdp-v2 grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}"
+            >
+              <div class="grid__item product__media-wrapper">
+                <!-- Start Product Carousel -->
+                            <div class="carousel-container">
+                  {% if block.settings.product_image != blank %}
+                    {% assign p_image = block.settings.product_image %}
+                  {% else %}
+                    {% assign p_image = product.featured_image %}
+                  {% endif %}
+
+                   <div class="slider-galeria">
+                     {% for single_image in product_images  %}
+                    <div><img src="{{ single_image | img_url: 'master' }}"  loading="lazy" ></div>
+                       {%- endfor %}                   
+          
+                      <div style="clear:both"></div>
+                    </div>
+  
+                      <div class="slider-galeria-thumbs">
+                       {% for single_image in product_images  %}
+                      <div><img src="{{ single_image | img_url: 'master' }}"  loading="lazy" ></div>
+                         {%- endfor -%}
+                    </div>
+            
+                   <a href="https://cdn.shopify.com/s/files/1/0611/9204/4732/files/unnamed_eb6f1f4e-38c4-4207-98e0-81313f3bd0e4.jpg" target="_blank" class="supp-facts">
+                       <span>View Supplement Facts</span>
+                   
+                   </a> 
+
+                  <div class="shipping-div">
+                    <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck" style="fill: none;stroke: currentColor;width: var(--rsw, 100%);height: 100%" role="img" aria-label="Truck" data-gtm-vis-has-fired136015658_208="1"><rect x="1" y="3" width="15" height="13" data-gtm-vis-has-fired136015658_208="1"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" data-gtm-vis-has-fired136015658_208="1"></polygon><circle cx="5.5" cy="18.5" r="2.5" data-gtm-vis-has-fired136015658_208="1"></circle><circle cx="18.5" cy="18.5" r="2.5" data-gtm-vis-has-fired136015658_208="1"></circle></svg>
+                      <span>FREE avg 2-day shipping today</span>
+                    </div>
+
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box" style="fill: none;stroke: currentColor;width: var(--rsw, 100%);height: 100%" role="img" aria-label="Box" data-gtm-vis-has-fired136015658_208="1"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" data-gtm-vis-has-fired136015658_208="1"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96" data-gtm-vis-has-fired136015658_208="1"></polyline><line x1="12" y1="22.08" x2="12" y2="12" data-gtm-vis-has-fired136015658_208="1"></line></svg>
+                    <span>Ships within 24 Hours Mon-Fri</span>
+                    </div>
+
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smile" style="fill: none;stroke: currentColor;width: var(--rsw, 100%);height: 100%" role="img" aria-label="Secure Checkout" data-gtm-vis-has-fired136015658_208="1"><circle cx="12" cy="12" r="10" data-gtm-vis-has-fired136015658_208="1"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2" data-gtm-vis-has-fired136015658_208="1"></path><line x1="9" y1="9" x2="9.01" y2="9" data-gtm-vis-has-fired136015658_208="1"></line><line x1="15" y1="9" x2="15.01" y2="9" data-gtm-vis-has-fired136015658_208="1"></line></svg>
+                    <span>30-Day Money Back Guarantee</span>
+                  </div>
+                  </div>
+
+                 <div class="accordion-div">
+                   <button class="accordion">How many gummies should I take?
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle" style="fill: none;stroke: currentColor;width: var(--rsw, 100%);height: 100%" role="img" aria-label="Collapse/Expand"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                   </button>
+                   <div class="panel">
+                      <p>Maintenance: Best for dietary creatine replenishment. Take 2-3 gummies per day.  Build: Experience the full benefits of creatine. Take 3-5 gummies per day.  Timing: We suggest taking at a convenient and consistent time. Many of our customer take in the morning or before / after a workout.</p>
+                  </div>
+
+                  <button class="accordion">How often should I take Create?
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle" style="fill: none;stroke: currentColor;width: var(--rsw, 100%);height: 100%" role="img" aria-label="Collapse/Expand"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                   </button>
+                   <div class="panel">
+                      <p>Create is mean't to be taken every single day! Depending your workout goals, take 2-5 gummies each day.</p>
+                  </div>
+
+                  <button class="accordion">What is Monohydrate Creatine?
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle" style="fill: none;stroke: currentColor;width: var(--rsw, 100%);height: 100%" role="img" aria-label="Collapse/Expand"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                   </button>
+                   <div class="panel">
+                      <p>Creatine is one of the single most effective ingredients for improving overall health and quality of life. Until now it’s settled at the bottom of your drink or it’s mixed with other less effective ingredients. Create has taken feasibility to a whole new level.</p>
+                  </div>
+
+                  <button class="accordion">Is creatine safe?
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle" style="fill: none;stroke: currentColor;width: var(--rsw, 100%);height: 100%" role="img" aria-label="Collapse/Expand"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                   </button>
+                   <div class="panel">
+                      <p>THE TRUTH: In 2020, the FDA gave creatine monohydrate a GRAS Rating (Generally Regarded as Safe), putting it in the same category as Vitamin C and Whey Protein. It's also the most researched fitness supplement on the market with over 700 peer reviewed studies.</p>
+                  </div>
+
+                  <button class="accordion">Science & Certifications
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle" style="fill: none;stroke: currentColor;width: var(--rsw, 100%);height: 100%" role="img" aria-label="Collapse/Expand"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                   </button>
+                   <div class="panel">
+                      <p><b>Science</b><br>Creatine monohydrate is the most researched fitness supplement on the market. No bogus claims, just thousands of research publications backing the efficacy of Creatine.</p>
+                      <p><b>Certifications</b><br>We are the only NSF certified creatine gummy on the market. We use Creapure, the gold standard of creatine. Our gummies are 3rd party tested by Eurofins to make sure there’s 1.5 grams of creatine per gummy. Spoiler alert - we passed!</p>
+                  </div>
+                 </div>{% comment %} End accordion {% endcomment %}
+                              
+                </div> {% comment %} End Image {% endcomment %}
+     
+
+  <script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+  </script>  
+  
+  <style>
+.accordion-div {
+    max-width: 450px;
+}
+    
+.accordion-div .accordion {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    padding: 18px 0px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+    font-family: PPObjectSans, sans-serif !important;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    display: inline-block;
+    border-bottom:1px solid #000;
+    margin-bottom:0px;
+}
+
+.accordion-div .accordion svg {
+    width: 25px !important;
+    height: auto !important;
+    float: right;
+    display: inline-block;
+}
+    
+.accordion-div .active, .accordion-div .accordion:hover {
+    background-color: #fff;
+}
+
+.accordion-div .active {
+    border:0;
+}
+    
+.accordion-div .active + .panel {
+    border-bottom: 1px solid #000;
+}
+    
+.accordion-div .panel {
+    padding: 10px 10px 18px 10px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+.accordion-div .panel p {
+    font-size: 14px;
+}
+    
+  #shopify-section-{{ section.id }} .grid__item.product__media-wrapper {
+      position: relative;
+  }  
+
+  
+  #shopify-section-{{ section.id }} a.supp-facts {
+    color: #1e1e1e;
+    font-family: auto;
+    font-style: normal;
+    line-height: normal;
+    text-transform: Capitalize;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: block;
+    letter-spacing: 1px;
+      margin-left: auto !important;
+      margin-right: auto;
+      display: block;
+      transform: unset !important;
+      width: 100%;
+      font-weight: 800;
+      border: 1px solid;
+      border-radius: 11px;
+      background-color: #f5fff4;
+      padding: 12px 0px;
+  }
+
+
+    
+  #shopify-section-{{ section.id }} a.supp-facts span{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-weight:800;
+    font-family: ObjectSans, sans-serif !important;
+    font-size:16px;
+  }
+
+
+    
+  @media(max-width:428px){
+  
+  #shopify-section-{{ section.id }} a.supp-facts {
+      margin-bottom: 40px;
+      z-index: 1;
+      margin-left:0px;
+  }
+  
+  #shopify-section-{{ section.id }}{
+      margin-top: 3rem!important;
+  }
+  
+    .paid-product-section .custom-heading {
+        padding: 0px 0px 30px 0px;
+        font-size:30px;
+    }
+
+    #shopify-section-{{ section.id }} a.supp-facts {
+    margin-top: 0px;
+   }
+      
+  }
+                            
+   </style>   
+              </div>
+              <div class="product__info-wrapper grid__item" data-id="shopify-section-{{ section.id }}">
+                <div id="ProductInfo-{{ section.id }}" class="product__info-container">
+                    <div class="product__text top-text">CHOOSE YOUR OFFER</div>
+                      <div class="selection-div">
+                        <div class="autoship-div">
+                          <h3>Autoship & Save</h3>
+                           <div class="autoship-options">
+                             <div class="autoship-bag selected" data-id="1">
+                               <input type="radio" value="1" style="display:none;" checked="checked">
+                                 <div class="option-info">
+                                   <span class="bag-label">One Bag</span>
+                                   <p>
+                                     <span class="price-original">$70.00</span><span class="price-sale">$48.00</span>
+                                   </p>
+                                   <span class="per-day">$1.60 per day</span>
+                                 </div>
+                                 <div class="option-discount">
+                                   <span>31% off </span>
+                                 </div>
+                               
+                             </div>
+
+                             <div class="autoship-bag" data-id="2">
+                               <input type="radio" value="2" style="display:none;">
+                                 <div class="option-info">
+                                   <span class="bag-label">Two Bags</span>
+                                   <p>
+                                     <span class="price-original">$140.00</span><span class="price-sale">$92.00</span>
+                                   </p>
+                                   <span class="per-day">$1.53 per day</span>
+                                 </div>
+                                 <div class="option-discount">
+                                   <span>35% off </span>
+                                 </div>
+                             </div>
+                           </div>
+
+                          <div class="bullet-details">
+                            <ul class="og-text-info">
+                              <li><i class="fas fa-check"></i><span class="bullet-change">One</span> 30 serving <span class="bullet-bag">bag</span> of Sour Apple Creatine Gummies every <span class="bullet-changes">30</span> days</li>
+                              <li><i class="fas fa-check"></i>FREE avg 2-day shipping</li>
+                              <li><i class="fas fa-check"></i>Pause or cancel anytime</li>
+                              <li><i class="fas fa-check"></i>30-day money back guarantee</li>
+                            </ul>
+                          </div>
+
+                          <div class="autoship-submit">
+                            <button id="autoship-add">Start Now</button>
+                          </div>
+                        </div> {% comment %} End Autoship {% endcomment %}
+
+
+                    <div class="onetime-div">
+                          <div class="option-info">
+                                   <span class="bag-label">Try Once</span>
+                                   <p>
+                                     <span class="price-original">$70.00</span><span class="price-sale">$56.00</span>
+                                   </p>
+                                   <span class="per-day">$1.87 per day</span>
+                       </div>
+
+                    <div class="bullet-details" style="display:none;">
+                            <ul class="og-text-info">
+                              <li><i class="fas fa-times"></i>No FREE shipping</li>
+                            </ul>
+                   </div>
+
+                     <div class="autoship-submit" style="display:none;">
+                            <button id="onetime-add">Try Now</button>
+                    </div>
+                    </div>  {% comment %} End Onetime{% endcomment %}
+                 </div>  {% comment %} End Selection {% endcomment %}
+
+                  <div class="as-seen">
+                        <span>TESTED. TRUSTED. TRUE</span>
+                        <img src="//trycreate.co/cdn/shop/files/unnamed_a8c56005-a5fd-49a4-8991-4d4ee34f3719.png" width="" height="">
+                  </div>
+                  
+                </div>{% comment %} End Options {% endcomment %}
+              </div>
+            </div>
+          </section>
+        {% endif %}
+
+
+
+
+  
+    {%- endcase -%}
+  {%- endfor -%}
+  
+
+  <style>
+
+  #shopify-section-{{ section.id }} .onetime-div.active .bullet-details,   #shopify-section-{{ section.id }} .onetime-div.active .autoship-submit{
+    display:block!important;
+  }
+  
+  </style>
+
+    
+  <script>  
+
+  $('#shopify-section-{{ section.id }} .onetime-div').click(function() {
+     $(this).addClass("active");
+  });
+  
+  
+  $('#shopify-section-{{ section.id }} .autoship-bag').click(function() {
+    $('#shopify-section-{{ section.id }} .autoship-bag').removeClass('selected');
+    $('#shopify-section-{{ section.id }} .autoship-bag input').removeAttr('checked');
+    
+    $(this).each(function() {
+      $( this ).addClass( "selected" );  
+      $(this).find('input').attr('checked', 'true');
+
+      if($(this).data("id") == "1"){
+        $("span.bullet-change").text("One");
+        $("span.bullet-changes").text("30");
+        $("span.bullet-bag").text("bag");
+      }
+      else{
+        $("span.bullet-change").text("Two");
+        $("span.bullet-changes").text("60");
+        $("span.bullet-bag").text("bags");
+      }
+  
+    });
+  });
+
+      const autoship_button = document.getElementById('autoship-add');
+      const onetime_button = document.getElementById('onetime-add');
+      const autoship_input = $('.autoship-bag.selected input:checked');
+     
+      
+      function autoship_redirect() {
+        autoship_button.addEventListener('click', function(){
+          event.preventDefault();
+          let cart_items = [];
+          let checkout_url = 'https://trycreate.co/cart/clear?return_to=/cart/add?';
+  
+  
+        if($('.autoship-bag.selected input:checked').val() == 1){
+              let item = {
+                id: 43460657152188,
+                quantity: 1,
+                selling_plan: 5268308156
+              };
+              cart_items.push(item);
+          }
+
+         else { 
+              let item = {
+                id: 43460657152188,
+                quantity: 2,
+                selling_plan:5340168380
+              };
+              cart_items.push(item);
+          }
+  
+  
+          if(cart_items){
+            cart_items.forEach(item => {
+              if(item.quantity != '0') {
+                checkout_url = checkout_url + '%26items[][id]=' + item.id + '%26items[][quantity]=' + item.quantity;
+                if(item.selling_plan != null) {
+                  checkout_url = checkout_url + '%26items[][selling_plan]=' + item.selling_plan;
+                }
+                if(item.properties != null) {
+                  for (const key in item.properties) {
+                    checkout_url = checkout_url + '%26items[][properties]['+ key +']=' + item.properties[key];
+                  }
+                }
+              }
+            });
+            checkout_url = checkout_url + '%26return_to=/checkout';
+
+           if($('.autoship-bag.selected input:checked').val() == 1){
+            checkout_url = checkout_url + '?discount=SGASATTN20';
+           }
+           else{
+            checkout_url = checkout_url + '?discount=SGAS2ATTN20';
+           }
+            
+        }
+          window.location = checkout_url;
+        });
+    }
+
+     function onetime_redirect() {
+        onetime_button.addEventListener('click', function(){
+          event.preventDefault();
+          let cart_items = [];
+          let checkout_url = 'https://trycreate.co/cart/clear?return_to=/cart/add?';
+  
+
+              let item = {
+                id: 43460657152188,
+                quantity: 1
+              };
+              cart_items.push(item);
+
+  
+  
+          if(cart_items){
+            cart_items.forEach(item => {
+              if(item.quantity != '0') {
+                checkout_url = checkout_url + '%26items[][id]=' + item.id + '%26items[][quantity]=' + item.quantity;
+                if(item.selling_plan != null) {
+                  checkout_url = checkout_url + '%26items[][selling_plan]=' + item.selling_plan;
+                }
+                if(item.properties != null) {
+                  for (const key in item.properties) {
+                    checkout_url = checkout_url + '%26items[][properties]['+ key +']=' + item.properties[key];
+                  }
+                }
+              }
+            });
+            checkout_url = checkout_url + '%26return_to=/checkout';
+            checkout_url = checkout_url + '?discount=SGAATTN20';
+        }
+          window.location = checkout_url;
+        });
+    }
+  
+      window.addEventListener('load', function () {
+          autoship_redirect();
+          onetime_redirect();
+      });
+
+
+  </script>
+  
+  
+  
+                                    
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "name": "{{ product.title |  strip_html | escape }}",
+      "url": "{{ shop.url | append: product.url}}",
+      {%- if product.selected_or_first_available_variant.featured_media -%}
+        {%- assign media_size = product.selected_or_first_available_variant.featured_media.preview_image.width | append: 'x' -%}
+        "image": [
+          "{{ product.selected_or_first_available_variant.featured_media | img_url: media_size | prepend: "https:"}}"
+        ],
+      {%- endif -%}
+      "description": {{ product.description | strip_html | json }},
+      {%- if product.selected_or_first_available_variant.sku != blank -%}
+        "sku": "{{ product.selected_or_first_available_variant.sku}}",
+      {%- endif -%}
+      {%- if product.variants.first.barcode.size == 12 -%}
+        "gtin12": "{{ product.variants.first.barcode }}",
+      {%- endif -%}
+      {%- if product.variants.first.barcode.size == 13 -%}
+        "gtin13": "{{ product.variants.first.barcode }}",
+      {%- endif -%}
+      {%- if product.variants.first.barcode.size == 14 -%}
+        "gtin14": "{{ product.variants.first.barcode }}",
+      {%- endif -%}
+        "productID": "{{ product.id }}",
+      "brand": {
+        "@type": "Brand",
+        "name": "{{ product.vendor}}"
+      },
+      "offers": [
+        {%- for variant in product.variants -%}
+          {
+            "@type" : "Offer",
+            "name": "{{ product.title | strip_html | escape }} - {{ variant.title | escape }}",
+            {%- if variant.sku != blank -%}
+            "sku": "{{ variant.sku}}",
+            {%- endif -%}
+            {%- if variant.image -%}
+          "image": "{{ variant.image | image_url: width: 1024 | prepend: "https:" }}",
+             {%- endif -%}
+            "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+            "price" : {{ variant.price | divided_by: 100.00}},
+         "priceValidUntil": "2022-12-31",
+            "priceCurrency" : "{{ cart.currency.iso_code}}",
+            "url" : "{{ shop.url | append: variant.url}}"
+          }{% unless forloop.last %},{% endunless %}
+  
+        {%- endfor -%}
+      ]{% if product.metafields.stamped.reviews_count and product.metafields.stamped.reviews_count != "0" %},"aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ product.metafields.stamped.reviews_average | round:2 }},
+    "reviewCount": {{ product.metafields.stamped.reviews_count }},
+    "bestRating": 5,
+    "worstRating": 1
+    }, "review": {
+        "@type": "Review",
+        "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+        }, "author": {
+            "@type": "Organization",
+            "name": "{{shop.name}}"
+        }}
+        {% endif %}
+    }
+  </script>
+  
+  <style>
+    og-offer[subscribed]:after
+    {
+      content: none !important;
+    }
+    .block-minicart {
+        visibility: hidden;
+    }
+  </style>
+  {% javascript %}
+    
+    class ProductModal extends ModalDialog {
+      constructor() {
+        super();
+      }
+  
+      hide() {
+        super.hide();
+        window.pauseAllMedia();
+      }
+  
+      show(opener) {
+        super.show(opener);
+        this.showActiveMedia();
+      }
+  
+      showActiveMedia() {
+        this.querySelectorAll(`[data-media-id]:not([data-media-id="${this.openedBy.getAttribute("data-media-id")}"])`).forEach((element) => {
+            element.classList.remove('active');
+          }
+        )
+        const activeMedia = this.querySelector(`[data-media-id="${this.openedBy.getAttribute("data-media-id")}"]`);
+        const activeMediaTemplate = activeMedia.querySelector('template');
+        const activeMediaContent = activeMediaTemplate ? activeMediaTemplate.content : null;
+        activeMedia.classList.add('active');
+        activeMedia.scrollIntoView();
+  
+        const container = this.querySelector('[role="document"]');
+        container.scrollLeft = (activeMedia.width - container.clientWidth) / 2;
+  
+        if (activeMedia.nodeName == 'DEFERRED-MEDIA' && activeMediaContent && activeMediaContent.querySelector('.js-youtube'))
+          activeMedia.loadContent();
+      }
+    }
+  
+    customElements.define('product-modal', ProductModal);
+  
+  {% endjavascript %}
+  
+  {% schema %}
+  {
+    "name": "Form Sour Apple 2",
+    "tag": "section",
+    "class": "product-section paid-product-section paid-favour-products spaced-section",
+    "blocks": [
+      {
+        "type": "metaobject_block",
+        "name": "Metaobject Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "metaobjectidentifier",
+            "label": "Section Metaobject Identifier"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Add Heading"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Select Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Add Product Image"
+          },
+          {
+            "type": "richtext",
+            "id": "product_top_text",
+            "label": "Add Top Content"
+          },
+          {
+            "type": "richtext",
+            "id": "bottom_description",
+            "label": "Add Bottom Content"
+          },
+          {
+            "type": "text",
+            "id": "atc_icon_1",
+            "label": "ATC Icon 1"
+          },
+          {
+            "type": "text",
+            "id": "atc_icon_1_text",
+            "label": "ATC Icon 1 Text"
+          },
+          {
+            "type": "text",
+            "id": "atc_icon_2",
+            "label": "ATC Icon 2"
+          },
+          {
+            "type": "text",
+            "id": "atc_icon_2_text",
+            "label": "ATC Icon 2 Text"
+          },
+          {
+            "type": "text",
+            "id": "shipping_icon",
+            "label": "Shipping Icon"
+          },
+          {
+            "type": "text",
+            "id": "shipping_text",
+            "label": "Shipping Text"
+          }
+        ]
+      },
+      {
+        "type": "buy_buttons",
+        "name": "Buy Buttons",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_dynamic_checkout",
+            "default": true,
+            "label": "Show dynamic checkout buttons",
+            "info": "Using the payment methods available on your store, customers see their preferred option, like PayPal or Apple Pay."
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_identifier",
+        "label": "Section Identifier"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 152,
+        "step": 4,
+        "unit": "px",
+        "label": "Top padding",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 152,
+        "step": 4,
+        "unit": "px",
+        "label": "Bottom padding",
+        "default": 36
+      },
+      {
+        "type": "checkbox",
+        "id": "show_addToCart_button",
+        "default": true,
+        "label": "Show add to cart button"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Form Sour Apple 2"
+      }
+    ]
+  }
+  {% endschema %}
+
+
+<script>
+$('#shopify-section-{{ section.id }} .slider-galeria').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  infinite: false,
+  asNavFor: '.slider-galeria-thumbs',
+});
+$('#shopify-section-{{ section.id }} .slider-galeria-thumbs').slick({
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  arrows: false,
+  asNavFor: '.slider-galeria',
+  focusOnSelect: true,
+  infinite: false,
+});
+
+
+</script>
+  

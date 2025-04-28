@@ -1,0 +1,315 @@
+{{ 'section-main-list-collection.css' | asset_url | stylesheet_tag }}
+{{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 | append: 'px' }}
+    ;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 | append: 'px' }}
+    ;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | append: 'px' }}
+      ;
+      padding-bottom: {{ section.settings.padding_bottom | append: 'px' }}
+      ;
+    }
+  }
+{% endstyle %}
+{% liquid
+  assign loading = 'eager'
+  assign fetchpriority = 'auto'
+  if section.index == 1
+    assign fetchpriority = 'high'
+  elsif section.index > 2
+    assign loading = 'lazy'
+  endif
+  assign circle_layout = false
+  if section.settings.image_aspect_ratio_collection == 'circle'
+    assign circle_layout = true
+  endif
+%}
+<div class="collection section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="container">
+    {% render 'breadcrumb' %}
+    <h1 class="h2">{{ 'collections.general.all_collections' | t }}</h1>
+    <div class="collections" role="region" aria-label="{{ 'collections.general.all_collections' | t }}">
+      {% if collections %}
+        {%- paginate collections by section.settings.collections_per_page -%}
+          <animation-reveal
+            aoi-type="fade-up"
+            aoi-amount="0"
+            class="grid-layout grid-layout--{{ section.settings.columns_desktop }}-desktop grid-layout--{{ section.settings.columns_mobile }}-mobile"
+          >
+            {% for collection in collections %}
+              {% if forloop.index > 4 and loading == 'eager' %}
+                {% assign loading = 'lazy' %}
+              {% endif %}
+              <div class="collection__item">
+                {%
+                  render 'collection-card',
+                  block: section,
+                  collection: collection,
+                  loopIndex: forloop.index,
+                  index: forloop.index0,
+                  collection_image_loading: loading,
+                  collection_image_fetchpriority: fetchpriority,
+                  , media_aspect_ratio: section.settings.image_aspect_ratio_collection
+                  , circle_layout: circle_layout
+                  , hide_stack_content_bg: section.settings.hide_stack_content_bg
+                %}
+              </div>
+            {% endfor %}
+          </animation-reveal>
+          {% render 'pagination', paginate: paginate, role: 'navigation' %}
+        {%- endpaginate -%}
+      {% else %}
+        {% for item in (1..6) %}
+          <div
+            aria-label="Onboarding Collection"
+            class="collection__item collection__item--{{ section.settings.columns_desktop }}-desktop collection__item--{{ section.settings.columns_mobile }}-mobile"
+          >
+            {% render 'collection-card',
+              onboarding: true,
+              loopIndex: forloop.index,
+              index: forloop.index0,
+              block: section
+            %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "List collections",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "collections_per_page",
+      "label": "Collections per page",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Number of columns on desktop",
+      "options": [
+        {
+          "label": "2",
+          "value": "2"
+        },
+        {
+          "label": "3",
+          "value": "3"
+        },
+        {
+          "label": "4",
+          "value": "4"
+        },
+        {
+          "label": "5",
+          "value": "5"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "label": "1",
+          "value": "1"
+        },
+        {
+          "label": "2",
+          "value": "2"
+        }
+      ],
+      "default": "2",
+      "label": "Number of columns on mobile"
+    },
+    {
+      "type": "header",
+      "content": "Collection Card"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio_collection",
+      "label": "t:settings_schema.global.collection_card.image_ratio.label",
+      "options": [
+        {
+          "label": "t:settings_schema.global.collection_card.image_ratio.option.label_1",
+          "value": "portrait"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.image_ratio.option.label_2",
+          "value": "square"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.image_ratio.option.label_3",
+          "value": "adapt"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.image_ratio.option.label_5",
+          "value": "circle"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.image_ratio.option.label_4",
+          "value": "landscape"
+        }
+      ],
+      "default": "adapt"
+    },
+
+    {
+      "type": "select",
+      "id": "content_setting",
+      "label": "t:settings_schema.global.collection_card.content.label",
+      "options": [
+        {
+          "label": "t:settings_schema.global.collection_card.content.option.label_1",
+          "value": "stack_content"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.content.option.label_2",
+          "value": "over_image"
+        }
+      ],
+      "default": "stack_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_stack_content_bg",
+      "label": "Hide stack content background",
+      "default": true,
+      "info": "Not applicable when circle is selected"
+    },
+    {
+      "type": "text_alignment",
+      "id": "content_alignment",
+      "label": "t:settings_schema.global.collection_card.content_alignment.label",
+      "default": "center",
+      "info": "Not applicable when circle is selected"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "t:settings_schema.global.collection_card.content_position.label",
+      "info": "Not applicable when circle is selected",
+      "options": [
+        {
+          "label": "t:settings_schema.global.collection_card.content_position.option.label_1",
+          "value": "start"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.content_position.option.label_2",
+          "value": "center"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.content_position.option.label_3",
+          "value": "end"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_style",
+      "label": "t:settings_schema.global.collection_card.heading_style.label",
+      "options": [
+        {
+          "label": "t:settings_schema.global.collection_card.heading_style.option.label_1",
+          "value": "h1"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.heading_style.option.label_2",
+          "value": "h2"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.heading_style.option.label_3",
+          "value": "h3"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.heading_style.option.label_4",
+          "value": "h4"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.heading_style.option.label_5",
+          "value": "h5"
+        },
+        {
+          "label": "t:settings_schema.global.collection_card.heading_style.option.label_6",
+          "value": "h6"
+        }
+      ],
+      "default": "h6"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color scheme"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,141 @@
+<!-- nws-pdp-template-all -->
+  <div class="nws-pdp-template nws-pdp-template-all" {% if section.settings.section-color != blank %}style="background-color:{{ section.settings.section-color }};"{% endif %} >
+    <div class="container" >
+      <div class="nws-pdp-template-content row">
+        <div class="col-lg-6 col-md-6 col-sm-12" >
+          <div class="nws-pdp-template-gallery" >
+            <div class="nws-pdp-review-info nws-desk-none" >
+              <!-- Stamped - Begin Star Rating Badge -->
+                <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{product.title}}" data-product-type="{{product.type}}" style="display: block;"></span>
+              <!-- Stamped - End Star Rating Badge -->
+            </div>
+            <div class="nws-pdp-template-oneImagePhoto" >
+             {% for image in product.images %}
+               <img src="{{ image.src | product_img_url: '1000x' }}" data-img-id="{{ image.id }}" data-option="{{ image.alt }}" alt="{{ image.alt }}" />
+             {% endfor %}
+            </div>
+            <div class="nws-pdp-template-oneImageThumb" >
+             {% for image in product.images %}
+               <img src="{{ image.src | product_img_url: '120x' }}" data-img-id="{{ image.id }}" data-option="{{ image.alt }}" alt="{{ image.alt }}" />
+             {% endfor %}
+            </div>
+            <div class="nws-pdp-template-oneImagePhoto-mobile" >
+             {% for image in product.images %}
+               <img src="{{ image.src | product_img_url: '350x' }}" data-img-id="{{ image.id }}" data-option="{{ image.alt }}" alt="{{ image.alt }}" />
+             {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12" >
+          <div class="nws-pdp-template-form" >
+            <div class="nws-pdp-template-info" >
+              <h2 class="heading-nws" >{{ product.title }}</h2>
+              {% if product.metafields.product-flavour.product-flavour-key != blank %}<h4 class="sub-heading-nws" >{{product.metafields.product-flavour.product-flavour-key}}</h4>{% endif %}
+              <div class="nws-pdp-review-info nws-mob-none" >
+                  <!-- Stamped - Begin Star Rating Badge -->
+                  <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{product.title}}" data-product-type="{{product.type}}" style="display: block;">{{product.metafields.stamped.badge}}</span>
+                  <!-- Stamped - End Star Rating Badge -->
+              </div>
+            </div>
+            <form class="product-form product-form-product-template" method="post" action="/cart/add" data-productid="{{ product.id }}" id="product-form-{{ product.variants.first.id }}" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="novalidate" data-product-form="">
+              <input type="hidden" name="form_type" value="product">
+              <input type="hidden" name="utf8" value="✓">
+              
+              {%- assign current_variant = product.selected_or_first_available_variant -%}
+              <div class="product__price">
+                {% include 'nws-product-price-all', variant: current_variant %}
+              </div>
+             
+              {%- unless product.has_only_default_variant -%}
+                <div class="nws-fake-selection" >
+                  {%- for option in product.options_with_values -%}
+                      {%- assign option_name = option.name | replace: ' ', '-' | downcase -%}
+                      {%- assign option_id = forloop.index0 -%}
+                      <label>SELECT {{ option.name }}:</label>
+                      <div class="nws-fake-selection-ul nws-option-{{ option_name }}" >
+                        {%- for value in option.values -%}
+                            {% for variant in product.variants %}
+                              {% if variant.title == value %}
+                                {%- assign variant-img-id = variant.image.id -%}
+                                {%- assign variant-id = variant.id -%}
+                                {%- assign per-gummy = variant.metafields.per-gummy.per-gummy-key -%}
+                              {% break %}
+                             {% endif %}
+                            {% endfor %}
+                          <div class="nws-fake-selection-li {% if product.selected_or_first_available_variant.id == variant-id %}nws-fs-active{% endif %}" data-img-id="{{ variant-img-id }}" data-select-value="{{ value }}" data-option="nws-variant-id-option-{{ option_id }}" >
+                            <input class="product-form__variants" type="radio" name="size" value="{{ value }}" data-img-id="{{ variant-img-id }}" {% if product.selected_or_first_available_variant.id == variant-id %}checked="checked"{% endif %} data-select-value="{{ value }}" data-option="nws-variant-id-option-{{ option_id }}"  />
+                            <span>{{ value }}{% if per-gummy != blank %}<i>{{per-gummy}}</i>{% endif %}</span>
+                          </div>
+                        {%-endfor -%}    
+                      </div>
+                  {% endfor -%}
+                  </div>
+                {%- endunless -%}
+              
+
+                <select id="nws-variant-id" class="product-form__variants no-js d-none"  name="id" data-productid="{{ product.id }}"  >
+                  {% for variant in product.variants %}
+                    <option data-val="{{ variant.title }}" value="{{ variant.id }}" {%- if variant == current_variant %} selected="selected" {%- endif -%} >{{ variant.title }}  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}</option>
+                  {% endfor %}
+                </select>
+
+              
+               <div class="nws-pdp-template-rc">
+                  <div class="rc-widget-injection-parent" style="display: initial;"></div>
+                </div>
+              
+                <div class="nws-pdp-submit-div" >
+                  {% if product.available %}
+                    <input id="nws-pdp-submit" type="submit" value="Add To Cart" class="btn cls-chr nws-pdp-submit" />
+                  {% else %}
+                    <input type="button" value="Sold Out" class="btn nws-pdp-submit" disabled="disabled" />
+                  {% endif %}
+                </div>
+            </form> 
+            
+            {% if product.description != blank %}
+              <div class="nws-pdp-template-description" >  
+                <div class="nws-description-item">
+                  <h3 class="nws-description-item-title">Description</h3>
+                  <div class="nws-description-item-body">{{ product.description }}</div>
+                </div>
+              </div>
+            {% endif %}
+            {% if product.metafields.nws-pdp-tab1.tab-key != blank %}
+              <div class="nws-faqs-section-body nws-pdp-template-tabs" >
+               <div class="nws-accordion-flex">               
+                  <div class="nws-accordion-warp nws-col-100"> 
+                    {% if product.metafields.nws-pdp-tab1.tab-key != blank %}
+                      <div class="nws-ac-item">
+                        <h3 class="nws-ac-title">{{product.metafields.nws-pdp-tab1.tab-key}}</h3>
+                        <div class="nws-ac-body">{{product.metafields.nws-pdp-tab-text1.text-key}}</div>
+                      </div>
+                    {% endif %}
+                    {% if product.metafields.nws-pdp-tab2.tab-key != blank %}
+                      <div class="nws-ac-item">
+                        <h3 class="nws-ac-title">{{product.metafields.nws-pdp-tab2.tab-key}}</h3>
+                        <div class="nws-ac-body">{{product.metafields.nws-pdp-tab-text2.text-key}}</div>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div> 
+              </div>
+             {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- end nws-pdp-template-all -->
+{% schema %}
+  {
+    "name": "NWS - PDP Template All",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        }
+    ]
+  }
+{% endschema %}

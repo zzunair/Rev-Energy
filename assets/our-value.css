@@ -1,0 +1,118 @@
+.our-value {
+  background: #10443C;
+  padding: 64px 0;
+}
+
+.our-value__grid {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.our-value__grid-item {
+  flex: 0 0 calc(50% - 16px);
+}
+
+.our-value__image {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}
+
+.our-value__heading {
+  color: #39BDAC;
+  font-family: Bebas Neue;
+  font-weight: 500;
+  font-size: 58px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.our-value__description , 
+.our-value__description * {
+  color: #fff;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  margin: 0 0 31px;
+}
+
+.our-value__subheading {
+  color: #fff;
+  font-family: Bebas Neue;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.our-value__text , 
+.our-value__text * {
+  font-family: Bebas Neue;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.our-value__text ul li {
+  position: relative;
+  padding-left: 28px;
+}
+
+.our-value__text ul li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 24px;
+  width: 24px;
+  background-image: url(https://cdn.shopify.com/s/files/1/0077/9285/3073/files/typcn_tick-outline.png?v=1745622466);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.hide__desktop {
+  display: none;
+}
+
+@media (max-width: 990px) {
+  .hide__mobile {
+    display: none;
+  }
+
+  .hide__desktop {
+    display: block;
+  }
+
+  .our-value__grid {
+    flex-direction: column;
+  }
+
+  .our-value__heading {
+    font-size: 48px;
+  }
+
+  .hide__desktop p:not(:first-child) {
+    display: none;
+  }
+
+  .our-value__grid-item--right .our-value__description p:nth-child(1) {
+    display: none;
+  }
+
+  .our-value__grid-item {
+    flex: 0 0 auto;
+    max-width: 100%;
+    width: 100%;
+  }
+}

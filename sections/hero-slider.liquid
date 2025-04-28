@@ -1,0 +1,78 @@
+<style>
+  .nws-slider-content .nws-slider-slide img.mob-slide {
+        display: none;
+        max-width:100%;
+        width:100%;
+        height:auto;
+    }
+    .nws-slider-content .nws-slider-slide img.desk-slide {
+        display: block;
+        max-width:100%;
+        width:100%;
+        height:auto;
+    }
+  @media screen and (max-width: 700px) {
+    .nws-slider-content .nws-slider-slide img.mob-slide {
+        display: block;
+    }
+    .nws-slider-content .nws-slider-slide img.desk-slide {
+        display: none;
+    }
+  }
+</style>
+
+  {% if section.blocks != blank %}
+    <div class="nws-slider-section" {% if section.settings.section-color != blank %}style="background-color:{{ section.settings.section-color }};"{% endif %} >
+        <div class="nws-slider-content">
+          {% for block in section.blocks %}
+            {% if block.settings.desk-slide != blank %}
+              <a class="nws-slider-slide" style="display:block;" href="{{ block.settings.link-slide }}">
+                <img src="{{ block.settings.desk-slide | img_url: 'master' }}" class="desk-slide {% if block.settings.mob-slide != blank %}slide-mob-none{% endif %}" />
+                {% if block.settings.mob-slide != blank %}<img width="auto" height="auto" src="{{ block.settings.mob-slide | img_url: 'master' }}" class="mob-slide" />{% endif %}
+              </a>
+             {% endif %}
+          {% endfor %}
+        </div>
+    </div>
+  {% endif %}
+
+{% schema %}
+  {
+    "name": "Hero Banner",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "Slide",
+      "name": "Slide Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desk-slide",
+          "label": "Desktop Slide"
+        },
+        {
+          "type": "image_picker",
+          "id": "mob-slide",
+          "label": "Mobile Slide"
+        },
+        {
+          "type": "url",
+          "id": "link-slide",
+          "label": "Slide Link"
+        }
+      ]
+    }
+  ],
+    "presets": [
+        {
+          "name": "Hero Banner",
+        }
+    ]
+  }
+{% endschema %}

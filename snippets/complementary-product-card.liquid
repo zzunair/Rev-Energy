@@ -1,0 +1,105 @@
+{% comment %}
+  Params Used:
+  product: @object - Gets you which product object
+  custom_class: @string - Pass any custom class
+{% endcomment %}
+
+{%- liquid
+  assign has_no_varaint = product.has_only_default_variant
+  assign is_product_available = product.selected_or_first_available_variant.available
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+  assign diff = 6 | minus: 1
+  assign randomNumber = 'now' | date: '%N' | modulo: diff | plus: 1
+-%}
+
+<div class="recommendation__item h-100 {{ custom_class }}">
+  <product-card product-handle="{{ product.handle }}" product-id="{{ product.selected_or_first_available_variant.id }}">
+    <div class="d-flex align-item-center  recommendation__flex__wrap h-100">
+      <div class="recommendation__leftBlock position-relative">
+        {% comment %} Image {% endcomment %}
+        <div class="image--aspectSize ">
+          {%- if product.featured_image -%}
+            {{
+              product.featured_image
+              | image_url: width: 141
+              | image_tag:
+                widths: '141, 57',
+                sizes: '(max-width: 767) 57px',
+                alt: product.featured_media.alt,
+                loading: 'lazy',
+                class: 'image-responsive'
+            }}
+          {%- else -%}
+            {% assign product_image = 'product-' | append: randomNumber %}
+            {{ product_image | placeholder_svg_tag: 'image-responsive' }}
+          {%- endif -%}
+        </div>
+        {% form 'product', product, class: 'product-card-item__form cart-recommendation-add-item-form' %}
+          <input
+            name="id"
+            type="hidden"
+            value="{{ product.first_available_variant.id }}"
+          >
+          <input
+            name="quantity"
+            type="hidden"
+            value="1"
+          >
+
+          <!-- form content -->
+          {% if is_product_available %}
+            {% unless has_no_varaint %}
+              <button
+                class="btn btn--fill  text-upper btn--sm btn--icon"
+                toggle-element="options-drawer"
+                type="submit"
+              >
+                <div class="btn--preloader justify-content-center d-v-center">
+                  <div class="btn--preloader--circular">
+                    <div class="checkmark draw"></div>
+                  </div>
+                </div>
+                <div class="btn--text d-v-center justify-content-center">
+                  {% render 'icon' with 'quick-view' %}
+                </div>
+              </button>
+            {% else %}
+              <button
+                class="btn btn--fill text-upper btn--icon"
+                toggle-element="cart-drawer"
+                aria-label="{{ 'products.product.button_add_to_cart' | t }}"
+                type="submit"
+              >
+                <div class="btn--preloader">
+                  <div class="btn--preloader--circular">
+                    <div class="checkmark draw"></div>
+                  </div>
+                </div>
+                <div class="btn--text">
+                  {% render 'icon', icon: 'plus', color_var: 'var(--color-button-text)' %}
+                </div>
+              </button>
+            {% endunless %}
+          {%- else -%}
+            <button class="btn btn--fill text-upper disable" type="button">
+              {{ 'cart.button_out_of_stock' | t }}
+            </button>
+          {% endif %}
+        {% endform %}
+      </div>
+      <div class="recommendation__rightBlock">
+        {% comment %} Title {% endcomment %}
+        <a class="recommendation__itemHead fnt-16" href="{{ product.url }}">{{ product.title }}</a>
+        <div class="d-flex justify-content-space-btw align-item-center">
+          {% comment %} Price {% endcomment %}
+          {% render 'price', product: product, on_sale: on_sale, hide_percentage_off: true %}
+
+          {% comment %} Product form {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </product-card>
+</div>

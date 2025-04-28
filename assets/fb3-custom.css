@@ -1,0 +1,131 @@
+.block-nws-shop a,
+.btn-nws,
+.btn-primary {
+  background: #068fc8;
+  border-color: #068fc8;
+}
+
+.block-nws-shop a,
+.btn-nws,
+.btn-primary {
+  border-color: #068fc8;
+}
+
+.block-nws-shop a:hover,
+footer .widget.widget-newsletter button.btn-icon:hover,
+.btn-nws:active,
+.btn-nws:focus,
+.btn-nws:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  color: #068fc8;
+  background: 0 0;
+  border-color: #068fc8;
+}
+
+div#shopify-section-header-01-gummy,
+div#shopify-section-header-01-listicle {
+  .block-nws-shop a,
+  .btn-nws,
+  .btn-primary {
+    background: #f57e25;
+    border-color: #f57e25;
+  }
+
+  .block-nws-shop a:hover,
+  footer .widget.widget-newsletter button.btn-icon:hover,
+  .btn-nws:active,
+  .btn-nws:focus,
+  .btn-nws:hover,
+  .btn-primary:active,
+  .btn-primary:focus,
+  .btn-primary:hover {
+    color: #f57e25;
+    background: 0 0;
+    border-color: #f57e25;
+  }
+}
+
+.image-with-text_Btn_container a.button.image-with-text_Btn,
+.atc-btn-wrapper button#addToCartBtn {
+  background-color: #068fc8;
+}
+
+.product-form .freq-option.selecteds {
+  border-color: #068fc8 !important;
+}
+
+.content_header-03-gummy,
+.content_header-04-gummy {
+  border-bottom: 1px solid #fcd97c63;
+}
+
+div#shopify-section-header-03-gummy.activecopy,
+div#shopify-section-header-04-gummy.activecopy,
+div#shopify-section-header-01-gummy.activecopy,
+div#shopify-section-header-01-listicle.activecopy {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 123456;
+  box-shadow: azure;
+  box-shadow: 3px 0px 10px 0px rgb(0 0 0 / 11%);
+}
+
+.replo-section-no-padding {
+  padding: 0 !important;
+}
+
+#shopify-section-template--16328069644476__a4dbe580-f8cf-4107-8fb4-23f5360f9eaf,
+#shopify-section-template--16328069644476__46eca274-41ea-44f7-8298-eee96cdcaad1 {
+  padding: 0px !important;
+}
+
+@media (max-width: 1800px) {
+  .header-control.col-3.col-md-4.d-xl-none {
+    display: none !important;
+  }
+}
+
+.content_header-01-gummy,
+.content_header-01-listicle {
+  border-bottom: 1px solid #fcd97c63;
+}
+
+.page-container .shopify-section,
+.header {
+  padding: 0 5%;
+}
+
+.container {
+  max-width: 1820px;
+}
+
+@media (max-width: 1800px) {
+  .main-header .col-6.col-md-4.col-xl-auto.order-1.order-md-2 {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header .col-6.col-md-4.col-xl-auto.order-1.order-md-2 {
+    width: -webkit-fill-available;
+  }
+}
+
+.nws-custom-topbar a strong {
+  font-weight: 500;
+}
+
+.nws-custom-topbar {
+  font-family: PPObjectSans, sans-serif !important;
+}
+
+.nws-custom-topbar p {
+  line-height: 1.5;
+  color: #000000;
+}

@@ -1,0 +1,93 @@
+{%-if settings.social_twitter_link != blank
+      or settings.social_facebook_link != blank
+      or settings.social_pinterest_link != blank
+      or settings.social_instagram_link != blank
+      or settings.social_tumblr_link != blank
+      or settings.social_snapchat_link != blank
+      or settings.social_youtube_link != blank
+      or settings.social_vimeo_link != blank
+      or settings.social_vk_link != blank
+      or settings.social_tiktok_link != blank
+-%}
+{%- assign social_icons = true -%}
+{%-endif-%}
+{%-if social_icons-%}
+<ul class="socials list-inline">
+  {%-if settings.social_facebook_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-facebook" target="_blank" href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+      <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28 14.0851C28 6.3066 21.7315 0 14 0C6.2685 0 0 6.3066 0 14.0851C0 21.1159 5.11933 26.9424 11.8125 27.9988V18.1569H8.25767V14.0839H11.8125V10.9829C11.8125 7.45336 13.9032 5.50258 17.101 5.50258C18.6317 5.50258 20.2347 5.77841 20.2347 5.77841V9.24452H18.4683C16.7288 9.24452 16.1863 10.3302 16.1863 11.4441V14.0851H20.069L19.4483 18.158H16.1863V28C22.8807 26.9424 28 21.1147 28 14.0851Z" fill="#F57E25"/>
+      </svg>
+    </a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_twitter_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-twitter" target="_blank" href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+      <svg width="21" height="17" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M27.9452 2.62052C26.8969 3.06669 25.7864 3.36121 24.6493 3.49458C25.8465 2.79899 26.7428 1.70815 27.1728 0.423505C26.0633 1.04945 24.8337 1.50509 23.5247 1.75885C22.6611 0.866099 21.5167 0.273979 20.2693 0.0744441C19.0218 -0.125091 17.7411 0.0791234 16.6261 0.655376C15.511 1.23163 14.624 2.14767 14.1027 3.26126C13.5815 4.37485 13.4551 5.62366 13.7433 6.81378C8.97167 6.59611 4.74483 4.37993 1.91333 1.03253C1.39859 1.87819 1.13011 2.84273 1.13633 3.82391C1.13633 5.7525 2.15133 7.44762 3.689 8.44349C2.77767 8.41545 1.88647 8.17725 1.08967 7.74875V7.81642C1.08915 9.09808 1.54731 10.3404 2.38642 11.3327C3.22553 12.325 4.39392 13.0061 5.69333 13.2604C4.85135 13.4786 3.96948 13.5113 3.11267 13.3563C3.48148 14.4593 4.19727 15.4236 5.16018 16.1144C6.12309 16.8053 7.28508 17.1883 8.484 17.2101C6.45345 18.7507 3.94622 19.5868 1.365 19.5842C0.91 19.5842 0.456167 19.5582 0 19.5086C2.63166 21.1376 5.6916 22.0023 8.8165 22C19.3783 22 25.1475 13.5458 25.1475 6.22731C25.1475 5.99047 25.1475 5.75362 25.13 5.51678C26.257 4.73278 27.2291 3.75942 28 2.64307L27.9452 2.62052Z" fill="#F57E25"/>
+      </svg>
+    </a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_tiktok_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-tiktok" target="_blank" href="{{ settings.social_tiktok_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tiktok' }}">
+      <svg width="24" height="24" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.6048 0.023333C14.1127 0 15.609 0.0116665 17.1053 0C17.1974 1.78498 17.8305 3.60495 19.1196 4.86494C20.4088 6.15992 22.2274 6.75491 24 6.95325V11.6549C22.3425 11.5965 20.6735 11.2465 19.1657 10.5232C18.5096 10.2199 17.8995 9.83488 17.301 9.43821C17.2895 12.8448 17.3125 16.2515 17.278 19.6464C17.1859 21.2797 16.6564 22.9014 15.7241 24.243C14.2163 26.483 11.6034 27.9413 8.92152 27.988C7.27554 28.0813 5.62957 27.6263 4.22532 26.7863C1.90024 25.398 0.265775 22.8547 0.0240585 20.1247C0.00103788 19.5414 -0.0104724 18.9581 0.0125482 18.3864C0.219733 16.1698 1.3017 14.0465 2.9822 12.5998C4.89291 10.9199 7.5633 10.1149 10.061 10.5932C10.0841 12.3198 10.015 14.0465 10.015 15.7731C8.87547 15.3998 7.54028 15.5048 6.53889 16.2048C5.81374 16.6831 5.26124 17.4181 4.97349 18.2464C4.73177 18.8414 4.80083 19.4948 4.81234 20.1247C5.08859 22.0381 6.90722 23.648 8.84094 23.473C10.1301 23.4614 11.3617 22.703 12.0293 21.5947C12.248 21.2097 12.4897 20.8131 12.5012 20.3581C12.6163 18.2698 12.5703 16.1931 12.5818 14.1048C12.5933 9.40321 12.5703 4.71327 12.6048 0.023333Z" fill="#F57E25"/>
+      </svg>
+    </a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_instagram_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-instagram" target="_blank" href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+      <svg width="19" height="19" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.94444 0C5.10266 0 3.33632 0.76091 2.03398 2.11534C0.731645 3.46977 0 5.30677 0 7.22222V18.7778C0 20.6932 0.731645 22.5302 2.03398 23.8847C3.33632 25.2391 5.10266 26 6.94444 26H18.0556C19.8973 26 21.6637 25.2391 22.966 23.8847C24.2684 22.5302 25 20.6932 25 18.7778V7.22222C25 5.30677 24.2684 3.46977 22.966 2.11534C21.6637 0.76091 19.8973 0 18.0556 0H6.94444ZM20.8333 2.88889C21.5972 2.88889 22.2222 3.53889 22.2222 4.33333C22.2222 5.12778 21.5972 5.77778 20.8333 5.77778C20.0694 5.77778 19.4444 5.12778 19.4444 4.33333C19.4444 3.53889 20.0694 2.88889 20.8333 2.88889ZM12.5 5.77778C14.3418 5.77778 16.1081 6.53869 17.4105 7.89312C18.7128 9.24755 19.4444 11.0845 19.4444 13C19.4444 14.9155 18.7128 16.7525 17.4105 18.1069C16.1081 19.4613 14.3418 20.2222 12.5 20.2222C10.6582 20.2222 8.89187 19.4613 7.58954 18.1069C6.2872 16.7525 5.55556 14.9155 5.55556 13C5.55556 11.0845 6.2872 9.24755 7.58954 7.89312C8.89187 6.53869 10.6582 5.77778 12.5 5.77778ZM12.5 8.66667C11.9526 8.66686 11.4107 8.77917 10.9051 8.99718C10.3994 9.2152 9.94006 9.53466 9.55315 9.93731C9.16623 10.34 8.85937 10.8179 8.65008 11.3439C8.44078 11.8699 8.33315 12.4336 8.33333 13.0029C8.33352 13.5721 8.44151 14.1358 8.65114 14.6616C8.86077 15.1875 9.16794 15.6652 9.55511 16.0676C9.94228 16.47 10.4019 16.7891 10.9076 17.0068C11.4134 17.2245 11.9554 17.3364 12.5028 17.3362C13.6082 17.3358 14.6682 16.8788 15.4496 16.0656C16.231 15.2524 16.6698 14.1497 16.6694 13C16.6691 11.8503 16.2296 10.7479 15.4477 9.93527C14.6657 9.12261 13.6054 8.66628 12.5 8.66667Z" fill="#F57E25"/>
+      </svg>
+    </a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_googleplus_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-google-plus fkt-google-plus-g" target="_blank" href="{{ settings.social_googleplus_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google plus' }}"></a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_youtube_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-youtube fkt-youtube" href="{{ settings.social_youtube_link | escape }}" target="_blank" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Youtube' }}"></a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_pinterest_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-pinterest fkt-pinterest-p" target="_blank" href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}"></a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_vk_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-vk fkt-vk" href="{{ settings.social_vk_link | escape }}" target="_blank" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'VK' }}"></a>{{--}}
+  </li>    
+  {%-endif-%}
+  {%-if settings.social_linkedin_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-linkedin fkt-linkedin-in" href="{{ settings.social_linkedin_link | escape }}" target="_blank" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Linkedin' }}"></a>{{--}}
+  </li>    
+  {%-endif-%}
+  {%-if settings.social_tumblr_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-tumblr fkt-tumblr" href="{{ settings.social_tumblr_link | escape }}" target="_blank" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}"></a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_snapchat_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-snapchat fkt-snapchat-ghost" href="{{ settings.social_snapchat_link | escape }}" target="_blank" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}"></a>{{--}}
+  </li>
+  {%-endif-%}
+  {%-if settings.social_vimeo_link != blank-%}
+  <li class="list-inline-item">{{--}}
+    <a class="social-icon social-vimeo fkt-vimeo-v" href="{{ settings.social_vimeo_link | escape }}" target="_blank" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}"></a>{{--}}
+  </li>
+  {%-endif-%}
+</ul>
+{%-endif-%}

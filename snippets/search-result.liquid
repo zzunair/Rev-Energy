@@ -1,0 +1,85 @@
+{% case with %}
+  {% when 'article' %}
+    <ul class="article-predictive-search">
+      {% for article in predictive_search.resources.articles %}
+        <li class="article-predictive-search__item">
+          <a href="{{ article.url }}">
+            {% if article.image != blank %}
+              {{
+                article.image
+                | image_url: width: article.image.width
+                | image_tag:
+                  widths: '200',
+                  sizes: '75px',
+                  alt: article.image.alt,
+                  class: 'article-predictive-search__img'
+              }}
+            {% endif %}
+            <p class="fnt-16 fnt-body-weight-bold">{{ article.title }}</p>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% when 'products' %}
+    <ul class="product-predictive-search">
+      {%- for product in predictive_search.resources.products -%}
+        <li
+          id="predictive-search-option-{{ forloop.index }}"
+          class="predictive-search__list-item"
+          role="option"
+          aria-selected="false"
+        >
+          <a href="{{ product.url }}" class="predictive-search__item predictive-search__item--link ">
+            {%- if product.featured_media != blank -%}
+              <div class="predictive-search__imageWrp">
+                <div class="image--aspectSize predictive-search__image">
+                  {{
+                    product.featured_media
+                    | image_url: width: product.featured_media.width
+                    | image_tag:
+                      widths: '200',
+                      sizes: '75',
+                      alt: product.featured_media.alt,
+                      loading: 'lazy',
+                      class: 'image-responsive'
+                  }}
+                </div>
+              </div>
+            {%- endif -%}
+            <div class="predictive-search__list-item__content">
+              <h3 class="predictive-search__list-item__heading fnt-14">{{ product.title }}</h3>
+              {%- if settings.predictive_search_show_price -%}
+                <div class="predictive-search__list-item__price fnt-14">
+                  {% render 'price', product: product, on_sale: on_sale %}
+                </div>
+              {%- endif -%}
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {% when 'pages' %}
+    <ul class="page-predictive-search">
+      {%- for page in predictive_search.resources.pages -%}
+        <li
+          id="predictive-search-option-{{ forloop.index }}"
+          class="predictive-search__list-item"
+          role="option"
+          aria-selected="false"
+        >
+          <a href="{{ page.url }}" class="fnt-16">{{ page.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {% when 'query' %}
+    {%- for query in predictive_search.resources.queries limit: 4 -%}
+      <li
+        id="predictive-search-query-option-{{ forloop.index }}"
+        class="predictive-search__list-item"
+        role="option"
+        aria-selected="false"
+      >
+        <a href="{{ query.url }}" class="fnt-16">{{ query.text }}</a>
+      </li>
+    {%- endfor -%}
+{% endcase %}

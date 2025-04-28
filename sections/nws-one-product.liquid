@@ -1,0 +1,353 @@
+<!-- nws-one-product -->
+  {% if section.blocks != blank %}
+    <div class="nws-one-product" style="{% if section.settings.section-color != blank %}background-color:{{ section.settings.section-color }};{% endif %} {% if section.settings.section-bg != blank %}background-image:url('{{ section.settings.section-bg | img_url: 'master' }}');{% endif %}" >
+      <div class="container" >
+        <div class="nws-one-product-content nws-same-section">
+          {% if section.settings.heading != blank %}<h2 class="heading-nws" >{{ section.settings.heading }}</h2>{% endif %}
+          {% if section.settings.sub-heading != blank %}<span class="sub-heading-nws" >{{ section.settings.sub-heading }}</span>{% endif %}
+          <div class="nws-one-product-body" >
+           {% for block in section.blocks %}
+             {%- case block.type -%}
+             {%- when 'box' -%}
+               <div class="nws-one-product-main nws-mob-none" >
+                 <div class="nws-one-product-inner {% if block.settings.pdp-label != blank %}nws-best-pdp{% endif %}" >
+                    {% if block.settings.pdp-label != blank %}<div class="pdp-label" ><span>{{ block.settings.pdp-label }}</span></div>{% endif %}
+                    {% if block.settings.pdp-image != blank %}<div class="pdp-image" ><img src="{{ block.settings.pdp-image | img_url: '300x' }}" /></div>{% endif %}
+                    {% if block.settings.pdp-heading != blank %}<div class="pdp-title" ><h2>{{ block.settings.pdp-heading }}</h2></div>{% endif %}
+                    {% if block.settings.pdp-size != blank %}<div class="pdp-size" ><span>{{ block.settings.pdp-size }}</span></div>{% endif %}
+                    {% if block.settings.pdp-lin1 != blank or block.settings.pdp-lin2 != blank or block.settings.pdp-lin3 != blank %}
+                      <ul class="pdp-lines" >
+                        {% if block.settings.pdp-lin1 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.pdp-lin1 }}</span></li>{% endif %}
+                        {% if block.settings.pdp-lin2 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.pdp-lin2 }}</span></li>{% endif %}
+                        {% if block.settings.pdp-lin3 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.pdp-lin3 }}</span></li>{% endif %}
+                      </ul>
+                    {% endif %}
+                    {% if block.settings.pdp-price != blank %}
+                      <div class="pdp-price" >
+                        {{ block.settings.pdp-price }}{% if block.settings.pdp-cprice != blank %}<del>{{ block.settings.pdp-cprice }}</del>{% endif %}
+                      </div>
+                     {% endif %}
+                     {% if block.settings.pdp-btn != blank %}
+                        {% if block.settings.pdp-sub-id != blank and block.settings.pdp-id != blank %}
+                          <button class="btn-nws" type="button" onclick="RechargeCartNWS({{ block.settings.pdp-id }}, 1, {{ block.settings.pdp-sub-id }})" >{{ block.settings.pdp-btn }}</button>
+                        {% elsif block.settings.pdp-id != blank %}
+                          <button class="btn-nws" type="button" onclick="SingleCartNWS({{ block.settings.pdp-id }}, 1)" >{{ block.settings.pdp-btn }}</button>
+                        {% else %}
+                          <button class="btn-nws" type="button" disable="disable" >SOLD OUT</button>
+                        {% endif %}
+                     {% endif %}
+                   </div>
+                 </div>
+               {%- when 'mobile-box' -%}
+               <div class="nws-one-product-main nws-desk-none" >
+                 <div class="nws-one-product-inner nws-var-see-s{{forloop.index0}} nws-one-product-mob nws-op-atc-{{ block.settings.pdp-selected }} {% if block.settings.pdp-label != blank %}nws-best-pdp{% endif %}" >
+                    {% if block.settings.pdp-label != blank %}<div class="pdp-label nws-pdp-v2" ><span>{{ block.settings.pdp-label }}</span></div>{% endif %}
+                    {% if block.settings.v1-pdp-image != blank or block.settings.v2-pdp-image != blank %}
+                      <div class="pdp-image" >
+                        {% if block.settings.v1-pdp-image != blank %}<img class="nws-pdp-v1" src="{{ block.settings.v1-pdp-image | img_url: '300x' }}" />{% endif %}
+                        {% if block.settings.v2-pdp-image != blank %}<img class="nws-pdp-v2" src="{{ block.settings.v2-pdp-image | img_url: '300x' }}" />{% endif %}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.pdp-heading != blank %}<div class="pdp-title" ><h2>{{ block.settings.pdp-heading }}</h2></div>{% endif %}
+               
+                    {% if block.settings.v1-pdp-size != blank or block.settings.v2-pdp-size != blank %}
+                      <div class="pdp-size" >
+                        {% if block.settings.v1-pdp-size != blank %}<span {% if block.settings.pdp-selected == 'v1' %}class="nws-active"{% endif %} data-var="nws-pdp-v1" data-sec="nws-var-see-s{{forloop.index0}}" >{{ block.settings.v1-pdp-size }}</span>{% endif %}
+                        {% if block.settings.v2-pdp-size != blank %}<span {% if block.settings.pdp-selected == 'v2' %}class="nws-active"{% endif %} data-var="nws-pdp-v2" data-sec="nws-var-see-s{{forloop.index0}}" >{{ block.settings.v2-pdp-size }}</span>{% endif %}
+                      </div>
+                    {% endif %}
+               
+                    {% if block.settings.v1-pdp-lin1 != blank or block.settings.v1-pdp-lin2 != blank or block.settings.v1-pdp-lin3 != blank %}
+                      <ul class="pdp-lines nws-pdp-v1" >
+                        {% if block.settings.v1-pdp-lin1 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.v1-pdp-lin1 }}</span></li>{% endif %}
+                        {% if block.settings.v1-pdp-lin2 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.v1-pdp-lin2 }}</span></li>{% endif %}
+                        {% if block.settings.v1-pdp-lin3 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.v1-pdp-lin3 }}</span></li>{% endif %}
+                      </ul>
+                    {% endif %}
+                   {% if block.settings.v2-pdp-lin1 != blank or block.settings.v2-pdp-lin2 != blank or block.settings.v2-pdp-lin3 != blank %}
+                      <ul class="pdp-lines nws-pdp-v2" >
+                        {% if block.settings.v2-pdp-lin1 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.v2-pdp-lin1 }}</span></li>{% endif %}
+                        {% if block.settings.v2-pdp-lin2 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.v2-pdp-lin2 }}</span></li>{% endif %}
+                        {% if block.settings.v2-pdp-lin3 != blank %}<li>{% render 'nws-trust-icon' %}<span>{{ block.settings.v2-pdp-lin3 }}</span></li>{% endif %}
+                      </ul>
+                    {% endif %}
+               
+                      {% if block.settings.v1-pdp-price != blank %}
+                        <div class="pdp-price nws-pdp-v1" >
+                          {{ block.settings.v1-pdp-price }}{% if block.settings.v1-pdp-cprice != blank %}<del>{{ block.settings.v1-pdp-cprice }}</del>{% endif %}
+                        </div>
+                     {% endif %}
+
+                      {% if block.settings.v2-pdp-price != blank %}
+                        <div class="pdp-price nws-pdp-v2" >
+                          {{ block.settings.v2-pdp-price }}{% if block.settings.v2-pdp-cprice != blank %}<del>{{ block.settings.v2-pdp-cprice }}</del>{% endif %}
+                        </div>
+                      {% endif %}
+               
+                     {% if block.settings.pdp-btn != blank %}
+                        {% if block.settings.v1-pdp-sub-id != blank and block.settings.v1-pdp-id != blank %}
+                          <button class="btn-nws nws-pdp-v1" type="button" onclick="RechargeCartNWS({{ block.settings.v1-pdp-id }}, 1, {{ block.settings.v1-pdp-sub-id }})" >{{ block.settings.pdp-btn }}</button>
+                        {% elsif block.settings.v1-pdp-id != blank %}
+                          <button class="btn-nws nws-pdp-v1" type="button" onclick="SingleCartNWS({{ block.settings.v1-pdp-id }}, 1)" >{{ block.settings.pdp-btn }}</button>
+                        {% else %}
+                          <button class="btn-nws nws-pdp-v1" type="button" disable="disable" >SOLD OUT</button>
+                        {% endif %}
+                       
+                        {% if block.settings.v2-pdp-sub-id != blank and block.settings.v2-pdp-id != blank %}
+                          <button class="btn-nws nws-pdp-v2" type="button" onclick="RechargeCartNWS({{ block.settings.v2-pdp-id }}, 1, {{ block.settings.v2-pdp-sub-id }})" >{{ block.settings.pdp-btn }}</button>
+                        {% elsif block.settings.v2-pdp-id != blank %}
+                          <button class="btn-nws nws-pdp-v2" type="button" onclick="SingleCartNWS({{ block.settings.v2-pdp-id }}, 1)" >{{ block.settings.pdp-btn }}</button>
+                        {% else %}
+                          <button class="btn-nws nws-pdp-v2" type="button" disable="disable" >SOLD OUT</button>
+                        {% endif %}
+                     {% endif %}
+               
+                   </div>
+                 </div>
+             {%- endcase -%}
+           {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+<!-- end nws-one-product -->
+{% schema %}
+  {
+    "name": "NWS - One Product",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "section-bg",
+          "label": "Section BG Image"
+        },
+        {
+          "type": "header",
+          "content": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "sub-heading",
+          "label": "Section Sub-Heading"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "box",
+      "name": "Product Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pdp-label",
+          "label": "Label"
+        },
+        {
+          "type": "image_picker",
+          "id": "pdp-image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "pdp-heading",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "pdp-size",
+          "label": "Size"
+        },
+        {
+          "type": "textarea",
+          "id": "pdp-lin1",
+          "label": "Benefits"
+        },
+        {
+          "type": "textarea",
+          "id": "pdp-lin2",
+          "label": "Benefits"
+        },
+        {
+          "type": "textarea",
+          "id": "pdp-lin3",
+          "label": "Benefits"
+        },
+        {
+          "type": "text",
+          "id": "pdp-price",
+          "label": "Price"
+        },
+        {
+          "type": "text",
+          "id": "pdp-cprice",
+          "label": "Compare Price"
+        },
+        {
+          "type": "text",
+          "id": "pdp-id",
+          "label": "Variation ID"
+        },
+        {
+          "type": "text",
+          "id": "pdp-sub-id",
+          "label": "Subscribe ID"
+        },
+        {
+          "type": "text",
+          "id": "pdp-btn",
+          "label": "Button"
+        }
+      ]
+    },
+    {
+      "type": "mobile-box",
+      "name": "Mobile Product Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pdp-label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "pdp-heading",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "pdp-btn",
+          "label": "Button"
+        },
+        {
+          "type": "radio",
+          "label": "Active Variant",
+          "options": [
+            {
+              "value": "v1",
+              "label": "PDP V-1"
+            },
+            {
+              "value": "v2",
+              "label": "PDP V-2"
+            }
+          ],
+          "id": "pdp-selected"
+        },
+        {
+          "type": "header",
+          "content": "Product V1"
+        },
+        {
+          "type": "image_picker",
+          "id": "v1-pdp-image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "v1-pdp-size",
+          "label": "Size"
+        },
+        {
+          "type": "textarea",
+          "id": "v1-pdp-lin1",
+          "label": "Benefits"
+        },
+        {
+          "type": "textarea",
+          "id": "v1-pdp-lin2",
+          "label": "Benefits"
+        },
+        {
+          "type": "textarea",
+          "id": "v1-pdp-lin3",
+          "label": "Benefits"
+        },
+        {
+          "type": "text",
+          "id": "v1-pdp-price",
+          "label": "Price"
+        },
+        {
+          "type": "text",
+          "id": "v1-pdp-cprice",
+          "label": "Compare Price"
+        },
+        {
+          "type": "text",
+          "id": "v1-pdp-id",
+          "label": "Variation ID"
+        },
+        {
+          "type": "text",
+          "id": "v1-pdp-sub-id",
+          "label": "Subscribe ID"
+        },
+        {
+          "type": "header",
+          "content": "Product V2"
+        },
+        {
+          "type": "image_picker",
+          "id": "v2-pdp-image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "v2-pdp-size",
+          "label": "Size"
+        },
+        {
+          "type": "textarea",
+          "id": "v2-pdp-lin1",
+          "label": "Benefits"
+        },
+        {
+          "type": "textarea",
+          "id": "v2-pdp-lin2",
+          "label": "Benefits"
+        },
+        {
+          "type": "textarea",
+          "id": "v2-pdp-lin3",
+          "label": "Benefits"
+        },
+        {
+          "type": "text",
+          "id": "v2-pdp-price",
+          "label": "Price"
+        },
+        {
+          "type": "text",
+          "id": "v2-pdp-cprice",
+          "label": "Compare Price"
+        },
+        {
+          "type": "text",
+          "id": "v2-pdp-id",
+          "label": "Variation ID"
+        },
+        {
+          "type": "text",
+          "id": "v2-pdp-sub-id",
+          "label": "Subscribe ID"
+        }
+      ]
+    }
+  ],
+    "presets": [
+        {
+          "name": "NWS - One Product",
+          "category": "NWS Sections"
+        }
+    ]
+  }
+{% endschema %}

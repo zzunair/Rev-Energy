@@ -1,0 +1,68 @@
+{{ 'bundle-builder.css' | asset_url | stylesheet_tag }}
+
+<section class="bundle-builder">
+  <div class="bundle-builder__container">
+    <div class="bundle-builder__box">
+      {% if section.settings.bundle_icon != blank %}
+        <div class="bundle-builder__box-icon">
+          <img src="{{ section.settings.bundle_icon | image_url }}" alt="{{ section.settings.bundle_icon.alt }}" />
+        </div>
+      {% endif %}
+      <div class="bundle-builder__content">
+        <animation-reveal aoi-type="fade-in" aoi-duration="0.5" aoi-amount="0.7">
+          {% if section.settings.heading != blank %}
+            <h2 class="bundle-builder__heading">
+              {{ section.settings.heading }}
+            </h2>
+          {% endif %}
+          {% if section.settings.desc != blank %}
+            <p class="bundle-builder__desc">
+              {{ section.settings.desc |  remove: '<p>'  |  remove: '</p>' }}
+            </p>
+          {% endif %}
+          {% if section.settings.btn_label != blank %}
+            <a href="{{ section.settings.btn_url }}" class="bundle-builder__btn">{{ section.settings.btn_label }}</a>
+          {% endif %}
+        </animation-reveal>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle Builder",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Bundle Image",
+      "id": "bundle_icon"
+    }, 
+    {
+      "type": "text",
+      "label": "Bundle Heading",
+      "id": "heading"
+    }, 
+    {
+      "type": "richtext",
+      "label": "Bundle Description",
+      "id": "desc"
+    }, 
+    {
+      "type": "text",
+      "label": "Bundle Button Label",
+      "id": "btn_label"
+    }, 
+    {
+      "type": "url",
+      "label": "Bundle Button URL",
+      "id": "btn_url"
+    } 
+  ],
+  "presets": [
+    {
+      "name": "Bundle Builder"
+    }
+  ]
+}
+{% endschema %}

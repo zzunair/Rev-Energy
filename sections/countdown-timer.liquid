@@ -1,0 +1,165 @@
+{% assign end_date = section.settings.cd_timer %}
+{% assign hours_timer = section.settings.enable_24_hours_timer %}
+{{ 'section-countdown-timer.css' | asset_url | stylesheet_tag }}
+{% style %}
+
+    #shopify-section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top | times: 0.45 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+    @media screen and (min-width: 750px) {
+        #shopify-section-{{ section.id }} {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+    }
+{% endstyle %}
+{% if end_date != blank %}
+    <div class="timer center">
+      {% if section.settings.title != blank %}<h4 class="timer__title center">{{ section.settings.title }}</h4>{% endif %}
+      <div class="timer-display">
+        <div class="timer-block">
+          <span class="timer-block__num js-timer-days">00</span>
+          <span class="timer-block__unit">Days</span>
+        </div>
+        <span class="dots">:</span>
+        <div class="timer-block">
+          <span class="timer-block__num js-timer-hours">00</span>
+          <span class="timer-block__unit">Hours</span>
+        </div>
+        <span class="dots">:</span>
+        <div class="timer-block">
+          <span class="timer-block__num js-timer-minutes">00</span>
+          <span class="timer-block__unit">Minutes</span>
+        </div>
+        <span class="dots">:</span>
+        <div class="timer-block">
+          <span class="timer-block__num js-timer-seconds">00</span>
+          <span class="timer-block__unit">Seconds</span>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      var TopCountdownTimer = document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .timer");
+      
+      if(TopCountdownTimer){
+        var second_section = 1000,
+        minute_section = second_section * 60,
+        hour_section = minute_section * 60,
+        day_section = hour_section * 24;
+        {% if hours_timer == true %}
+          var countDown_section = new Date();
+          countDown_section.setHours(23,59,59),
+        {% else %}
+          var countDown_section = new Date("{{- end_date -}}").getTime(),
+        {% endif %}
+        x = setInterval(function() {
+          {% if hours_timer == true %}
+            var d_section = new Date();
+            var localTime_section = d_section.getTime();
+            var now_section = new Date(localTime_section);
+            var distance_section = countDown_section - now_section;
+          {% else %}
+            var d_section = new Date();
+            var localTime_section = d_section.getTime();
+            var localOffset_section = d_section.getTimezoneOffset() * 60000;
+            var utc_section = localTime_section + localOffset_section;
+            var offset_section = -7;
+            var USA_section = utc_section + (3600000*offset_section);
+            var now_section = new Date(USA_section);
+            var distance_section = countDown_section - now_section;
+          {% endif %}
+          var days_section = Math.floor(distance_section / (1000 * 60 * 60 * 24));
+          var hours_section = Math.floor((distance_section % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes_section = Math.floor((distance_section % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds_section = Math.floor((distance_section % (1000 * 60)) / 1000);
+          
+          if(distance_section > 0){
+            if(days_section < 2){
+              document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .js-timer-days + .timer-block__unit").innerHTML="Day" ;
+            }else{
+              document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .js-timer-days + .timer-block__unit").innerHTML="Days" ;
+            }
+            if(hours_section < 2){
+              document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .js-timer-hours + .timer-block__unit").innerHTML ="Hour" ;
+            }else{
+              document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .js-timer-hours + .timer-block__unit").innerHTML ="Hours";
+            }
+            if(minutes_section < 2){
+              document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .js-timer-minutes + .timer-block__unit").innerHTML ="Minute" ;
+            }else{
+              document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .js-timer-minutes + .timer-block__unit").innerHTML ="Minutes" ;
+            }
+            if(seconds_section < 2){
+              document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .js-timer-seconds + .timer-block__unit").innerHTML ="Second" ;
+            }else{
+              document.querySelector("#shopify-section-{{ section.id }}.section-cd-timer .js-timer-seconds + .timer-block__unit").innerHTML ="Seconds";
+            }
+            document.querySelector('#shopify-section-{{ section.id }}.section-cd-timer .js-timer-days').innerText = Math.floor(distance_section / (day_section)),
+            document.querySelector('#shopify-section-{{ section.id }}.section-cd-timer .js-timer-hours').innerText = Math.floor((distance_section % (day_section)) / (hour_section)),
+            document.querySelector('#shopify-section-{{ section.id }}.section-cd-timer .js-timer-minutes').innerText = Math.floor((distance_section % (hour_section)) / (minute_section)),
+            document.querySelector('#shopify-section-{{ section.id }}.section-cd-timer .js-timer-seconds').innerText = Math.floor((distance_section % (minute_section)) / second_section);
+          }else{
+            {% if hours_timer != true %}
+              document.querySelector('#shopify-section-{{ section.id }}.section-cd-timer').style.display = "none";
+            {% endif %}
+          }
+        }, second_section);
+      }
+    </script>
+    {% endif %}
+
+  {% schema %}
+    {
+      "name": "Countdown Timer",
+      "class": "section-cd-timer",
+      "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "cd_timer",
+            "label": "Countdown End Date (YYYY-MM-DD HH:MM) - 24 hour scale."
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_24_hours_timer",
+          "label": "Enable 24 hours timer",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Section padding"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "Top padding",
+          "default": 28
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "Bottom padding",
+          "default": 16
+        }
+      ],
+      "presets": [
+      {
+        "name": "Countdown timer"
+      }
+    ]
+    }
+  {% endschema %}

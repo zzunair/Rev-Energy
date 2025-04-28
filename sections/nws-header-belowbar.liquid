@@ -1,0 +1,84 @@
+<!-- nws-custom-belowbar -->
+  {% if section.blocks != blank %}
+    <div class="nws-custom-belowbar nws-marquee" {% if section.settings.belowbar-color != blank %}style="background-color:{{ section.settings.belowbar-color }};"{% endif %} >
+        <div class="nws-marquee-content">
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+          {% for block in section.blocks %}
+            <div class="nws-marquee-tag">{{ block.settings.belowbar-slide }}</div>
+          {% endfor %}
+        </div>
+        {% if section.settings.belowbar-link != blank %}<a class="nws-custom-belowbar-link" href="{{ section.settings.belowbar-link }}" >Link</a>{% endif %}
+    </div>
+  {% endif %}
+<!-- end nws-custom-belowbar -->
+{% schema %}
+  {
+    "name": "NWS - Below Bar",
+    "settings": [
+        {
+          "type": "color",
+          "id": "belowbar-color",
+          "label": "Below Bar Color"
+        },
+        {
+          "type": "url",
+          "id": "belowbar-link",
+          "label": "Below Bar Link"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "item_text",
+      "name": "Slide Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "belowbar-slide",
+          "label": "Slide Text"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

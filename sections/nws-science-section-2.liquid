@@ -1,0 +1,102 @@
+<!-- nws-science-section-2 -->
+{% if section.blocks != blank %}
+    <div class="nws-science-section" style="{% if section.settings.section-color != blank %}background-color:{{ section.settings.section-color }};{% endif %} {% if section.settings.section-bg != blank %}background-image:url('{{ section.settings.section-bg | img_url: 'master' }}');{% endif %}" >
+      <div class="container" >
+        <div class="row nws-science-section-content nws-same-section">
+          <div class="col-6" >
+            {% if section.settings.heading != blank %}<h2 class="heading-nws" >{{ section.settings.heading }}</h2>{% endif %}
+            {% if section.settings.sub-heading != blank %}<span class="sub-heading-nws" >{{ section.settings.sub-heading }}</span>{% endif %}
+            <div class="nws-science-section-body" >
+              {% for block in section.blocks %}
+               <div class="nws-science-section-txt nws-tab{{forloop.index}} {% if forloop.index == 1 %}nws-active{% endif %}" data-tab="nws-tab{{forloop.index}}" >
+                {% if block.settings.tab-title != blank %}<span class="nws-tab-num" >{{forloop.index}}</span><h3 data-tab="nws-tab{{forloop.index}}" >{{ block.settings.tab-title }}</h3>{% endif %}
+                {% if block.settings.tab-content != blank %}<div class="nws-tab-t" >{{ block.settings.tab-content }} <img src="{{ block.settings.tab-img | img_url: '300x' }}" class="img-ss-icon nws-desk-none" /></div>{% endif %}
+               </div>
+              {% endfor %}
+            </div>
+            {% if section.settings.btn-txt != blank %}<a class="btn-nws" href="{{ section.settings.btn-link }}" >{{ section.settings.btn-txt }}</a>{% endif %}
+          </div>
+          <div class="col-6 nws-mob-none" >
+            <div class="nws-science-section-images" >
+              {% for block in section.blocks %}
+               {% if block.settings.tab-img != blank %}
+                 <div class="nws-science-section-img nws-tab{{forloop.index}} {% if forloop.index == 1 %}nws-active{% endif %}" data-tab="nws-tab{{forloop.index}}" >
+                   <img src="{{ block.settings.tab-img | img_url: '540x' }}" class="img-ss-icon" />
+                 </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+<!-- end nws-science-section-2 -->
+{% schema %}
+  {
+    "name": "NWS - Science Section 2",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "section-bg",
+          "label": "Section BG Image"
+        },
+        {
+          "type": "header",
+          "content": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "sub-heading",
+          "label": "Section Sub-Heading"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "btn-txt",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "btn-link",
+          "label": "Button Link"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "text",
+      "name": "Tab Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab-title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-content",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "tab-img",
+          "label": "Image"
+        }
+      ]
+    }
+   ]
+  }
+{% endschema %}

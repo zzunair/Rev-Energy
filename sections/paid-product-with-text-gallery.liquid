@@ -1,0 +1,440 @@
+<script src="{{ 'jquery-3.6.0.min.js' | asset_url }}"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>  
+
+<style>
+
+ #shopify-section-{{ section.id }}.spaced-section {
+    margin-top: 2rem;
+}
+
+</style>
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ 'new-lp.css' | asset_url | stylesheet_tag }}
+  {{ 'gummy-slider.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Issue with CSS caching {% endcomment %}
+<!-- <style>
+  .header-menu {display:none !important;}
+}
+</style> -->
+{% if section.blocks.size > 0 %}
+  {{ 'paid-product-with-text.css' | asset_url | stylesheet_tag }}
+  {{ 'paid-product-with-text-v2.css' | asset_url | stylesheet_tag }}
+
+  {%- for block in section.blocks -%}
+    {% comment %} {% case block.type %}
+      {%- when 'metaobject_block' -%} {% endcomment %}
+        {% assign product = block.settings.product %}
+        {% comment %} {% if section.settings.section_identifier == block.settings.metaobjectidentifier %} {% endcomment %}
+          {%- liquid 
+            assign identifier = block.settings.metaobjectidentifier | handleize 
+            assign check_mb = false
+            for object in shop.metaobjects.paid_product_with_text.values 
+                assign metaobject = object.section_identifier.value | handleize
+                if metaobject == identifier
+                    assign check_mb = true
+                    assign metaobj = object
+                endif
+            endfor 
+            assign product_images = metaobj.image_gallery.value
+            assign product_badges = metaobj.bottom_badges.value
+          %}
+          <div data-section-identifier="{{section.settings.section_identifier}}" data-block-identifier="{{block.settings.metaobjectidentifier}}" class="image-with-text {% if block.settings.full_width %}image-with-text--full-width{% else %}page-width{% endif %} color-scheme-{{ block.settings.color_scheme }}">
+            <div class="image-with-text__grid color-{{ block.settings.color_scheme }} grid grid--gapless grid--1-col grid--2-col-tablet gradient{% if block.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %} {% if block.settings.layout_mobile == 'text_first' %} image-with-text__grid--reverse-mobile{% endif %}">
+          {% if product != blank %}
+                <div class="grid__item image_part">
+                 <h4 class="image-with-text__subheading h3 small-bold" {{ block.shopify_attributes }}>
+                      {{ block.settings.subheading | escape }}
+                 </h4>
+                 {% if block.settings.heading != blank %}
+                      <h2 class="image-with-text__heading h1" {{ block.shopify_attributes }}>
+                        {{ block.settings.heading | escape }}
+                      </h2>
+                {% endif %}
+                <div>
+                  <div class="carousel-container">
+                     <div class="slider-galeria-thumbs">
+                       {% for single_image in product_images  %}
+                      <div><img src="{{ single_image | img_url: 'master' }}"  loading="lazy" ></div>
+                         {%- endfor -%}
+                    </div>
+            
+                  <div class="slider-galeria">
+                   {% for single_image in product_images  %}
+                  <div><img src="{{ single_image | img_url: 'master' }}"  loading="lazy" ></div>
+                     {%- endfor %}  
+                    
+                </div>             
+                    <div style="clear:both"></div>
+                  </div>
+                  </div>
+                  {% unless section.settings.as_seen_title == blank or section.settings.as_seen_image == blank %}
+                    <div class="as-seen">
+                        <span>{{ section.settings.as_seen_title }}</span>
+                        <img src="{{ section.settings.as_seen_image | img_url:'master' }}" width="" height="">
+                    </div>
+                    {% endunless %}
+                </div>
+
+              {% endif %}
+              
+   
+              
+              {% if section.blocks.size > 0 %}
+                <div class="grid__item text_part">
+                  <div class="image-with-text__content image-with-text__content--{{ block.height }}">
+                    {% unless block.settings.subheading == blank %}
+                    <h4 class="image-with-text__subheading h3 small-bold" {{ block.shopify_attributes }}>
+                      {{ block.settings.subheading | escape }}
+                    </h4>
+                    {% endunless %}
+                    {% if block.settings.heading != blank %}
+                      <h2 class="image-with-text__heading h1" {{ block.shopify_attributes }}>
+                        {{ block.settings.heading | escape }}
+                      </h2>
+                    {% endif %}
+                    
+                    {% if block.settings.text != blank %}
+                      <div class="image-with-text__text rte desk" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+                    {% endif %}
+
+                    
+                    {%- if block.settings.button_label != blank -%}
+                      <div class="image-with-text_Btn_container">
+                        <a {% if block.settings.button_link != blank %}href="
+                          {%  if page.handle == "orange-g" %}
+                            https://trycreate.co/pages/orange-g#subs-product
+                          {%  elsif page.handle == "orange-tt" %}
+                            https://trycreate.co/pages/orange-tt#subs-product
+                          {% elsif page.handle == "blueraspberry-g" %}
+                            https://trycreate.co/pages/blueraspberry-g#subs-product 
+                          {% elsif page.handle == "blueraspberry-tt" %}
+                            https://trycreate.co/pages/blueraspberry-tt#subs-product 
+                          {% elsif page.handle == "watermelon-g" %}
+                            https://trycreate.co/pages/watermelon-g#subs-product  
+                          {% elsif page.handle == "watermelon-tt" %}
+                            https://trycreate.co/pages/watermelon-tt#subs-product  
+                          {%else%}
+                            {{ block.settings.button_link }}
+                            {% endif %}
+                         "{% endif %} class="button image-with-text_Btn" {% if block.settings.button_link == blank %} aria-disabled="true"{% endif %} {{ block.shopify_attributes }}>
+                          {{ block.settings.button_label | escape }}
+                        </a>
+                      </div>
+                    {%- endif -%} 
+
+                  <div class="as-seen">
+                    <span>{{ section.settings.as_seen_title }}</span>
+                    <img src="{{ section.settings.as_seen_image | img_url:'master' }}" width="" height="">
+                  </div>
+
+                    
+                    {% if block.settings.text != blank %}
+                      <div class="image-with-text__text rte mob" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+                    {% endif %}
+
+                    {% if block.settings.comment != blank %}
+                      <div class="single-review-container">
+                        {% if block.settings.image != blank %}
+                          <div class="review-profile-pic"><img src="{{ block.settings.image | img_url: 'master' }}" height="100%" width="100%" /></div>
+                        {% endif %}
+                        <div class="review-content">
+                          <div class="review-comment">{{ block.settings.comment }}</div>
+                          {% if block.settings.name != blank %}
+                            <div class="review-name">{{ block.settings.name }}</div>
+                            {% endif %}
+                        </div>
+                      </div>
+                    {%- endif -%}   
+                    
+                    {% if product != blank and metaobj.stars.value != blank %}
+                      <div class="product-star-rating">
+                        <div class="product-star-rating-container">
+                          {% if metaobj.stars.value != blank %}
+                            <div class="product-star-rating-icon">
+                              {% render 'star-rating-icons', stars: metaobj.stars.value %}
+                            </div>
+                          {% endif %}
+                          {% if metaobj.review_count_text.value != blank %}
+                            <div class="product-rating-count-text">
+                              {{ metaobj.review_count_text.value }}
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    {%- endif -%}  
+
+
+
+                  </div>
+                </div>
+              {% endif %}
+            </div> 
+          </div>
+     {% comment %}    {% endif %}
+    {%- endcase -%} {% endcomment %}
+  {%- endfor -%}
+
+
+
+  <script type="text/javascript">
+ 
+    var scrollToElement = function(element =5) {
+    var $innerListItem = $(element),
+        $parentDiv = $(element).parent();
+
+  $parentDiv.scrollTop($parentDiv.scrollTop() + $innerListItem.position().top - $parentDiv.height() + $innerListItem.height());
+
+  },
+      setNavHeight = function() {
+        setTimeout(function() {
+        $('.carousel-nav-list').height($('.productwithtext-carousel').find('.slick-slide[data-slick-index=0] img').height() - $('.carousel-btn').height() * 2);
+
+        }, 250);
+      };
+
+
+ $("#shopify-section-{{ section.id }} .productwithtext-carousel").slick({
+    arrows: false,
+    fade: false,
+    autoplay: false,
+    adaptiveHeight: true,
+    horizontal: true,
+    horizontalSwiping: true,
+    responsive: [
+      {
+        breakpoint: 750,
+        settings: {
+          dots: true,
+          prevArrow: '<i class="slick-prev fa fa-chevron-left" aria-hidden="true"></i>',
+          nextArrow: '<i class="slick-next fa fa-chevron-right" aria-hidden="true"></i>'
+        }
+      }
+    ]
+  }); 
+
+
+  $('#shopify-section-{{ section.id }} .carousel-nav-list').slick({
+    slidesToShow: 5,
+    asNavFor: '#shopify-section-{{ section.id }} .productwithtext-carousel',
+    vertical: true,
+    focusOnSelect: true,
+    autoplay: false,
+    centerPadding: '40%',
+    arrows:true,
+    adaptiveHeight: true,
+    prevArrow: $('#shopify-section-{{ section.id }}  .carousel-btn.prev-img'),
+    nextArrow: $('#shopify-section-{{ section.id }}  .carousel-btn.next-img')
+    });
+  
+  
+
+
+  window.onresize = function() {
+    setNavHeight();
+  };
+
+  $(document).ready(function() {
+    setNavHeight();
+  });
+
+  $("#shopify-section-{{ section.id }} .carousel").on('afterChange', function(event, slick, currentSlide){
+    if($("#shopify-section-{{ section.id }} .productwithtext-carousel .slick-active").hasClass('productwithtext-carousel-video-slide')){
+      $("#shopify-section-{{ section.id }} .productwithtext-carousel .slick-active").find('video').get(0).muted = true;
+      $("#shopify-section-{{ section.id }} .productwithtext-carousel .slick-active").find('video').get(0).autoplay = true;
+      $("#shopify-section-{{ section.id }} .productwithtext-carousel .slick-active").find('video').get(0).play();
+    } else {
+      $(".productwithtext-carousel video").each(function(){
+        $(this).get(0).pause();
+      });
+    }
+  });
+
+  $("#shopify-section-{{ section.id }} .carousel").on("beforeChange", function(event, slick, currentSlide, nextSlide) {
+    $('#shopify-section-{{ section.id }} .carousel-nav-item').removeClass('active');
+    $('#shopify-section-{{ section.id }} .carousel-nav-item[data-slide="' + nextSlide +  '"]').addClass('active');
+    scrollToElement($('#shopify-section-{{ section.id }} .carousel-nav-item[data-slide="' + nextSlide +  '"]')[0]);
+  });
+
+  
+  $(document).on('click', '#shopify-section-{{ section.id }} .prev-img', function() {
+    $("#shopify-section-{{ section.id }} .productwithtext-carousel").slick("slickPrev");
+  });
+
+  $(document).on('click', '#shopify-section-{{ section.id }} .next-img', function() {
+    $("#shopify-section-{{ section.id }} .productwithtext-carousel").slick("slickNext");
+  });
+                    
+
+  $(document).ready(function() {
+    if($('#shopify-section-{{ section.id }} .slick-slide:has(img[alt="supplement-facts"])').length){
+      $('#shopify-section-{{ section.id }} .supplement_facts_link_wrap').show();
+    }
+  });
+
+  $(document).on('click', '#shopify-section-{{ section.id }} .supplement_facts_link_wrap a', function(e) {
+    e.preventDefault();
+    var supplementFactsIndex = parseInt($('#shopify-section-{{ section.id }} .slick-slide:has(img[alt="supplement-facts"])').data('slick-index'));
+    $("#shopify-section-{{ section.id }} .productwithtext-carousel").slick("slickGoTo", supplementFactsIndex);
+  });
+                      
+  </script>
+{% endif %}
+{% schema %}
+{
+  "name": "Product with Text Gallery",
+  "class": "spaced-section spaced-section--full-width custom-img-with-txt product-with-text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_identifier",
+      "label": "Section Identifier"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_description_mobile",
+      "label": "Hide Description on Mobile",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "as_seen_title",
+      "label": "As seen title"
+    },
+    {
+      "type": "image_picker",
+      "id": "as_seen_image",
+      "label": "Upload Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "metaobject_block",
+      "name": "(Paid) Product With Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "metaobjectidentifier",
+          "label": "Section Metaobject Identifier"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }, 
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Main Image"
+        },   
+        {
+          "type": "select",
+          "id": "layout",
+          "options": [
+            {
+              "value": "image_first",
+              "label": "Image First"
+            },
+            {
+              "value": "text_first",
+              "label": "Text First"
+            }
+          ],
+          "default": "image_first",
+          "label": "Image First"
+        },
+        {
+          "type": "select",
+          "id": "layout_mobile",
+          "options": [
+            {
+              "value": "image_first",
+              "label": "Image First"
+            },
+            {
+              "value": "text_first",
+              "label": "Text First"
+            }
+          ],
+          "default": "image_first",
+          "label": "Mobile layout"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading (Above)",
+          "info": "Add an optional subheading that displays above the main heading."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Profile Photo"
+        },
+        {
+          "type": "richtext",
+          "id": "comment",
+          "label": "Comment"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer Name"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "info": "Leave the label blank to hide the button."
+        },        
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product with Text Gallery",
+      "blocks": [
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+            
+<script>
+$('#shopify-section-{{ section.id }} .slider-galeria').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  infinite: false,
+  asNavFor: '.slider-galeria-thumbs',
+});
+$('#shopify-section-{{ section.id }} .slider-galeria-thumbs').slick({
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  arrows: false,
+  asNavFor: '.slider-galeria',
+  vertical: true,
+  verticalSwiping: true,
+  focusOnSelect: true,
+  infinite: false,
+});
+
+$( "h2" ).removeClass( "aos-animate" );
+</script>
+

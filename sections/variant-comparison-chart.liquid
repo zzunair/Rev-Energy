@@ -1,0 +1,40 @@
+{% render 'variant-based-comparision-chart', current_variant: product.selected_or_first_available_variant, section: section %}
+
+<script>
+  window.variantMetafieldData = window.variantMetafieldData || {};
+  let variantComparisionChart = "";
+  {% for variant in product.variants %}
+    {% if variant.metafields.custom.variant_product_images %}
+      {% capture variant_comparision_chart_liquid %} {% render 'variant-based-comparision-chart', current_variant: variant, section: section %} {% endcapture %}
+      variantComparisionChart = `{{ variant_comparision_chart_liquid | strip_newlines  }}`
+    {% endif %}
+    window.variantMetafieldData[{{ variant.id }}]["variant_comparision_chart"] = variantComparisionChart;
+  {% endfor %}
+</script>
+{% schema %}
+{
+  "name": "Variant Comparision Chart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "textarea",
+      "id": "bg_image",
+      "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Variant Comparision Chart"
+    }
+  ]
+}
+{% endschema %}

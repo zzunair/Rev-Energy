@@ -1,0 +1,194 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": 600,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "color_scheme": ""
+      }
+    },
+    "rich_text_K6yXga": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_X44RFd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact Us",
+            "style": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_X44RFd"
+      ],
+      "settings": {
+        "container_size": true,
+        "content_width": 500,
+        "content_alignment": "left",
+        "padding_top": 32,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2ec4f7ea-5bba-4594-8562-7cfdc77b9da8"
+      }
+    },
+    "image_gallery": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "subheading": "",
+            "heading": "Hours of Operation",
+            "description": "9am - 5pm EST Monday through Friday",
+            "button_label": "",
+            "button_link": "",
+            "button_target": "_blank",
+            "text_color": "#000000",
+            "overlay_color": "#ffffff",
+            "overlay_opacity": 100
+          }
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {
+            "subheading": "",
+            "heading": "Get in Touch",
+            "description": "hi@trycreate.co",
+            "button_label": "",
+            "button_link": "",
+            "button_target": "_blank",
+            "text_color": "#000000",
+            "overlay_color": "#ffffff",
+            "overlay_opacity": 100
+          }
+        },
+        "image_zJUYA6": {
+          "type": "image",
+          "settings": {
+            "subheading": "",
+            "heading": "PR & Marketing",
+            "description": "press@trycreate.co",
+            "button_label": "",
+            "button_link": "",
+            "button_target": "_blank",
+            "text_color": "#000000",
+            "overlay_color": "#ffffff",
+            "overlay_opacity": 100
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "image_2",
+        "image_zJUYA6"
+      ],
+      "settings": {
+        "layout_style": "grid",
+        "number_of_columns": "3",
+        "heading_content_alignment": "left",
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "image_aspect_ratio": "landscape",
+        "content_alignment": "left",
+        "content_position": "top",
+        "column_spacing": "16",
+        "use_outline_button": false,
+        "padding_top": 32,
+        "padding_bottom": 48,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2ec4f7ea-5bba-4594-8562-7cfdc77b9da8"
+      }
+    },
+    "faq_a7Ee9a": {
+      "type": "faq",
+      "blocks": {
+        "item_jnh7gJ": {
+          "type": "item",
+          "settings": {
+            "heading": "Do you ship overseas?",
+            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
+          }
+        },
+        "item_GkmyBP": {
+          "type": "item",
+          "settings": {
+            "heading": "How long will it take to get my orders?",
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+          }
+        },
+        "item_kDpFj7": {
+          "type": "item",
+          "settings": {
+            "heading": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_jnh7gJ",
+        "item_GkmyBP",
+        "item_kDpFj7"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "subheading": "",
+        "heading": "Frequently Asked Questions",
+        "content": "",
+        "show_view_all_button": true,
+        "view_all_link_style": "text",
+        "view_all_link_position": "end",
+        "view_all_link_text": "View all",
+        "link_url": "shopify://pages/faq",
+        "link_target": "_blank",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "blocks": {
+        "form": {
+          "type": "form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "form"
+      ],
+      "settings": {
+        "heading": "Contact us",
+        "content": "<p>We try to respond to all messages within 24 hours!</p>",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_K6yXga",
+    "image_gallery",
+    "faq_a7Ee9a",
+    "form"
+  ]
+}

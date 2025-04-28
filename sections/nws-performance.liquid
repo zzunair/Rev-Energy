@@ -1,0 +1,361 @@
+<section class="performance-{{ section.id }}">
+  <div class="container">
+    <div class="body">
+      <div class="content">
+        <div class="left-body">
+          <div class="left-content">
+            <div class="left-header">
+              {% if section.settings.heading != blank %}
+                <h2>{{ section.settings.heading }}</h2>
+              {% endif %}
+              {% if section.settings['sub-heading'] != blank %}
+                <span>{{ section.settings['sub-heading'] }}</span>
+              {% endif %}
+              {% if section.settings.para != blank %}
+                {{ section.settings.para }}
+              {% endif %}
+            </div>
+            <div class="items-wrapper">
+              {% for block in section.blocks %}
+                <div class="item-box {{ block.settings.custom-css }}">
+                  <div class="item-content">
+                    {% if block.settings['tab-logo'] != blank %}
+                      <span class="item-logo">{{ block.settings['tab-logo'] }}</span>
+                    {% endif %}
+                    <div class="item-text-area">
+                      {% if block.settings['tab-title'] != blank %}
+                        <h3>{{ block.settings['tab-title'] }}</h3>
+                      {% endif %}
+                      {% if block.settings['tab-content'] != blank %}
+                        {{ block.settings['tab-content'] }}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="right-body">
+          {% if section.settings['side-img'] != blank %}
+            <div class="img-box">
+              <img src="{{ section.settings.side-img | img_url: 'master' }}" alt="" width="auto" height="auto">
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "NWS Performance",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "sub-heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "para",
+      "label": "Paragraph"
+    },
+    {
+      "type": "image_picker",
+      "id": "side-img",
+      "label": "Select Image"
+    },
+    {
+      "type": "select",
+      "options": [
+        {
+          "value": "Row",
+          "label": "Row"
+        },
+        {
+          "value": "Row-Reverse",
+          "label": "Row Reverse"
+        }
+      ],
+      "id": "direction",
+      "label": "Content Direction",
+      "default": "Row"
+    },
+    {
+      "type": "range",
+      "id": "spacing-b-c",
+      "min": 0,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "default": 25,
+      "label": "Spacing Between Image And Content"
+    },
+    {
+      "type": "range",
+      "id": "p-t",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "label": "Section Top Spacing"
+    },
+    {
+      "type": "range",
+      "id": "p-b",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80,
+      "label": "Section Bottom Spacing"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Screen"
+    },
+    {
+      "type": "range",
+      "id": "p-t-m",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "label": "Section Top Spacing"
+    },
+    {
+      "type": "range",
+      "id": "p-b-m",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60,
+      "label": "Section Bottom Spacing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "tab-logo",
+          "label": "SVG Code"
+        },
+        {
+          "type": "text",
+          "id": "tab-title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-content",
+          "label": "Paragraph"
+        },
+        {
+          "type": "text",
+          "id": "custom-css",
+          "label": "Custom Class"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NWS Performance",
+      "category": "Section Category"
+    }
+  ]
+}
+{% endschema %}
+<style>
+    section.performance-{{ section.id }} {
+        display: block;
+        padding-top: {{ section.settings.p-t }}px;
+        padding-bottom: {{ section.settings.p-b }}px;
+    }
+    section.performance-{{ section.id }} .container {
+        display: block;
+        width: 100%;
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 0 18px;
+    }
+    section.performance-{{ section.id }} .container .body {
+        display: block;
+    }
+    section.performance-{{ section.id }} .body .content {
+        display: flex;
+        flex-direction: {% if section.settings.direction == "Row" %} row {% else %} row-reverse {% endif %};
+    }
+    section.performance-{{ section.id }} .content .left-body {
+        display: block;
+        width: 100%;
+        max-width: 50%;
+        padding: 0 5px;
+        margin-right: {% if section.settings.direction == "Row" %} {{ section.settings.spacing-b-c }}px {% else %} 0 {% endif %};
+    }
+    section.performance-{{ section.id }} .left-body .left-content {
+        display: block;
+    }
+    section.performance-{{ section.id }} .left-content .left-header {
+        display: block;
+    }
+    section.performance-{{ section.id }} .left-header h2 {
+        display: block;
+        font-family: PPObjectSans;
+        font-size: 30px;
+        margin: 0;
+        margin-bottom: 10px;
+        line-height: 1;
+    }
+    section.performance-{{ section.id }} .left-header span {
+        display: block;
+        font-family: PPObjectSans;
+        font-weight: 600;
+        line-height: 1;
+        color: #F77F26;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    section.performance-{{ section.id }} .left-header p {
+        display: block;
+        font-size: 16px;
+        margin: 0;
+        line-height: normal;
+    }
+    section.performance-{{ section.id }} .left-content .items-wrapper {
+        display: block;
+    }
+    section.performance-{{ section.id }} .items-wrapper .item-box {
+        display: block;
+        padding: 32px 0;
+        border-bottom: 1px dashed black;
+    }
+    section.performance-{{ section.id }} .items-wrapper .item-box:last-child{
+        border: none;
+        padding-bottom: 0;
+    }
+    section.performance-{{ section.id }} .item-box .item-content {
+        display: flex;
+        align-items: start;
+    }
+    section.performance-{{ section.id }} .item-box span.item-logo {
+        display: block;
+        width: fit-content;
+        margin-right: 20px;
+    }
+    section.performance-{{ section.id }} .item-box .item-text-area {
+        display: block;
+        width: 100%;
+    }
+    section.performance-{{ section.id }} .item-box .item-text-area h3 {
+        display: block;
+        font-family: PPObjectSans;
+        font-size: 16px;
+        margin: 0;
+        line-height: normal;
+        margin-bottom: 5px;
+    }
+    section.performance-{{ section.id }} .item-box .item-text-area p {
+        display: block;
+        font-size: 16px;
+        margin: 0;
+        line-height: normal;
+    }
+    section.performance-{{ section.id }} .content .right-body {
+        display: block;
+        width: 100%;
+        max-width: 50%;
+        padding: 0 5px;
+        margin-right: {% if section.settings.direction == "Row-Reverse" %} {{ section.settings.spacing-b-c }}px {% else %} 0 {% endif %};
+    }
+    section.performance-{{ section.id }} .right-body .img-box {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    section.performance-{{ section.id }} .right-body .img-box img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    section.performance-{{ section.id }} .item-box.nws-custom-line {
+    	background: #FFF2D2;
+    	padding: 18px 18px !important;
+    	border-radius: 10px;
+    	margin: 0 -18px;
+    }
+    section.performance-{{ section.id }} .item-box.nws-custom-line p a {
+    	line-height: normal;
+    	font-size: 16px;
+    	color: #333333;
+    	text-decoration: underline;
+    }
+    section.performance-{{ section.id }} .item-box.nws-no-border {
+    	border-bottom: none;
+    }
+
+  @media screen and (max-width: 991px){
+    section.performance-{{ section.id }} .left-header h2 {
+        font-size: 28px;
+        margin-bottom: 14px;
+    }
+
+    section.performance-{{ section.id }} .left-header span {
+        font-size: 13px;
+    }
+
+    section.performance-{{ section.id }} .left-header p {
+        font-size: 14px;
+    }
+
+    section.performance-{{ section.id }} .item-box .item-text-area p {
+        font-size: 14px;
+    }
+
+    section.performance-{{ section.id }} .container {
+        max-width: 660px;
+    }
+  }
+  @media screen and (max-width: 767px){
+    section.performance-{{ section.id }} {
+        padding-top: {{ section.settings.p-t-m }}px;
+        padding-bottom: {{ section.settings.p-b-m }}px;
+    }
+    section.performance-{{ section.id }} .body .content {
+        flex-direction: column-reverse;
+    }
+
+    section.performance-{{ section.id }} .content .right-body {
+        max-width: 100%;
+    margin-bottom: 35px;
+    }
+
+    section.performance-{{ section.id }} .content .left-body {
+        max-width: 100%;
+        margin-right: 0;
+    }
+    section.performance-{{ section.id }} .item-box .item-text-area p {
+        line-height: 1.6;
+    }
+    section.performance-{{ section.id }} .item-box .item-text-area h3 {
+        margin-bottom: 5px;
+    }
+    section.performance-{{ section.id }} .items-wrapper .item-box {
+        padding: 25px 0;
+    }
+  }
+</style>

@@ -1,0 +1,80 @@
+<style>
+   .nws-page-p-content {
+  	display: block;
+  	padding-right: 50px;
+  }
+  .nws-page-p-content img {
+  	display: block;
+  	width: 100%;
+  	margin-top: 15px;
+  }
+  .nws-page-p-content h3 {
+  	margin-top: 20px;
+  	display: block;
+  	font-size: 22px;
+  	line-height: normal;
+  }
+  .nws-page-p-content .nws-page-p {
+  	display: block;
+  	line-height: normal;
+  	font-size: 16px;
+  }
+  @media screen and (max-width:991px){
+    .nws-page-p-content {
+      padding-right: 20px;
+    }
+  }
+  @media screen and (max-width:767px){
+    .nws-page-p-content {
+    	padding-right: 0;
+    	text-align: center;
+    	margin-bottom: 35px;
+    }
+    .nws-page-p-content img {
+    	margin-top: 0;
+    	margin-bottom: 15px;
+    }
+  }
+</style>
+<div class="container page-content">
+	<div class="row mt-5 mb-7">
+        <div class="col-md-6 col-sm-12">
+          <div class="nws-page-p-content" >
+            {% if section.settings.img-icon != blank %}<img src="{{ section.settings.img-icon | img_url: 'master' }}" />{% endif %}
+            {% if section.settings.img-icon-2 != blank %}<img src="{{ section.settings.img-icon-2 | img_url: 'master' }}" />{% endif %}
+            {% if section.settings.t-txt != blank %}<h3>{{ section.settings.t-txt }}</h3>{% endif %}
+            {% if section.settings.q-txt != blank %}<div class="nws-page-p" >{{ section.settings.q-txt }}</div>{% endif %}
+          </div>
+        </div>
+		<div class="col-md-6 col-sm-12" id="klaviyo-form" >
+          <div class="klaviyo-form-ReQewy"></div>
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "NWS - Wholesale 1",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "img-icon",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "img-icon-2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "t-txt",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "q-txt",
+          "label": "Content"
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,789 @@
+<!-- nws-pdp-template -->
+  <div class="nws-pdp-template" {% if section.settings.section-color != blank %}style="background-color:{{ section.settings.section-color }};"{% endif %} >
+    <div class="container" >
+      <div class="nws-pdp-template-content row">
+        <div class="col-lg-6 col-md-6 col-sm-12" >
+          <div class="nws-pdp-template-gallery" >
+            <div class="nws-pdp-review-info nws-desk-none" >
+              <!-- Stamped - Begin Star Rating Badge -->
+                <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{product.title}}" data-product-type="{{product.type}}" style="display: block;"></span>
+              <!-- Stamped - End Star Rating Badge -->
+            </div>
+            <div class="nws-pdp-template-oneImagePhoto" >
+             {% for image in product.images %}
+               <img width="auto" height="auto" src="{{ image.src | product_img_url: '1000x' }}" data-img-id="{{ image.id }}" data-option="{{ image.alt }}" alt="{{ image.alt }}" />
+             {% endfor %}
+            </div>
+            <div class="nws-pdp-template-oneImageThumb" >
+             {% for image in product.images %}
+               <img width="auto" height="auto" src="{{ image.src | product_img_url: '120x' }}" data-img-id="{{ image.id }}" data-option="{{ image.alt }}" alt="{{ image.alt }}" />
+             {% endfor %}
+            </div>
+            <div class="nws-pdp-template-oneImagePhoto-mobile" >
+             {% for image in product.images %}
+               <img width="auto" height="auto" src="{{ image.src | product_img_url: '350x' }}" data-img-id="{{ image.id }}" data-option="{{ image.alt }}" alt="{{ image.alt }}" />
+             {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12" >
+          <div class="nws-pdp-template-form" >
+            <div class="nws-pdp-template-info" >
+              <h2 class="heading-nws" >{{ product.title }}</h2>
+              {% if product.metafields.product-flavour.product-flavour-key != blank %}<h4 class="sub-heading-nws" >{{product.metafields.product-flavour.product-flavour-key}}</h4>{% endif %}
+              <div class="nws-pdp-review-info nws-mob-none" >
+                  <!-- Stamped - Begin Star Rating Badge -->
+                  <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{product.title}}" data-product-type="{{product.type}}" style="display: block;">{{product.metafields.stamped.badge}}</span>
+                  <!-- Stamped - End Star Rating Badge -->
+              </div>
+            </div>
+            <form class="product-form product-form-product-template" method="post" action="/cart/add" data-productid="{{ product.id }}" id="product-form-{{ product.variants.first.id }}" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="novalidate" data-product-form="">
+              <input type="hidden" name="form_type" value="product">
+              <input type="hidden" name="utf8" value="✓">
+              
+              {%- assign current_variant = product.selected_or_first_available_variant -%}
+              <div class="product__price">
+                {% include 'nws-product-price', variant: current_variant %}
+              </div>
+
+              {% if product.template_suffix == "nws-pdp" or product.template_suffix == "nws-pdp-blue-raspberry" or product.template_suffix == "nws-pdp-watermelon" or product.template_suffix == "nws-pdp-starter" or product.template_suffix == "nws-pdp-starter-2" or product.template_suffix == "nws-pdp-combo" or product.template_suffix == "nws-pdp-sour-green-apple" %}
+                <div class="nws-fake-selection nws-fake-selection-flavour" >
+                    <label>SELECT FLAVOR:</label>
+                    <div class="nws-fake-selection-ul" >
+                        <a href="{{ section.settings.pdp-fl-1 }}" class="nws-fake-selection-li {% if product.template_suffix == "nws-pdp" %}nws-fs-active{% endif %}" >
+                         {% if product.template_suffix != "nws-pdp" %}
+                            {% render "icon-orange" %}
+                         {% else %}
+                            {% render "icon-orange-active" %}
+                          {% endif %}
+                          <span>Orange</span>
+                        </a>
+                        <a href="{{ section.settings.pdp-fl-2 }}" class="nws-fake-selection-li {% if product.template_suffix == "nws-pdp-blue-raspberry" %}nws-fs-active{% endif %}" >
+                          {% if product.template_suffix != "nws-pdp-blue-raspberry" %}
+                            {% render "icon-berry" %}
+                         {% else %}
+                            {% render "icon-berry-active" %}
+                          {% endif %}
+                          <span>Blue Raspberry</span>
+                        </a>
+                        <a href="{{ section.settings.pdp-fl-4 }}" class="nws-fake-selection-li {% if product.template_suffix == "nws-pdp-watermelon" %}nws-fs-active{% endif %}" >
+                          {% if product.template_suffix != "nws-pdp-watermelon" %}
+                            {% render "icon-watermelon" %}
+                         {% else %}
+                            {% render "icon-watermelon-active" %}
+                          {% endif %}
+                          <span>Watermelon</span>
+                        </a>
+                        <a href="{{ section.settings.pdp-fl-7 }}" class="nws-fake-selection-li {% if product.template_suffix == "nws-pdp-sour-green-apple" %}nws-fs-active{% endif %}" >
+                          {% if product.template_suffix != "nws-pdp-sour-green-apple" %}
+                            {% render "icon-sour-green-apple" %}
+                         {% else %}
+                            {% render "icon-sour-green-apple-active" %}
+                          {% endif %}
+                          <span>Sour Green Apple</span>
+                        </a>
+                        <a href="{{ section.settings.pdp-fl-5 }}" class="nws-fake-selection-li {% if product.template_suffix == "nws-pdp-starter" %}nws-fs-active{% endif %}" >
+                          {% if product.template_suffix != "nws-pdp-starter" %}
+                            {% render "icon-starter" %}
+                         {% else %}
+                            {% render "icon-starter-active" %}
+                          {% endif %}
+                          <span>Starter</span>
+                        </a>
+                        <a href="{{ section.settings.pdp-fl-6 }}" class="nws-fake-selection-li {% if product.template_suffix == "nws-pdp-starter-2" %}nws-fs-active{% endif %}" >
+                          {% if product.template_suffix != "nws-pdp-starter-2" %}
+                            {% render "icon-starter-2" %}
+                         {% else %}
+                            {% render "icon-starter-active-2" %}
+                          {% endif %}
+                          <span>Starter 2</span>
+                        </a>
+                        {% comment %}
+                        <a href="{{ section.settings.pdp-fl-3 }}" class="nws-fake-selection-li {% if product.template_suffix == "nws-pdp-combo" %}nws-fs-active{% endif %}" >
+                          {% if product.template_suffix != "nws-pdp-combo" %}
+                            {% render "icon-combo" %}
+                         {% else %}
+                            {% render "icon-combo-active" %}
+                          {% endif %}
+                          <span>Combo</span>
+                        </a>
+                        {% endcomment %}
+                    </div>
+                </div>
+              {% endif %}
+
+             {% comment %} <div class="nws-red-txt" >Orders containing Blue Raspberry will be delayed a few days.</div> {% endcomment %}
+
+              {% if product.template_suffix == "nws-pdp" %}
+                {% if section.settings.pdp-v-1 != blank or section.settings.pdp-v-2 != blank or section.settings.pdp-v-3 != blank or section.settings.pdp-v-4 != blank %}
+                  <div class="nws-fake-selection" >
+                      <label>SELECT SIZE:</label>
+                      <div class="nws-fake-selection-ul" >
+                        {% if section.settings.pdp-v-1 != blank %}
+                          <a href="{{ section.settings.pdp-vl-1 }}" class="nws-fake-selection-li {% if section.settings.pdp-vl-1 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp-v-1 }}</span>
+                          </a>
+                        {% endif %}
+                        {% if section.settings.pdp-v-2 != blank %}
+                          <a href="{{ section.settings.pdp-vl-2 }}" class="nws-fake-selection-li {% if section.settings.pdp-vl-2 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp-v-2 }}</span>
+                          </a>
+                         {% endif %}
+                        {% if section.settings.pdp-v-3 != blank %}
+                            <a href="{{ section.settings.pdp-vl-3 }}" class="nws-fake-selection-li {% if section.settings.pdp-vl-3 contains product.handle %}nws-fs-active{% endif %}" >
+                              <span>{{ section.settings.pdp-v-3 }}</span>
+                            </a>
+                        {% endif %}
+                        {% if section.settings.pdp-v-4 != blank %}
+                          <a href="{{ section.settings.pdp-vl-4 }}" class="nws-fake-selection-li {% if section.settings.pdp-vl-4 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp-v-4 }}</span>
+                          </a>
+                         {% endif %}
+                      </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+
+              {% if product.template_suffix == "nws-pdp-blue-raspberry" %}
+                {% if section.settings.pdp2-v-1 != blank or section.settings.pdp2-v-2 != blank or section.settings.pdp2-v-3 != blank or section.settings.pdp2-v-4 != blank %}
+                  <div class="nws-fake-selection" >
+                      <label>SELECT SIZE:</label>
+                      <div class="nws-fake-selection-ul" >
+                        {% if section.settings.pdp2-v-1 != blank %}
+                          <a href="{{ section.settings.pdp2-vl-1 }}" class="nws-fake-selection-li {% if section.settings.pdp2-vl-1 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp2-v-1 }}</span>
+                          </a>
+                        {% endif %}
+                        {% if section.settings.pdp2-v-2 != blank %}
+                          <a href="{{ section.settings.pdp2-vl-2 }}" class="nws-fake-selection-li {% if section.settings.pdp2-vl-2 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp2-v-2 }}</span>
+                          </a>
+                         {% endif %}
+                        {% if section.settings.pdp2-v-3 != blank %}
+                            <a href="{{ section.settings.pdp2-vl-3 }}" class="nws-fake-selection-li {% if section.settings.pdp2-vl-3 contains product.handle %}nws-fs-active{% endif %}" >
+                              <span>{{ section.settings.pdp2-v-3 }}</span>
+                            </a>
+                        {% endif %}
+                        {% if section.settings.pdp2-v-4 != blank %}
+                          <a href="{{ section.settings.pdp2-vl-4 }}" class="nws-fake-selection-li {% if section.settings.pdp2-vl-4 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp2-v-4 }}</span>
+                          </a>
+                         {% endif %}
+                      </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+
+              {% if product.template_suffix == "nws-pdp-watermelon" %}
+                {% if section.settings.pdp4-v-1 != blank or section.settings.pdp4-v-2 != blank or section.settings.pdp4-v-3 != blank or section.settings.pdp4-v-4 != blank %}
+                  <div class="nws-fake-selection" >
+                      <label>SELECT SIZE:</label>
+                      <div class="nws-fake-selection-ul" >
+                        {% if section.settings.pdp4-v-1 != blank %}
+                          <a href="{{ section.settings.pdp4-vl-1 }}" class="nws-fake-selection-li {% if section.settings.pdp4-vl-1 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp4-v-1 }}</span>
+                          </a>
+                        {% endif %}
+                        {% if section.settings.pdp4-v-2 != blank %}
+                          <a href="{{ section.settings.pdp4-vl-2 }}" class="nws-fake-selection-li {% if section.settings.pdp4-vl-2 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp4-v-2 }}</span>
+                          </a>
+                         {% endif %}
+                        {% if section.settings.pdp4-v-3 != blank %}
+                            <a href="{{ section.settings.pdp4-vl-3 }}" class="nws-fake-selection-li {% if section.settings.pdp4-vl-3 contains product.handle %}nws-fs-active{% endif %}" >
+                              <span>{{ section.settings.pdp4-v-3 }}</span>
+                            </a>
+                        {% endif %}
+                        {% if section.settings.pdp4-v-4 != blank %}
+                          <a href="{{ section.settings.pdp4-vl-4 }}" class="nws-fake-selection-li {% if section.settings.pdp4-vl-4 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp4-v-4 }}</span>
+                          </a>
+                         {% endif %}
+                      </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+
+              {% if product.template_suffix == "nws-pdp-starter" %}
+                {% if section.settings.pdp5-v-1 != blank or section.settings.pdp5-v-2 != blank or section.settings.pdp5-v-3 != blank or section.settings.pdp5-v-4 != blank %}
+                  <div class="nws-fake-selection" >
+                      <label>SELECT SIZE:</label>
+                      <div class="nws-fake-selection-ul" >
+                        {% if section.settings.pdp5-v-1 != blank %}
+                          <a href="{{ section.settings.pdp5-vl-1 }}" class="nws-fake-selection-li {% if section.settings.pdp5-vl-1 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp5-v-1 }}</span>
+                          </a>
+                        {% endif %}
+                        {% if section.settings.pdp5-v-2 != blank %}
+                          <a href="{{ section.settings.pdp5-vl-2 }}" class="nws-fake-selection-li {% if section.settings.pdp5-vl-2 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp5-v-2 }}</span>
+                          </a>
+                         {% endif %}
+                        {% if section.settings.pdp5-v-3 != blank %}
+                            <a href="{{ section.settings.pdp5-vl-3 }}" class="nws-fake-selection-li {% if section.settings.pdp5-vl-3 contains product.handle %}nws-fs-active{% endif %}" >
+                              <span>{{ section.settings.pdp5-v-3 }}</span>
+                            </a>
+                        {% endif %}
+                        {% if section.settings.pdp5-v-4 != blank %}
+                          <a href="{{ section.settings.pdp5-vl-4 }}" class="nws-fake-selection-li {% if section.settings.pdp5-vl-4 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp5-v-4 }}</span>
+                          </a>
+                         {% endif %}
+                      </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+
+              {% if product.template_suffix == "nws-pdp-starter-2" %}
+                {% if section.settings.pdp6-v-1 != blank or section.settings.pdp6-v-2 != blank or section.settings.pdp6-v-3 != blank or section.settings.pdp6-v-4 != blank %}
+                  <div class="nws-fake-selection" >
+                      <label>SELECT SIZE:</label>
+                      <div class="nws-fake-selection-ul" >
+                        {% if section.settings.pdp6-v-1 != blank %}
+                          <a href="{{ section.settings.pdp6-vl-1 }}" class="nws-fake-selection-li {% if section.settings.pdp6-vl-1 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp6-v-1 }}</span>
+                          </a>
+                        {% endif %}
+                        {% if section.settings.pdp6-v-2 != blank %}
+                          <a href="{{ section.settings.pdp6-vl-2 }}" class="nws-fake-selection-li {% if section.settings.pdp6-vl-2 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp6-v-2 }}</span>
+                          </a>
+                         {% endif %}
+                        {% if section.settings.pdp6-v-3 != blank %}
+                            <a href="{{ section.settings.pdp6-vl-3 }}" class="nws-fake-selection-li {% if section.settings.pdp6-vl-3 contains product.handle %}nws-fs-active{% endif %}" >
+                              <span>{{ section.settings.pdp6-v-3 }}</span>
+                            </a>
+                        {% endif %}
+                        {% if section.settings.pdp6-v-4 != blank %}
+                          <a href="{{ section.settings.pdp6-vl-4 }}" class="nws-fake-selection-li {% if section.settings.pdp6-vl-4 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp6-v-4 }}</span>
+                          </a>
+                         {% endif %}
+                      </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+
+              {% if product.template_suffix == "nws-pdp-combo" %}
+                {% if section.settings.pdp3-v-1 != blank or section.settings.pdp3-v-2 != blank or section.settings.pdp3-v-3 != blank or section.settings.pdp3-v-4 != blank %}
+                  <div class="nws-fake-selection" >
+                      <label>SELECT SIZE:</label>
+                      <div class="nws-fake-selection-ul" >
+                        {% if section.settings.pdp3-v-1 != blank %}
+                          <a href="{{ section.settings.pdp3-vl-1 }}" class="nws-fake-selection-li {% if section.settings.pdp3-vl-1 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp3-v-1 }}</span>
+                          </a>
+                        {% endif %}
+                        {% if section.settings.pdp3-v-2 != blank %}
+                          <a href="{{ section.settings.pdp3-vl-2 }}" class="nws-fake-selection-li {% if section.settings.pdp3-vl-2 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp3-v-2 }}</span>
+                          </a>
+                         {% endif %}
+                        {% if section.settings.pdp3-v-3 != blank %}
+                            <a href="{{ section.settings.pdp3-vl-3 }}" class="nws-fake-selection-li {% if section.settings.pdp3-vl-3 contains product.handle %}nws-fs-active{% endif %}" >
+                              <span>{{ section.settings.pdp3-v-3 }}</span>
+                            </a>
+                        {% endif %}
+                        {% if section.settings.pdp3-v-4 != blank %}
+                          <a href="{{ section.settings.pdp3-vl-4 }}" class="nws-fake-selection-li {% if section.settings.pdp3-vl-4 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp3-v-4 }}</span>
+                          </a>
+                         {% endif %}
+                      </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+
+              {% if product.template_suffix == "nws-pdp-sour-green-apple" %}
+                {% if section.settings.pdp7-v-1 != blank or section.settings.pdp7-v-2 != blank or section.settings.pdp7-v-3 != blank or section.settings.pdp7-v-4 != blank %}
+                  <div class="nws-fake-selection" >
+                      <label>SELECT SIZE:</label>
+                      <div class="nws-fake-selection-ul" >
+                        {% if section.settings.pdp7-v-1 != blank %}
+                          <a href="{{ section.settings.pdp7-vl-1 }}" class="nws-fake-selection-li {% if section.settings.pdp7-vl-1 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp7-v-1 }}</span>
+                          </a>
+                        {% endif %}
+                        {% if section.settings.pdp7-v-2 != blank %}
+                          <a href="{{ section.settings.pdp7-vl-2 }}" class="nws-fake-selection-li {% if section.settings.pdp7-vl-2 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp7-v-2 }}</span>
+                          </a>
+                         {% endif %}
+                        {% if section.settings.pdp7-v-3 != blank %}
+                            <a href="{{ section.settings.pdp7-vl-3 }}" class="nws-fake-selection-li {% if section.settings.pdp7-vl-3 contains product.handle %}nws-fs-active{% endif %}" >
+                              <span>{{ section.settings.pdp7-v-3 }}</span>
+                            </a>
+                        {% endif %}
+                        {% if section.settings.pdp7-v-4 != blank %}
+                          <a href="{{ section.settings.pdp7-vl-4 }}" class="nws-fake-selection-li {% if section.settings.pdp7-vl-4 contains product.handle %}nws-fs-active{% endif %}" >
+                            <span>{{ section.settings.pdp7-v-4 }}</span>
+                          </a>
+                         {% endif %}
+                      </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            
+              {%- unless product.has_only_default_variant -%}
+                <div class="nws-fake-selection" >
+                  {%- for option in product.options_with_values -%}
+                      {%- assign option_name = option.name | replace: ' ', '-' | downcase -%}
+                      {%- assign option_id = forloop.index0 -%}
+                      <label>SELECT {{ option.name }}:</label>
+                      <div class="nws-fake-selection-ul nws-option-{{ option_name }}" >
+                        {%- for value in option.values -%}
+                            {% for variant in product.variants %}
+                              {% if variant.title == value %}
+                                {%- assign variant-img-id = variant.image.id -%}
+                                {%- assign variant-id = variant.id -%}
+                                {%- assign per-gummy = variant.metafields.per-gummy.per-gummy-key -%}
+                              {% break %}
+                             {% endif %}
+                            {% endfor %}
+                          <div class="nws-fake-selection-li {% if product.selected_or_first_available_variant.id == variant-id %}nws-fs-active{% endif %}" data-img-id="{{ variant-img-id }}" data-select-value="{{ value }}" data-option="nws-variant-id-option-{{ option_id }}" >
+                            <input class="product-form__variants" type="radio" name="size" value="{{ value }}" data-img-id="{{ variant-img-id }}" {% if product.selected_or_first_available_variant.id == variant-id %}checked="checked"{% endif %} data-select-value="{{ value }}" data-option="nws-variant-id-option-{{ option_id }}"  />
+                            <span>{{ value }}{% if per-gummy != blank %}<i>{{per-gummy}}</i>{% endif %}</span>
+                          </div>
+                        {%-endfor -%}    
+                      </div>
+                  {% endfor -%}
+                  </div>
+                {%- endunless -%}
+              
+
+                <select id="nws-variant-id" class="product-form__variants no-js d-none"  name="id" data-productid="{{ product.id }}"  >
+                  {% for variant in product.variants %}
+                    <option data-val="{{ variant.title }}" value="{{ variant.id }}" {%- if variant == current_variant %} selected="selected" {%- endif -%} >{{ variant.title }}  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}</option>
+                  {% endfor %}
+                </select>
+          
+                <div class="nws-pdp-template-rc">
+                  <div class="rc-widget-injection-parent" style="display: initial;"></div>
+                </div>
+              
+                <div class="nws-pdp-submit-div" >
+                  {% if product.available %}
+                    <input id="nws-pdp-submit" type="submit" value="BUY NOW" class="btn cls-chr nws-pdp-submit" />
+                  {% else %}
+                    <input type="button" value="Sold Out" class="btn nws-pdp-submit" disabled="disabled" />
+                  {% endif %}
+                </div>
+              {% render 'frontrow' %}
+              <!-- Beginning of Buy With Prime Widget -->
+              <script defer src='https://code.buywithprime.amazon.com/default.variant.selector.shopify.js'></script>
+              <script async fetchpriority='high' src='https://code.buywithprime.amazon.com/bwp.v1.js'></script>
+              {% if product.sku %}
+                  <div
+                      id="amzn-buy-now"
+                      data-site-id="7my8dp755l"
+                      data-widget-id="w-z0maNr0rkp7OQ6K0IcLSZ9"
+                      data-sku="{{product.sku}}"
+                  ></div>
+              {% else %}
+                  <div
+                      id="amzn-buy-now"
+                      data-site-id="7my8dp755l"
+                      data-widget-id="w-z0maNr0rkp7OQ6K0IcLSZ9"
+                      data-sku="{{product.selected_or_first_available_variant.sku}}"
+                  ></div>
+              {% endif %}
+              <!-- End of Buy With Prime Widget -->
+            </form> 
+    
+            {% render 'truemed-widget' %}
+            
+            {% if product.description != blank %}
+              <div class="nws-pdp-template-description" >  
+                <div class="nws-description-item">
+                  <h3 class="nws-description-item-title">Description</h3>
+                  <div class="nws-description-item-body">{{ product.description }}</div>
+                </div>
+              </div>
+            {% endif %}
+            {% if product.metafields.nws-pdp-tab1.tab-key != blank %}
+              <div class="nws-faqs-section-body nws-pdp-template-tabs" >
+               <div class="nws-accordion-flex">               
+                  <div class="nws-accordion-warp nws-col-100"> 
+                    {% if product.metafields.nws-pdp-tab1.tab-key != blank %}
+                      <div class="nws-ac-item">
+                        <h3 class="nws-ac-title">{{product.metafields.nws-pdp-tab1.tab-key}}</h3>
+                        <div class="nws-ac-body">{{product.metafields.nws-pdp-tab-text1.text-key}}</div>
+                      </div>
+                    {% endif %}
+                    {% if product.metafields.nws-pdp-tab2.tab-key != blank %}
+                      <div class="nws-ac-item">
+                        <h3 class="nws-ac-title">{{product.metafields.nws-pdp-tab2.tab-key}}</h3>
+                        <div class="nws-ac-body">{{product.metafields.nws-pdp-tab-text2.text-key}}</div>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div> 
+              </div>
+             {% endif %}
+              <!-- nws-five-icons -->
+              {% if section.blocks != blank %}
+                <div class="nws-five-icons" >
+                    <div class="nws-five-icons-content">
+                      {% for block in section.blocks %}
+                        {% if block.settings.img-icon != blank %}
+                          <div class="nws-five-icons-slide">
+                            <img width="auto" height="auto" src="{{ block.settings.img-icon | img_url: '75x' }}" class="img-icon" />
+                            {% if block.settings.img-txt != blank %}<span>{{ block.settings.img-txt }}</span>{% endif %}
+                          </div>
+                         {% endif %}
+                      {% endfor %}
+                    </div>
+                </div>
+              {% endif %}
+            <!-- end nws-five-icons -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- end nws-pdp-template -->
+{% schema %}
+  {
+    "name": "NWS - PDP Template",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        },
+        {
+          "type": "url",
+          "id": "pdp-fl-1",
+          "label": "Flavor Link 1"
+        },
+        {
+          "type": "url",
+          "id": "pdp-fl-2",
+          "label": "Flavor Link 2"
+        },
+        {
+          "type": "url",
+          "id": "pdp-fl-3",
+          "label": "Flavor Link 3"
+        },
+        {
+          "type": "url",
+          "id": "pdp-fl-4",
+          "label": "Flavor Link 4"
+        },
+        {
+          "type": "url",
+          "id": "pdp-fl-5",
+          "label": "Flavor Link 5"
+        },
+        {
+          "type": "url",
+          "id": "pdp-fl-6",
+          "label": "Flavor Link 6"
+        },
+        {
+          "type": "url",
+          "id": "pdp-fl-7",
+          "label": "Flavor Link 7"
+        },
+        {
+          "type": "text",
+          "id": "pdp-v-1",
+          "label": "Flavor 1 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp-vl-1",
+          "label": "Flavor 1 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp-v-2",
+          "label": "Flavor 1 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp-vl-2",
+          "label": "Flavor 1 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp-v-3",
+          "label": "Flavor 1 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp-vl-3",
+          "label": "Flavor 1 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp-v-4",
+          "label": "Flavor 1 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp-vl-4",
+          "label": "Flavor 1 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp2-v-1",
+          "label": "Flavor 2 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp2-vl-1",
+          "label": "Flavor 2 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp2-v-2",
+          "label": "Flavor 2 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp2-vl-2",
+          "label": "Flavor 2 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp2-v-3",
+          "label": "Flavor 2 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp2-vl-3",
+          "label": "Flavor 2 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp2-v-4",
+          "label": "Flavor 2 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp2-vl-4",
+          "label": "Flavor 2 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp3-v-1",
+          "label": "Flavor 3 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp3-vl-1",
+          "label": "Flavor 3 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp3-v-2",
+          "label": "Flavor 3 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp3-vl-2",
+          "label": "Flavor 3 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp3-v-3",
+          "label": "Flavor 3 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp3-vl-3",
+          "label": "Flavor 3 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp3-v-4",
+          "label": "Flavor 3 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp3-vl-4",
+          "label": "Flavor 3 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp4-v-1",
+          "label": "Flavor 4 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp4-vl-1",
+          "label": "Flavor 4 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp4-v-2",
+          "label": "Flavor 4 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp4-vl-2",
+          "label": "Flavor 4 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp4-v-3",
+          "label": "Flavor 4 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp4-vl-3",
+          "label": "Flavor 4 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp4-v-4",
+          "label": "Flavor 4 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp4-vl-4",
+          "label": "Flavor 4 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp5-v-1",
+          "label": "Flavor 5 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp5-vl-1",
+          "label": "Flavor 5 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp5-v-2",
+          "label": "Flavor 5 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp5-vl-2",
+          "label": "Flavor 5 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp5-v-3",
+          "label": "Flavor 5 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp5-vl-3",
+          "label": "Flavor 5 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp5-v-4",
+          "label": "Flavor 5 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp5-vl-4",
+          "label": "Flavor 5 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp6-v-1",
+          "label": "Flavor 6 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp6-vl-1",
+          "label": "Flavor 6 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp6-v-2",
+          "label": "Flavor 6 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp6-vl-2",
+          "label": "Flavor 6 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp6-v-3",
+          "label": "Flavor 6 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp6-vl-3",
+          "label": "Flavor 6 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp6-v-4",
+          "label": "Flavor 6 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp6-vl-4",
+          "label": "Flavor 6 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp7-v-1",
+          "label": "Flavor 7 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp7-vl-1",
+          "label": "Flavor 7 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp7-v-2",
+          "label": "Flavor 7 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp7-vl-2",
+          "label": "Flavor 7 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp7-v-3",
+          "label": "Flavor 7 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp7-vl-3",
+          "label": "Flavor 7 Variant Link"
+        },
+        {
+          "type": "text",
+          "id": "pdp7-v-4",
+          "label": "Flavor 7 Variant name"
+        },
+        {
+          "type": "url",
+          "id": "pdp7-vl-4",
+          "label": "Flavor 7 Variant Link"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "Slide",
+      "name": "Slide Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img-icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "img-txt",
+          "label": "Icon Text"
+        }
+      ]
+    }
+   ]
+  }
+{% endschema %}

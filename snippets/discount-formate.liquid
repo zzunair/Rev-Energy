@@ -1,0 +1,27 @@
+{% liquid
+  assign price = product.price
+  assign product_on_sale_text = 'products.product.on_sale' | t
+%}
+{%- case settings.discount_format -%}
+  {%- when 'sale' -%}
+    {% comment %} Show Out of stock badge {% endcomment %}
+    <span class="discount-text">{{ product_on_sale_text }}</span>
+
+  {%- when 'percent' -%}
+    {%- assign discount_value = product.compare_at_price
+      | minus: price
+      | times: 100.0
+      | divided_by: product.compare_at_price
+      | ceil
+    -%}
+    <span class="discount-text">{{ discount_value }}% OFF</span>
+  {%- when 'difference' -%}
+    {%- assign diff = product.compare_at_price | minus: product.price -%}
+    <span class="discount-text">
+      {% if settings.currency_code_enabled %}
+        - {{ diff | money_with_currency }}
+      {% else %}
+        - {{ diff | money }}
+      {% endif %}
+    </span>
+{%- endcase -%}

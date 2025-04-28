@@ -1,0 +1,270 @@
+{{ 'happy-customer.css' | asset_url | stylesheet_tag }}
+
+<section class="happy-customers">
+  <div class="happy-customers__container">
+    <div class="happy-customers__top-stars">
+      <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.3538 4.94141C12.8105 3.80273 11.1896 3.80273 10.6463 4.94141L8.97883 8.43583L5.14017 8.94184C3.88932 9.10672 3.38845 10.6482 4.30349 11.5169L7.11161 14.1825L6.40664 17.9897C6.17692 19.2303 7.48821 20.183 8.59709 19.5811L12.0001 17.7342L15.403 19.5811C16.5119 20.183 17.8232 19.2303 17.5935 17.9897L16.8885 14.1825L19.6966 11.5169C20.6117 10.6482 20.1108 9.10672 18.8599 8.94184L15.0213 8.43583L13.3538 4.94141Z" fill="#FF9807"/>
+      <path d="M37.3538 4.94141C36.8105 3.80273 35.1896 3.80273 34.6463 4.94141L32.9788 8.43583L29.1402 8.94184C27.8893 9.10672 27.3884 10.6482 28.3035 11.5169L31.1116 14.1825L30.4066 17.9897C30.1769 19.2303 31.4882 20.183 32.5971 19.5811L36.0001 17.7342L39.403 19.5811C40.5119 20.183 41.8232 19.2303 41.5935 17.9897L40.8885 14.1825L43.6966 11.5169C44.6117 10.6482 44.1108 9.10672 42.8599 8.94184L39.0213 8.43583L37.3538 4.94141Z" fill="#FF9807"/>
+      <path d="M61.3538 4.94141C60.8105 3.80273 59.1896 3.80273 58.6463 4.94141L56.9788 8.43583L53.1402 8.94184C51.8893 9.10672 51.3884 10.6482 52.3035 11.5169L55.1116 14.1825L54.4066 17.9897C54.1769 19.2303 55.4882 20.183 56.5971 19.5811L60.0001 17.7342L63.403 19.5811C64.5119 20.183 65.8232 19.2303 65.5935 17.9897L64.8885 14.1825L67.6966 11.5169C68.6117 10.6482 68.1108 9.10672 66.8599 8.94184L63.0213 8.43583L61.3538 4.94141Z" fill="#FF9807"/>
+      <path d="M85.3538 4.94141C84.8105 3.80273 83.1896 3.80273 82.6463 4.94141L80.9788 8.43583L77.1402 8.94184C75.8893 9.10672 75.3884 10.6482 76.3035 11.5169L79.1116 14.1825L78.4066 17.9897C78.1769 19.2303 79.4882 20.183 80.5971 19.5811L84.0001 17.7342L87.403 19.5811C88.5119 20.183 89.8232 19.2303 89.5935 17.9897L88.8885 14.1825L91.6966 11.5169C92.6117 10.6482 92.1108 9.10672 90.8599 8.94184L87.0213 8.43583L85.3538 4.94141Z" fill="#FF9807"/>
+      <path d="M109.354 4.94141C108.81 3.80273 107.19 3.80273 106.646 4.94141L104.979 8.43583L101.14 8.94184C99.8893 9.10672 99.3884 10.6482 100.303 11.5169L103.112 14.1825L102.407 17.9897C102.177 19.2303 103.488 20.183 104.597 19.5811L108 17.7342L111.403 19.5811C112.512 20.183 113.823 19.2303 113.593 17.9897L112.888 14.1825L115.697 11.5169C116.612 10.6482 116.111 9.10672 114.86 8.94184L111.021 8.43583L109.354 4.94141Z" fill="#FF9807"/>
+      </svg>
+    </div>
+    {% if section.settings.heading != blank %}
+      <h2 class="happy-customers__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.button_label != blank and section.settings.button_url != blank %}
+      <div class="happy-customers__button-wrapper">
+        <a href="{{ section.settings.button_url }}" class="happy-customers__button">{{ section.settings.button_label }}</a>
+      </div>
+    {% endif %}
+    <div class="happy-customers__sliders">
+      <!-- First Swiper -->
+      <div class="swiper happy-customers__swiper happy-customers__swiper--ltr" dir="ltr">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'review_rtl' %}
+              <div class="swiper-slide happy-customers__slide" {{ block.shopify_attributes }}>
+                <div class="happy-customers__card">
+                  {% if block.settings.title != blank %}
+                    <h3 class="happy-customers__quote">{{ block.settings.title }}</h3>
+                  {% endif %}
+                  {% if block.settings.description != blank %}
+                    <p class="happy-customers__description">{{ block.settings.description }}</p>
+                  {% endif %}
+                  <div class="happy-customers__user-info">
+                    {% if block.settings.user_image != blank %}
+                      <img src="{{ block.settings.user_image | image_url: width: 60 }}" alt="{{ block.settings.user_name }}" class="happy-customers__user-image" loading="lazy">
+                    {% endif %}
+                    <div class="bottom__stars">
+                      <div>
+                        {% if block.settings.user_name != blank %}
+                          <div class="happy-customers__user-name">{{ block.settings.user_name }}</div>
+                        {% endif %}
+                        {% if block.settings.user_location != blank %}
+                          <div class="happy-customers__user-location">{{ block.settings.user_location }}</div>
+                        {% endif %}
+                      </div>
+                      <svg width="100" height="21" viewBox="0 0 100 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.1281 4.31373C10.6753 3.36483 9.32464 3.36482 8.87185 4.31373L7.48231 7.22574L4.28343 7.64741C3.24105 7.78482 2.82365 9.06941 3.58619 9.79327L5.92629 12.0147L5.33882 15.1873C5.14738 16.2211 6.24012 17.015 7.16419 16.5135L9.99999 14.9744L12.8358 16.5135C13.7599 17.015 14.8526 16.2211 14.6612 15.1873L14.0737 12.0147L16.4138 9.79327C17.1763 9.06941 16.7589 7.78482 15.7166 7.64741L12.5177 7.22574L11.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      <path d="M31.1281 4.31373C30.6753 3.36483 29.3246 3.36482 28.8718 4.31373L27.4823 7.22574L24.2834 7.64741C23.241 7.78482 22.8237 9.06941 23.5862 9.79327L25.9263 12.0147L25.3388 15.1873C25.1474 16.2211 26.2401 17.015 27.1642 16.5135L30 14.9744L32.8358 16.5135C33.7599 17.015 34.8526 16.2211 34.6612 15.1873L34.0737 12.0147L36.4138 9.79327C37.1763 9.06941 36.7589 7.78482 35.7166 7.64741L32.5177 7.22574L31.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      <path d="M51.1281 4.31373C50.6753 3.36483 49.3246 3.36482 48.8718 4.31373L47.4823 7.22574L44.2834 7.64741C43.241 7.78482 42.8237 9.06941 43.5862 9.79327L45.9263 12.0147L45.3388 15.1873C45.1474 16.2211 46.2401 17.015 47.1642 16.5135L50 14.9744L52.8358 16.5135C53.7599 17.015 54.8526 16.2211 54.6612 15.1873L54.0737 12.0147L56.4138 9.79327C57.1763 9.06941 56.7589 7.78482 55.7166 7.64741L52.5177 7.22574L51.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      <path d="M71.1281 4.31373C70.6753 3.36483 69.3246 3.36482 68.8718 4.31373L67.4823 7.22574L64.2834 7.64741C63.241 7.78482 62.8237 9.06941 63.5862 9.79327L65.9263 12.0147L65.3388 15.1873C65.1474 16.2211 66.2401 17.015 67.1642 16.5135L70 14.9744L72.8358 16.5135C73.7599 17.015 74.8526 16.2211 74.6612 15.1873L74.0737 12.0147L76.4138 9.79327C77.1763 9.06941 76.7589 7.78482 75.7166 7.64741L72.5177 7.22574L71.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      <path d="M91.1281 4.31373C90.6753 3.36483 89.3246 3.36482 88.8718 4.31373L87.4823 7.22574L84.2834 7.64741C83.241 7.78482 82.8237 9.06941 83.5862 9.79327L85.9263 12.0147L85.3388 15.1873C85.1474 16.2211 86.2401 17.015 87.1642 16.5135L90 14.9744L92.8358 16.5135C93.7599 17.015 94.8526 16.2211 94.6612 15.1873L94.0737 12.0147L96.4138 9.79327C97.1763 9.06941 96.7589 7.78482 95.7166 7.64741L92.5177 7.22574L91.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="swiper happy-customers__swiper happy-customers__swiper--rtl">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'review_ltr' %}
+              <div class="swiper-slide happy-customers__slide" {{ block.shopify_attributes }}>
+                <div class="happy-customers__card">
+                  {% if block.settings.title != blank %}
+                    <h3 class="happy-customers__quote">{{ block.settings.title }}</h3>
+                  {% endif %}
+                  {% if block.settings.description != blank %}
+                    <p class="happy-customers__description">{{ block.settings.description }}</p>
+                  {% endif %}
+                  <div class="happy-customers__user-info">
+                    {% if block.settings.user_image != blank %}
+                      <img src="{{ block.settings.user_image | image_url: width: 60 }}" alt="{{ block.settings.user_name }}" class="happy-customers__user-image" loading="lazy">
+                    {% endif %}
+                    <div class="bottom__stars">
+                      <div>
+                        {% if block.settings.user_name != blank %}
+                          <div class="happy-customers__user-name">{{ block.settings.user_name }}</div>
+                        {% endif %}
+                        {% if block.settings.user_location != blank %}
+                          <div class="happy-customers__user-location">{{ block.settings.user_location }}</div>
+                        {% endif %}
+                      </div>
+                      <svg width="100" height="21" viewBox="0 0 100 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.1281 4.31373C10.6753 3.36483 9.32464 3.36482 8.87185 4.31373L7.48231 7.22574L4.28343 7.64741C3.24105 7.78482 2.82365 9.06941 3.58619 9.79327L5.92629 12.0147L5.33882 15.1873C5.14738 16.2211 6.24012 17.015 7.16419 16.5135L9.99999 14.9744L12.8358 16.5135C13.7599 17.015 14.8526 16.2211 14.6612 15.1873L14.0737 12.0147L16.4138 9.79327C17.1763 9.06941 16.7589 7.78482 15.7166 7.64741L12.5177 7.22574L11.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      <path d="M31.1281 4.31373C30.6753 3.36483 29.3246 3.36482 28.8718 4.31373L27.4823 7.22574L24.2834 7.64741C23.241 7.78482 22.8237 9.06941 23.5862 9.79327L25.9263 12.0147L25.3388 15.1873C25.1474 16.2211 26.2401 17.015 27.1642 16.5135L30 14.9744L32.8358 16.5135C33.7599 17.015 34.8526 16.2211 34.6612 15.1873L34.0737 12.0147L36.4138 9.79327C37.1763 9.06941 36.7589 7.78482 35.7166 7.64741L32.5177 7.22574L31.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      <path d="M51.1281 4.31373C50.6753 3.36483 49.3246 3.36482 48.8718 4.31373L47.4823 7.22574L44.2834 7.64741C43.241 7.78482 42.8237 9.06941 43.5862 9.79327L45.9263 12.0147L45.3388 15.1873C45.1474 16.2211 46.2401 17.015 47.1642 16.5135L50 14.9744L52.8358 16.5135C53.7599 17.015 54.8526 16.2211 54.6612 15.1873L54.0737 12.0147L56.4138 9.79327C57.1763 9.06941 56.7589 7.78482 55.7166 7.64741L52.5177 7.22574L51.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      <path d="M71.1281 4.31373C70.6753 3.36483 69.3246 3.36482 68.8718 4.31373L67.4823 7.22574L64.2834 7.64741C63.241 7.78482 62.8237 9.06941 63.5862 9.79327L65.9263 12.0147L65.3388 15.1873C65.1474 16.2211 66.2401 17.015 67.1642 16.5135L70 14.9744L72.8358 16.5135C73.7599 17.015 74.8526 16.2211 74.6612 15.1873L74.0737 12.0147L76.4138 9.79327C77.1763 9.06941 76.7589 7.78482 75.7166 7.64741L72.5177 7.22574L71.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      <path d="M91.1281 4.31373C90.6753 3.36483 89.3246 3.36482 88.8718 4.31373L87.4823 7.22574L84.2834 7.64741C83.241 7.78482 82.8237 9.06941 83.5862 9.79327L85.9263 12.0147L85.3388 15.1873C85.1474 16.2211 86.2401 17.015 87.1642 16.5135L90 14.9744L92.8358 16.5135C93.7599 17.015 94.8526 16.2211 94.6612 15.1873L94.0737 12.0147L96.4138 9.79327C97.1763 9.06941 96.7589 7.78482 95.7166 7.64741L92.5177 7.22574L91.1281 4.31373Z" fill="#FF9807" stroke="#10443C"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Basic SwiperJS Init (You should customize it based on your theme setup) -->
+<script>
+var swiperLtr = new Swiper('.happy-customers__swiper--ltr', {
+  slidesPerView: 1.1,
+  spaceBetween: 20,
+  centeredSlides: true,
+  loop: true,
+  speed: 4000,
+  autoplay: {
+    delay: 1,
+    disableOnInteraction: false,
+  },
+  freeMode: {
+    enabled: true,
+    sticky: false,
+  },
+  allowTouchMove: false,
+  direction: 'horizontal',
+  breakpoints: {
+    700: {
+      slidesPerView: 2.2,
+    },
+    1025: {
+      slidesPerView: 3.2,
+    },
+    1200: {
+      slidesPerView: 4.2,
+    }
+  }
+});
+
+var swiperRtl = new Swiper('.happy-customers__swiper--rtl', {
+  slidesPerView: 1.1,
+  spaceBetween: 20,
+  loop: true,
+  centeredSlides: false,
+  speed: 4000,
+  autoplay: {
+    delay: 1,
+    disableOnInteraction: false,
+    reverseDirection: true, // makes it go opposite
+  },
+  freeMode: {
+    enabled: true,
+    sticky: false,
+  },
+  allowTouchMove: false,
+  direction: 'horizontal',
+  breakpoints: {
+    700: {
+      slidesPerView: 2.2,
+    },
+    1025: {
+      slidesPerView: 3.2,
+    },
+    1200: {
+      slidesPerView: 4.2,
+    }
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Happy Customers",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "20,000+ Happy Customers"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Read All Reviews"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review_rtl",
+      "name": "Review 1",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title",
+          "default": "Game Changer For My Workouts."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Review Description",
+          "default": "I pop a piece before every lift. No crash, just clean energy that kicks in fast. Chew Rev's the real deal."
+        },
+        {
+          "type": "image_picker",
+          "id": "user_image",
+          "label": "User Image"
+        },
+        {
+          "type": "text",
+          "id": "user_name",
+          "label": "User Name",
+          "default": "Marcus T."
+        },
+        {
+          "type": "text",
+          "id": "user_location",
+          "label": "User Location",
+          "default": "Log Angeles, CA"
+        }
+      ]
+    },
+    {
+      "type": "review_ltr",
+      "name": "Review 2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title",
+          "default": "Game Changer For My Workouts."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Review Description",
+          "default": "I pop a piece before every lift. No crash, just clean energy that kicks in fast. Chew Rev's the real deal."
+        },
+        {
+          "type": "image_picker",
+          "id": "user_image",
+          "label": "User Image"
+        },
+        {
+          "type": "text",
+          "id": "user_name",
+          "label": "User Name",
+          "default": "Marcus T."
+        },
+        {
+          "type": "text",
+          "id": "user_location",
+          "label": "User Location",
+          "default": "Log Angeles, CA"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Happy Customers"
+    }
+  ]
+}
+{% endschema %}

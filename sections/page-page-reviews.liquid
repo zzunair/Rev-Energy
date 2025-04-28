@@ -1,0 +1,173 @@
+{{ 'paid-page-reviews.css' | asset_url | stylesheet_tag }}
+{%- liquid 
+  assign identifier = section.settings.metaobjectidentifier | handleize 
+  assign check_mb = false
+  for object in shop.metaobjects.paid_reviews.values 
+      assign metaobject = object.identifier.value | handleize
+      if metaobject == identifier
+          assign check_mb = true
+          assign metaobj = object
+      endif
+  endfor 
+%}
+
+{% if check_mb and section.settings.metaobjectidentifier != blank %}
+<div class="paid-page-reviews">  
+  <div class="page-width">
+    {% if metaobj.subtitle.value != blank %}
+      <h4 class="h3 small-bold">
+        {{ metaobj.subtitle.value }}
+      </h4>
+    {% endif %}
+      {% if metaobj.title.value != blank %}
+          {% if metaobj.review_count_text.value != blank %}
+            <h2 class="h1">
+              <div class="yotpo-reviews-header">
+                <div class="review-star-container">
+                  {% if metaobj.pretext_review_count_text.value != blank %}
+                    <div class="review-heading-text"><h2>{{ metaobj.pretext_review_count_text.value }}</h2></div>
+                  {% endif %}
+                  {% if metaobj.stars.value != blank %}
+                    <div class="review-star-icon-wrapper">{% render 'star-rating-icons', stars: metaobj.stars.value %}</div>
+                  {% endif %}
+                  <div class="review-heading-text"><h2>{{ metaobj.review_count_text.value }}</h2></div>
+                </div>
+              </div>
+            </h2>
+          {% endif %}
+      {% else %}
+          {% if metaobj.review_count_text.value != blank %}
+            <h2 class="h1">
+              <div class="yotpo-reviews-header">
+                <div class="review-star-container">
+                  <div class="review-heading-text"><h2>{{ metaobj.review_count_text.value }}</h2></div>
+                </div>
+              </div>
+            </h2>
+          {% endif %}
+      {% endif %}
+    {% if metaobj.select_product.value != blank %}
+      <div class="yotpo yotpo-main-widget" data-product-id="{{ metaobj.select_product.value.id }}"></div>
+      <div 
+      id="stamped-main-widget"   
+      data-product-id="{{ metaobj.select_product.value.id }}"   
+      data-name="{{ metaobj.select_product.value.title | escape }}"   
+      data-url="{{ shop.url }}{{ metaobj.select_product.value.id.url }}"   
+      data-image-url="{{ metaobj.select_product.value.id.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" 
+      data-description="{{ metaobj.select_product.value.id.description | escape }}"   
+      data-product-sku="{{metaobj.select_product.value.id.handle}}"
+      data-product-type="{{metaobj.select_product.value.id.type}}">     
+      </div>
+<!-- Stamped - End Main Widget -->
+    {% endif %}
+  {% if section.settings.button_url != blank %}
+      <div class="image-with-text_Btn_container">
+               {%  if page.handle == "orange-g" %}
+                <a href="https://trycreate.co/pages/orange-g#subs-product" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+               {%  elsif page.handle == "orange-tt" %}
+                <a href="https://trycreate.co/pages/orange-tt#subs-product" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+               {%  elsif page.handle == "blueraspberry-g" %}
+                <a href="https://trycreate.co/pages/blueraspberry-g#subs-product" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+               {%  elsif page.handle == "blueraspberry-tt" %}
+                <a href="https://trycreate.co/pages/blueraspberry-tt#subs-product" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+              {%  elsif page.handle == "watermelon-g" %}
+                <a href="https://trycreate.co/pages/watermelon-g#subs-product" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+              {%  elsif page.handle == "watermelon-tt" %}
+                <a href="https://trycreate.co/pages/watermelon-tt#subs-product" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+              {%else%}
+                <a href="{{ section.settings.button_url }}" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+              {% endif %}
+      </div>
+    {% else %}
+
+         {% if metaobj.button_label.value != blank %}
+            <div class="image-with-text_Btn_container">
+              {%  if page.handle == "orange-g" %}
+                <a href="https://trycreate.co/pages/orange-g#subs-product" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+              {%else%}
+                <a href="{{ metaobj.button_link.value }}" class="button image-with-text_Btn">
+                {{ metaobj.button_label.value }}
+               </a>
+              {% endif %}
+              
+            </div>
+        {% endif %}
+   {% endif %}
+  </div>  
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Paid Page Reviews",
+    "settings": [
+      {
+        "type": "text",
+        "id": "metaobjectidentifier",
+        "label": "Metaobject Identifier"
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button Link"
+      }  
+    ],
+    "presets": [
+      {
+        "name": "Paid Page Review"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+section#subs-product .slick-dots{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  line-height: 0;
+  margin: 15px 0;
+  padding: 0;
+}
+section#subs-product .slick-dots li button{
+  display: inline-block;
+  height: 9px;
+  width: 9px;
+  padding: 0;
+  border: unset;
+  border-radius: 50px;
+  background-color: #d8d8d8;
+  margin: 0 3.5px;
+  font-size: 0;
+}
+section#subs-product .slick-dots li.slick-active button{
+  background-color: #767676;
+}
+
+@media(max-width:428px){
+  section#subs-product .carousel {
+      width: 100%;
+  } 
+}
+
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

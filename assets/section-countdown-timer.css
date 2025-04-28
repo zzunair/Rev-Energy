@@ -1,0 +1,57 @@
+.section-cd-timer .timer-display{
+    display: flex;
+    justify-content: center;
+    column-gap: 8px;
+}
+.section-cd-timer .timer-block{
+    display: flex;
+    flex-direction: column;
+    min-width: 50px;
+}
+.section-cd-timer .timer{
+    width: 100%;
+    max-width: fit-content;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #fafafa;
+    border: solid 1px #eee;
+}
+.section-cd-timer .timer__title {
+    font-size: 16px;
+    margin: 0;
+    letter-spacing: .25px;
+    font-weight: 800;
+    line-height: 1.1;
+    transform-origin: unset;
+    transform: scale(1);
+}
+.section-cd-timer .timer-block__num{
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+.section-cd-timer .timer-block__unit{
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.section-cd-timer .dots{
+    font-size: 28px;
+    width: 8px;
+    font-weight: 800;
+    padding-top: 8px;
+}
+@media only screen and (max-width:750px){
+    .section-cd-timer .timer__title{
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 5px;
+    }
+    .section-cd-timer .timer-block__num{
+        font-size: 28px;
+    }
+    .section-cd-timer .dots{
+        font-size: 24px;
+        padding-top: 0;
+    }
+}

@@ -1,0 +1,121 @@
+<div id="frontrow-widget">
+  <div class="fr-loading-box">
+    <div class="fr-provider-container">
+      <div class="fr-loading-provider"></div>
+      <div class="fr-loading-provider fr-sample"></div>
+      <div class="fr-loading-provider fr-sample"></div>
+    </div>
+    <div class="fr-text">
+      <span class=""></span>
+      <span class="fr-shorter"></span>
+    </div>
+  </div>
+</div>
+
+<style>
+  #frontrow-widget div:empty {
+    display: flex;
+  }
+
+  #frontrow-widget span:empty {
+    display: flex;
+  }
+
+  .fr-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .fr-text span.fr-shorter {
+    width: 80%;
+  }
+
+  .fr-text span {
+    display: flex;
+    width: 100%;
+    background-color: #E0E0E0;
+    height: 20px;
+    border-radius: 100px;
+  }
+
+  .fr-loading-box {
+    display: flex;
+    padding: 18px 16px;
+    gap: 14px;
+    border-radius: 12px;
+    background-color: #FFF;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .fr-loading-provider {
+    border-radius: 100px;
+    width: 36px;
+    height: 36px;
+    border: 2px #FFF solid;
+    background-color: #E0E0E0;
+  }
+
+  .fr-provider-container {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .fr-sample {
+    margin-left: -14px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .fr-loading-box {
+      padding: 14px 12px;
+      gap: 8px;
+    }
+  }
+</style>
+
+<script>
+function openFrontrowModal() {
+  const modal = document.getElementById('frontrow-modal');
+  document.body.appendChild(modal);
+  modal.style.display = 'block';
+};
+
+function closeFrontrowModal() {
+  document.getElementById('frontrow-modal').style.display = 'none';
+}
+
+{% if request.path contains 'products/creatine-monohydrate-gummies' %}
+  var frontrow_url = 'https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=960'
+{% else %}
+  var frontrow_url = "";
+{% endif %}
+
+function fetchDataAndUpdateDiv() {
+  if (frontrow_url) {
+    fetch(frontrow_url)
+      .then(response => {
+        if (response.ok) return response.text();
+        else throw new Error("failed to fetch content")
+      })
+      .then(html => {
+        document.getElementById('frontrow-widget').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        document.getElementById('frontrow-widget').innerHTML = "";
+      });
+  } else {
+    document.getElementById('frontrow-widget').innerHTML = "";
+  }
+}
+
+fetchDataAndUpdateDiv();
+
+</script>

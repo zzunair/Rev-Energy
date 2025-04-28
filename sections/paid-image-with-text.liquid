@@ -1,0 +1,283 @@
+{%- liquid 
+  assign identifier = section.settings.metaobjectidentifier | handleize 
+  assign check_mb = false
+  for object in shop.metaobjects.paid_image_with_text.values 
+      assign metaobject = object.identifier.value | handleize
+      if metaobject == identifier
+          assign check_mb = true
+          assign metaobj = object
+      endif
+  endfor 
+%}
+
+
+<style>
+.image_part .image-with-text__heading {
+  display:none;
+}
+
+.product-with-text .image-with-text__content .image-with-text__text.rte.mob {
+    display:none;
+}
+
+.image_part h4 {
+    display: none;
+}
+ 
+</style>
+{% if check_mb and section.settings.metaobjectidentifier != blank %}
+{{ 'paid-image-with-text.css' | asset_url | stylesheet_tag }}
+<div class="{{ section.settings.custom_class }} sss image-with-text {% if section.settings.full_width %}image-with-text--full-width{% else %}page-width{% endif %} color-scheme-{{ section.settings.color_scheme }}">
+{%- if section.settings.custom_class == 'get-your' -%}
+  {%- for block in section.blocks -%}
+    {% case block.type %}
+      {%- when 'heading' -%}
+            <h2 class="image-with-text__heading h1" {{ block.shopify_attributes }}>
+              {{ metaobj.heading.value }}
+            </h2>
+            {% unless metaobj.subheading.value == blank %}
+            <h4 class="image-with-text__subheading h3 small-bold" {{ block.shopify_attributes }}>
+              {{ metaobj.subheading.value | escape }}
+            </h4>
+            {% endunless %}     
+    {%- endcase -%}
+{%- endfor -%}      
+{%- endif -%}   
+<div class="image-with-text__grid color-{{ section.settings.color_scheme }} grid grid--gapless grid--1-col grid--2-col-tablet gradient{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %} {% if section.settings.layout_mobile == 'text_first' %} image-with-text__grid--reverse-mobile{% endif %}">
+  <div class="grid__item">      
+    <div class="image-with-text__media image-with-text__media--{{ section.settings.height }} {% if metaobj.image.value != blank and section.settings.height != "fit" %}media{% elsif section.settings.height != "fit" %}image-with-text__media--placeholder placeholder{% endif %}"
+      {% if section.settings.height == 'adapt' and metaobj.image.value != blank %} style="padding-bottom: {{ 1 | divided_by: metaobj.image.value.aspect_ratio | times: 100 }}%;"{% endif %}
+    >
+      {%- if metaobj.image.value != blank -%}
+      
+        <img
+          srcset="{%- if metaobj.image.value.width >= 165 -%}{{ metaobj.image.value | img_url: '165x' }} 165w,{%- endif -%}
+            {%- if metaobj.image.value.width >= 360 -%}{{ metaobj.image.value | img_url: '360x' }} 360w,{%- endif -%}
+            {%- if metaobj.image.value.width >= 535 -%}{{ metaobj.image.value | img_url: '535x' }} 535w,{%- endif -%}
+            {%- if metaobj.image.value.width >= 750 -%}{{ metaobj.image.value | img_url: '750x' }} 750w,{%- endif -%}
+            {%- if metaobj.image.value.width >= 1070 -%}{{ metaobj.image.value | img_url: '1070x' }} 1070w,{%- endif -%}
+            {%- if metaobj.image.value.width >= 1500 -%}{{ metaobj.image.value | img_url: '1500x' }} 1500w,{%- endif -%}"
+          src="{{ metaobj.image.value | img_url: '1500x' }}"
+          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+          alt="{{ metaobj.image.value.alt | escape }}"
+          loading="lazy"
+          width="{{ metaobj.image.value.width }}"
+          height="{{ metaobj.image.value.height }}"
+        >
+      
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>      
+  </div>
+  <div class="grid__item">
+    <div class="image-with-text__content image-with-text__content--{{ section.settings.height }}">
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {%- when 'heading' -%}
+            {% unless metaobj.subheading.value == blank %}
+            <h4 class="image-with-text__subheading h3 small-bold" {{ block.shopify_attributes }}>
+              {{ metaobj.subheading.value | escape }}
+            </h4>
+            {% endunless %}
+            <h2 class="image-with-text__heading h1" {{ block.shopify_attributes }}>
+              {{ metaobj.heading.value }}
+            </h2>
+          {%- when 'text' -%}
+            <div class="image-with-text__text rte{% if block.settings.border != blank %} boder-top{% endif %}" {{ block.shopify_attributes }}>{{ metaobj.description.value }}</div>            
+          {%- when 'button' -%}
+            <div class="image-with-text_Btn_container"  >
+            {%- if metaobj.button_label.value != blank -%}
+              {% assign btn_link = metaobj.button_link.value | default: '#subs-product' %}
+              <a{% if btn_link != blank %} href="{{ btn_link }}"{% endif %} class="button image-with-text_Btn"{% if btn_link == blank %} aria-disabled="true"{% endif %} {{ block.shopify_attributes }}>
+                {{ metaobj.button_label.value | escape }}
+              </a>
+            {%- endif -%}        	  
+            </div>
+            {%- when 'countdown__timer'-%}
+              {% render 'paid-countdown-timer', metaobj: metaobj, forloop: forloop.index %}
+           {% when 'single_review' %}
+            <div class="single-review-container {% if metaobj.reviewer_image.value == blank %}without-image{% endif %}">
+              {% if metaobj.reviewer_image.value != blank %}
+                <div class="review-profile-pic"><img src="{{ metaobj.reviewer_image.value | img_url: 'master' }}" height="100" width="100" loading="lazy" /></div>
+              {% endif %}
+              <div class="review-content">
+                <div class="review-comment">{{ metaobj.review.value}}</div>
+                {% if metaobj.reviewer_name.value != blank %}
+                  <div class="review-name">{{ metaobj.reviewer_name.value }} <span><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 122.88"><defs><style>.cls-1{fill:#00a912;}.cls-1,.cls-2{fill-rule:evenodd;}.cls-2{fill:#fff;}</style></defs><title>confirm</title><path class="cls-1" d="M61.44,0A61.44,61.44,0,1,1,0,61.44,61.44,61.44,0,0,1,61.44,0Z"/><path class="cls-2" d="M42.37,51.68,53.26,62,79,35.87c2.13-2.16,3.47-3.9,6.1-1.19l8.53,8.74c2.8,2.77,2.66,4.4,0,7L58.14,85.34c-5.58,5.46-4.61,5.79-10.26.19L28,65.77c-1.18-1.28-1.05-2.57.24-3.84l9.9-10.27c1.5-1.58,2.7-1.44,4.22,0Z"/></svg> VERIFIED CUSTOMER</span></div>
+                {% endif %}
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+</div>
+{% style %}
+{% for block in section.blocks %}
+  {% if block.settings.border == true %}
+    #shopify-section-{{ section.id }} .boder-top{
+      border-top: 1px solid #000;
+      padding-top: 15px;
+      margin-top: 0px;
+    }
+  {% endif %}
+{% endfor %}
+  {% if section.settings.enable_checkboxes == true %}
+    #shopify-section-{{ section.id }} .image-with-text__text ul{
+      padding-left:0;
+    }
+    #shopify-section-{{ section.id }} .image-with-text__text li{
+      position: relative;
+      list-style: none;
+      padding-left: 30px;
+    }
+    #shopify-section-{{ section.id }} .image-with-text__text li:before{
+      content:'';
+      width:20px;
+      height: 20px;
+      background: url('{{ 'green-check-mark-icon.png' | asset_url }}');
+      display: block;
+      background-size: 20px;
+      position: absolute;
+      left: 0;
+      top:5px;
+    }
+  {% endif %}
+{% endstyle %}
+{% endif %}
+
+{% schema %}
+{
+"name": "Image with text Paid",
+"class": "spaced-section spaced-section--full-width custom-img-with-txt",
+"settings": [
+   {
+    "type": "text",
+    "id": "custom_class",
+    "label": "Custom Class"
+  },  
+  {
+    "type": "text",
+    "id": "metaobjectidentifier",
+    "label": "Metaobject Identifier"
+  },  
+  {
+    "type": "checkbox",
+    "id": "enable_checkboxes",
+    "label": "Enable circle check icons to list",
+    "default": false
+  },
+  {
+    "type": "select",
+    "id": "height",
+    "options": [
+      {
+        "value": "adapt",
+        "label": "Adapt to image"
+      },
+      {
+        "value": "small",
+        "label": "Small"
+      },
+      {
+        "value": "large",
+        "label": "Large"
+      },
+      {
+        "value": "fit",
+        "label": "Fit"
+      } 
+    ],
+    "default": "adapt",
+    "label": "Adapt to image"
+  },    
+  {
+    "type": "select",
+    "id": "layout",
+    "options": [
+      {
+        "value": "image_first",
+        "label": "Image first"
+      },
+      {
+        "value": "text_first",
+        "label": "Test first"
+      }
+    ],
+    "default": "image_first",
+    "label": "Image first"
+  },
+  {
+    "type": "select",
+    "id": "layout_mobile",
+    "options": [
+      {
+        "value": "image_first",
+        "label": "Image first"
+      },
+      {
+        "value": "text_first",
+        "label": "Text first"
+      }
+    ],
+    "default": "image_first",
+    "label": "Mobile layout"
+  }
+],
+"blocks": [
+  {
+    "type": "heading",
+    "name": "Heading",
+    "limit": 1,
+    "settings": []
+  },
+  {
+    "type": "text",
+    "name": "Text",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "border",
+        "label": "Show Border Top"
+      }
+    ]
+  },
+  {
+    "type": "countdown__timer",
+    "name": "Countdown timer",
+    "limit": 1
+  },
+  {
+    "type": "single_review",
+    "name": "Single Review",
+    "limit": 1,
+    "settings": []
+  },
+  {
+    "type": "button",
+    "name": "Button",
+    "limit": 1,
+    "settings": []
+  }
+],
+"presets": [
+  {
+    "name": "Image with Text Paid",
+    "blocks": [
+      {
+        "type": "heading"
+      },
+      {
+        "type": "text"
+      },
+      {
+        "type": "button"
+      }
+    ]
+  }
+]
+}
+{% endschema %}

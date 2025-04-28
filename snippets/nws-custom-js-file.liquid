@@ -1,0 +1,578 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+{%-if template contains 'product'-%}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<script>
+    var selectCallback = function(variant, selector) {
+    if (variant) {
+      if (variant.available) {
+        // Selected a valid variant that is available.
+        $('.nws-pdp-submit').removeClass('disabled').removeAttr('disabled').val('BUY NOW').fadeTo(200,1);
+      } else {
+        // Variant is sold out.
+        $('.nws-pdp-submit').val('Sold Out').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
+      }
+      // Whether the variant is in stock or not, we can update the price and compare at price.
+      if ( variant.compare_at_price > variant.price ) {
+        $('.price .price__sale .price-item--sale').text(Shopify.formatMoney(variant.price, ""));
+        $('.price .price__sale .price-item--regular').text(Shopify.formatMoney(variant.compare_at_price, ""));
+      } else {
+        $('.price .price__regular .price-item--regular').text(Shopify.formatMoney(variant.price, ""));
+      }
+    } else {
+      // variant doesn't exist.
+      $('.nws-pdp-submit').val('Unavailable').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
+    }
+  }
+  // initialize multi selector for product
+  jQuery(function($) {
+    new Shopify.OptionSelectors("nws-variant-id", { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: true });
+  });
+  
+  $( document ).ready(function() {
+      $("input.product-form__variants").click(function () {
+        var value = $(this).val();
+        var optVal = $(this).attr('data-option');
+        var ImgID = $(this).attr('data-img-id');
+        $('#'+optVal+' option').each(function(){
+          $(this).removeAttr("selected");
+          if ($(this).val() == value){
+            $(this).attr("selected", "selected");
+          }
+        });
+        $('#nws-variant-id option').each(function(){
+          $(this).removeAttr("selected");
+          if ($(this).attr('data-val') == value){
+            $(this).attr("selected", "selected");
+          }
+        });
+        $('.nws-fake-selection-li[data-option="'+optVal+'"]').removeClass('nws-fs-active');
+        $(this).parent().addClass('nws-fs-active');
+        $('.slick-slide img[data-img-id="'+ImgID+'"]').click();
+     });
+  });
+
+  $(".template-product .nws-pdp-submit").val('Processing...');
+    setTimeout(function(){
+      $.getJSON('/cart.js', function(cart){ 
+        var result = cart.item_count;
+        if(result != 0){
+          console.log(result);
+          //window.location.href = "/checkout";
+          $(".template-product .nws-pdp-submit").val('BUY NOW');
+        }else{
+          $(".template-product .nws-pdp-submit").val('BUY NOW');
+        }
+      });
+    },500);
+
+    $("form.product-form").each( function () {
+      $(this).bind("submit",function(e){
+        e.preventDefault();
+        var formID = $(this).attr("id");
+        $.ajax({
+          type: 'post',
+          url: '/cart/add.js',
+          data: $(this).serialize(),
+          dataType: 'json',
+          success: function(resp) {
+            Shopify.KT_getCart(); 
+            KT.drawOpen();
+            //console.log(success);
+          },
+          error: function(error) {
+            //console.log(error)
+          }
+        });
+        return false;
+      });
+    });
+  
+</script>
+<script>
+    // $(function() {
+    //   var top = $('.nws-pdp-template-gallery').offset().top - parseFloat($('.nws-pdp-template-gallery').css('marginTop').replace(/auto/, 0));
+    //   var footTop = $('.template-product .nws-pdp-text').offset().top - parseFloat($('.template-product .nws-pdp-text').css('marginTop').replace(/auto/, 0));
+  
+    //     var maxY = footTop - $('.nws-pdp-template-gallery').outerHeight();
+    
+    //     $(window).scroll(function(evt) {
+    //         var y = $(this).scrollTop();
+    //         if (y >= top - $('#shopify-section-header-01').height()) {
+    //             if (y < maxY) {
+    //                 $('.nws-pdp-template-gallery').addClass('fixed').removeAttr('style');
+    //             } else {
+    //                 $('.nws-pdp-template-gallery').removeClass('fixed').css({
+    //                     position: 'absolute',
+    //                     top: (maxY - top) + 'px'
+    //                 });
+    //             }
+    //         } else {
+    //             $('.nws-pdp-template-gallery').removeClass('fixed');
+    //         }
+    //     });
+    // });
+</script>
+
+{%- if product.handle != "creatine-monohydrate-gummies-trial-offer-1" -%}
+  {%- if product.handle == "creatine-monohydrate-gummies-450-count" -%}
+    <script>
+      var nwsPdpTemplateRc = setInterval(function(){
+        var html = $(".nws-pdp-template-rc .rc-widget-injection-parent").html();
+        if(html.length > 0){
+            //console.log('rc-nws');
+            $(".rc-option__subsave .rc_widget__option__selector").append('<ul class="nws-rc-custom-values"><li>Free Shipping</li><li>Delivery Every 3 Months</li><li>Discounted Pricing</li><li>VIP "Surprise & Delight" perks</li><li>Pause or cancel anytime</li></ul>');
+            var html2 = $(".nws-pdp-template-rc .rc-widget-injection-parent ul.nws-rc-custom-values").html();
+
+            var dsSub = $(".nws-ds-sub").val();
+            var prSub = $(".nws-pr-sub").val();
+            $(".nws-pdp-template-form .product-form .product__price .price__badge.price__badge--sale span").text(dsSub);
+            $(".price--on-sale .price__sale .nws-price-item.price-item--sale").text(prSub);
+            $(".nws-pdp-template-form .product-form .product__price .price__pricing-group").removeClass("nws-chk-pr");
+          
+          
+            $(".rc-option__subsave .rc-radio__label.rc_widget__option__label").click(function(){
+              var dsSub = $(".nws-ds-sub").val();
+              var prSub = $(".nws-pr-sub").val();
+              $(".nws-pdp-template-form .product-form .product__price .price__badge.price__badge--sale span").text(dsSub);
+              $(".price--on-sale .price__sale .nws-price-item.price-item--sale").text(prSub);
+              $(".nws-pdp-template-form .product-form .product__price .price__pricing-group").removeClass("nws-chk-pr");
+            });
+            $(".rc-option__onetime .rc-radio__label.rc_widget__option__label").click(function(){
+              var dsOrg = $(".nws-ds-org").val();
+              var prOrg = $(".nws-pr-org").val();
+              $(".nws-pdp-template-form .product-form .product__price .price__badge.price__badge--sale span").text(dsOrg);
+              $(".price--on-sale .price__sale .nws-price-item.price-item--sale").text(prOrg);
+              $(".nws-pdp-template-form .product-form .product__price .price__pricing-group").addClass("nws-chk-pr");
+            });
+          
+            if(html2.length > 0){ clearInterval(nwsPdpTemplateRc); }  
+        }
+      }, 500);
+    </script>
+    {%- else -%}
+    <script>
+      var nwsPdpTemplateRc = setInterval(function(){
+        var html = $(".nws-pdp-template-rc .rc-widget-injection-parent").html();
+        if(html.length > 0){
+            //console.log('rc-nws');
+            $(".rc-option__subsave .rc_widget__option__selector").append('<ul class="nws-rc-custom-values"><li>Free Shipping and Returns</li><li>Discounted Pricing</li><li>VIP "Surprise & Delight" perks</li><li>Pause or cancel anytime</li></ul>');
+            var html2 = $(".nws-pdp-template-rc .rc-widget-injection-parent ul.nws-rc-custom-values").html();
+          
+            var dsSub = $(".nws-ds-sub").val();
+            var prSub = $(".nws-pr-sub").val();
+            $(".nws-pdp-template-form .product-form .product__price .price__badge.price__badge--sale span").text(dsSub);
+            $(".price--on-sale .price__sale .nws-price-item.price-item--sale").text(prSub);
+            $(".nws-pdp-template-form .product-form .product__price .price__pricing-group").removeClass("nws-chk-pr");
+          
+          
+            $(".rc-option__subsave .rc-radio__label.rc_widget__option__label").click(function(){
+              var dsSub = $(".nws-ds-sub").val();
+              var prSub = $(".nws-pr-sub").val();
+              $(".nws-pdp-template-form .product-form .product__price .price__badge.price__badge--sale span").text(dsSub);
+              $(".price--on-sale .price__sale .nws-price-item.price-item--sale").text(prSub);
+              $(".nws-pdp-template-form .product-form .product__price .price__pricing-group").removeClass("nws-chk-pr");
+            });
+            $(".rc-option__onetime .rc-radio__label.rc_widget__option__label").click(function(){
+              var dsOrg = $(".nws-ds-org").val();
+              var prOrg = $(".nws-pr-org").val();
+              $(".nws-pdp-template-form .product-form .product__price .price__badge.price__badge--sale span").text(dsOrg);
+              $(".price--on-sale .price__sale .nws-price-item.price-item--sale").text(prOrg);
+              $(".nws-pdp-template-form .product-form .product__price .price__pricing-group").addClass("nws-chk-pr");
+            });
+          
+            if(html2.length > 0){ clearInterval(nwsPdpTemplateRc); }
+        }
+      }, 500);
+    </script>
+  {%- endif -%}
+{% endif %}
+  
+{% endif %}
+
+<script>
+  $('.nws-pdp-template-oneImagePhoto').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: false,
+    fade: true,
+    asNavFor: '.nws-pdp-template-oneImageThumb',
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          dots: true
+        }
+      }
+    ]
+  });
+  $('.nws-pdp-template-oneImageThumb').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    asNavFor: '.nws-pdp-template-oneImagePhoto',
+    dots: false,
+    arrows: false,
+    centerMode: true,
+    focusOnSelect: true,
+    vertical: true,
+    verticalSwiping: true
+  });
+
+  if (window.matchMedia("(max-width: 600px)").matches) {
+    $('.nws-unique-ingredients-body').slick({
+      arrows: false,
+      dots: false,
+      settings: "unslick",
+      responsive: [
+        {
+          breakpoint: 601,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            arrows: false,
+            dots: true
+          }
+        }
+      ]
+    });
+  }
+  
+  $('.nws-slider-content').slick({
+        dots: false,
+        arrows: true,
+        infinite: true,
+        slidesToShow: 1,
+        focusOnSelect: true,
+        autoplay: false,
+        slidesToScroll: 1,
+        responsive: [
+        {
+          breakpoint: 601,
+          settings: {
+            dots: false,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 5000
+          }
+        }
+      ]
+  });
+
+  $('.nws-pdp-template-oneImagePhoto-mobile').slick({
+        dots: true,
+        arrows: false,
+        infinite: true,
+        slidesToShow: 1,
+        focusOnSelect: true,
+        slidesToScroll: 1,
+        responsive: [
+        {
+          breakpoint: 481,
+          settings: "unslick"
+        },
+        {
+          breakpoint: 481,
+          settings: {
+            dots: true,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 1,
+            focusOnSelect: true,
+            slidesToScroll: 1
+          }
+        }
+      ]
+  });
+  
+  $('.nws-reviews-slider-content').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplaySpeed: 5000,
+    autoplay: true,
+    variableWidth: true,
+    arrow: false,
+    responsive: [
+      {
+        breakpoint: 1750,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1350,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 660,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+  $('.nws-video-slider-body').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplaySpeed: 5000,
+    autoplay: false,
+    arrow: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
+          arrow: false
+        }
+      },
+      {
+        breakpoint: 481,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          arrow: false
+        }
+      }
+    ]
+  });
+
+
+  $(".nws-accordion-warp .nws-ac-title").click(function(){
+    if($(this).next(".nws-ac-body").hasClass("active")){
+      $(this).next(".nws-ac-body").removeClass("active").slideUp();
+      $(this).removeClass("active");
+    } else {
+      $(".nws-accordion-warp .nws-ac-title").removeClass("active");
+      $(".nws-ac-item .nws-ac-body").removeClass("active").slideUp();
+      $(this).next(".nws-ac-body").addClass("active").slideDown();
+      $(this).addClass("active");
+    }
+  });
+
+  // Input script
+  $(".nws-form-input-warp .nws-form-input").on('focus',function(){
+    var all_input = $(".nws-form-input-warp .nws-form-input");
+    for (i = 0; i < all_input.length; ++i) {
+      if( all_input[i].value == '' ){
+        $(all_input[i]).parent().removeClass("active");
+      }
+    }
+    $(this).parent().addClass("active");
+  });
+
+  $(window).on('load', function(){
+    var all_input = $(".nws-form-input-warp .nws-form-input");
+    for (i = 0; i < all_input.length; ++i) {
+      if( all_input[i].value == '' ){
+        $(all_input[i]).parent().removeClass("active");
+      }else{
+        $(all_input[i]).parent().addClass("active");
+      }
+    }
+  });
+
+  //tabs
+  $(function () {
+    $('.tab-button').click(function () {
+      // Check for active
+      $('.tab-button').removeClass('active');
+      $(this).addClass('active');
+      // Display active tab
+      let currentTab = $(this).attr('href');
+      $('.tab-content').hide();
+      $(currentTab).show();
+      return false;
+    });
+  });
+
+  $(".nws-science-section-txt h3").click(function(){
+    var tab = $(this).attr('data-tab');
+    $(".nws-science-section-txt").removeClass('nws-active');
+    $(".nws-science-section-img").removeClass('nws-active');
+    $(".nws-science-section-txt."+tab).addClass('nws-active');
+    $(".nws-science-section-img."+tab).addClass('nws-active');
+  }).hover(function(){
+    var tab = $(this).attr('data-tab');
+    $(".nws-science-section-txt").removeClass('nws-active');
+    $(".nws-science-section-img").removeClass('nws-active');
+    $(".nws-science-section-txt."+tab).addClass('nws-active');
+    $(".nws-science-section-img."+tab).addClass('nws-active');
+  });
+
+  $(".nws-one-product-body .nws-one-product-main .nws-one-product-mob .pdp-size span").click(function(){
+     var v = $(this).attr('data-var');
+     var cls = $(this).attr('data-sec');
+     $('.nws-one-product-body .nws-one-product-main .nws-one-product-mob.'+cls+' .pdp-size span').removeClass('nws-active');
+     $('.nws-one-product-body .nws-one-product-main .nws-one-product-mob.'+cls+' .pdp-size span[data-var="'+v+'"]').addClass('nws-active');
+    
+     if(v == 'nws-pdp-v1'){
+       $(".nws-one-product-body .nws-one-product-main .nws-one-product-mob."+cls+" .nws-pdp-v2").hide();
+       $(".nws-one-product-body .nws-one-product-main .nws-one-product-mob."+cls+" .nws-pdp-v1").show();
+     }else{
+       $(".nws-one-product-body .nws-one-product-main .nws-one-product-mob."+cls+" .nws-pdp-v1").hide();
+       $(".nws-one-product-body .nws-one-product-main .nws-one-product-mob."+cls+" .nws-pdp-v2").show();
+     }
+  });
+
+  function SingleCartNWS(variant_id, qty) {
+    data = {
+      "id": variant_id,
+      "quantity": qty
+    }
+    jQuery.ajax({
+      type: 'POST',
+      url: '/cart/add.js',
+      data: data,
+      dataType: 'json',
+      success: function() { 
+          Shopify.KT_getCart(); 
+          setTimeout(function(){ KT.drawOpen(); }, 500);
+          //console.log(success);
+      }
+    });
+  }
+
+  function RechargeCartNWS(variant_id, qty, selling_plan) {
+    data = {
+      "id": variant_id,
+      "quantity": qty,
+      "selling_plan": selling_plan
+    }
+    jQuery.ajax({
+      type: 'POST',
+      url: '/cart/add.js',
+      data: data,
+      dataType: 'json',
+      success: function() { 
+          Shopify.KT_getCart(); 
+          setTimeout(function(){ KT.drawOpen(); }, 500);
+          //console.log(success);
+      }
+    });
+  }
+</script>
+<script>
+  
+$('[href="#sign_in_popup"]').click(function(){
+	$('a[href="/account/login"]').click();
+  	$('.mobile-menu-close.close-menu').click();
+});
+
+var refreshIntervalId = setInterval(function(){
+  var html = $("#accountModal .form-tab").html();
+  if(html.length > 0){
+     $("#signin").removeClass('active show'); $("#register").addClass('active show'); 
+  }
+}, 500);
+
+$(document).on('click','a[href*="/account/register"], [data-href*="/account/register"]', function(evt){
+    refreshIntervalId;
+});
+$(document).on('click','a[href*="/account/login"], [data-href*="/account/login"]', function(evt){
+    clearInterval(refreshIntervalId);
+});
+
+setInterval(function () {
+  $("#nws-register").click(function(){
+    $("#signin").removeClass('active show');
+    $("#register").addClass('active show');
+    clearInterval(refreshIntervalId);
+  });
+  $("#nws-signin").click(function(){
+    $("#signin").addClass('active show');
+    $("#register").removeClass('active show');
+    clearInterval(refreshIntervalId);
+  });
+
+  $('a[href="/account/login"]').click(function(){
+	  $("#signin").addClass('active show');
+      $("#register").removeClass('active show');
+  });
+  
+  $('a[href="/account/register"]').click(function(){
+  	  $("#signin").removeClass('active show');
+      $("#register").addClass('active show');
+  });
+
+  $(".nws-form-input-warp .nws-form-input").on('focus',function(){
+    var all_input = $(".nws-form-input-warp .nws-form-input");
+    for (i = 0; i < all_input.length; ++i) {
+      if( all_input[i].value == '' ){
+        $(all_input[i]).parent().removeClass("active");
+      }
+    }
+    $(this).parent().addClass("active");
+  });
+}, 1000);
+</script>
+<script>
+  $("[href^='#']").click(function() {
+        id=$(this).attr("href");
+        $('html, body').animate({
+            scrollTop: $(id).offset().top - 70
+        }, 2000);
+  });
+</script>
+<script>
+      $('.creatine-slider').slick({
+          dots: false,
+          infinite: false,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          loop: true,
+          arrows: true,
+          prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="14" viewBox="0 0 17 14" fill="none"><path d="M7.27987 13.8492L8.44943 12.6948L3.63449 7.87986H16.1047V6.20906H3.63449L8.44943 1.40931L7.27987 0.239746L0.475155 7.04446L7.27987 13.8492Z" fill="white"/></svg></button>',
+          nextArrow: '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="14" viewBox="0 0 17 14" fill="none" style="&#10;    background: rebeccapurple;&#10;"><path d="M9.70817 13.8492L8.53861 12.6948L13.3535 7.87986H0.883301V6.20906H13.3535L8.53861 1.40931L9.70817 0.239746L16.5129 7.04446L9.70817 13.8492Z" fill="white"/></svg></button>',
+          responsive: [
+            {
+              breakpoint: 1025,
+              settings: {
+                slidesToShow: 4,
+              }
+            },
+            {
+              breakpoint: 661,
+              settings: {
+                slidesToShow: 3,
+              }
+            },
+            {
+              breakpoint: 521,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 376,
+              settings: {
+                slidesToShow: 1,
+              }
+            }
+          ]
+        });
+    </script>

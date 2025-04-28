@@ -1,0 +1,543 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": 600,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "color_scheme": ""
+      }
+    },
+    "hero_slider_DaY4YV": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_RzgnqV": {
+          "type": "Slide",
+          "settings": {
+            "desk-slide": "shopify://shop_images/ProtocolBanner.png",
+            "link-slide": ""
+          }
+        },
+        "slide_MPxFAU": {
+          "type": "Slide",
+          "settings": {
+            "link-slide": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_RzgnqV",
+        "slide_MPxFAU"
+      ],
+      "settings": {
+        "section-color": ""
+      }
+    },
+    "feature_list_qDEKKY": {
+      "type": "feature-list",
+      "blocks": {
+        "feature_YbRKT6": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8282.jpg",
+            "heading": "GOAL",
+            "content": "<p>Lift heavier, move quicker, go longer, compute faster.</p>"
+          }
+        },
+        "feature_yak4MK": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8282.jpg",
+            "heading": "CREATE PERFORMANCE",
+            "content": "<p><strong>Gummies:</strong> Take 3+ gummies/day, ideally prior to a workout or at the beginning of the day.</p><p><strong>Single Serve</strong>: Mix one 5g stick pack into your favorite beverage.</p>"
+          }
+        },
+        "feature_MUNEVP": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8282.jpg",
+            "heading": "PERFECT FOR",
+            "content": "<p>Men and women of all ages that take fitness and training seriously.</p>"
+          }
+        },
+        "feature_J9yhKM": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8282.jpg",
+            "heading": "RESEARCH",
+            "content": "<p><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8949037/\" target=\"_blank\" title=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8949037/\">Creatine For Muscle Growth</a></p><p><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6093191/\" target=\"_blank\" title=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6093191/\">Creatine For Cognitive Function</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_YbRKT6",
+        "feature_yak4MK",
+        "feature_MUNEVP",
+        "feature_J9yhKM"
+      ],
+      "settings": {
+        "layout": "Reverse",
+        "icon_style": "arrow",
+        "icon_bg_color": "#ffffff",
+        "icon_line_color": "#f57e25",
+        "slider_autoplay": false,
+        "autoplay_delay": 3,
+        "change_slide_on": "click",
+        "heading": "Performance",
+        "text_aligment": "left",
+        "content_desktop_style": "collapsable",
+        "content_mobile_style": "collapsable",
+        "button_text": "",
+        "link": "",
+        "link_target": "_blank",
+        "button_aligment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "feature_list_Mc9tt6": {
+      "type": "feature-list",
+      "blocks": {
+        "feature_nGDJJT": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7523_84d1762c-5ebb-423e-976b-aa58af349277.jpg",
+            "heading": "GOAL",
+            "content": "<p>Increase energy, enhance focus, maintain muscle</p>"
+          }
+        },
+        "feature_yN9jcz": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7523.jpg",
+            "heading": "CREATE PERFORMANCE",
+            "content": "<p>Gummies: Take 3 gummies/day at any time, ideally as part of a morning routine.</p><p>Single Serve: Take one 5g stick pack serving with your favorite beverage first thing in the morning.</p>"
+          }
+        },
+        "feature_iQpGxn": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7523.jpg",
+            "heading": "PERFECT FOR",
+            "content": "<p>Men and women of all ages that live an active lifestyle</p>"
+          }
+        },
+        "feature_Rdz7W6": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7523_84d1762c-5ebb-423e-976b-aa58af349277.jpg",
+            "heading": "RESEARCH",
+            "content": "<p><a href=\"https://link.springer.com/article/10.1007/s40279-023-01870-9\" target=\"_blank\" title=\"https://link.springer.com/article/10.1007/s40279-023-01870-9\">Creatine For Brain Health</a></p><p><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10630839/\" target=\"_blank\" title=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10630839/\">Creatine For Fatigue</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_nGDJJT",
+        "feature_yN9jcz",
+        "feature_iQpGxn",
+        "feature_Rdz7W6"
+      ],
+      "settings": {
+        "layout": "Standard",
+        "icon_style": "arrow",
+        "icon_bg_color": "#ffffff",
+        "icon_line_color": "#f57e25",
+        "slider_autoplay": true,
+        "autoplay_delay": 3,
+        "change_slide_on": "click",
+        "heading": "Lifestyle",
+        "text_aligment": "left",
+        "content_desktop_style": "collapsable",
+        "content_mobile_style": "collapsable",
+        "button_text": "",
+        "link": "",
+        "link_target": "_blank",
+        "button_aligment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "feature_list_kUAjz3": {
+      "type": "feature-list",
+      "blocks": {
+        "feature_cpTBBV": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/DSC01234_1a048f93-df1f-44cc-af95-f61f6ab0c42a.jpg",
+            "heading": "GOAL",
+            "content": "<p>Lift heavier, move quicker, go longer, compute faster</p>"
+          }
+        },
+        "feature_k9fxMT": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/DSC01234_1a048f93-df1f-44cc-af95-f61f6ab0c42a.jpg",
+            "heading": "CREATE WELLNESS",
+            "content": "<p>Gummies: Take 2-3 gummies per day at any time to help fortify your body and your mind.</p><p>Single Serve: Take one 5g stick pack serving with your favorite beverage at any point throughout the day.</p>"
+          }
+        },
+        "feature_w8MhGR": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/DSC01234_1a048f93-df1f-44cc-af95-f61f6ab0c42a.jpg",
+            "heading": "PERFECT FOR",
+            "content": "<p>Men and women of all ages aiming for optimal health</p>"
+          }
+        },
+        "feature_EqAdFJ": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/DSC01234_1a048f93-df1f-44cc-af95-f61f6ab0c42a.jpg",
+            "heading": "RESEARCH",
+            "content": "<p><a href=\"https://www.mdpi.com/2072-6643/15/4/863#:~:text=Creatine%20supplementation%20has%20demonstrated%20effects,with%20advanced%20chronic%20liver%20disease.\" target=\"_blank\" title=\"https://www.mdpi.com/2072-6643/15/4/863#:~:text=Creatine%20supplementation%20has%20demonstrated%20effects,with%20advanced%20chronic%20liver%20disease.\">Creatine For Muscle Protection</a></p><p><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10487398/\" target=\"_blank\" title=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10487398/\">Creatine For Bone Health</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_cpTBBV",
+        "feature_k9fxMT",
+        "feature_w8MhGR",
+        "feature_EqAdFJ"
+      ],
+      "settings": {
+        "layout": "Reverse",
+        "icon_style": "arrow",
+        "icon_bg_color": "#ffffff",
+        "icon_line_color": "#f57e25",
+        "slider_autoplay": true,
+        "autoplay_delay": 3,
+        "change_slide_on": "click",
+        "heading": "Wellness",
+        "text_aligment": "left",
+        "content_desktop_style": "collapsable",
+        "content_mobile_style": "collapsable",
+        "button_text": "",
+        "link": "",
+        "link_target": "_blank",
+        "button_aligment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "multicolumn_RmcAPH": {
+      "type": "multicolumn",
+      "blocks": {
+        "card_3CDUn6": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image1_fd265a1a-a694-430d-a00b-d2ddfbfd77b8.png",
+            "title": "",
+            "heading": "INCREASE ENERGY",
+            "card_content": ""
+          }
+        },
+        "card_YJgzGY": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image2.png",
+            "title": "",
+            "heading": "LIFT HEAVIER WEIGHT",
+            "card_content": ""
+          }
+        },
+        "card_yajwLY": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image3_c9efbab3-743f-4b39-a629-3ab3a3e49e58.png",
+            "title": "",
+            "heading": "RUN FASTER",
+            "card_content": ""
+          }
+        },
+        "card_maMbFW": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image4_fca8d953-ea93-40c0-a1a9-3ff9d6f3c538.jpg",
+            "title": "",
+            "heading": "COMPLETE MORE REPS",
+            "card_content": ""
+          }
+        },
+        "card_R9C8VR": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/image5_5570a803-6707-4f7c-86e7-b388e7b7cca6.png",
+            "title": "",
+            "heading": "ENHANCE FOCUS",
+            "card_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_3CDUn6",
+        "card_YJgzGY",
+        "card_yajwLY",
+        "card_maMbFW",
+        "card_R9C8VR"
+      ],
+      "custom_css": [
+        "h3 {font-size: 16px;}"
+      ],
+      "settings": {
+        "layout_style": "grid",
+        "columns_desktop": "5",
+        "columns_mobile": "1",
+        "heading_content_alignment": "left",
+        "subheading": "",
+        "heading": "Creatine Use Cases",
+        "content": "",
+        "content_alignment": "left",
+        "caption_align": "center",
+        "image_aspect_ratio": "adapt",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "featured_collection_wWGBkd": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_collection_9K9JtX": {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "",
+            "collection": "creatine-gummies"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_9K9JtX"
+      ],
+      "disabled": true,
+      "settings": {
+        "max_product_show": 5,
+        "layout_style": "carousel",
+        "columns_desktop": "4",
+        "columns_mobile": "1",
+        "subheading": "",
+        "heading": "Our Products",
+        "content": "<p>Our flavor offerings help keep creatine supplementation fun and convenient. We use <a href=\"https://www.youtube.com/watch?v=1jo1f553tXk\" target=\"_blank\">Creapure®</a>, the gold standard in Creatine in terms of both safety and efficacy.</p>",
+        "use_outline_button": false,
+        "show_view_all_button": true,
+        "view_all_link_style": "icon",
+        "view_all_link_position": "start",
+        "view_all_link_text": "View all",
+        "link_url": "",
+        "link_target": "_top",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "about_creatine_yCnXg8": {
+      "type": "about-creatine",
+      "blocks": {
+        "block_jaJ77d": {
+          "type": "block",
+          "settings": {
+            "para": "<p>Creatine is naturally produced in your body and is also consumed when eating red meat, poultry, and fish.</p>",
+            "text-border": false,
+            "t-size": 16,
+            "t-color": "#fff2d2"
+          }
+        },
+        "block_nqJBag": {
+          "type": "block",
+          "settings": {
+            "para": "<p>Creatine supplementation increases your body's stores of phosphocreatine, which is used to produce new ATP during high-intensity exercise. ATP is the energy-carrying molecule found in the cells of all living things.</p>",
+            "text-border": true,
+            "t-size": 16,
+            "t-color": "#fff2d2"
+          }
+        },
+        "block_eJiCKc": {
+          "type": "block",
+          "settings": {
+            "para": "<p>Because creatine is so bio-available, absorption is just as efficacious in gummy form as it is in powder form.</p>",
+            "text-border": false,
+            "t-size": 16,
+            "t-color": "#f57e25"
+          }
+        }
+      },
+      "block_order": [
+        "block_jaJ77d",
+        "block_nqJBag",
+        "block_eJiCKc"
+      ],
+      "settings": {
+        "heading": "About Creatine",
+        "text-area": "Creatine is made up of three different amino acids: glycine, arginine, and methionine.",
+        "center-img": "shopify://shop_images/Core_Orange_Fruit_Transp_687a9f42-e74c-4bfd-85b9-69385249f182.png"
+      }
+    },
+    "rich_text_betQKa": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_WQjfT7": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Creatine",
+            "style": "h1"
+          }
+        },
+        "text_edA3xw": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Creatine is made up of three different amino acids: glycine, arginine, and methionine.</p><p>Creatine is naturally produced in your body and is also consumed when eating red meat, poultry, and fish.</p><p>Creatine supplementation increases your body's stores of phosphocreatine, which is used to produce new ATP during high-intensity exercise. ATP is the energy-carrying molecule found in the cells of all living things.</p><p>Because creatine is so bio-available, absorption is just as efficacious in gummy form as it is in powder form.</p>"
+          }
+        },
+        "image_zyeePe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/creatine-group.png",
+            "image_width": 150
+          }
+        },
+        "button_aFmyHU": {
+          "type": "button",
+          "settings": {
+            "button_text": "SHOP NOW",
+            "link": "",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_WQjfT7",
+        "text_edA3xw",
+        "image_zyeePe",
+        "button_aFmyHU"
+      ],
+      "disabled": true,
+      "settings": {
+        "container_size": true,
+        "content_width": 500,
+        "content_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "media_and_text_w7E8Ky": {
+      "type": "media-and-text",
+      "blocks": {
+        "image_Da9iKW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/creatine-group.png"
+          }
+        },
+        "text_content_6L8R3Q": {
+          "type": "text-content",
+          "settings": {
+            "heading": "About Creatine",
+            "subheading": "",
+            "content": "<p>Creatine is made up of three different amino acids: glycine, arginine, and methionine.</p><p>Creatine is naturally produced in your body and is also consumed when eating red meat, poultry, and fish.</p><p>Creatine supplementation increases your body's stores of phosphocreatine, which is used to produce new ATP during high-intensity exercise. ATP is the energy-carrying molecule found in the cells of all living things.</p><p>Because creatine is so bio-available, absorption is just as efficacious in gummy form as it is in powder form.</p>",
+            "content_alignment": "left",
+            "button_label": "",
+            "button_link": "",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        }
+      },
+      "block_order": [
+        "image_Da9iKW",
+        "text_content_6L8R3Q"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "media_width": 50,
+        "media_size": "adapt",
+        "padding_top": 36,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff"
+      }
+    },
+    "media_and_text_KntYwk": {
+      "type": "media-and-text",
+      "blocks": {
+        "image_8Rierj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Infographic_CreatineBenefitsMap_OrangeBG-min.png",
+            "image_mobile": "shopify://shop_images/create-gummie-single-hand_362db73b-594f-428e-873e-97ffe10b1bac.png"
+          }
+        },
+        "text_content_dUWNMQ": {
+          "type": "text-content",
+          "settings": {
+            "heading": "Mission & Vision",
+            "subheading": "",
+            "content": "<p>Our mission is to improve the health & wellness outcomes of our customers. Our vision is that 100 Million Americans are regularly taking creatine by 2030.</p><p>We believe that anyone who lives an active lifestyle, seeks enhanced performance or values overall wellness can benefit from proper creatine supplementation. Due to a variety of factors (stigma, unenjoyable product experience, lack of awareness) only 2 million Americans regularly take creatine.</p>",
+            "content_alignment": "left",
+            "button_label": "",
+            "button_link": "",
+            "link_target": "_top",
+            "use_outline_button": false
+          }
+        }
+      },
+      "block_order": [
+        "image_8Rierj",
+        "text_content_dUWNMQ"
+      ],
+      "settings": {
+        "full_width": true,
+        "media_width": 50,
+        "media_size": "lg",
+        "padding_top": 36,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_slider_DaY4YV",
+    "feature_list_qDEKKY",
+    "feature_list_Mc9tt6",
+    "feature_list_kUAjz3",
+    "multicolumn_RmcAPH",
+    "featured_collection_wWGBkd",
+    "about_creatine_yCnXg8",
+    "rich_text_betQKa",
+    "media_and_text_w7E8Ky",
+    "media_and_text_KntYwk"
+  ]
+}

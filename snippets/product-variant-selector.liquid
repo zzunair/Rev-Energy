@@ -1,0 +1,286 @@
+{% comment %}
+  List of variables used:
+  product : {{ object }} Product Data
+  form_id : {{ string   }} Reference form id
+  block: {{ object }} block related object data
+{% endcomment %}
+
+{% liquid
+  assign quick_view_drawer = false
+  if template.suffix == 'product-quick-view'
+    assign quick_view_drawer = true
+  endif
+  assign show_guide = false
+  assign guide_option = block.settings.guide_option | capitalize
+%}
+
+<div class="product-variant__select__options" {{ block.shopify_attributes }}>
+  {%- unless product.has_only_default_variant -%}
+    {%- case block.settings.varaint_selector_type -%}
+      {%- when 'dropdown' -%}
+        <variant-dropdown
+          class="d-block js-element"
+          data-section="{{ section.id }}"
+          data-update-url="{{ enable_product_deep_link | default: false }}"
+          data-url="{{ product.url }}"
+        >
+          {%- for option in product.options_with_values -%}
+            {%- liquid
+              assign swatch_count = option.values | map: 'swatch' | compact | size
+              assign varaint_selector_type = block.settings.varaint_selector_type
+
+              if swatch_count > 0 and block.settings.show_swatches
+                assign varaint_selector_type = 'swatch_dropdown'
+              endif
+            -%}
+            <div class="product-variant__option__item mb-16" product-variant-option>
+              <div class="product-variant__head d-flex align-item-center justify-content-space-btw mb-2">
+                <div class="product-variant__label-container">
+                  <label class="select__label" for="option-{{ section.id }}-{{ forloop.index0 }}">
+                    {{- option.name }}:</label
+                  >
+                  <span product-variant-option-value class="fnt-14"> {{ option.selected_value | capitalize }}</span>
+                </div>
+                {% liquid
+                  assign option_name = option.name | capitalize
+
+                  if guide_option == option_name
+                    assign show_guide = true
+                  else
+                    assign show_guide = false
+                  endif
+                %}
+                {% if show_guide and quick_view_drawer == false %}
+                  <guide-drawer id="{{ block.id | prepend: 'shopify-section-' }}" target-portal-element="#portal">
+                    <button
+                      class="link fnt-body-weight-bold desktop-only"
+                      triger-guide-drawer-button
+                    >
+                      <span>{{ block.settings.guide_heading }}</span>
+                    </button>
+                    {% render 'guide-drawer', block: block, quick_view_drawer: quick_view_drawer %}
+                  </guide-drawer>
+                {% endif %}
+              </div>
+              <div class="select-wrapper  {% if varaint_selector_type == 'swatch_dropdown' %} swatch-dropdown {%- endif -%}">
+                {%- if varaint_selector_type == 'swatch_dropdown' -%}
+                  <span
+                    data-selected-dropdown-swatch="options[{{ option.name | escape }}]"
+                    class="dropdown-swatch"
+                  >
+                    {% render 'swatch', swatch: option.selected_value.swatch, shape: settings.swatch_style %}
+                  </span>
+                {%- endif -%}
+                <select
+                  class="select "
+                  form="{{ form_id }}"
+                  id="option-{{ section.id }}-{{ forloop.index0 }}"
+                  name="options[{{ option.name | escape }}]"
+                  aria-label="Select {{ option.name }}"
+                  tabindex="0"
+                >
+                  {% render 'product-variant-options',
+                    product: product,
+                    option: option,
+                    block: block,
+                    varaint_selector_type: varaint_selector_type
+                  %}
+                </select>
+                {%- render 'icon' with 'caret', arrow-color: 'rgba(var(--color-input-variant-color)/ 1)' -%}
+              </div>
+              {% if show_guide and quick_view_drawer %}
+                <guide-drawer id="{{ block.id | prepend: 'shopify-section-' }}" target-portal-element="#portal">
+                  <button
+                    class="link mt-8 fnt-body-weight-bold"
+                    triger-guide-popup
+                  >
+                    <span>{{ block.settings.guide_heading }}</span>
+                  </button>
+                  {% render 'guide-drawer', block: block, quick_view_drawer: quick_view_drawer %}
+                </guide-drawer>
+              {% elsif show_guide and quick_view_drawer == false %}
+                <guide-drawer
+                  class=""
+                  id="{{ block.id | prepend: 'shopify-section-mobile-' }}"
+                  target-portal-element="#portal"
+                >
+                  <button
+                    class="link fnt-body-weight-bold mobile-only mt-8"
+                    triger-guide-drawer-button
+                  >
+                    <span>{{ block.settings.guide_heading }}</span>
+                  </button>
+                </guide-drawer>
+              {% endif %}
+            </div>
+          {%- endfor -%}
+          <script type="application/json">
+            {{ product.variants | json }}
+          </script>
+        </variant-dropdown>
+
+      {%- when 'pills' -%}
+        <variant-pills
+          class="d-block js-element"
+          data-section="{{ section.id }}"
+          data-update-url="{{ enable_product_deep_link | default: false }}"
+          data-url="{{ product.url }}"
+        >
+          {% for option in product.options_with_values %}
+            {%- liquid
+              assign swatch_count = option.values | map: 'swatch' | compact | size
+              assign varaint_selector_type = block.settings.varaint_selector_type
+
+              if swatch_count > 0 and block.settings.show_swatches
+                assign varaint_selector_type = 'swatch'
+              endif
+            -%}
+            {%- if varaint_selector_type == 'swatch' -%}
+              <fieldset class="product-variant__pill__item position-relative" product-variant-option>
+                <div class="product-variant__head d-flex align-item-center mb-2">
+                  <legend class="select__label  text-color">{{ option.name }}:</legend>
+                  <span product-variant-option-value> {{ option.selected_value | capitalize }}</span>
+                </div>
+                <div class="variant-pills-wrapper-swatch">
+                  {% render 'product-variant-options',
+                    product: product,
+                    option: option,
+                    block: block,
+                    varaint_selector_type: varaint_selector_type,
+                    product_form_id: form_id
+                  %}
+                </div>
+              </fieldset>
+            {%- else -%}
+              <fieldset
+                class="{{ option.name | downcase | replace: ' ','_' }} product-variant__pill__item position-relative"
+                product-variant-option
+              >
+                <div class="product-variant__head d-flex align-item-center justify-content-space-btw mb-2">
+                  <div class="product-variant__label-container">
+                    <legend class="select__label  text-color">{{ option.name }}:</legend>
+                    <span product-variant-option-value> {{ option.selected_value | capitalize }}</span>
+                  </div>
+                  {% liquid
+                    assign option_name = option.name | capitalize
+                    if guide_option == option_name
+                      assign show_guide = true
+                    else
+                      assign show_guide = false
+                    endif
+                  %}
+                  {% if show_guide and quick_view_drawer == false %}
+                    <guide-drawer
+                      id="{{ block.id | prepend: 'shopify-section-mobile' }}"
+                      target-portal-element="#portal"
+                    >
+                      <button
+                        class="link fnt-body-weight-bold desktop-only"
+                        triger-guide-drawer-button
+                      >
+                        <span>{{ block.settings.guide_heading }}</span>
+                      </button>
+                      {% render 'guide-drawer', block: block, quick_view_drawer: quick_view_drawer %}
+                    </guide-drawer>
+                  {% endif %}
+                </div>
+
+                <div class="variant-pills-wrapper">
+                  {% render 'product-variant-options',
+                    product: product,
+                    option: option,
+                    block: block,
+                    varaint_selector_type: varaint_selector_type
+                  %}
+                </div>
+                {% if show_guide and quick_view_drawer %}
+                  <guide-drawer id="{{ block.id | prepend: 'shopify-section-' }}" target-portal-element="#portal">
+                    <button
+                      class="link mt-8 fnt-body-weight-bold"
+                      triger-guide-popup
+                    >
+                      <span>{{ block.settings.guide_heading }}</span>
+                    </button>
+                    {% render 'guide-drawer', block: block, quick_view_drawer: quick_view_drawer %}
+                  </guide-drawer>
+                {% elsif show_guide and quick_view_drawer == false %}
+                  <guide-drawer
+                    class=""
+                    id="{{ block.id | prepend: 'shopify-section-mobile-' }}"
+                    target-portal-element="#portal"
+                  >
+                    <button
+                      class="link fnt-body-weight-bold mobile-only mt-8"
+                      triger-guide-drawer-button
+                    >
+                      <span>{{ block.settings.guide_heading }}</span>
+                    </button>
+                  </guide-drawer>
+                {% endif %}
+              </fieldset>
+            {%- endif -%}
+          {% endfor %}
+          <script type="application/json">
+            {{ product.variants | json }}
+          </script>
+        </variant-pills>
+    {%- endcase -%}
+  {%- endunless -%}
+  <noscript>
+    <div
+      {% if product.has_only_default_variant %}
+        hidden
+      {% endif %}
+      style="margin-bottom: 16px;"
+    >
+      <label class="select__label mb-2" for="Variants-{{ section.id }}">
+        {{- 'products.product.product_variants' | t -}}
+      </label>
+      <div class="select-wrapper ">
+        <select
+          name="id"
+          id="Variants-{{ section.id }}"
+          class="select"
+          form="{{ form_id }}"
+        >
+          {%- for variant in product.variants -%}
+            <option
+              {% if variant == product.selected_or_first_available_variant %}
+                selected="selected"
+              {% endif %}
+              {% if variant.available == false %}
+                disabled
+              {% endif %}
+              value="{{ variant.id }}"
+            >
+              {%- liquid
+                echo variant.title
+                echo variant.price | money | strip_html | prepend: ' - '
+                if variant.available == false
+                  echo 'products.product.sold_out' | t | prepend: ' - '
+                endif
+                if variant.quantity_rule.increment > 1
+                  echo 'products.product.quantity.multiples_of' | t: quantity: variant.quantity_rule.increment | prepend: ' - '
+                endif
+                if variant.quantity_rule.min > 1
+                  echo 'products.product.quantity.minimum_of' | t: quantity: variant.quantity_rule.min | prepend: ' - '
+                endif
+                if variant.quantity_rule.max != null
+                  echo 'products.product.quantity.maximum_of' | t: quantity: variant.quantity_rule.max | prepend: ' - '
+                endif
+                # TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter
+                # theme-check-disable
+                assign cart_quantity = cart | item_count_for_variant: variant.id
+                # theme-check-enable
+                if cart_quantity > 0
+                  echo 'products.product.quantity.in_cart_html' | t: quantity: cart_quantity | prepend: ' - '
+                endif
+              -%}
+            </option>
+          {%- endfor -%}
+        </select>
+        {%- render 'icon' with 'caret' -%}
+      </div>
+    </div>
+  </noscript>
+</div>

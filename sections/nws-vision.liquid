@@ -1,0 +1,258 @@
+<section class="vision">
+    <div class="container">
+        <div class="body">
+            <div class="content">
+                <div class="left-side">
+                  {% if section.settings.h-img != blank %}
+                    <div class="img-box">
+                      <img src="{{ section.settings.h-img | img_url: 'master' }}" alt="{{ section.settings.h-img.alt }}">
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="right-side">
+                    <div class="content">
+                        {% if section.settings.heading != blank %}
+                          <div class="heading-wrapper">
+                            <h2 class="section-heading">{{ section.settings.heading }}</h2>
+                          </div>
+                        {% endif %}
+                        <div class="para-wrapper">
+                          {% for block in section.blocks %}
+                            {% if block.settings.para != blank %}
+                              <div class="para">{{ block.settings.para }}</div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                        {% if section.settings.info != blank %}
+                          <div class="info-box">
+                            <div class="content">{{ section.settings.info }} </div>
+                          </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+  "name": "NWS Vision",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "h-img",
+      "label": "Select Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "info",
+      "label": "Info Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "para",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "prd-url",
+          "label": "Image URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NWS Vision",
+      "category": "Section Category"
+    }
+  ]
+}
+{% endschema %}
+{% style %}
+section.vision {
+    display: block;
+    padding: 80px 0;
+    position: relative;
+}
+section.vision .container {
+    display: block;
+    width: 100%;
+    max-width: 885px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+section.vision .container .body {
+    display: block;
+}
+section.vision .body .content {
+    display: flex;
+}
+section.vision .body .left-side {
+    display: block;
+    width: 100%;
+    max-width: 50%;
+    padding: 0 8px;
+}
+section.vision .left-side .img-box {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0vw, 0vw) rotate(0deg);
+    width: 100%;
+    max-width: 46%;
+}
+section.vision .left-side .img-box img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+}
+section.vision .body .right-side {
+    display: block;
+    width: 100%;
+    max-width: 50%;
+    padding: 0 8px;
+}
+section.vision .right-side .content {
+    display: block;
+}
+section.vision .right-side .heading-wrapper {
+    display: block;
+    margin-bottom: 30px;
+}
+section.vision .right-side .heading-wrapper h2.section-heading {
+    display: block;
+    font-size: 42px;
+    font-family: PPObjectSans;
+    color: #F77F26;
+    margin: 0;
+}
+section.vision .right-side .para-wrapper {
+    display: block;
+    margin-bottom: 30px;
+}
+section.vision .right-side .para-wrapper .para {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+section.vision .right-side .para-wrapper .para:last-child {
+    margin-bottom: 0;
+}
+section.vision .right-side .info-box {
+	display: block;
+	background-color: #FFF2D2;
+	width: 100%;
+	max-width: 280px;
+	padding: 12px 15px;
+	border-radius: 10px;
+}
+section.vision .right-side .info-box .content {
+    display: block;
+    font-size: 16px;
+    color: #F77F26;
+    line-height: 1.2;
+    font-weight: 600;
+}
+@media screen and (max-width: 1280px) {
+  section.vision .right-side .heading-wrapper h2.section-heading {
+    font-size: 38px;
+  }
+  section.vision .left-side .img-box {
+      transform: translate(0vw, 0vw) rotate(0deg);
+  }
+}
+@media screen and (max-width: 991px) {
+  section.vision .right-side .para-wrapper .para {
+      font-size: 15px;
+  }
+  section.vision .right-side .info-box .content {
+      font-size: 15px;
+      line-height: normal;
+  }
+  section.vision .left-side .img-box {
+      transform: translate(0vw, 0vw) rotate(0deg);
+  }
+}
+@media screen and (max-width: 768px) {
+  section.vision {
+      display: block;
+      padding: 60px 0;
+  }
+  section.vision .body .content {
+      flex-direction: column;
+  }
+  section.vision .body .left-side {
+      max-width: unset;
+      padding-bottom: 35%;
+  }
+  section.vision .right-side .heading-wrapper h2.section-heading {
+    font-size: 36px;
+  }
+  section.vision .body .right-side {
+      max-width: unset;
+  }
+  section.vision .right-side .content {
+      max-width: 550px;
+      text-align: center;
+      margin: 0 auto;
+  }
+  section.vision .right-side .info-box {
+      margin: 0 auto;
+  }
+  section.vision .right-side .heading-wrapper {
+      margin-bottom: 22px;
+  }
+  section.vision .right-side .para-wrapper .para {
+      font-size: 14px;
+      margin-bottom: 22px;
+  }
+  section.vision .right-side .info-box .content {
+      font-size: 14px;
+  }
+  section.vision .right-side .para-wrapper {
+      margin-bottom: 22px;
+  }
+  section.vision .left-side .img-box {
+      transform: translate(0vw, 0vw) rotate(0deg);
+      max-width: 55%;
+  }
+}
+@media screen and (max-width: 520px) {
+  section.vision .right-side .heading-wrapper h2.section-heading {
+    font-size: 28px;
+  }
+  section.vision .right-side .heading-wrapper {
+      margin-bottom: 18px;
+  }
+  section.vision .right-side .para-wrapper .para {
+      margin-bottom: 18px;
+  }
+  section.vision .right-side .info-box .content {
+      max-width: 200px;
+  }
+  section.vision .right-side .para-wrapper {
+      margin-bottom: 18px;
+  }
+section.vision .left-side .img-box {
+    transform: translate(0vw, 0vw) rotate(0deg);
+    max-width: 80%;
+}
+section.vision .body .left-side {
+  padding-bottom: 50%;
+}
+}
+{% endstyle %}

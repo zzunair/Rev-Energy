@@ -1,0 +1,45 @@
+<section class="nws-hero">
+  {% if section.settings['img-banner'] != blank %}
+    <div class="img-box">
+      <img
+        src="{{ section.settings.img-banner | img_url: 'master' }}"
+        alt="{{ section.settings.img-banner.alt }}"
+        width="auto"
+        height="auto"
+      >
+    </div>
+  {% endif %}
+</section>
+{% schema %}
+{
+  "name": "NWS Hero Section 3",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img-banner",
+      "label": "Select Image"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "NWS Hero Section 3",
+      "category": "Section Category"
+    }
+  ]
+}
+{% endschema %}
+<style>
+  section.nws-hero {
+      display: block;
+      margin-bottom: 30px;
+  }
+  section.nws-hero .img-box {
+      display: block;
+  }
+  section.nws-hero .img-box img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+  }
+</style>

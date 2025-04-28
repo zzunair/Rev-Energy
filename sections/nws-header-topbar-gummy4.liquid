@@ -1,0 +1,58 @@
+<!-- nws-custom-topbar -->
+  {% if section.settings.topbar-text != blank %}
+    <div class="nws-custom-topbar" {% if section.settings.topbar-color != blank %}style="background-color:{{ section.settings.topbar-color }};"{% endif %} >
+     <div class="container-fluid wide" >
+      <div class="nws-topbar-ul" >
+        <div class="nws-topbar-li nws-topbar-li-left" ></div>
+        <div class="nws-topbar-li nws-topbar-li-center" >
+          {{ section.settings.topbar-text }}
+        </div>
+        <div class="nws-topbar-li nws-topbar-li-right" >
+          {% if customer.has_account %}
+            <a class="topbar-link topbar-link-account" href="/account" >My Account</a>
+          {% else %}
+            {% if section.settings.topbar-login != blank %}<a class="topbar-link" href="{{ section.settings.topbar-login-link }}" >{{ section.settings.topbar-login }}</a>{% endif %}{% if section.settings.topbar-signup != blank %}<a class="topbar-link" href="{{ section.settings.topbar-signup-link }}" >{{ section.settings.topbar-signup }}</a>{% endif %}
+          {% endif %}
+        </div>
+      </div>
+     </div>
+    </div>
+  {% endif %}
+<!-- end nws-custom-topbar -->
+{% schema %}
+  {
+    "name": "NWS - Topbar",
+    "settings": [
+        {
+          "type": "color",
+          "id": "topbar-color",
+          "label": "Tobar Color"
+        },
+        {
+          "type": "richtext",
+          "id": "topbar-text",
+          "label": "Topbar Text"
+        },
+        {
+          "type": "text",
+          "id": "topbar-login",
+          "label": "Topbar Login"
+        },
+        {
+          "type": "url",
+          "id": "topbar-login-link",
+          "label": "Topbar Login Link"
+        },
+        {
+          "type": "text",
+          "id": "topbar-signup",
+          "label": "Topbar Sign Up"
+        },
+        {
+          "type": "url",
+          "id": "topbar-signup-link",
+          "label": "Topbar Sign Up Link"
+        }
+    ]
+  }
+{% endschema %}

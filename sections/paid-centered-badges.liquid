@@ -1,0 +1,103 @@
+{% if section.blocks.size > 0 %}
+    {{ 'paid-centered-badges.css' | asset_url | stylesheet_tag }}
+    <section id="centered-badges" data-section-identifier="{{section.settings.section_identifier}}" data-block-identifier="{{block.settings.metaobjectidentifier}}">
+        <div class="{% if metaobj.show_badges_full_width.value == true %}full-width{% else %}page-width{% endif %}">
+            {% for block in section.blocks %}
+                {% if block.type == 'badge' %}
+                    {% if section.settings.section_identifier == block.settings.metaobjectidentifier %}
+                        <!-- START: Section Badges -->
+                         <div class="badges">
+                        {% if block.settings.badge != blank %}
+                            <img src="{{ block.settings.badge | img_url: 'master' }}" alt="{{ block.settings.badge.alt | escape }}" loading="lazy" height="395" width="495"/>
+                        {% endif %}
+
+                        {% if block.settings.badge_name != blank %}
+                          {% if block.settings.badge_name == "Creatine Monohydrate" %}
+                              <span>Creatine <br> Monohydrate</span>
+                          {% else %}
+                            <span>{{ block.settings.badge_name }}</span>
+                          {% endif %}
+                        {% endif %}
+                         </div>
+                       
+
+                    <!-- END: Section Badges --> 
+                    {% endif %}
+            
+                {% endif %}
+            {% endfor %}
+
+           {% style %}
+
+                            {% if section.settings.select_color != blank %}
+                                #shopify-section-{{ section.id  }} #centered-badges{
+                                    background-color: {{ section.settings.select_color }};
+                                }
+                            {% endif %}
+                        {% endstyle %}
+        
+        </div>
+    </section>
+{% endif %}
+
+<style>
+
+
+    #shopify-section-{{ section.id }}.shopify-section {
+      padding:0;
+    }
+
+
+
+</style>
+
+
+{% schema %}
+{ 
+    "name": "Centered Badges Paid",
+    "tag": "section",
+    "class": "centered-badges spaced-section",
+    "limit": 1,
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_identifier",
+            "label": "Section Identifier"
+        },
+        {
+            "type": "color",
+            "id": "select_color",
+            "label": "Select Background Color"
+        }
+    ],
+    "blocks": [  
+    {
+        "type": "badge",
+        "name": "Add Logo",
+        "limit": 10,
+        "settings": [
+            {
+                "type": "text",
+                "id": "metaobjectidentifier",
+                "label": "Metaobject Identifier"
+            },
+            {
+                "type": "text",
+                "id": "badge_name",
+                "label": "Badge Name"
+            },
+            {
+                "type": "image_picker",
+                "id": "badge",
+                "label": "Add Logo"
+            }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "name": "Centered Badges Paid"
+        }
+    ]
+}
+{% endschema %}

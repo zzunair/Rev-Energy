@@ -1,0 +1,114 @@
+<!-- nws-custom-topbar -->
+  {% if section.settings.topbar-text != blank %}
+    <div class="nws-custom-topbar" {% if section.settings.topbar-color != blank %}style="background-color:{{ section.settings.topbar-color }};"{% endif %} >
+     <div class="container-fluid wide" >
+      <div class="nws-topbar-ul" >
+        <div class="nws-topbar-li nws-topbar-li-left" ></div>
+        <div class="nws-topbar-li nws-topbar-li-center" >
+          {%  if template == "page.gummy-fb5" %}
+           {{ section.settings.topbar-text }}
+          {%  elsif template == "page.starterpack-fb" %}
+            <p>45% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/starterpack-fb#subs-product" title="https://trycreate.co/pages/starterpack-fb#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+          {%  elsif template == "page.starterpack-fb2" %}
+            <p>45% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/starterpack-fb2#subs-product" title="https://trycreate.co/pages/starterpack-fb2#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+        {%  elsif template == "page.starterpack-fb4" or template == "page.starterpack-fb4-fix" %}
+            <p>45% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/starterpack-fb4#subs-product" title="https://trycreate.co/pages/starterpack-fb4#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+            {%  elsif template == "page.starterpack-fb3" or template == "page.starterpack-fb5" or template == "page.starterpack-fb-main" or template == "page.starterpack-fb6" or template == "page.starterpack-fb7"  %}
+            <p>65% OFF DEAL ENDING SOON (<a href="#subs-product" title="#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>      
+        {%  elsif template == "page.memorial-day-fb" %}
+            <p>MEMORIAL DAY SALE 65% OFF  (<a href="#subs-product" title="#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>   
+        {%  elsif template == "page.labor-day-fb" or  template == "page.labor-day-g" %}
+            <p>LABOR DAY SALE 65% OFF  (<a href="#subs-product" title="#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>   
+        {%  elsif template == "page.july-4th-fb" %}
+            <p>JULY 4TH SALE 65% OFF (<a href="#subs-product" title="#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>   
+        {%  elsif template == "page.father-fb" %}
+            <p>FATHER'S DAY SALE 65% OFF  (<a href="#subs-product" title="#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>    
+        {%  elsif template == "page.starterpack-tt" %}
+            <p>45% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/starterpack-tt#subs-product" title="https://trycreate.co/pages/starterpack-tt#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+         {%  elsif template == "page.orange-fb" %}
+              {%  if page.handle == "orange-fb" %}
+              <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/orange-fb#subs-product" title="https://trycreate.co/pages/orange-fb#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+              {%  elsif page.handle == "orange-tt" %}
+              <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/orange-tt#subs-product" title="https://trycreate.co/pages/orange-tt#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+                {%  else%}
+              <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/orange-g#subs-product" title="https://trycreate.co/pages/orange-g#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+               {%  endif %}       
+        {%  elsif template == "page.orange-fb2" %}
+          <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/orange-fb2#subs-product" title="https://trycreate.co/pages/orange-fb2#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+        {%  elsif template == "page.orange-fb3" %}
+          <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/orange-fb3#subs-product" title="https://trycreate.co/pages/orange-fb3#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+        {%  elsif template == "page.orange-fb4" %}
+          <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/orange-fb4#subs-product" title="https://trycreate.co/pages/orange-fb4#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+        {%  elsif template == "page.sourapple-fb" %}
+          <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/sourapple-fb#subs-product" title="https://trycreate.co/pages/sourapple-fb#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>        
+          {%  elsif template == "page.blueraspberry-fb" %}
+              {%  if page.handle == "blueraspberry-fb" %}
+              <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/blueraspberry-fb#subs-product" title="https://trycreate.co/pages/blueraspberry-fb#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+              {%  elsif page.handle == "blueraspberry-tt" %}
+              <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/blueraspberry-tt#subs-product" title="https://trycreate.co/pages/blueraspberry-tt#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+                {%  else%}
+              <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/blueraspberry-g#subs-product" title="https://trycreate.co/pages/blueraspberry-g#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+               {%  endif %}
+      {%  elsif template == "page.blueraspberry-fb2" %}
+        <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/blueraspberry-fb2#subs-product" title="https://trycreate.co/pages/blueraspberry-fb2#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+        {%  else %}
+              {%  if page.handle == "watermelon-fb" %}
+                <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/watermelon-fb#subs-product" title="https://trycreate.co/pages/watermelon-fb#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+              {% elsif page.handle == "watermelon-fb2" %}
+                <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/watermelon-fb2#subs-product" title="https://trycreate.co/pages/watermelon-fb2#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+              {%  elsif page.handle == "watermelon-tt" %}
+                <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/watermelon-tt#subs-product" title="https://trycreate.co/pages/watermelon-tt#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+              {%  else%}
+               <p>40% OFF DEAL ENDING SOON (<a href="https://trycreate.co/pages/watermelon-g#subs-product" title="https://trycreate.co/pages/watermelon-g#subs-product"><span style="text-decoration:underline"><strong>SHOP NOW</strong></span></a>)</p>
+               {%  endif %}    
+         {%  endif %}
+        </div>
+        <div class="nws-topbar-li nws-topbar-li-right" >
+          {% if customer.has_account %}
+            <a class="topbar-link topbar-link-account" href="/account" >My Account</a>
+          {% else %}
+            {% if section.settings.topbar-login != blank %}<a class="topbar-link" href="{{ section.settings.topbar-login-link }}" >{{ section.settings.topbar-login }}</a>{% endif %}{% if section.settings.topbar-signup != blank %}<a class="topbar-link" href="{{ section.settings.topbar-signup-link }}" >{{ section.settings.topbar-signup }}</a>{% endif %}
+          {% endif %}
+        </div>
+      </div>
+     </div>
+    </div>
+  {% endif %}
+<!-- end nws-custom-topbar -->
+{% schema %}
+  {
+    "name": "NWS - Topbar",
+    "settings": [
+        {
+          "type": "color",
+          "id": "topbar-color",
+          "label": "Tobar Color"
+        },
+        {
+          "type": "richtext",
+          "id": "topbar-text",
+          "label": "Topbar Text"
+        },
+        {
+          "type": "text",
+          "id": "topbar-login",
+          "label": "Topbar Login"
+        },
+        {
+          "type": "url",
+          "id": "topbar-login-link",
+          "label": "Topbar Login Link"
+        },
+        {
+          "type": "text",
+          "id": "topbar-signup",
+          "label": "Topbar Sign Up"
+        },
+        {
+          "type": "url",
+          "id": "topbar-signup-link",
+          "label": "Topbar Sign Up Link"
+        }
+    ]
+  }
+{% endschema %}

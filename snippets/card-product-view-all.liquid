@@ -1,0 +1,90 @@
+{%- liquid
+  assign has_no_varaint = product.has_only_default_variant
+  assign is_product_available = product.selected_or_first_available_variant.available
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+
+<div class="view-all-item">
+  <product-card product-handle="{{ product.handle }}" product-id="{{ product.selected_or_first_available_variant.id }}">
+    <div class="d-flex d-flex-dir-c view-all__flex__wrap">
+      {%- assign product_image = product.selected_or_first_available_variant.featured_image
+        | default: product.featured_media
+      -%}
+
+      {% capture image_class %}
+        object-fit-{{ settings.image_fit }}
+      {% endcapture %}
+      <div class="view-all-item__image-wrp">
+        <div class="image--aspectSize">
+          {%- if product_image -%}
+            {{
+              product_image
+              | image_url: width: product_image.width
+              | image_tag:
+                widths: '300,200',
+                sizes: '(max-width: 767) 57px',
+                alt: product.featured_media.alt,
+                loading: 'lazy',
+                class: image_class
+            }}
+          {%- else -%}
+            <div class="product-cart-no-image-container">
+              <div class="product-cart-no-image">
+                <a class="view-all-item__Head fnt-14  color-text" href="{{ product.url }}">
+                  {{- product.title | truncate: 45 -}}
+                </a>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+        {% comment %} Product form {% endcomment %}
+        {% form 'product', product, class: 'product-card-item__form ' %}
+          <input
+            name="id"
+            type="hidden"
+            value="{{ product.selected_or_first_available_variant.id }}"
+          >
+          <input
+            name="quantity"
+            type="hidden"
+            value="1"
+          >
+
+          <!-- form content -->
+          <button
+            class="btn btn--fill  text-upper btn--sm btn--icon"
+            toggle-element="options-drawer"
+            type="submit"
+          >
+            <div class="btn--preloader justify-content-center d-v-center">
+              <div class="btn--preloader--circular">
+                <div class="checkmark draw"></div>
+              </div>
+            </div>
+            <div class="btn--text d-v-center justify-content-center">
+              {% render 'icon' with 'quick-view' %}
+            </div>
+          </button>
+        {% endform %}
+      </div>
+
+      <div class="view-all-item__content">
+        {% comment %} Title {% endcomment %}
+        {%- if product_image -%}
+          <a class="view-all-item__Head fnt-14  color-text" href="{{ product.url }}">
+            {{- product.title | truncate: 45 -}}
+          </a>
+        {%- endif -%}
+        <div class="d-flex justify-content-space-btw align-item-center">
+          {% comment %} Price {% endcomment %}
+          {% render 'price', product: product, on_sale: on_sale, hide_percentage_off: true %}
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Form {% endcomment %}
+  </product-card>
+</div>

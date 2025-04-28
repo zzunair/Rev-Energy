@@ -1,0 +1,84 @@
+<!-- nws-video-col-2-2 -->
+  {% if section.settings.t-txt != blank %}
+    <div class="nws-page-col-2 nws-same-section" {% if section.settings.section-color != blank %}style="background-color:{{ section.settings.section-color }};"{% endif %} >
+      <div class="container" >
+        <div class="nws-page-col-2-content row">
+          <div class="col-lg-6 col-sm-12" >
+            <div class="nws-page-col-2-text" >
+              {% if section.settings.t-txt != blank %}<h2 class="heading-nws" >{{ section.settings.t-txt }}</h2>{% endif %}
+              {% if section.settings.q-txt != blank %}<div class="nws-page-col-2-p" >{{ section.settings.q-txt }}</div>{% endif %}
+              <div class="nws-desk-none" >
+                {% if section.settings.img-icon != blank %}
+                  <img src="{{ section.settings.img-icon | img_url: '550x' }}" />
+                {% else %}
+                  {% if section.settings.video_url.type == "youtube" %}
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  {% elsif section.settings.video_url.type == "vimeo" %}
+                    <iframe class="iframe" src="//player.vimeo.com/video/{{ section.settings.video_url.id }}?title=0&byline=0&portrait=0&sidedock=0" width="100%" height="430" frameborder="0" webkitallowfullscreen   mozallowfullscreen allowfullscreen></iframe>
+                  {% endif %}
+                {% endif %}
+              </div>
+              {% if section.settings.t-btn != blank %}<a href="{{ section.settings.t-link }}" class="btn-nws" >{{ section.settings.t-btn }}</a>{% endif %}
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12 nws-mob-none" >
+            <div class="nws-page-col-2-image" >
+              {% if section.settings.img-icon != blank %}
+                <img src="{{ section.settings.img-icon | img_url: '550x' }}" />
+              {% else %}
+                {% if section.settings.video_url.type == "youtube" %}
+                  <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% elsif section.settings.video_url.type == "vimeo" %}
+                  <iframe class="iframe" src="//player.vimeo.com/video/{{ section.settings.video_url.id }}?title=0&byline=0&portrait=0&sidedock=0" width="100%" height="430" frameborder="0" webkitallowfullscreen   mozallowfullscreen allowfullscreen></iframe>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+<!-- end nws-video-col-2-2 -->
+{% schema %}
+  {
+    "name": "NWS - Video Col 2 - 2",
+    "settings": [
+        {
+          "type": "color",
+          "id": "section-color",
+          "label": "Section BG Color"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video link",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "image_picker",
+          "id": "img-icon",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "t-txt",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "q-txt",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "t-btn",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "t-link",
+          "label": "Button Link"
+        }
+    ]
+  }
+{% endschema %}

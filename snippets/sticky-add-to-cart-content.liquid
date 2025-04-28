@@ -1,0 +1,76 @@
+{%- liquid
+  assign is_product_available = product.selected_or_first_available_variant.available
+-%}
+
+<div class="d-flex d-flex-dir-c sticky-add-to-cart__flex__wrap">
+  <div class="sticky-add-to-cart__leftBlock">
+    {% comment %} Product form {% endcomment %}
+
+    <!-- form content -->
+    {% if is_product_available %}
+      {% unless section.settings.sticky_add_to_cart_style == 'bar' %}
+        <button
+          class="btn btn--fill text-upper sticky-icon-button"
+          toggle-element="cart-drawer"
+          form="{{ form_id }}"
+          aria-label="{{ 'products.product.sticky_add_to_cart.add_to_cart' | t }}"
+          type="submit"
+          add-to-cart-button
+        >
+          <div class="btn--preloader">
+            <div class="btn--preloader--circular">
+              <div class="checkmark draw"></div>
+            </div>
+          </div>
+          <div class="btn--text">
+            {% render 'icon', icon: 'plus', color_var: 'var(--color-button-text)' %}
+          </div>
+        </button>
+      {% else %}
+        <button
+          class="btn btn--fill text-upper"
+          toggle-element="cart-drawer"
+          form="{{ form_id }}"
+          type="submit"
+
+          add-to-cart-button
+        >
+          <div class="btn--preloader">
+            <div class="btn--preloader--circular">
+              <div class="checkmark draw"></div>
+            </div>
+          </div>
+          <div class="btn--text">
+            <span>
+              {% if settings.currency_code_enabled %}
+                {{ product.selected_or_first_available_variant.price | money_with_currency }}
+              {% else %}
+                {{ product.selected_or_first_available_variant.price | money }}
+              {% endif %}
+            </span>
+            - {{ 'products.product.sticky_add_to_cart.add_to_cart' | t }}
+          </div>
+        </button>
+      {% endunless %}
+
+    {%- else -%}
+      {% unless section.settings.sticky_add_to_cart_style == 'bar' %}
+        <button
+          class="btn btn--fill text-upper disable sticky-icon-button"
+          form="{{ form_id }}"
+          sticky-icon-button
+          aria-label="{{ 'products.product.sticky_add_to_cart.add_to_cart' | t }}"
+          type="button"
+        >
+          {% render 'icon', icon: 'plus', color_var: 'var(--color-button-text)' %}
+        </button>
+      {% else %}
+        <button class="btn btn--fill text-upper disable" sticky-bar-button type="button">
+          {{ 'cart.button_out_of_stock' | t }}
+        </button>
+      {% endunless %}
+    {% endif %}
+  </div>
+</div>
+
+{% comment %} Form {% endcomment %}

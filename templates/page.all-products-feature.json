@@ -1,0 +1,158 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_slider_JJgCmF": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_RU4EDY": {
+          "type": "Slide",
+          "settings": {
+            "desk-slide": "shopify://shop_images/PoweredbyCreatineNoCTA_Desktop.png",
+            "mob-slide": "shopify://shop_images/PoweredbyCreatineNoCTA_Mobile.png",
+            "link-slide": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_RU4EDY"
+      ],
+      "settings": {
+        "section-color": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "content_width": 1200,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "color_scheme": ""
+      }
+    },
+    "featured_collection_QBDy6y": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_collection_RedwJa": {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Collection 1",
+            "collection": "core-90-counts"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_RedwJa"
+      ],
+      "settings": {
+        "max_product_show": 5,
+        "layout_style": "carousel",
+        "columns_desktop": "5",
+        "columns_mobile": "2",
+        "subheading": "Our classic creatine monohydrate gummies. Each gummy contains 1.5g ofcreatine.",
+        "heading": "Core - Creatine Gummies",
+        "content": "",
+        "use_outline_button": false,
+        "show_view_all_button": false,
+        "view_all_link_style": "icon",
+        "view_all_link_position": "start",
+        "view_all_link_text": "View all",
+        "link_url": "",
+        "link_target": "_blank",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "featured_collection_cX7yaL": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_collection_yE9t8r": {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Collection 1",
+            "collection": "daily-performance-gummies"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_yE9t8r"
+      ],
+      "settings": {
+        "max_product_show": 5,
+        "layout_style": "carousel",
+        "columns_desktop": "4",
+        "columns_mobile": "1",
+        "subheading": "Creatine + vitamins + mushrooms + organic greens & more.",
+        "heading": "Daily Performance Gummies",
+        "content": "",
+        "use_outline_button": false,
+        "show_view_all_button": true,
+        "view_all_link_style": "icon",
+        "view_all_link_position": "start",
+        "view_all_link_text": "View all",
+        "link_url": "",
+        "link_target": "_blank",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    },
+    "featured_collection_NcaUhg": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_collection_NXaMtG": {
+          "type": "featured_collection",
+          "settings": {
+            "tab_heading": "Collection 1",
+            "collection": "merch"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_NXaMtG"
+      ],
+      "settings": {
+        "max_product_show": 5,
+        "layout_style": "carousel",
+        "columns_desktop": "4",
+        "columns_mobile": "1",
+        "subheading": "Show your Create gummy pride wherever you go.",
+        "heading": "Merchandise",
+        "content": "",
+        "use_outline_button": false,
+        "show_view_all_button": true,
+        "view_all_link_style": "icon",
+        "view_all_link_position": "start",
+        "view_all_link_text": "View all",
+        "link_url": "",
+        "link_target": "_top",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "hero_slider_JJgCmF",
+    "main",
+    "featured_collection_QBDy6y",
+    "featured_collection_cX7yaL",
+    "featured_collection_NcaUhg"
+  ]
+}

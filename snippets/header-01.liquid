@@ -1,0 +1,162 @@
+{%- if settings.use_header_mobile_logo_center -%}
+<div class="{{section.settings.width_header}}">
+  <div class="main-header kt--drop-w kt--drop-w-d">
+    {%- if section.settings.use_header_announcement or section.settings.use_header_top and settings.color_headt_bg == settings.color_head_bg -%}
+    <div class="clearfix border-top{%unless section.settings.sticky_header_top%} not-sticky{%endunless%}" style="opacity: .5"></div>
+    {%- endif -%}
+    <div class="row min-height align-items-center justify-content-between">
+      <div class="header-control col-3 col-md-4 d-xl-none">
+        <div class="control-inner">
+          <div class="mobile-block block-menu-bar">
+            <div class="menu-bar menu-toggle"><svg width="29" height="20" viewBox="0 0 29 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2H27.6M2 10H27.6M2 18H27.6" stroke="#2D2D2D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xl-auto order-1 order-md-2"> <!-- style="width:auto !important;" -->
+        <div class="row align-items-center justify-content-between">
+          <div class="header-logo col-12 col-xl-auto text-center">
+            {%- render 'kt_logo_header' -%}
+          </div>
+          <div class="header-menu horizon-menu col-12 col-xl-auto d-none d-xl-block test51">
+            {%- unless cart.attributes.theme_mobile == 'true' -%}{%- endunless -%}
+              <nav class="main-navigation" data-width="1200">
+                {%- render 'menu_import' -%}
+              </nav>
+          </div>
+        </div>
+      </div>
+      <div class="header-control col-3 col-md-4 col-xl-auto order-3">
+        <div class="control-inner d-flex align-items-center justify-content-end">
+          <div class="block-search d-none d-md-block">
+            {% render 'search-bar', search_style: "icon" %}
+          </div>
+          {%- if section.settings.use_compare and settings.use_compare-%}
+          <div class="block-compare d-none d-md-block">
+            <div class="mini-compare load kt--drop-i">
+              <div class="icon-link kt--drop-title"><div class="icon-count kt-button"><svg class="molla-svg-icon" viewBox="0 0 32 32"><use xlink:href="#icon-compare"></use></svg><span class="count compareCount">0</span></div></div>
+              <div class="mini-compare-content kt--drop-in"><div class="no-compare"><p>{{'products.compare.no_compare'|t}}</p></div><div class="mini-compare-body"></div></div>
+            </div>
+          </div>
+          {%- endif -%}
+          {%- if section.settings.use_wishlist and settings.use_wishlist != '' -%}
+          <div class="block-wishlist d-none d-md-block">
+            {%- assign wishlist_page = pages['wishlist-local'] -%}{%- if settings.use_wishlist == 'nitro' -%}{%- assign wishlist_page = pages['wishlist'] -%}{%- endif -%}
+            <a href="{%if settings.use_wishlist == 'nitro'%}{%if customer%}{{wishlist_page.url}}{%else%}{{routes.account_login_url}}{%endif%}{%else%}{{wishlist_page.url}}{%endif%}" class="icon-link"><div class="icon-count"><svg class="molla-svg-icon" viewBox="0 0 32 32"><use xlink:href="#icon-wishlist"></use></svg><span class="count wishlist-count">0</span></div><span class="title">{{'products.wishlist.title'|t}}</span></a>
+          </div>
+          {%- endif -%}
+          {%- if section.settings.use_cart-%}
+          <div class="block-minicart">
+            {%- render 'kt_mini-cart' -%}
+          </div>
+          {%- endif -%}
+          {%- if section.settings.use_shop-%}
+            <div class="block-nws-shop">
+            
+             {%  if page.handle == "orange-g" %}
+               <a href="https://trycreate.co/pages/orange-g#subs-product" >{{ section.settings.use_shop }}</a>
+             {%  elsif page.handle == "orange-tt" %}
+               <a href="https://trycreate.co/pages/orange-tt#subs-product" >{{ section.settings.use_shop }}</a>
+            {%  elsif page.handle == "blueraspberry-g" %}
+               <a href="https://trycreate.co/pages/blueraspberry-g#subs-product" >{{ section.settings.use_shop }}</a>
+            {%  elsif page.handle == "blueraspberry-tt" %}
+               <a href="https://trycreate.co/pages/blueraspberry-tt#subs-product" >{{ section.settings.use_shop }}</a>
+            {%  elsif page.handle == "watermelon-g" %}
+               <a href="https://trycreate.co/pages/watermelon-g#subs-product" >{{ section.settings.use_shop }}</a>
+            {%  elsif page.handle == "watermelon-tt" %}
+               <a href="https://trycreate.co/pages/watermelon-tt#subs-product" >{{ section.settings.use_shop }}</a>
+             {%  else%}
+               <a href="
+                 {% if page.metafields.custom.override_shopnow_link %}
+                  {{ page.metafields.custom.override_shopnow_link }}
+                {% else %}
+                  {{ section.settings.use_shop_link }}
+                {% endif %}
+                 
+                 " >{{ section.settings.use_shop }}</a>
+             {%  endif %}  
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- if settings.use_header_mobile_search_box and template.name != 'search' -%}          
+      <div class="header-control col-12 order-last d-md-none">
+        <div class="control-inner">
+          <div class="block-search d-block">
+            {% render 'search-bar', search_style: "show-input" %}
+          </div>
+        </div>
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- else -%}
+<div class="{{section.settings.width_header}}">
+  <div class="main-header kt--drop-w kt--drop-w-d">
+    {%- if section.settings.use_header_announcement or section.settings.use_header_top and settings.color_headt_bg == settings.color_head_bg -%}
+    <div class="clearfix border-top{%unless section.settings.sticky_header_top%} not-sticky{%endunless%}" style="opacity: .5"></div>
+    {%- endif -%}
+    <div class="row min-height align-items-center justify-content-between">
+      <div class="header-control col-1 col-lg-auto d-none d-md-block d-xl-none order-first">
+        <div class="control-inner">
+          <div class="mobile-block block-menu-bar">
+            <div class="menu-bar menu-toggle"><span class="icon"><span></span><span></span><span></span></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-5 col-xl-auto order-1 order-md-2">
+        <div class="row align-items-center justify-content-between">
+          <div class="header-logo col-12 col-xl-auto">
+            {%- render 'kt_logo_header' -%}
+          </div>
+          <div class="header-menu horizon-menu col-12 col-xl-auto d-none d-xl-block">
+            {%- unless cart.attributes.theme_mobile == 'true' -%}
+            <nav class="main-navigation" data-width="1200">
+              {%- render 'menu_import' -%}
+            </nav>
+            {%- endunless -%}
+          </div>
+        </div>
+      </div>
+      <div class="header-control col-7 col-md-6 col-xl-auto order-3">
+        <div class="control-inner d-flex align-items-center justify-content-end">
+          <div class="mobile-block block-menu-bar d-md-none">
+            <div class="menu-bar menu-toggle"><span class="icon"><span></span><span></span><span></span></span></div>
+          </div>
+          <div class="block-search d-none d-sm-block">
+            {% render 'search-bar', search_style: "icon" %}
+          </div>
+          {%- if section.settings.use_compare and settings.use_compare-%}
+          <div class="block-compare">
+            <div class="mini-compare load kt--drop-i">
+              <div class="icon-link kt--drop-title"><div class="icon-count kt-button"><svg class="molla-svg-icon" viewBox="0 0 32 32"><use xlink:href="#icon-compare"></use></svg><span class="count compareCount">0</span></div></div>
+              <div class="mini-compare-content kt--drop-in"><div class="no-compare"><p>{{'products.compare.no_compare'|t}}</p></div><div class="mini-compare-body"></div></div>
+            </div>
+          </div>
+          {%- endif -%}
+          {%- if section.settings.use_wishlist and settings.use_wishlist != '' -%}
+          <div class="block-wishlist">
+            {%- assign wishlist_page = pages['wishlist-local'] -%}{%- if settings.use_wishlist == 'nitro' -%}{%- assign wishlist_page = pages['wishlist'] -%}{%- endif -%}
+            <a href="{%if settings.use_wishlist == 'nitro'%}{%if customer%}{{wishlist_page.url}}{%else%}{{routes.account_login_url}}{%endif%}{%else%}{{wishlist_page.url}}{%endif%}" class="icon-link"><div class="icon-count"><svg class="molla-svg-icon" viewBox="0 0 32 32"><use xlink:href="#icon-wishlist"></use></svg><span class="count wishlist-count">0</span></div><span class="title">{{'products.wishlist.title'|t}}</span></a>
+          </div>
+          {%- endif -%}
+          {%- if section.settings.use_cart-%}
+          <div class="block-minicart">
+            {%- render 'kt_mini-cart' -%}
+          </div>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- if settings.use_header_mobile_search_box and template.name != 'search' -%}
+      <div class="header-control col-12 order-last d-sm-none">
+        <div class="control-inner">
+          <div class="block-search d-block">
+            {% render 'search-bar', search_style: "show-input" %}
+          </div>
+        </div>
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
