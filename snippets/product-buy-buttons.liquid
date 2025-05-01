@@ -19,7 +19,7 @@
         assign gift_card_recipient_feature_active = true
       endif    
     %}
-    <product-form class="product-form" data-section-id="{{ section.id }}">
+    <product-form class="product-form" data-section-id="{{ section.id }}" data-product-form-id="{{ product.id }}">
       {%- form 'product', product, id: form_id, class: 'form', novalidate: 'novalidate' -%}
         {% render 'custom-message', customClassName: 'product-ajax__message mb-2', custom_id: form_id %}
         <input
@@ -31,11 +31,40 @@
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
-        <div class="product-form__buttons">
+        <div class="product-form__buttons ">
+          <div class="product-form-button-inner mb-16">
+          {% comment %} {% render 'product-quantity-selector',
+            form_id: product_form_id,
+            block: block,
+            product: product.selected_or_first_available_variant,
+            product_title: product.title
+          %} {% endcomment %}
+
+
+          <div class="product-quantity__selector-wrapper {{ class | default: '' }}" {{ block.shopify_attributes }}>
+            <quantity-selector class="product-quantity__selector">
+              {% comment %} <label class="visually-hidden" for="quantity-{{ form_id }}"> Quantity </label> {% endcomment %}
+              <select id="Quantity-{{ section.id }}" form="{{ form_id }}" name="quantity"
+                      name="quantity" 
+                      class="quantity-select"
+                      form="{{ product_form_id }}">
+                {% for i in (1..10) %}
+                  <option value="{{ i }}" {% if i == 1 %}selected{% endif %}>{{ i }}</option>
+                {% endfor %}
+              </select>
+              <div class="select-arrow">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+                </svg>
+              </div>
+            </quantity-selector>
+          </div>
+
+
 
           {% comment %} Add to cart Button {% endcomment %}
           <button
-            class="btn {% if block.settings.show_dynamic_checkout == true %} btn--border {% else %} btn--fill  {% endif %} w-100 mb-16"
+            class="btn {% if block.settings.show_dynamic_checkout == true %} btn--border {% else %} btn--fill  {% endif %} w-100"
             {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
             type="submit"
             name="add">       
@@ -44,14 +73,17 @@
                 <div class="checkmark draw"></div>
               </div>
             </div>
-            <div class="btn--text">
+            <div class="btn--text btn--text--atc">
               {%- if product.selected_or_first_available_variant.available -%}
-                {{ 'products.product.button_add_to_cart' | t }}
+                {% comment %} {{ 'products.product.button_add_to_cart' | t }} {% endcomment %}
+                Add to Cart
               {%- else -%}
                 {{ 'products.product.button_out_of_stock' | t }}
               {%- endif -%}
             </div>
           </button>
+          </div>
+
           {%- if block.settings.show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}

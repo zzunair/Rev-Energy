@@ -7,11 +7,123 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "zp-product-header-content": {
       "type": "product-header-content-zipifypages",
       "settings": {}
+    },
+    "mint_energy_rdnezn": {
+      "type": "mint-energy",
+      "blocks": {
+        "limited_edition_d78HAg": {
+          "type": "limited-edition",
+          "settings": {}
+        },
+        "title_nMi6DX": {
+          "type": "title",
+          "settings": {
+            "block_bottom_spacing": 16
+          }
+        },
+        "rating_UHYRVi": {
+          "type": "rating",
+          "settings": {
+            "show_if_no_reviews": false,
+            "block_bottom_spacing": 16
+          }
+        },
+        "price_rDyVpE": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "block_bottom_spacing": 16
+          }
+        },
+        "description_HpgVhT": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "collapse_content": false,
+            "block_bottom_spacing": 16
+          }
+        },
+        "sibling_products_iVieDT": {
+          "type": "sibling-products",
+          "settings": {
+            "product_list": [
+              "polar-mint-extra-strength",
+              "copy-of-spearmint-regular-strength",
+              "spearmint-extra-strength",
+              "spearmint-regular-strength",
+              "spearmint-performance-energy-copy"
+            ]
+          }
+        },
+        "variant_picker_QFmB3g": {
+          "type": "variant_picker",
+          "settings": {
+            "varaint_selector_type": "pills",
+            "show_swatches": true,
+            "block_bottom_spacing": 16,
+            "guide_heading": "",
+            "guide_option": "",
+            "guide_content": ""
+          }
+        },
+        "quantity_variants_CfURf7": {
+          "type": "quantity-variants",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_selector_McWjVj": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+            "block_bottom_spacing": 16
+          }
+        },
+        "buy_buttons_cihkdw": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true,
+            "block_bottom_spacing": 16
+          }
+        }
+      },
+      "block_order": [
+        "limited_edition_d78HAg",
+        "title_nMi6DX",
+        "rating_UHYRVi",
+        "price_rDyVpE",
+        "description_HpgVhT",
+        "sibling_products_iVieDT",
+        "variant_picker_QFmB3g",
+        "quantity_variants_CfURf7",
+        "quantity_selector_McWjVj",
+        "buy_buttons_cihkdw"
+      ],
+      "name": "Mint Energy",
+      "settings": {
+        "display_options_layout": "thumbnail-bottom",
+        "desktop_media_position": "left",
+        "desktop_media_size": "medium",
+        "image_aspect_ratio_desktop": "adapt",
+        "image_aspect_ratio_mobile": "adapt",
+        "media_autoplay": true,
+        "slider_hide_arrows": true,
+        "enable_media_zoom": false,
+        "show_on_sale": false,
+        "enable_sticky_add_to_cart": false,
+        "sticky_add_to_cart_style": "button",
+        "show_only_for_mobile": false,
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "border_size": "hide",
+        "border_position": "both",
+        "color_scheme": ""
+      }
     },
     "main-product": {
       "type": "main-product",
@@ -196,6 +308,7 @@
         "share",
         "complementary-products"
       ],
+      "disabled": true,
       "settings": {
         "display_options_layout": "thumbnail-bottom",
         "desktop_media_position": "left",
@@ -488,6 +601,7 @@
   },
   "order": [
     "zp-product-header-content",
+    "mint_energy_rdnezn",
     "main-product",
     "multicolumn",
     "before_after",

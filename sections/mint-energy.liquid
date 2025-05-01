@@ -50,7 +50,9 @@
 {%- endif -%}
 
 {{ 'section-product-highlights.css' | asset_url | stylesheet_tag }}
-
+{{ 'custom.pdp.css' | asset_url | stylesheet_tag }}
+{% comment %} <script src="{{ 'custom.pdp.js' | asset_url }}" defer></script> {% endcomment %}
+<script src="{{ 'custom-pdp-v2.js' | asset_url }}" defer></script>
 {% comment %} Render Model Viewer Ui css to style buttons and zoom {% endcomment %}
 {%- if first_3d_model -%}
   <link
@@ -342,26 +344,54 @@
                   {{ product.vendor }}
                 </p>
 
-              {%- when 'rating' -%}
-                {% comment %} Render product rating {% endcomment %}
-                {% render "product-rating" with product: product, element_type: block, show_if_no_reviews: block.settings.show_if_no_reviews %}
-
-              {%- when 'title' -%}
-                {% comment %} Product Title {% endcomment %}
+                {%- when 'title' -%}
+                  {% comment %} Product Title {% endcomment %}
                 <h1
                   aria-label="{{ product.title }}"
                   class="h2 main-product__heading fnt-heading clr-black"
                   style="padding-bottom: {{ block.settings.block_bottom_spacing | append: 'px' }}"
                   {{ block.shopify_attributes }}
                 >
-                  {{ product.title }}
-                </h1>
+                {%- assign title_parts = product.title | downcase | split: 'polar mint' -%}
 
-              {%- when 'price' -%}
+                {%- assign title = product.title | downcase -%}
+                {%- if title contains 'polar mint' -%}
+                  {%- assign title_contains_polar_mint = title | split: 'polar mint' -%}
+                {%- endif -%}
+                {%- if title contains 'spearmint' -%}
+                  {%- assign title_contains_spearmint = title | split: 'spearmint' -%}
+                {%- endif -%}
+
+                {% if title_contains_polar_mint.size >= 1 %}
+                  <span class="title-part">
+                    Polar Mint
+                  </span>
+
+                  <span class="title-part-2">
+                    {{ title_contains_polar_mint }}
+                  </span>
+                {% elsif title_contains_spearmint.size >= 1 %}
+                  <span class="title-part">
+                    Spearmint
+                  </span>
+                  <span class="title-part-2">
+                    {{ title_contains_spearmint }}
+                  </span>
+                {% else %}
+                  {{ product.title }}
+                {% endif %}
+
+              </h1>
+
+
+              
+              {%- when 'rating' -%}
+              {% comment %} Render product rating {% endcomment %}
+              {% render "product-rating" with product: product, element_type: block, show_if_no_reviews: block.settings.show_if_no_reviews %}
+
+              
+                {%- when 'price' -%}
                 <div class="product-price-main">
-                  <div class="total-count" total-count>
-                    {{ product.selected_or_first_available_variant.metafields.custom.variant_total_count }}
-                  </div>
 
                   <div class="Proce_Main_Outer">
                     {% comment %} Product Price {% endcomment %}
@@ -630,10 +660,68 @@
                 <div class="Script_Tag_outer">
                   {{ block.settings.script_code }}
                 </div>
+
+              {%- when 'limited-edition' -%}
+                {% for tag in product.tags %}
+                  {% if tag contains 'tag_' %}
+                    <div class="card__top-badge">
+                        {{ tag | remove: 'tag_' }}
+                    </div>
+                  {% endif %}
+                {% endfor %}
               {%- when 'video' -%}
                 {% render "variant-based-video", current_variant: product.selected_or_first_available_variant, section: section, block: block %}
-              {%- when 'Sibling Products' -%}
-                {% render 'product-siblings', product_id: product.id, block: block %}
+              {%- when 'sibling-products' -%}
+                {% comment %} Sibling Products {% endcomment %}
+                <h4 class="label-heading">Flavor: <span>{{ product.title }} </span></h4>
+                {% assign sibling_products = block.settings.product_list %}
+                {% if sibling_products != blank %}
+                  <div class="sibling-products">
+                    <ul class="sibling-products-list">
+                      {% for sibling in sibling_products %}
+                        <li class="sibling-product-item">
+                          <div class="sibling-product-link" data-id = {{ sibling.selected_or_first_available_variant.id }} data-product-id = {{ sibling.id }} 
+                               role="button"
+                               tabindex="0"
+                               data-product-handle="{{ sibling.handle }}"
+                               {% comment %} onclick="fetchSiblingProduct('{{ sibling.handle }}')" {% endcomment %}
+                               >
+                               <a href="{{ sibling.url }}">
+                            <img src="{{ sibling.featured_image | image_url: width: 300 }}" 
+                                 alt="{{ sibling.title }}" 
+                                 width="100" 
+                                 height="100">
+                            <p>{{ sibling.title }}</p>
+                            </a>
+                          </div>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+                {%- when 'quantity-variants' -%}
+                  <div class="quantity-variants">
+                    <h4 class="label-heading">Quantity: <span class="selected-quantity">12 Packs</span></h4>
+                    <div class="quantity-options">
+                      <div class="quantity-option active" data-quantity="12">
+                        <div class="quantity-option-inner">
+                          <h4>12 PACKS</h4>
+                          <p>6 pieces per pack = 72 total servings of energy!</p>
+                        </div>
+                      </div>
+                      <div class="quantity-option" data-quantity="24">
+                        <div class="quantity-option-inner">
+                          <div class="background-svg">
+                            <img src="https://cdn.shopify.com/s/files/1/0077/9285/3073/files/Frame_40_1.png?v=1746039337" alt="Discount Badge" width="45" height="44">
+                          </div>
+                          {% comment %} <div class="discount-badge">10% OFF</div> {% endcomment %}
+                          <h4>24 PACKS</h4>
+                          <p>6 pieces per pack = 144 total servings of energy!</p>
+                        </div>
+                      </div>
+                    </div>
+                    <input type="hidden" name="quantity-variant" id="selected-quantity" value="12">
+                  </div>
             {%- endcase -%}
           {%- endfor -%}
         </div>
@@ -799,11 +887,13 @@
       {% capture variant_badges %} {% render 'variant-product-badges', current_variant: variant %} {% endcapture %}
       tempVariantBadges = `{{ variant_badges | strip_newlines  }}`
     {% endif %}
-
+    {%- comment -%}
     {% if variant.metafields.custom.variant_product_images %}
       {% capture variant_faqs %} {% render 'variant-based-faq', current_variant: variant %} {% endcapture %}
       tempVariantfaqs = `{{ variant_faqs | strip_newlines  }}`
     {% endif %}
+      
+    {%- endcomment -%}
 
     {% if variant.metafields.custom.variant_directions %}
        tempVariantDirections = `{{ variant.metafields.custom.variant_directions | metafield_tag }}`;
@@ -834,7 +924,7 @@
       variant_video: tempvideo,
       variant_video_id: videoId,
       variant_badges: tempVariantBadges,
-      variant_faqs: tempVariantfaqs,
+      // variant_faqs: tempVariantfaqs,
       variant_directions:tempVariantDirections,
       variant_ingredients: tempVariantIngredients,
       variant_hide_ship_free_in_recharge_widget: tempVariantHideShipFreeInRechargeWidget,
@@ -2401,7 +2491,7 @@
       ]
     },
     {
-      "type": "SiblingProducts",
+      "type": "sibling-products",
       "name": "Sibling Products",
       "settings": [
         {
@@ -2410,6 +2500,17 @@
           "label": "Product List",
           "limit": 5
         }
+      ]
+    },
+    {
+      "type": "quantity-variants",
+      "name": "Quantity Variants"
+    },
+    {
+      "type": "limited-edition",
+      "name": "Limited Edition",
+      "settings": [
+        
       ]
     }
   ],

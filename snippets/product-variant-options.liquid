@@ -100,10 +100,14 @@
   
         {% assign phrase = value %}
         {% assign split_phrase = phrase | split: " - " %}
-        {{ split_phrase[0] }}
+        <h4>{{ split_phrase[0] }}</h4>
         <span>{{ split_phrase[1] }}</span>
-        <div class="variant_badge_outer_custom"
-          style="
+
+        <div class="metafields-text">
+          <p>6 pieces per pack = 72 total servings of energy!</p>
+        </div>
+          <div class="variant_badge_outer_custom"
+            style="
           {%- for tag in product.tags -%}
               {% assign tag_phrase = tag | split: '/' %}
               {% assign title_tag = tag_phrase[0] | replace: '_', ' ' %}

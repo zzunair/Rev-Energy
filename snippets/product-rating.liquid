@@ -6,42 +6,51 @@
 {% endcomment %}
 
 {% comment %} <p>Product ratings</p> {% endcomment %}
+ {% comment %}  {% endcomment %}
 {% liquid
   if product.metafields.reviews.rating.value != blank
-      assign decimal_value = 0
-      assign rating_value =  product.metafields.reviews.rating.value.rating | floor
-      assign rating_decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+      assign rating_value = product.metafields.reviews.rating.value.rating
       assign rating_max = product.metafields.reviews.rating.value.scale_max
-      if rating_decimal >= 0.3 and rating_decimal <= 0.7
-        assign decimal_value = 0.5
-      elsif rating_decimal > 0.7
-        assign decimal_value = 1
-      endif
-      assign final_rating_value = rating_value | plus: decimal_value
-
-    elsif show_if_no_reviews
+      assign rating_display = rating_value | round: 1
+  elsif show_if_no_reviews
       assign rating_max = 5
-      assign final_rating_value = 0
-      
-    else 
+      assign rating_value = 0
+      assign rating_display = 0
+  else 
       assign hide_rating = true
   endif
- 
-  %}
-  {% unless hide_rating %}
+%}
 
-    <div class="d-flex d-flex-align-center" {% if element_type.type == 'rating' %} style="padding-bottom: {{ element_type.settings.block_bottom_spacing | append: 'px' }}"{{ element_type.shopify_attributes }}{% endif %}> 
-      <div
-        class="rating"
-        role="img">
-        <span
-          aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: rating_value, rating_max: rating_max }}"
-          class="rating-star"
-          style="--rating: {{ final_rating_value }}; --rating-max: {{ rating_max }}; --rating-decimal: {{ rating_decimal }};"></span>
-      </div>
+{% unless hide_rating %}
+  <div class="rating-container d-flex d-flex-align-center" {% if element_type.type == 'rating' %} style="padding-bottom: {{ element_type.settings.block_bottom_spacing | append: 'px' }}"{{ element_type.shopify_attributes }}{% endif %}> 
+    <div class="single-star-rating">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+<path d="M11.4955 7.48926L11.6127 7.77539L11.9213 7.79883L15.8754 8.09082L12.8442 10.6514L12.6069 10.8516L12.6811 11.1533L13.6293 14.9951L10.2631 12.9082L10.0004 12.7451L9.73676 12.9082L6.36957 14.9951L7.31879 11.1533L7.39301 10.8516L7.1557 10.6514L4.12347 8.09082L8.07855 7.79883L8.38715 7.77539L8.50433 7.48926L9.99945 3.82324L11.4955 7.48926Z" fill="#39BDAC" stroke="#39BDAC"/>
+<path d="M9.99997 2.5L8.04164 7.3L2.86664 7.68333L6.8333 11.0333L5.59164 16.0667L9.99997 13.3333M9.99997 2.5L11.9583 7.3L17.1333 7.68333L13.1666 11.0333L14.4083 16.0667L9.99997 13.3333" fill="#39BDAC"/>
+<path d="M9.99997 2.5L8.04164 7.3L2.86664 7.68333L6.8333 11.0333L5.59164 16.0667L9.99997 13.3333L14.4083 16.0667L13.1666 11.0333L17.1333 7.68333L11.9583 7.3L9.99997 2.5Z" stroke="#39BDAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </div>
+    <div class="rating-text">
+      <span class="rating-value fnt-16">{{ rating_display }}</span>
       {% if product.metafields.reviews.rating_count %}
-      <span class="rating-count fnt-14 line-height-unset" aria-label="{{- product.metafields.reviews.rating_count }} {{ 'accessibility.total_reviews' | t -}}">
-        ({{ product.metafields.reviews.rating_count }}) 
-      </span> {% endif %} 
+        <span class="rating-count fnt-16">{{ product.metafields.reviews.rating_count }} reviews</span>
+      {% endif %}
+    </div>
   </div>
+  
+  <style>
+    .single-star-rating {
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+    }
+    .rating-text {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .rating-value {
+      font-weight: bold;
+    }
+  </style>
 {% endunless %}

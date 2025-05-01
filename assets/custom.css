@@ -436,7 +436,7 @@ label.rc-radio span.rc-radio__label ul li:before {
 }
 
 .main-product__heading {
-  font-family: "PPObjectSans";
+  /* font-family: "PPObjectSans"; */
   font-size: 32px;
   font-weight: 700;
   line-height: 41.6px;
@@ -519,8 +519,8 @@ label.rc-radio span.rc-radio__label span.rc-onetime-price {
   color: #f57e25;
 }
 
-.main-product .product-form__buttons .btn .btn--text span.ATC_Button:after {
-  content: "";
+/* .main-product .product-form__buttons .btn .btn--text span.ATC_Button:after {
+  content: "-";
   position: absolute;
   width: 6px;
   height: 6px;
@@ -529,7 +529,7 @@ label.rc-radio span.rc-radio__label span.rc-onetime-price {
   top: 50%;
   right: -4px;
   transform: translateY(-50%);
-}
+} */
 
 .main-product
   .product-form__buttons

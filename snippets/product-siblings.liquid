@@ -1,0 +1,26 @@
+{% comment %}Debug output{% endcomment %}
+<div style="display: none;">
+  Debug Info:
+  Sibling Products Count: {{ sibling_products.size }}
+  Sibling Products: {{ sibling_products | json }}
+</div>
+
+{% if sibling_products.size > 0 %}
+  <div class="sibling-products">
+    <h2>Sibling Products</h2>
+    <ul class="sibling-products-list">
+      {% for product in sibling_products %}
+        <li class="sibling-product-item">
+          <a href="{{ product.url }}" class="sibling-product-link">
+            {{ product.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% else %}
+  <div class="no-sibling-products">
+    No sibling products found
+  </div>
+{% endif %}
+

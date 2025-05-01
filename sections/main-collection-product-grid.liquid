@@ -264,17 +264,19 @@
                   class="collectionList__trending grid-layout grid-layout--{{ section.settings.columns_desktop }}-desktop grid-layout--{{ section.settings.columns_mobile }}-mobile"
                 >
                   {%- for product in collection.products -%}
-                    {% if forloop.index > 4 and loading == 'eager' %}
-                      {% assign loading = 'lazy' %}
-                    {% endif %}
-                    <div class="collectionList__item">
-                      {%-
-                        render 'card-product'
-                        , product: product,
-                        , product_image_loading: loading
-                        , product_image_fetchpriority: fetchpriority
-                      -%}
-                    </div>
+                    {% unless product.title contains 'Copy' %}
+                      {% if forloop.index > 4 and loading == 'eager' %}
+                        {% assign loading = 'lazy' %}
+                      {% endif %}
+                      <div class="collectionList__item">
+                        {%-
+                          render 'card-product'
+                          , product: product,
+                          , product_image_loading: loading
+                          , product_image_fetchpriority: fetchpriority
+                        -%}
+                      </div>
+                    {% endunless %}
                   {%- endfor -%}
                 </animation-reveal>
               </div>

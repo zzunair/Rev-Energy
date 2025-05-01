@@ -3021,7 +3021,7 @@ class VariantDropdown extends HTMLElement {
             // addButton.removeAttribute('disabled');
             HELPER_UTIL.submitButtonState(addButton).disableState(false);
            if (window.location.href.indexOf("/products/") !== -1) {
-             let addBtnText = `<span class="ATC_Button">Buy Now</span><span class="ATC_Button_Price"><s>${ document.querySelector(".product-price_top").innerText.replace("USD", "").trim() }</s><span>${(document.querySelector(".rc-radio__input")) ? document.querySelector(".rc-radio__input").closest("label").querySelector("label span .rc-radio__price").innerHTML : ""}</span></span>`;
+             let addBtnText = `<span class="ATC_Button">Add To Cart</span><span class="ATC_Button_Price">${ document.querySelector(".product-price_top").innerText.replace("USD", "").trim() }<span>${(document.querySelector(".rc-radio__input")) ? document.querySelector(".rc-radio__input").closest("label").querySelector("label span .rc-radio__price").innerHTML : ""}</span></span>`;
              addButtonText.innerHTML = addBtnText;
            }
           else{
